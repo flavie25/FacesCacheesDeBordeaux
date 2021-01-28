@@ -16,29 +16,34 @@
 		}
 
 		function get_AllLangues(){
-
-
+			global $db;
+			$query = 'SELECT * FROM LANGUE;';
+			$result = $db->query($query);
+			$allLangues = $result->fetchAll();
+			return($allLangues);
 		}
 
 		function get_AllLanguesByPays(){
+			
 
 
 		}
 
 		function create($numLang, $lib1Lang, $lib2Lang, $numPays){
-
+			global $db;
 			try {
-          $db->beginTransaction();
-
-
+			  $db->beginTransaction();
+			  $requete= 'INSERT INTO LANGUE (numLang,lib1Lang,lib2Lang,numPays) VALUES (?,?,?,?);';
+			  $result = $db->prepare($requete);
+			  $result->execute(array($numLang,$lib1Lang,$lib2Lang,$numPays));
 
 					$db->commit();
-					$request->closeCursor();
+					$result->closeCursor();
 			}
 			catch (PDOException $e) {
-					die('Erreur insert LANGUE : ' . $e->getMessage());
+					die('Erreur insert STATUT : ' . $e->getMessage());
 					$db->rollBack();
-					$request->closeCursor();
+					$result->closeCursor();
 			}
 		}
 
