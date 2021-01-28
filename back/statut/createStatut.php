@@ -15,25 +15,42 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
 
     // insertion classe STATUT
+    require_once __DIR__ . '/../../util/ctrlSaisies.php';
     require_once __DIR__ . '/../../CLASS_CRUD/statut.class.php';
     global $db;
     $monStatut = new STATUT;
 
 
-
-
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
     // ajout effectif du statut
-    if_isset($_POST[$libStat]){
-        $mon
-    }
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
+        // Opérateur ternaire
+        $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
+        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
 
+            header("Location: ./createStatut.php");
+        }   // End of if ((isset($_POST["submit"])) ...
 
+        // Mode création
+        if (((isset($_POST['libStat'])) AND !empty($_POST['libStat']))
+            AND (!empty($_POST['Submit']) AND ($Submit === "Valider"))) {
+            // Saisies valides
+            $erreur = false;
 
+            $libStat = ctrlSaisies(($_POST['libStat']));
 
+            $monStatut->create($libStat);
 
+            header("Location: ./statut.php");
+        }   // Fin if ((isset($_POST['libStat'])) ...
+        else {
+            $erreur = true;
+            $errSaisies =  "Erreur, la saisie est obligatoire !";
+        }   // End of else erreur saisies
+
+    }   // Fin if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     // Init variables form
     include __DIR__ . '/initStatut.php';
@@ -58,7 +75,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
       <fieldset>
         <legend class="legend1">Formulaire Statut...</legend>
 
-        <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
+        <!--<input type="hidden" id="id" name="id" value=": /*$_GET['id']; */-->
 
         <div class="control-group">
             <label class="control-label" for="libStat"><b>Nom du statut :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>

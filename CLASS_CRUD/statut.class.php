@@ -5,9 +5,12 @@
 
 	class STATUT{
 		function get_1Statut($idStat){
-
-
-		}
+            global $db;
+            $query = 'SELECT * FROM STATUT WHERE idStat = ?;';
+            $result = $db->prepare($query);
+            $result->execute([$idStat]);
+            return($result->fetch());
+        }
 
 		function get_AllStatuts(){
 			global $db;
@@ -19,23 +22,20 @@
 		}
 
 		function create($libStat){
-
+			global $db;
 			try {
 			  $db->beginTransaction();
-			  $requete= 'INSERT INTO STATUT (libStat) VALUES ($libStat);';
+			  $requete= 'INSERT INTO STATUT (libStat) VALUES (?);';
 			  $result = $db->prepare($requete);
-			  $result->execute();
-
-
-
+			  $result->execute(array($libStat));
 
 					$db->commit();
-					$request->closeCursor();
+					$result->closeCursor();
 			}
 			catch (PDOException $e) {
 					die('Erreur insert STATUT : ' . $e->getMessage());
 					$db->rollBack();
-					$request->closeCursor();
+					$result->closeCursor();
 			}
 		}
 
@@ -47,16 +47,17 @@
 
 
 					$db->commit();
-					$request->closeCursor();
+					$result->closeCursor();
 			}
 			catch (PDOException $e) {
 					die('Erreur update STATUT : ' . $e->getMessage());
 					$db->rollBack();
-					$request->closeCursor();
+					$result->closeCursor();
 			}
 		}
 
 		function delete($idStat){
+		global $db;
 
 		try {
 			$db->beginTransaction();
@@ -64,13 +65,13 @@
 			$result = $db->prepare($requete);
 			$result->execute();
 			$db->commit();
-			$request->closeCursor();
+			$result->closeCursor();
 
 			}
 			catch (PDOException $e) {
 					die('Erreur delete STATUT : ' . $e->getMessage());
 					$db->rollBack();
-					$request->closeCursor();
+					$result->closeCursor();
 			}
 		}
 
