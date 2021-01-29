@@ -40,21 +40,23 @@
 		}
 
 		function update($idStat, $libStat){
+			global $db;
 
-      try {
-          $db->beginTransaction();
-
-
-
-					$db->commit();
-					$result->closeCursor();
+			try {
+				$db->beginTransaction();
+				$requete="UPDATE STATUT SET libStat = ? WHERE idStat = ? ";
+				$result = $db->prepare($requete);
+				$result->execute(array($libStat, $idStat));
+				$db->commit();
+				$result->closeCursor();
+	
+				}
+				catch (PDOException $e) {
+						die('Erreur delete STATUT : ' . $e->getMessage());
+						$db->rollBack();
+						$result->closeCursor();
+				}
 			}
-			catch (PDOException $e) {
-					die('Erreur update STATUT : ' . $e->getMessage());
-					$db->rollBack();
-					$result->closeCursor();
-			}
-		}
 
 		function delete($idStat){
 		global $db;

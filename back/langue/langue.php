@@ -11,7 +11,7 @@
 require_once __DIR__ . '/../../util/utilErrOn.php';
 
 
-// insertion classe STATUT
+// insertion classe LANGUE
 require_once __DIR__ . '/../../CLASS_CRUD/langue.class.php';
 global $db;
 $monStatut = new LANGUE;
@@ -32,6 +32,10 @@ $monStatut = new LANGUE;
     <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
 
 	<h2>Tous les Langues</h2>
+    <hr /><br />
+	<h2>Nouvelle Langue :&nbsp;<a href="./createLangue.php"><i>Créer une langue</i></a></h2>
+	<br /><hr />
+	<h2>Tous les statuts</h2>
 
     <br><br>
 
@@ -49,7 +53,7 @@ $monStatut = new LANGUE;
 <?
     $allLangue = $monStatut->get_AllLangues();
     foreach($allLangue as $row){
-	// Appel méthode : tous les statuts en BDD
+	// Appel méthode : toutes les langues en BDD
 
     // Boucle pour afficher
 	//foreach($all as $row) {
@@ -60,9 +64,9 @@ $monStatut = new LANGUE;
         <td>&nbsp; <?php echo $row["lib2Lang"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["numPays"]; ?> &nbsp;</td>
 
-		<td>&nbsp;<a href="./updateStatut.php?id=<?=$row["numLang"];?>"><i>Modifier</i></a>&nbsp;
+		<td>&nbsp;<a href="./updateLangue.php?id=<?=$row["numLang"];?>"><i>Modifier</i></a>&nbsp;
 		<br /></td>
-		<td>&nbsp;<a href="./deleteStatut.php?id=<?=$row["numLang"];?>"><i>Supprimer</i></a>&nbsp;
+		<td>&nbsp;<a href="./deleteLangue.php?id=<?=$row["numLang"];?>"><i>Supprimer</i></a>&nbsp;
 		<br /></td>
         </tr>
 <?

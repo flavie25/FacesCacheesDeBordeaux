@@ -20,6 +20,10 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     $monStatut = new STATUT;
 
 
+    $errCIR=0;
+    if (isset($_GET['errCIR']) AND !empty($_GET['errCIR'])) {
+        $errCIR = ($_GET['errCIR']);
+    }  
 
 
 ?>
@@ -83,6 +87,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     </table>
     <br><br>
 <?php
+if ($errCIR == 1){
+    echo 'Vous ne pouvez pas supprimer cet utilisateur. Veuillez d\'abord supprimer cet utilisateur dans les autres tables';
+}
 require_once __DIR__ . '/footer.php';
 ?>
 </body>

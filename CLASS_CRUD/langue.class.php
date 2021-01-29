@@ -5,12 +5,20 @@
 
 	class LANGUE{
 		function get_1Langue($numLang){
-			
-
+			global $db;
+            $query = 'SELECT * FROM LANGUE WHERE numLang = ?;';
+            $result = $db->prepare($query);
+            $result->execute([$numLang]);
+            return($result->fetch());
 
 		}
 
 		function get_1LangueByPays($numLang){
+			global $db;
+            $requete = 'SELECT * FROM LANGUE, PAYS WHERE langue.numPays = pays.numPays AND langue.numLang = ?;';
+            $result = $db->prepare($requete);
+            $result->execute([$numLang]);
+            return($result->fetch());
 
 
 		}
@@ -48,21 +56,22 @@
 		}
 
 		function update($numLang, $lib1Lang, $lib2Lang, $numPays){
-
+			global $db;
 			try {
-          $db->beginTransaction();
-
-
-
-					$db->commit();
-					$request->closeCursor();
+				$db->beginTransaction();
+				$requete="UPDATE LANGUE SET lib1Lang = ?, lib2Lang = ?, numPays = ? WHERE numLang = ?";
+				$result = $db->prepare($requete);
+				$result->execute(array($lib1Lang, $lib2Lang, $numPays, $numLang));
+				$db->commit();
+				$result->closeCursor();
+	
+				}
+				catch (PDOException $e) {
+						die('Erreur delete STATUT : ' . $e->getMessage());
+						$db->rollBack();
+						$result->closeCursor();
+				}
 			}
-			catch (PDOException $e) {
-					die('Erreur update LANGUE : ' . $e->getMessage());
-					$db->rollBack();
-					$request->closeCursor();
-			}
-		}
 
 		// Ctrl FK sur THEMATIQUE, ANGLE, MOTCLE avec del
 		function delete($numLang){
