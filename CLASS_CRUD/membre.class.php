@@ -3,7 +3,7 @@
 
 	require_once __DIR__ . '../../CONNECT/database.php';
 
-	class MOTCLE{
+	class MEMBRE{
 		function get_1MotCleByLangue($numMotCle){
 			global $db;
             $requete = 'SELECT * FROM MOTCLE INNER JOIN LANGUE ON  motcle.numLang = langue.numLang WHERE motcle.numMotCle = ?;';
@@ -11,9 +11,9 @@
             $result->execute([$numMotCle]);
             return($result->fetch());
 		}
-		function get_AllMotCleByLangue(){
+		function get_AllMembre(){
 			global $db;
-            $requete = 'SELECT * FROM MOTCLE INNER JOIN LANGUE ON  motcle.numLang = langue.numLang ORDER BY motcle.numMotCle ASC;';
+            $requete = 'SELECT * FROM MEMBRE ;';
             $result = $db->prepare($requete);
             $result->execute();
             return($result->fetchAll());

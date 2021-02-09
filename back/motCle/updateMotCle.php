@@ -3,7 +3,7 @@
 //
 //  CRUD STATUT (PDO) - Code Modifié - 23 Janvier 2021
 //
-//  Script  : updateLangue.php  (ETUD)   -   BLOGART21
+//  Script  : updateMotCle.php  (ETUD)   -   BLOGART21
 //
 ///////////////////////////////////////////////////////////////
 
@@ -16,10 +16,10 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
     // modification classe LANGUE
     require_once __DIR__ . '/../../util/ctrlSaisies.php';
-    require_once __DIR__ . '/../../CLASS_CRUD/langue.class.php';
+    require_once __DIR__ . '/../../CLASS_CRUD/motCle.class.php';
     global $db;
-    $maLangue = new LANGUE;
-
+    $monMotCle = new MOTCLE;
+    
 
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
     // ajout effectif de la LANGUE
@@ -30,32 +30,27 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
             $reload = $_POST['id'];
-            header("Location: ./updateLangue.php?id=".$reload);
+            header("Location: ./updateMotCle.php?id=".$reload);
         }   // End of if ((isset($_POST["submit"])) ...
 
         // Mode création   
         
         if ((isset($_POST['id'])) AND !empty($_POST['id'])
         AND (!empty($_POST['Submit'])) AND ($Submit === "Valider")
-        AND (isset($_POST['lib1Lang'])) AND !empty($_POST['lib1Lang'])
-        AND (isset($_POST['lib2Lang'])) AND !empty($_POST['lib2Lang'])
-        AND (isset($_POST['pays'])) AND !empty($_POST['pays'])) {
+        AND (isset($_POST['libMotCle'])) AND !empty($_POST['libMotCle'])
+        AND (isset($_POST['numLang'])) AND !empty($_POST['numLang'])) {
             
             // Saisies valides
             $erreur = false;
 
-            $numLang = ($_POST['id']);
+            $numMotCle = ($_POST['id']);
 
-            $lib1Lang = ctrlSaisies(($_POST['lib1Lang']));
+            $libMotCle = ctrlSaisies(($_POST['libMotCle']));
 
-            $lib2Lang = ctrlSaisies(($_POST['lib2Lang']));
+            $numLang = ($_POST['numLang']);    
 
-            $numPays = ($_POST['pays']);
-            
-
-            $maLangue->update($numLang, $lib1Lang, $lib2Lang, $numPays);
-
-            header("Location: ./langue.php");
+            $monMotCle->update($numMotCle, $libMotCle, $numLang);
+            header("Location: ./motCle.php");
                       
         }   // Fin if ((isset($_POST['libStat'])) ...
         else {
@@ -69,13 +64,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     }   // Fin if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     // Init variables form
-    include __DIR__ . '/initLangue.php';
+    include __DIR__ . '/initMotCle.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8" />
-    <title>Admin - Gestion du CRUD Langue</title>
+    <title>Admin - Gestion du CRUD MotClé</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -83,58 +78,49 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
-    <h2>Modification d'une langue</h2>
+    <h1>BLOGART21 Admin - Gestion du CRUD Mots Clés</h1>
+    <h2>Modification d'un Mot Clé</h2>
 <?
     // Modif : récup id à modifier
     if (isset($_GET['id']) AND !empty($_GET['id'])) {
 
         $id = ctrlSaisies(($_GET['id']));
-    
-        $query = (array)$maLangue->get_1LangueByPays($id);
+
+        $query = (array)$monMotCle->get_1MotCleByLangue($id);
         
         if ($query) {
-            $lib1Lang = $query['lib1Lang'];
-            $lib2Lang = $query['lib2Lang'];
-            $numPays = $query['numPays'];
+            $libMotCle = $query['libMotCle'];
             $numLang = $query['numLang'];
-            $frPays = $query['frPays'];
+            $lib1Lang = $query['lib1Lang'];
         }   // Fin if ($query)
     }   // Fin if (isset($_GET['id'])...)
 
 
-
 ?>
-    <form method="post" action="./updateLangue.php" enctype="multipart/form-data">
+    <form method="post" action="./updateMotCle.php" enctype="multipart/form-data">
 
       <fieldset>
-        <legend class="legend1">Modification Langue...</legend>
+        <legend class="legend1">Modification Mot Clé...</legend>
 
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
 
         <div class="control-group">
-            <label class="control-label" for="lib1Lang"><b>Langue libellé court&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="lib1Lang" id="lib1Lang" size="80" maxlength="80" value="<?= $lib1Lang; ?>" autofocus="autofocus" />
-        </div>
-
-        <div class="control-group">
-            <label class="control-label" for="lib2Lang"><b>Langue libellé long&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="lib2Lang" id="lib2Lang" size="80" maxlength="80" value="<?= $lib2Lang; ?>"  />
+            <label class="control-label" for="libMotCle"><b>Mot Clé&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="libMotCle" id="libMotCle" size="60" maxlength="80" value="<?= $libMotCle; ?>" autofocus="autofocus" />
         </div>
         
         <div class="control-group">
-            <label for="pays">Num Pays :</label>  
-            <select id="pays" name="pays"  onchange="select()">
-                
-                <?php 
+            <label for="numLang">Langue :</label>  
+            <select id="numLang" name="numLang"  onchange="select()"> 
+                <?php
                 global $db;
-                $requete = 'SELECT * FROM PAYS ;';
+                $requete = 'SELECT numLang, lib1Lang FROM LANGUE ;';
                 $result = $db->query($requete);
-                $allPays = $result->fetchAll();
-                foreach ($allPays AS $pays)
+                $allLangue = $result->fetchAll();
+                foreach ($allLangue AS $langue)
                 {
                 ?>
-                <option value="<?php echo $pays['numPays'];?>"><?php echo $pays['frPays'];?></option>
+               <option value="<?php echo $langue['numLang'];?>"><?php echo $langue['lib1Lang'];?></option>
             <?php
             }
             ?>
@@ -153,7 +139,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
       </fieldset>
     </form>
 <?php
-require_once __DIR__ . '/footerLangue.php';
+require_once __DIR__ . '/footerMotCle.php';
 
 require_once __DIR__ . '/footer.php';
 ?>

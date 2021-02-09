@@ -10,6 +10,14 @@
 // Mode DEV
 require_once __DIR__ . '/../../util/utilErrOn.php';
 
+require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
+global $db;
+$membre = new MEMBRE;
+
+$errCIR=0;
+    if (isset($_GET['errCIR']) AND !empty($_GET['errCIR'])) {
+        $errCIR = ($_GET['errCIR']);
+    } 
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -25,14 +33,68 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Membre</h1>
 
+    <h2>Tous les Membres</h2>
+    <hr /><br />
+    <h2>Nouveau membre:&nbsp;<a href="./createMembre.php"><i>Créer un membre</i></a></h2>
+    <br /><hr />
+    <h2>Tous les membres</h2>
+
     <br><br>
 
-    <h2>En construction :-)</h2>
+    <table border="3" bgcolor="aliceblue">
+    <thead>
+        <tr>
+            <th>&nbsp;NumMembre&nbsp;</th>
+            <th>&nbsp;PrenomMembre&nbsp;</th>
+            <th>&nbsp;NomMembre&nbsp;</th>
+            <th>&nbsp;PseudoMembre&nbsp;</th>
+            <th>&nbsp;PassMembre&nbsp;</th>
+            <th>&nbsp;EmailMembre&nbsp;</th>
+            <th>&nbsp;DtCréaMembre&nbsp;</th>
+            <th>&nbsp;SouvenirMembre&nbsp;</th>
+            <th>&nbsp;AccordMembre&nbsp;</th>
+
+            <th colspan="2">&nbsp;Action&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?
+    $allMembre = $membre->get_AllMembre();
+    foreach($allMembre as $row){
+    // Appel méthode : toutes les langues en BDD
+
+    // Boucle pour afficher
+    //foreach($all as $row) {
+    ?>
+        <tr>
+        <td><h4>&nbsp; <?php echo $row["numMemb"]; ?> &nbsp;</h4></td>
+        <td>&nbsp; <?php echo $row["prenomMemb"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["nomMemb"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["pseudoMemb"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["passMemb"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["eMailMemb"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["dtCreaMemb"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["souvenirMemb"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["accordMemb"]; ?> &nbsp;</td>
+
+        <td>&nbsp;<a href="./updateMembre.php?id=<?=$row["numMemb"];?>"><i>Modifier</i></a>&nbsp;
+        <br /></td>
+        <td>&nbsp;<a href="./deleteMembre.php?id=<?=$row["numMemb"];?>"><i>Supprimer</i></a>&nbsp;
+        <br /></td>
+        </tr>
+    <?
+    }	// End of foreach
+    ?>
+    </tbody>
+    </table>
 
     <br><br>
 
-<?
-require_once __DIR__ . '/footer.php';
-?>
+    <?
+    if ($errCIR == 1){
+    echo 'Vous ne pouvez pas supprimer cet utilisateur. Veuillez d\'abord supprimer cet utilisateur dans les autres tables';
+    } 
+    require_once __DIR__ . '/footer.php';
+    ?>
 </body>
 </html>

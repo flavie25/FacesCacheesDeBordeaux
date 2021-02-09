@@ -14,7 +14,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 // insertion classe LANGUE
 require_once __DIR__ . '/../../CLASS_CRUD/langue.class.php';
 global $db;
-$monStatut = new LANGUE;
+$maLangue = new LANGUE;
 
 $errCIR=0;
     if (isset($_GET['errCIR']) AND !empty($_GET['errCIR'])) {
@@ -56,7 +56,7 @@ $errCIR=0;
     </thead>
     <tbody>
 <?
-    $allLangue = $monStatut->get_AllLangues();
+    $allLangue = $maLangue->get_AllLangues();
     foreach($allLangue as $row){
 	// Appel méthode : toutes les langues en BDD
 
