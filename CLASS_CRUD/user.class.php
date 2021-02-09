@@ -30,7 +30,11 @@
             $query = 'SELECT * FROM USER US INNER JOIN STATUT ST ON US.idStat = ST.idStat WHERE ST.idStat = ?;';
             $result = $db->prepare($query);
             $result->execute([$idStat]);
-            $allNbUsersByStat = $result->fetchAll();
+            $allUsersStat = $result->fetchAll();
+			$allNbUsersByStat = 0;
+			foreach ($allUsersStat as $row){
+				$allNbUsersByStat = $allNbUsersByStat + 1;
+			}
             return($allNbUsersByStat);
         }
 

@@ -46,7 +46,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $idStat = ctrlSaisies($_POST['id']);
 
             $allUser = $monUser->get_NbAllUsersByidStat($idStat);
-
+            
             if($allUser < 1){
                 
                 $monStatut->delete($idStat);
