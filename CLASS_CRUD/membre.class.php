@@ -4,13 +4,13 @@
 	require_once __DIR__ . '../../CONNECT/database.php';
 
 	class MEMBRE{
-		function get_1MotCleByLangue($numMotCle){
-			global $db;
-            $requete = 'SELECT * FROM MOTCLE INNER JOIN LANGUE ON  motcle.numLang = langue.numLang WHERE motcle.numMotCle = ?;';
-            $result = $db->prepare($requete);
-            $result->execute([$numMotCle]);
+		function get_1Membre($idMembre){
+            global $db;
+            $query = 'SELECT * FROM Membre WHERE numMembre = ?;';
+            $result = $db->prepare($query);
+            $result->execute([$idMembre]);
             return($result->fetch());
-		}
+        }
 		function get_AllMembre(){
 			global $db;
             $requete = 'SELECT * FROM MEMBRE ;';

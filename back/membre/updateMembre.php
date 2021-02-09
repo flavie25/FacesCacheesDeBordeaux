@@ -30,25 +30,35 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
 
-            header("Location: ./updateStatut.php");
+            header("Location: ./updateMembre.php");
         }   // End of if ((isset($_POST["submit"])) ...
 
         // Mode création
-        if ((isset($_POST['id']) AND $_POST['id'] > 0)
-        AND (!empty($_POST['Submit']) AND ($Submit === "Valider"))) {
+        if ((isset($_POST['id'])) AND !empty($_POST['id'])
+        AND (!empty($_POST['Submit'])) AND ($Submit === "Valider")
+        AND (isset($_POST['prenomMemb'])) AND !empty($_POST['prenomMemb'])
+        AND (isset($_POST['nomMemb'])) AND !empty($_POST['nomMemb'])
+        AND (isset($_POST['pseudoMemb'])) AND !empty($_POST['pseudoMemb'])
+        AND (isset($_POST['passMemb'])) AND !empty($_POST['passMemb'])
+        AND (isset($_POST['eMailMemb'])) AND !empty($_POST['eMailMemb'])
+        AND (isset($_POST['souvenirMemb'])) AND !empty($_POST['souvenirMemb'])
+        AND (isset($_POST['accordMemb'])) AND !empty($_POST['accordMemb'])){
 
-            $idStat = ctrlSaisies($_POST['id']);
+            $erreur = false;
 
-            if (((isset($_POST['libStat'])) AND !empty($_POST['libStat']))) {
-                // Saisies valides
-                $erreur = false;
+            $numMembre = ctrlSaisies($_POST['id']);
+            $prenomMembre = ctrlSaisies($_POST['prenomMemb']);
+            $nomMembre = ctrlSaisies($_POST['nomMemb']);
+            $pseudoMembre = ctrlSaisies($_POST['pseudoMemb']);
+            $passMembre = ctrlSaisies($_POST['passMemb']);
+            $emailMembre = ctrlSaisies($_POST['eMailMemb']);
+            $dtCreaMembre = getdate()
+            $souvenirMembre = ctrlSaisies($_POST['souvenirMemb']);
+            $accordMembre = ctrlSaisies($_POST['accordMemb']);
 
-                $libStat = ctrlSaisies(($_POST['libStat']));
-
-                $monStatut->update($idStat, $libStat);
-
-                header("Location: ./statut.php");
-            }   
+            $membre->update($numMembre, $prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre,$souvenirMembre,$accordMembre);
+            header("Location: ./membre.php");
+              
 
         } 
         
@@ -85,8 +95,15 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         $query = (array)$membre->get_1Membre($id);
 
         if ($query) {
-            $libStat = $query['libStat'];
-            $idStat = $query['idStat'];
+            $numMembre = $query['numMemb'];
+            $prenomMembre = $query['prenomMemb'];
+            $nomMembre = $query['nomMemb'];
+            $pseudoMembre = $query['pseudoMemb'];
+            $passMembre = $query['passMemb'];
+            $emailMembre = $query['eMailMemb'];
+            $dtCreaMembre = $query['dtCreaMemb'];
+            $souvenirMembre = $query['souvenirMemb'];
+            $accordMembre = $query['accordMemb'];
         }   // Fin if ($query)
     }   // Fin if (isset($_GET['id'])...)
 
@@ -95,14 +112,49 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <form method="post" action="./updateMembre.php" enctype="multipart/form-data">
 
       <fieldset>
-        <legend class="legend1">Formulaire Statut...</legend>
+        <legend class="legend1">Formulaire Membre...</legend>
 
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
 
         <div class="control-group">
-            <label class="control-label" for="libStat"><b>Nouveau nom du statut :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <label class="control-label" for="libStat"><b>Nouveau prenom du membre :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
             <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat; ?>" autofocus="autofocus" />
         </div>
+        <div class="control-group">
+            <label class="control-label" for="libStat"><b>Nouveau nom du membre :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat; ?>"  />
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="libStat"><b>Nouveau pseudo du membre :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat; ?>"  />
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="libStat"><b>Nouveau mot de passe du membre :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat; ?>" />
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="libStat"><b>Nouveau email du membre :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat; ?>" />
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="libStat"><b>Se souvenir de moi :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat; ?>"  />
+
+        </div>
+        <div class="control-group">
+            <label for="souvenirmembre">Num Pays :</label>  
+            <select id="souvenirmembre" name="souvenirmembre"  onchange="select()">
+                <option value=""></option>
+            <?php
+            }
+            ?>
+            </select>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="libStat"><b> J'accepte l'utilisation de mes données :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat; ?>" />
+        </div>
+
 
         <div class="control-group">
             <div class="controls">
