@@ -127,7 +127,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
       </fieldset>
     </form>
 <?php
-
+require_once __DIR__ . '/footerLangue.php';
 require_once __DIR__ . '/footer.php';
 ?>
 </body>

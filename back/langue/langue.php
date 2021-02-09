@@ -16,6 +16,11 @@ require_once __DIR__ . '/../../CLASS_CRUD/langue.class.php';
 global $db;
 $monStatut = new LANGUE;
 
+$errCIR=0;
+    if (isset($_GET['errCIR']) AND !empty($_GET['errCIR'])) {
+        $errCIR = ($_GET['errCIR']);
+    } 
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -78,6 +83,9 @@ $monStatut = new LANGUE;
     <br><br>
 
 <?
+if ($errCIR == 1){
+    echo 'Vous ne pouvez pas supprimer cet utilisateur. Veuillez d\'abord supprimer cet utilisateur dans les autres tables';
+} 
 require_once __DIR__ . '/footer.php';
 ?>
 </body>

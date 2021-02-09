@@ -33,10 +33,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             header("Location: ./updateLangue.php?id=".$reload);
         }   // End of if ((isset($_POST["submit"])) ...
 
-        // Mode création
-        
-       
-        
+        // Mode création   
         
         if ((isset($_POST['id'])) AND !empty($_POST['id'])
         AND (!empty($_POST['Submit'])) AND ($Submit === "Valider")
@@ -93,8 +90,10 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     if (isset($_GET['id']) AND !empty($_GET['id'])) {
 
         $id = ctrlSaisies(($_GET['id']));
+        echo $id;
 
         $query = (array)$maLangue->get_1LangueByPays($id);
+        print_r($query);
         
         if ($query) {
             $lib1Lang = $query['lib1Lang'];
@@ -122,7 +121,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         <div class="control-group">
             <label class="control-label" for="lib2Lang"><b>Langue libellé long&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="lib2Lang" id="lib2Lang" size="80" maxlength="80" value="<?= $lib2Lang; ?>" autofocus="autofocus" />
+            <input type="text" name="lib2Lang" id="lib2Lang" size="80" maxlength="80" value="<?= $lib2Lang; ?>"  />
         </div>
         
         <div class="control-group">

@@ -15,11 +15,10 @@
 
 		function get_1LangueByPays($numLang){
 			global $db;
-            $requete = 'SELECT * FROM LANGUE, PAYS WHERE langue.numPays = pays.numPays AND langue.numLang = ?;';
+            $requete = 'SELECT * FROM LANGUE INNER JOIN PAYS ON langue.numPays = pays.numPays WHERE langue.numLang = ?;';
             $result = $db->prepare($requete);
             $result->execute([$numLang]);
             return($result->fetch());
-
 
 		}
 
@@ -75,20 +74,20 @@
 
 		// Ctrl FK sur THEMATIQUE, ANGLE, MOTCLE avec del
 		function delete($numLang){
-
-			try {
-          $db->beginTransaction();
-
-
-
-					$db->commit();
-					$request->closeCursor();
+		global $db;
+		try {
+			$db->beginTransaction();
+			$requete= "DELETE FROM LANGUE WHERE numLang = ?; ";
+			$result = $db->prepare($requete);
+			$result->execute([$numLang]);
+			$db->commit();
+			$result->closeCursor();
 
 			}
 			catch (PDOException $e) {
-					die('Erreur delete LANGUE : ' . $e->getMessage());
+					die('Erreur delete STATUT : ' . $e->getMessage());
 					$db->rollBack();
-					$request->closeCursor();
+					$result->closeCursor();
 			}
 		}
 	}	// End of class

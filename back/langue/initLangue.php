@@ -12,3 +12,4 @@
     $lib2Lang = "";
     $numPays = "";
     $frPays = "";
+    $idLangue="";
