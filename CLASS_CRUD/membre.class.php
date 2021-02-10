@@ -6,7 +6,7 @@
 	class MEMBRE{
 		function get_1Membre($idMembre){
             global $db;
-            $query = 'SELECT * FROM Membre WHERE numMembre = ?;';
+            $query = 'SELECT * FROM MEMBRE WHERE numMemb = ?;';
             $result = $db->prepare($query);
             $result->execute([$idMembre]);
             return($result->fetch());
@@ -19,30 +19,32 @@
             return($result->fetchAll());
 		}
 		
-		function get_NbAllMotCleByidLangue($id){
+
+		function get_NbAllMembreByLikeCom($numMembre){
             global $db;
-            $query = 'SELECT * FROM MOTCLE INNER JOIN LANGUE ON motcle.numLang = langue.numLang WHERE motcle.numLang= ?;';
+            $query = 'SELECT * FROM MEMBRE INNER JOIN LIKECOM ON membre.numMemb = likecom.numMemb WHERE membre.numMemb= ?;';
             $result = $db->prepare($query);
-            $result->execute([$id]);
-            $allNbMotCleByLangue = $result->fetchAll();
-			$allNbMotCleByAllLangue = 0;
-			foreach ( $allNbMotCleByLangue  as $row){
-				$allNbMotCleByAllLangue = $allNbMotCleByAllLangue + 1;
+            $result->execute([$numMembre]);
+            $allNbMembreByLikeC = $result->fetchAll();
+			$allNbMembreByLikeCom = 0;
+			foreach ( $allNbMembreByLikeC as $row){
+				$allNbMembreByLikeCom = $allNbMembreByLikeCom + 1;
 			}
-            return($allNbMotCleByAllLangue);
+            return($allNbMembreByLikeCome);
         }
 
-		function get_NbAllMotCleByMotCleArticle($id){
+		function get_NbAllMembreByLikeArt($numMembre){
             global $db;
-            $query = 'SELECT * FROM MOTCLE INNER JOIN MOTCLEARTICLE ON motcle.numMotCle = motclearticle.numMotCle WHERE motcle.numMotCle= ?;';
+            $query = 'SELECT * FROM MEMBRE INNER JOIN LIKEART ON membre.numMemb = likeart.numMemb WHERE membre.numMemb= ?;';
             $result = $db->prepare($query);
-            $result->execute([$id]);
-            $allNbMotCleByArticle = $result->fetchAll();
-			$allNbMotCleByCleArticle = 0;
-			foreach ( $allNbMotCleByArticle as $row){
-				$allNbMotCleByCleArticle = $allNbMotCleByCleArticle + 1;
+            $result->execute([$numMembre]);
+            $allNbMembreByLikeA = $result->fetchAll();
+			$allNbMembreByLikeArt = 0;
+			foreach ( $allNbMembreByLikeA as $row){
+				$allNbMembreByLikeArt = $allNbMembreByLikeArt + 1;
 			}
-            return($allNbMotCleByCleArticle);
+            return($allNbMembreByLikeArt);
+
         }
 		
 		function create($prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre,$souvenirMembre,$accordMembre){
@@ -57,26 +59,26 @@
 					$result->closeCursor();
 			}
 			catch (PDOException $e) {
-					die('Erreur insert STATUT : ' . $e->getMessage());
+					die('Erreur insert Membre : ' . $e->getMessage());
 					$db->rollBack();
 					$result->closeCursor();
 			}
 		}
 		
 
-		function update($numMotCle, $libMotCle, $numLang){
+		function update($numMembre,$prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre, $souvenirMembre){
 			global $db;
 			try {
 				$db->beginTransaction();
-				$requete="UPDATE MOTCLE SET libMotCle = ?, numLang = ? WHERE numMotCle = ?";
+				$requete="UPDATE MEMBRE SET prenomMemb = ?, nomMemb = ?, pseudoMemb = ?, passMemb = ?, eMailMemb = ?, dtCreaMemb = ?, souvenirMemb = ? WHERE numMemb = ?";
 				$result = $db->prepare($requete);
-				$result->execute(array($libMotCle, $numLang, $numMotCle));
+				$result->execute(array($prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre, $souvenirMembre, $numMembre));
 				$db->commit();
 				$result->closeCursor();
 	
 				}
 				catch (PDOException $e) {
-						die('Erreur delete STATUT : ' . $e->getMessage());
+						die('Erreur update MEMBRE : ' . $e->getMessage());
 						$db->rollBack();
 						$result->closeCursor();
 				}
@@ -84,13 +86,13 @@
 
 
 		// Ctrl FK sur THEMATIQUE, ANGLE, MOTCLE avec del
-		function delete($numMotCle){
+		function delete($numMembre){
 			global $db;
 			try {
 				$db->beginTransaction();
-				$requete= "DELETE FROM  MOTCLE WHERE numMotCle = ?; ";
+				$requete= "DELETE FROM  MEMBRE WHERE numMemb = ?; ";
 				$result = $db->prepare($requete);
-				$result->execute([$numMotCle]);
+				$result->execute([$numMembre]);
 				$db->commit();
 				$result->closeCursor();
 	

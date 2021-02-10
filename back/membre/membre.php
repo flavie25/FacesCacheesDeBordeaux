@@ -18,6 +18,7 @@ $errCIR=0;
     if (isset($_GET['errCIR']) AND !empty($_GET['errCIR'])) {
         $errCIR = ($_GET['errCIR']);
     } 
+$errSaisies ='';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -92,8 +93,12 @@ $errCIR=0;
 
     <?
     if ($errCIR == 1){
-    echo 'Vous ne pouvez pas supprimer cet utilisateur. Veuillez d\'abord supprimer cet utilisateur dans les autres tables';
+    echo 'Vous ne pouvez pas supprimer ce membre. Veuillez d\'abord supprimer ce membre dans les autres tables';
     } 
+    if (isset($_GET['id']) AND !empty($_GET['id'])) {
+        $errSaisies = ($_GET['id']);
+        echo $errSaisies;
+    }
     require_once __DIR__ . '/footer.php';
     ?>
 </body>

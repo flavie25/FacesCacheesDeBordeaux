@@ -34,38 +34,49 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         }   // End of if ((isset($_POST["submit"])) ...
 
         // Mode création
-        if ((isset($_POST['id'])) AND !empty($_POST['id'])
-        AND (!empty($_POST['Submit'])) AND ($Submit === "Valider")
+        if ((!empty($_POST['Submit'])) AND ($Submit === "Valider")
         AND (isset($_POST['prenomMemb'])) AND !empty($_POST['prenomMemb'])
         AND (isset($_POST['nomMemb'])) AND !empty($_POST['nomMemb'])
         AND (isset($_POST['pseudoMemb'])) AND !empty($_POST['pseudoMemb'])
         AND (isset($_POST['passMemb'])) AND !empty($_POST['passMemb'])
         AND (isset($_POST['eMailMemb'])) AND !empty($_POST['eMailMemb'])
         AND (isset($_POST['souvenirMemb'])) AND !empty($_POST['souvenirMemb'])
-        AND (isset($_POST['accordMemb'])) AND !empty($_POST['accordMemb'])){
+        AND (isset($_POST['accordMemb'])) AND ($_POST['accordMemb'] === "on"))
+        {
 
             $erreur = false;
 
-            $numMembre = ctrlSaisies($_POST['id']);
             $prenomMembre = ctrlSaisies($_POST['prenomMemb']);
             $nomMembre = ctrlSaisies($_POST['nomMemb']);
             $pseudoMembre = ctrlSaisies($_POST['pseudoMemb']);
-            $passMembre = ctrlSaisies($_POST['passMemb']);
+            $passMembre = password_hash($_POST['passMemb'], PASSWORD_DEFAULT);
             $emailMembre = ctrlSaisies($_POST['eMailMemb']);
-            $dtCreaMembre = date("y-m-d h:m:s");
+            $dtCreaMembre = date("Y-m-d h:i:s");
             $souvenirMembre = ctrlSaisies($_POST['souvenirMemb']);
+            if ($souvenirMembre == 'off'){
+                $souvenirMembre = 0;
+            }
+            else{
+                $souvenirMembre = 1;
+            }
             $accordMembre = ctrlSaisies($_POST['accordMemb']);
+            if ($accordMembre == 'on'){
+                $accordMembre = 1;
+            }
+            
 
-            $membre->create($numMembre, $prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre,$souvenirMembre,$accordMembre);
+            $membre->create($prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre, $souvenirMembre,$accordMembre);
             header("Location: ./membre.php");
               
 
         } 
         else {
             $erreur = true;
-            $errSaisies =  "Erreur, la saisie est obligatoire !";
+            $errSaisies =  "Erreur, la saisie est obligatoire et vous devez obligatoirement accepter la sauvegarde de vos données!";
+            header("Location: ./createMembre.php?id=".$errSaisies);
         }   // End of else erreur saisies
-
+        
+    
     }   // Fin if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     // Init variables form
@@ -91,8 +102,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
       <fieldset>
         <legend class="legend1">Formulaire Membre...</legend>
 
-        <!--<input type="hidden" id="id" name="id" value=": /*$_GET['id']; */-->
-
         <div class="control-group">
             <label class="control-label" for="prenomMemb"><b>Prénom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
             <input type="text" name="prenomMemb" id="prenomMemb" size="80" maxlength="80" value="<?= $prenomMembre; ?>" autofocus="autofocus" />
@@ -113,19 +122,33 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <label class="control-label" for="eMailMemb"><b>e-Mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
             <input type="text" name="eMailMemb" id="eMailMemb" size="80" maxlength="80" value="<?= $emailMembre; ?>" />
         </div>
+
         <div class="control-group">
-            <label for="souvenirMemb">Se souvenir de moi :</label>  
-            <input type="radio" name="eMailMemb" id="Oui" size="80" maxlength="80" value="Oui" checked />  
-            <label for="Oui">Oui</label>
-            <input type="radio" name="eMailMemb" id="Non" size="80" maxlength="80" value="Non" checked />  
-            <label for="Non">Non</label>      
+            <label class="control-label" for="souvenirMemb"><b>Se souvenir de moi :</b></label>
+            <div class="controls">
+               <fieldset>
+                  <input type="radio" name="souvenirMemb"
+                  <?= ($souvenirMembre == "on") ? 'checked="checked"' : ''
+                  ?> value="on" />&nbsp;&nbsp;Oui&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="souvenirMemb"
+                  <?= ($souvenirMembre == "off") ? 'checked="checked"' : ''
+                  ?> value="off" checked="checked" />&nbsp;&nbsp;Non
+               </fieldset>
+            </div>
         </div>
+      
         <div class="control-group">
-            <label for="accordMemb">J'accepte l'utilisation de mes données :</label>  
-            <select id="accordMemb" name="accordMemb" onchange="select()">
-                <option value="">Oui</option>
-                <option value="">Non</option>
-            </select>
+            <label class="control-label" for="accordMemb"><b>J'accepte que mes données soient conservées :</b></label>
+            <div class="controls">
+               <fieldset>
+                  <input type="radio" name="accordMemb"
+                  <?= ($accordMembre == "on") ? 'checked="checked"' : ''
+                  ?> value="on" />&nbsp;&nbsp;Oui&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="accordMemb"
+                  <?= ($accordMembre == "off") ? 'checked="checked"' : ''
+                  ?> value="off" checked="checked" />&nbsp;&nbsp;Non
+               </fieldset>
+            </div>
         </div>
 
         <div class="control-group">
@@ -140,7 +163,14 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         </div>
       </fieldset>
     </form>
+    
 <?php
+
+if (isset($_GET['id']) AND !empty($_GET['id'])) {
+    $errSaisies = ($_GET['id']);
+    echo $errSaisies;
+} 
+
 require_once __DIR__ . '/footerMembre.php';
 
 require_once __DIR__ . '/footer.php';
