@@ -30,21 +30,37 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
 
-            header("Location: ./createStatut.php");
+            header("Location: ./createMembre.php");
         }   // End of if ((isset($_POST["submit"])) ...
 
         // Mode création
-        if (((isset($_POST['libStat'])) AND !empty($_POST['libStat']))
-            AND (!empty($_POST['Submit']) AND ($Submit === "Valider"))) {
-            // Saisies valides
+        if ((isset($_POST['id'])) AND !empty($_POST['id'])
+        AND (!empty($_POST['Submit'])) AND ($Submit === "Valider")
+        AND (isset($_POST['prenomMemb'])) AND !empty($_POST['prenomMemb'])
+        AND (isset($_POST['nomMemb'])) AND !empty($_POST['nomMemb'])
+        AND (isset($_POST['pseudoMemb'])) AND !empty($_POST['pseudoMemb'])
+        AND (isset($_POST['passMemb'])) AND !empty($_POST['passMemb'])
+        AND (isset($_POST['eMailMemb'])) AND !empty($_POST['eMailMemb'])
+        AND (isset($_POST['souvenirMemb'])) AND !empty($_POST['souvenirMemb'])
+        AND (isset($_POST['accordMemb'])) AND !empty($_POST['accordMemb'])){
+
             $erreur = false;
 
-            $libStat = ctrlSaisies(($_POST['libStat']));
+            $numMembre = ctrlSaisies($_POST['id']);
+            $prenomMembre = ctrlSaisies($_POST['prenomMemb']);
+            $nomMembre = ctrlSaisies($_POST['nomMemb']);
+            $pseudoMembre = ctrlSaisies($_POST['pseudoMemb']);
+            $passMembre = ctrlSaisies($_POST['passMemb']);
+            $emailMembre = ctrlSaisies($_POST['eMailMemb']);
+            $dtCreaMembre = date("y-m-d h:m:s");
+            $souvenirMembre = ctrlSaisies($_POST['souvenirMemb']);
+            $accordMembre = ctrlSaisies($_POST['accordMemb']);
 
-            $monStatut->create($libStat);
+            $membre->create($numMembre, $prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre,$souvenirMembre,$accordMembre);
+            header("Location: ./membre.php");
+              
 
-            header("Location: ./statut.php");
-        }   // Fin if ((isset($_POST['libStat'])) ...
+        } 
         else {
             $erreur = true;
             $errSaisies =  "Erreur, la saisie est obligatoire !";
@@ -78,24 +94,38 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <!--<input type="hidden" id="id" name="id" value=": /*$_GET['id']; */-->
 
         <div class="control-group">
-            <label class="control-label" for="prenomMembre"><b>Prénom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="prenomMembre" id="prenomMembre" size="80" maxlength="80" value="<?= $libStat; ?>" autofocus="autofocus" />
+            <label class="control-label" for="prenomMemb"><b>Prénom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="prenomMemb" id="prenomMemb" size="80" maxlength="80" value="<?= $prenomMembre; ?>" autofocus="autofocus" />
         </div>
         <div class="control-group">
-            <label class="control-label" for="nomMembre"><b>Nom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="nomMembre" id="nomMembre" size="80" maxlength="80" value="<?= $libStat; ?>" />
+            <label class="control-label" for="nomMemb"><b>Nom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="nomMemb" id="nomMemb" size="80" maxlength="80" value="<?= $nomMembre; ?>" />
         </div>
         <div class="control-group">
-            <label class="control-label" for="pseudoMembre"><b>Pseudo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="pseudoMembre" id="pseudoMembre" size="80" maxlength="80" value="<?= $libStat; ?>"  />
+            <label class="control-label" for="pseudoMemb"><b>Pseudo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="pseudoMemb" id="pseudoMemb" size="80" maxlength="80" value="<?= $pseudoMembre; ?>"  />
         </div>
         <div class="control-group">
-            <label class="control-label" for="passMembre"><b>Mot de passe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="password" name="passMembre" id="passMembre" size="80" maxlength="80" value="<?= $libStat; ?>"  />
+            <label class="control-label" for="passMemb"><b>Mot de passe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="password" name="passMemb" id="passMemb" size="80" maxlength="80" value="<?= $passMembre; ?>"  />
         </div>
         <div class="control-group">
-            <label class="control-label" for="eMailMembre"><b>e-Mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="eMailMembre" id="eMailMembre" size="80" maxlength="80" value="<?= $libStat; ?>" />
+            <label class="control-label" for="eMailMemb"><b>e-Mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="eMailMemb" id="eMailMemb" size="80" maxlength="80" value="<?= $emailMembre; ?>" />
+        </div>
+        <div class="control-group">
+            <label for="souvenirMemb">Se souvenir de moi :</label>  
+            <input type="radio" name="eMailMemb" id="Oui" size="80" maxlength="80" value="Oui" checked />  
+            <label for="Oui">Oui</label>
+            <input type="radio" name="eMailMemb" id="Non" size="80" maxlength="80" value="Non" checked />  
+            <label for="Non">Non</label>      
+        </div>
+        <div class="control-group">
+            <label for="accordMemb">J'accepte l'utilisation de mes données :</label>  
+            <select id="accordMemb" name="accordMemb" onchange="select()">
+                <option value="">Oui</option>
+                <option value="">Non</option>
+            </select>
         </div>
 
         <div class="control-group">

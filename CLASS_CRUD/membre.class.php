@@ -45,13 +45,13 @@
             return($allNbMotCleByCleArticle);
         }
 		
-		function create($libMotCle, $numLang){
+		function create($prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre,$souvenirMembre,$accordMembre){
 			global $db;
 			try {
 			  $db->beginTransaction();
-			  $requete= 'INSERT INTO MOTCLE (libMotCle, numLang) VALUES (?,?);';
+			  $requete= 'INSERT INTO MEMBRE (prenomMemb, nomMemb,pseudoMemb,passMemb,eMailMemb,dtCreaMemb,souvenirMemb,accordMemb) VALUES (?,?,?,?,?,?,?,?);';
 			  $result = $db->prepare($requete);
-			  $result->execute(array($libMotCle, $numLang));
+			  $result->execute(array($prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre,$souvenirMembre,$accordMembre));
 
 					$db->commit();
 					$result->closeCursor();

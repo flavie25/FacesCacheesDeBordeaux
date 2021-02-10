@@ -52,7 +52,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $pseudoMembre = ctrlSaisies($_POST['pseudoMemb']);
             $passMembre = ctrlSaisies($_POST['passMemb']);
             $emailMembre = ctrlSaisies($_POST['eMailMemb']);
-            $dtCreaMembre = getdate()
+            $dtCreaMembre = date("y-m-d h:m:s");
             $souvenirMembre = ctrlSaisies($_POST['souvenirMemb']);
             $accordMembre = ctrlSaisies($_POST['accordMemb']);
 
@@ -118,41 +118,38 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         <div class="control-group">
             <label class="control-label" for="libStat"><b>Nouveau prenom du membre :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat; ?>" autofocus="autofocus" />
+            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $prenomMembre; ?>" autofocus="autofocus" />
         </div>
         <div class="control-group">
             <label class="control-label" for="libStat"><b>Nouveau nom du membre :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat; ?>"  />
+            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $nomMembre; ?>"  />
         </div>
         <div class="control-group">
             <label class="control-label" for="libStat"><b>Nouveau pseudo du membre :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat; ?>"  />
+            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $pseudoMembre; ?>"  />
         </div>
         <div class="control-group">
             <label class="control-label" for="libStat"><b>Nouveau mot de passe du membre :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat; ?>" />
+            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $passMembre; ?>" />
         </div>
         <div class="control-group">
             <label class="control-label" for="libStat"><b>Nouveau email du membre :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat; ?>" />
+            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $emailMembre; ?>" />
         </div>
+    
         <div class="control-group">
-            <label class="control-label" for="libStat"><b>Se souvenir de moi :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat; ?>"  />
-
-        </div>
-        <div class="control-group">
-            <label for="souvenirmembre">Num Pays :</label>  
-            <select id="souvenirmembre" name="souvenirmembre"  onchange="select()">
-                <option value=""></option>
-            <?php
-            }
-            ?>
+            <label for="souvenirMembre">Se souvenir de moi :</label>  
+            <select id="souvenirMembre" name="souvenirMembre" onchange="select()">
+                <option value="souvenirMembre">Oui</option>
+                <option value="souvenirMembre">Non</option>
             </select>
         </div>
         <div class="control-group">
-            <label class="control-label" for="libStat"><b> J'accepte l'utilisation de mes données :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat; ?>" />
+            <label for="accordMembre">J'accepte l'utilisation de mes données :</label>  
+            <select id="accordMembre" name="accordMembre" onchange="select()">
+                <option value="">Oui</option>
+                <option value="">Non</option>
+            </select>
         </div>
 
 
