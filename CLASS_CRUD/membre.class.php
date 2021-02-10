@@ -1,5 +1,5 @@
 <?
-	// CRUD USER (ETUD)
+	// CRUD MEMBRE (ETUD)
 
 	require_once __DIR__ . '../../CONNECT/database.php';
 
@@ -50,13 +50,12 @@
 		function create($prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre,$souvenirMembre,$accordMembre){
 			global $db;
 			try {
-			  $db->beginTransaction();
-			  $requete= 'INSERT INTO MEMBRE (prenomMemb, nomMemb,pseudoMemb,passMemb,eMailMemb,dtCreaMemb,souvenirMemb,accordMemb) VALUES (?,?,?,?,?,?,?,?);';
-			  $result = $db->prepare($requete);
-			  $result->execute(array($prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre,$souvenirMembre,$accordMembre));
-
-					$db->commit();
-					$result->closeCursor();
+				$db->beginTransaction();
+				$requete= 'INSERT INTO MEMBRE (prenomMemb, nomMemb,pseudoMemb,passMemb,eMailMemb,dtCreaMemb,souvenirMemb,accordMemb) VALUES (?,?,?,?,?,?,?,?);';
+				$result = $db->prepare($requete);
+				$result->execute(array($prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre,$souvenirMembre,$accordMembre));
+				$db->commit();
+				$result->closeCursor();
 			}
 			catch (PDOException $e) {
 					die('Erreur insert Membre : ' . $e->getMessage());
