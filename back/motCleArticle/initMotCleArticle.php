@@ -8,3 +8,5 @@
     $numArt = "";
     // FK PK MotCleArticle
     $numMotCle = "";
+
+    $numLang = "";
