@@ -3,7 +3,7 @@
 //
 //  CRUD STATUT (PDO) - Code Modifié - 23 Janvier 2021
 //
-//  Script  : updateAngle.php  (ETUD)   -   BLOGART21
+//  Script  : updateThematique.php  (ETUD)   -   BLOGART21
 //
 ///////////////////////////////////////////////////////////////
 
@@ -16,9 +16,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
     // insertion classe STATUT
     require_once __DIR__ . '/../../util/ctrlSaisies.php';
-    require_once __DIR__ . '/../../CLASS_CRUD/angle.class.php';
+    require_once __DIR__ . '/../../CLASS_CRUD/thematique.class.php';
     global $db;
-    $monAngle = new ANGLE;
+    $maThematique = new THEMATIQUE;
 
 
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
@@ -30,24 +30,24 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
 
-            header("Location: ./updateAngle.php");
+            header("Location: ./updateThem.php");
         }   // End of if ((isset($_POST["submit"])) ...
 
         // Mode création
         if (((isset($_POST['id'])) AND !empty($_POST['id']))
-            AND((isset($_POST['libAngl'])) AND !empty($_POST['libAngl']))
+            AND((isset($_POST['libThem'])) AND !empty($_POST['libThem']))
             AND (!empty($_POST['Submit']) AND ($Submit === "Valider"))
             AND ((isset($_POST['numLang'])) AND !empty($_POST['numLang']))) {
             // Saisies valides
             $erreur = false;
 
-            $libAngl = ctrlSaisies(($_POST['libAngl']));
+            $libThem = ctrlSaisies(($_POST['libThem']));
             $numLang = ctrlSaisies($_POST['numLang']);
-            $numAngl = ($_POST['id']);
+            $numThem = ($_POST['id']);
 
-            $monAngle->update($numAngl, $libAngl, $numLang);
+            $maThematique->update($numThem, $libThem, $numLang);
 
-            header("Location: ./angle.php");
+            header("Location: ./thematique.php");
         }   // Fin if ((isset($_POST['libStat'])) ...
         else {
         $erreur = true;
@@ -58,13 +58,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     }   // Fin if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     // Init variables form
-    include __DIR__ . '/initAngle.php';
+    include __DIR__ . '/initThematique.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8" />
-    <title>Admin - Gestion du CRUD Angle</title>
+    <title>Admin - Gestion du CRUD Thématique</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -72,18 +72,18 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
-    <h2>Modification d'un Angle</h2>
+    <h1>BLOGART21 Admin - Gestion du CRUD Thématique</h1>
+    <h2>Modification d'une thématique</h2>
 <?
     // Modif : récup id à modifier
     if (isset($_GET['id']) and !empty($_GET['id'])) {
 
         $id = ctrlSaisies(($_GET['id']));
 
-        $query = (array)$monAngle->get_1AngleByLangue($id);
+        $query = (array)$maThematique->get_1ThemByLangue($id);
 
         if ($query) {
-            $libAngl = $query['libAngl'];
+            $libThem = $query['libThem'];
             $numLang = $query['numLang'];
             $lib1Lang = $query['lib1Lang'];
         }   // Fin if ($query)
@@ -91,16 +91,16 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
 
 ?>
-    <form method="post" action="./updateAngle.php" enctype="multipart/form-data">
+    <form method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data">
 
       <fieldset>
-        <legend class="legend1">Formulaire Angle...</legend>
+        <legend class="legend1">Formulaire Thématique...</legend>
 
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
 
         <div class="control-group">
-            <label class="control-label" for="libAngl"><b>Nouveau nom de l'angle :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libAngl" id="libAngl" size="80" maxlength="80" value="<?= $libAngl; ?>" autofocus="autofocus" />
+            <label class="control-label" for="libThem"><b>Nouveau nom de la thématique :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="libThem" id="libThem" size="80" maxlength="80" value="<?= $libThem; ?>" autofocus="autofocus" />
         </div>
         <div class="control-group">
             <label for="numLang">Langue :</label>  
@@ -134,7 +134,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
       </fieldset>
     </form>
 <?php
-require_once __DIR__ . '/footerAngle.php';
+require_once __DIR__ . '/footerThematique.php';
 
 require_once __DIR__ . '/footer.php';
 ?>
