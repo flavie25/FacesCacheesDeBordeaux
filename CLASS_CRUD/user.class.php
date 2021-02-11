@@ -19,8 +19,11 @@
 		}
 
 		function get_ExistPseudo($pseudoUser) {
-
-
+			global $db;
+			$requete = 'SELECT * FROM USER WHERE pseudoUSER = ?;';
+			$result = $db->prepare($requete);
+			$result->execute([$pseudoUser]);
+			return($result->row_count());
 		}
 
 		function get_AllUsersByStat(){
@@ -45,9 +48,10 @@
 		function create($pseudoUser, $passUser, $nomUser, $prenomUser, $emailUser, $idStat){
 			global $db;
 			try {
-          $db->beginTransaction();
-
-
+          	$db->beginTransaction();
+			$requete = 'INSERT INTO USER (pseudoUser, passUser, nomUser, prenomUser, emailUser, idStat) VALUES (?,?, ?, ?, ?,?);';
+			$result = $db->prepare($requete);
+			$result->execute([$pseudoUser, $passUser, $nomUser, $prenomUser, $emailUser, $idStat]);
 
 					$db->commit();
 					$request->closeCursor();
@@ -61,35 +65,35 @@
 
 		function update($pseudoUser, $passUser, $nomUser, $prenomUser, $emailUser, $idStat){
 			global $db;
-      try {
-          $db->beginTransaction();
+			try {
+				$db->beginTransaction();
 
 
 
-					$db->commit();
-					$request->closeCursor();
-			}
-			catch (PDOException $e) {
-					die('Erreur update USER : ' . $e->getMessage());
-					$db->rollBack();
-					$request->closeCursor();
-			}
+							$db->commit();
+							$request->closeCursor();
+					}
+					catch (PDOException $e) {
+							die('Erreur update USER : ' . $e->getMessage());
+							$db->rollBack();
+							$request->closeCursor();
+					}
 		}
 
 		function delete($pseudoUser, $passUser){
 			global $db;
-      try {
-          $db->beginTransaction();
+			try {
+				$db->beginTransaction();
 
 
-					$db->commit();
-					$request->closeCursor();
-			}
-			catch (PDOException $e) {
-					die('Erreur delete USER : ' . $e->getMessage());
-					$db->rollBack();
-					$request->closeCursor();
-			}
+							$db->commit();
+							$request->closeCursor();
+					}
+					catch (PDOException $e) {
+							die('Erreur delete USER : ' . $e->getMessage());
+							$db->rollBack();
+							$request->closeCursor();
+					}
 		}
 
 	}	// End of class

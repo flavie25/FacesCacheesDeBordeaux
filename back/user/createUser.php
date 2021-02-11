@@ -30,28 +30,55 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
 
-            header("Location: ./createStatut.php");
+            header("Location: ./createUser.php");
         }   // End of if ((isset($_POST["submit"])) ...
 
         // Mode création
-        if (((isset($_POST['libStat'])) AND !empty($_POST['libStat']))
-            AND (!empty($_POST['Submit']) AND ($Submit === "Valider"))) {
+        if (((isset($_POST['pseudoUser'])) AND !empty($_POST['pseudoUser']))
+            AND (!empty($_POST['Submit']) AND ($Submit === "Valider"))
+            AND (isset($_POST['passUser1'])) AND !empty($_POST['passUser1'])
+            AND (isset($_POST['passUser2'])) AND !empty($_POST['passUser2'])
+            AND (isset($_POST['nomUser'])) AND !empty($_POST['nomUser'])
+            AND (isset($_POST['prenomUser'])) AND !empty($_POST['prenomUser'])
+            AND (isset($_POST['eMailUser1'])) AND !empty($_POST['eMailUser1'])
+            AND (isset($_POST['eMailUser2'])) AND !empty($_POST['eMailUser2'])) {
             // Saisies valides
             $erreur = false;
 
-            $libStat = ctrlSaisies(($_POST['libStat']));
+            $pseudoUser = ctrlSaisies($_POST['pseudoUser']);
+            $passUser1 = ctrlSaisies($_POST['passUser1']);
+            $passUser2 = ctrlSaisies($_POST['passUser2']);
+            $nomUser = ctrlSaisies($_POST['nomUser']);
+            $prenomUser = ctrlSaisies($_POST['prenomUser']);
+            $eMailUser1 = ctrlSaisies($_POST['eMailUser1']);
+            $eMailUser2 = ctrlSaisies($_POST['eMailUser2']);
+            echo  $pseudoUser." ".$passUser1." ".$passUser2." ".$nomUser." ".$prenomUser." ".$eMailUser1." ".$eMailUser2;
 
-            $monStatut->create($libStat);
+            if (filter_var($eMailUser1, FILTER_VALIDATE_EMAIL) AND filter_var($eMailUser2, FILTER_VALIDATE_EMAIL)) {
+                if ($eMailUser1 == $eMailUser2) {
+                    $eMailOk = 1;
+                }
+                else{
+                    $eMailOk = 0;
+                    echo "Les adresses mails entrées ne correspondent pas."
+                }
+            }
+            else {
 
-            header("Location: ./statut.php");
-        }   // Fin if ((isset($_POST['libStat'])) ...
-        else {
-            $erreur = true;
-            $errSaisies =  "Erreur, la saisie est obligatoire !";
-        }   // End of else erreur saisies
+                echo "L'adresse mail entrée n'est pas valide";
+            }
+            
 
-    }   // Fin if ($_SERVER["REQUEST_METHOD"] == "POST")
 
+            if($passUser1 == $passUser2){
+                $passwordOk = 1;
+            }
+            else{
+                $passwordOk = 0;
+                echo "Le mot de passe et la confirmation de mot de passe ne sont pas identiques";
+            }
+
+            if($pseudoUser !="" AND $nomUser!="" AND $prenomUser!="")
     // Init variables form
     include __DIR__ . '/initUser.php';
 ?>
@@ -90,11 +117,11 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <input type="password" name="passUser2" id="passUser2" size="80" maxlength="80" value="<?= $passUser2; ?>" autofocus="autofocus" />
         </div>
         <div class="control-group">
-            <label class="control-label" for="nomUser"><b>Pseudo :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <label class="control-label" for="nomUser"><b>Nom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
             <input type="text" name="nomUser" id="nomUser" size="80" maxlength="80" value="<?= $nomUser; ?>" autofocus="autofocus" />
         </div>
         <div class="control-group">
-            <label class="control-label" for="prenomUser"><b>Pseudo :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <label class="control-label" for="prenomUser"><b>Prénom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
             <input type="text" name="prenomUser" id="prenomUser" size="80" maxlength="80" value="<?= $prenomUser; ?>" autofocus="autofocus" />
         </div>
         <div class="control-group">
@@ -110,13 +137,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <select id="numLang" name="numLang"  onchange="select()">
                 <?php 
                 global $db;
-                $requete = 'SELECT idStat, libStat FROM LANGUE ;';
+                $requete = 'SELECT idStat, libStat FROM STATUT ;';
                 $result = $db->query($requete);
                 $allStatut = $result->fetchAll();
                 foreach ($allStatut AS $statut)
                 {
                 ?>
-                <option value="<?php echo $statut['idStat'];?>"><?php echo $statut['liStat'];?></option>
+                <option value="<?php echo $statut['idStat'];?>"><?php echo $statut['libStat'];?></option>
                 <?php
                 }
                 ?>
@@ -137,7 +164,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
       </fieldset>
     </form>
 <?php
-require_once __DIR__ . '/footerStatut.php';
+require_once __DIR__ . '/footerUser.php';
 
 require_once __DIR__ . '/footer.php';
 ?>

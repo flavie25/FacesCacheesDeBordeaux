@@ -101,25 +101,25 @@ VALUES
 -- )
 */
 
-INSERT INTO MEMBRE (numMemb, prenomMemb, nomMemb, pseudoMemb, passMemb, eMailMemb, dtCreaMemb, souvenirMemb, accordMemb)
+INSERT INTO MEMBRE (numMemb, prenomMemb, nomMemb, pseudoMemb, passMemb, eMailMemb, dtCreaMemb, souvenirMemb, accordMemb, idStat)
 VALUES
-  (01, "Jean", "Dupont", 'Phil09', "Ut!D5?h0", "Phil09@me.com", '2020-01-09 10:13:43', true, true);
+  (01, "Jean", "Dupont", 'Phil09', "Ut!D5?h0", "Phil09@me.com", '2020-01-09 10:13:43', true, true, 1);
 
-INSERT INTO MEMBRE (numMemb, prenomMemb, nomMemb, pseudoMemb, passMemb, eMailMemb, dtCreaMemb, souvenirMemb, accordMemb)
+INSERT INTO MEMBRE (numMemb, prenomMemb, nomMemb, pseudoMemb, passMemb, eMailMemb, dtCreaMemb, souvenirMemb, accordMemb, idStat)
 VALUES
-  (02, "Julie", "La Rousse", 'juju1989', "G54;Q22mi5", "julie@gmail.com", '2020-03-15 14:33:23', false, true);
+  (02, "Julie", "La Rousse", 'juju1989', "G54;Q22mi5", "julie@gmail.com", '2020-03-15 14:33:23', false, true, 3);
 
-INSERT INTO MEMBRE (numMemb, prenomMemb, nomMemb, pseudoMemb, passMemb, eMailMemb, dtCreaMemb, souvenirMemb, accordMemb)
+INSERT INTO MEMBRE (numMemb, prenomMemb, nomMemb, pseudoMemb, passMemb, eMailMemb, dtCreaMemb, souvenirMemb, accordMemb, idStat)
 VALUES
-  (03, "David", "Bowie", 'dav33B', "kp09,1K4!", "david.bowie@gmail.com", '2020-07-19 13:13:13', true, true);
+  (03, "David", "Bowie", 'dav33B', "kp09,1K4!", "david.bowie@gmail.com", '2020-07-19 13:13:13', true, true, 4);
 
-INSERT INTO MEMBRE (numMemb, prenomMemb, nomMemb, pseudoMemb, passMemb, eMailMemb, dtCreaMemb, souvenirMemb, accordMemb)
+INSERT INTO MEMBRE (numMemb, prenomMemb, nomMemb, pseudoMemb, passMemb, eMailMemb, dtCreaMemb, souvenirMemb, accordMemb, idStat)
 VALUES
-  (04, "Phil", "Collins", 'cols2P', "mq3j4;6GH", "phil.collins@me.com", '2020-11-04 17:39:09', true, true);
+  (04, "Phil", "Collins", 'cols2P', "mq3j4;6GH", "phil.collins@me.com", '2020-11-04 17:39:09', true, true, 2);
 
-INSERT INTO MEMBRE (numMemb, prenomMemb, nomMemb, pseudoMemb, passMemb, eMailMemb, dtCreaMemb, souvenirMemb, accordMemb)
+INSERT INTO MEMBRE (numMemb, prenomMemb, nomMemb, pseudoMemb, passMemb, eMailMemb, dtCreaMemb, souvenirMemb, accordMemb, idStat)
 VALUES
-  (05, "Prince", "Rogers Nelson dit PRINCE", 'Rogers222', "frI3!Px;21", "prince@gmail.com", '2020-12-14 13:24:23', false, true);
+  (05, "Prince", "Rogers Nelson dit PRINCE", 'Rogers222', "frI3!Px;21", "prince@gmail.com", '2020-12-14 13:24:23', false, true, 9);
 --
 -- --------------------------------------------------------------------
 
@@ -598,7 +598,7 @@ INSERT INTO ARTICLE (numArt, dtCreArt, libTitrArt, libChapoArt, libAccrochArt, p
 VALUES
   (01, '2019-02-24 16:08:30', 'La surprenante reconversion de la base sous-marine',
     'Un bâtiment unique chargé d\'histoire qui a survécu à l\'emprise des Allemands en 1943, et qui est aujourd\'hui l\'un des symboles d\'art de notre ville bordelaise.',
-    'La grande immergée du port de la Lune, éclairée de son immense néon bleu n’as pas toujours été celle que l’on connaît aujourd’hui.',
+    'La grande immergée du port de la Lune.',
     'Oui, notre base sous-marine est notre héritage nazi. En 1943, le bloc de béton, que nous connaissons tous, voit le jour après 22 mois de travaux forcés par des prisonniers.',
     'Quel avenir pour cet amas de béton ?',
     'Après la destruction et le sabotage du matériel nazis par les Alliés en août 1944. Il a fallu se demander que deviendrait ce bâtiment.',
@@ -614,7 +614,7 @@ INSERT INTO ARTICLE (numArt, dtCreArt, libTitrArt, libChapoArt, libAccrochArt, p
 VALUES
 	(02, '2019-03-13 20:14:10', 'Le CHU de bordeaux se met-il au bleu ?',
     'Le bleu, une couleur si commune, qui provoque tranquillité, sécurité et confiance.',
-    'Le CHU de Bordeaux, est un lieu au service de tous, il tient un rôle important dans la vie des Bordelais, et pourtant nous ne le connaissons pas !',
+    'Le CHU de Bordeaux, est ',
     'Tout d’abord, un logo, que vous avez vu et revu, mais auquel vous n\'avez jamais, vraiment prêté attention. ',
     'Savez-vous pourquoi les blouses des chirurgiens sont-elles bleues ?',
     'Voici une question que vous ne vous êtes peut-être jamais posée. Pourquoi les différents hôpitaux, ont-ils choisi, pour leurs opérations la couleur bleue, ou même vert clair ?',
@@ -630,7 +630,7 @@ INSERT INTO ARTICLE (numArt, dtCreArt, libTitrArt, libChapoArt, libAccrochArt, p
 VALUES
 	(03, '2019-11-09 10:34:20', 'Le Lion bleu de Bordeaux, star des réseaux sociaux',
     'Surplombant la place Stalingrad, anciennement place du Pont, et faisant fièrement face au pont de Pierre, le Lion bleu de Xavier Veilhan fait depuis 2005 l’objet de toutes les convoitises.',
-    'En France, depuis 1951 et l’arrêté des "1% artistique", toute construction d’un bâtiment public ayant pour but d\'accueillir du monde doit prévoir 1% de son budget total pour financer des oeuvres d\'art aux abords du bâtiment.',
+    'En France, depuis 1951 et',
     'En construisant les lignes de tramway, la ville de Bordeaux et sa métropole ont donc mis en place le programme "L\'art dans la ville".',
     'Un symbole de la rive droite',
     'On n\'imagine pas la place Stalingrad sans cet imposant félin coloré. Ce lion bleu est devenu l\'emblème de cette place et, pour les habitants de la rive gauche, c\'est le symbole de "l\'autre rive", c\'est la première chose que l\'on voit en traversant la Garonne depuis le quartier de Saint-Michel.',
@@ -648,7 +648,7 @@ INSERT INTO ARTICLE (numArt, dtCreArt, libTitrArt, libChapoArt, libAccrochArt, p
 VALUES
   (04, '2019-02-26 18:08:30', 'The surprising reconversion of the submarine base',
   	'A unique building steeped in history that survived the Germans\' hold in 1943, and which today is one of the symbols of art in our Bordeaux city.',
-  	'The large submerged harbour of the Moon, illuminated by its immense blue neon light "something strange happened here" was not always the one we know today.',
+  	'The large submerged harbour of the Moon,',
   	'Yes, our submarine base is our Nazi heritage. In 1943, the concrete block, which we all know, was built after 22 months of forced labour by prisoners.',
   	'What does the future hold for this pile of concrete?',
   	'After the destruction and sabotage of Nazi equipment by the Allies in August 1944, one had to wonder what would become of this building.',
@@ -665,8 +665,8 @@ INSERT INTO ARTICLE (numArt, dtCreArt, libTitrArt, libChapoArt, libAccrochArt, p
    numAngl, numThem)
 VALUES
   (05, '2019-11-13 20:14:20', 'The Blue Lion of Bordeaux, star of social networks',
-  	'Overlooking Stalingrad Square, formerly Place du Pont, and proudly facing the Stone Bridge, Xavier Veilhan\'s Blue Lion has been the object of much covetousness since 2005.',
-  	'In France, since 1951 and the "1% artistic" decree, any construction of a public building with the aim of welcoming people must provide 1% of its total budget to finance works of art in the vicinity of the building.',
+  	'Overlooking Stalingrad Square',
+  	'In France, since 1951 and the "1% artistic" ',
   	'With the construction of the tramway lines, the city of Bordeaux and its metropolis have therefore set up the "Art in the City" programme.',
   	'A symbol of the right bank',
   	'One cannot imagine Stalingrad Square without this imposing colourful feline. This blue lion has become the emblem of this square and, for the inhabitants of the left bank, it is the symbol of "the other bank", it is the first thing you see when crossing the Garonne from the Saint-Michel district.',
@@ -694,80 +694,80 @@ VALUES
 Création PK : dernière PK (numSeqCom) + 1 / à numArt
 */
 
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(001, 01, '2020-11-09 10:13:43', "Trop cool comme article", true, true, null);
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(001, 01, '2020-11-09 10:13:43', "Trop cool comme article", true, true, null, false, 01);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(002, 01, '2020-11-02 13:18:42', "Trop cool comme article", true, true, null);
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(002, 01, '2020-11-02 13:18:42', "Trop cool comme article", true, true, null, false, 02);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(003, 01, '2020-11-04 16:21:12', "Trop cool comme article", true, true, null);
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(003, 01, '2020-11-04 16:21:12', "Trop cool comme article", true, true, null, false, 03);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(004, 01, '2020-11-05 03:15:38', "Trop cool comme article", true, true, null);
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(004, 01, '2020-11-05 03:15:38', "Trop cool comme article", true, true, null, false, 01);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(005, 01, '2020-11-06 21:16:36', "Trop cool comme article", true, true, null);
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(005, 01, '2020-11-06 21:16:36', "Trop cool comme article", true, true, null, false, 04);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(006, 01, '2020-11-06 11:20:31', "Trop cool comme article", true, true, null);
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(006, 01, '2020-11-06 11:20:31', "Trop cool comme article", true, true, null, false, 05);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(007, 01, '2020-11-08 08:41:12', "Trop cool comme article", true, true, null);
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(007, 01, '2020-11-08 08:41:12', "Trop cool comme article", true, true, null, false, 05);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-  (008, 01, '2020-11-18 08:41:12', "De la daube cet article", false, false, "Trop insultant");
+  (008, 01, '2020-11-18 08:41:12', "De la daube cet article", false, false, "Trop insultant", false, 01);
 --
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(001, 02, '2020-11-09 18:24:21', "Trop cool comme article", true, true, null);
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(001, 02, '2020-11-09 18:24:21', "Trop cool comme article", true, true, null, false, 03);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(002, 02, '2020-11-02 16:29:16', "Trop cool comme article", true, true, null);
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(002, 02, '2020-11-02 16:29:16', "Trop cool comme article", true, true, null, false, 03);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(003, 02, '2020-11-04 08:16:44', "Trop cool comme article", true, true, null);
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(003, 02, '2020-11-04 08:16:44', "Trop cool comme article", true, true, null, false, 02);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(004, 02, '2020-11-05 14:27:39', "Trop cool comme article", true, true, null);
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(004, 02, '2020-11-05 14:27:39', "Trop cool comme article", true, true, null, false, 03);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(005, 02, '2020-11-06 06:31:42', "Trop cool comme article", true, true, null);
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(005, 02, '2020-11-06 06:31:42', "Trop cool comme article", true, true, null, false, 01);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(006, 02, '2020-11-06 23:50:27', "Trop cool comme article", true, true, null);
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(006, 02, '2020-11-06 23:50:27', "Trop cool comme article", true, true, null, false, 05);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(007, 02, '2020-11-08 10:37:23', "Trop pourri comme article", false, false, "Manque de bienveillance");
+	(007, 02, '2020-11-08 10:37:23', "Trop pourri comme article", false, false, "Manque de bienveillance", false, 02);
 --
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(001, 03, '2020-11-09 15:31:17', "Trop cool comme article", true, true, null);
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(001, 03, '2020-11-09 15:31:17', "Trop cool comme article", true, true, null, false, 03);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(002, 03, '2020-12-15 08:31:23', "Trop cool comme article", true, true, null);
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(002, 03, '2020-12-15 08:31:23', "Trop cool comme article", true, true, null, false, 02);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(003, 03, '2020-12-19 06:28:00', "Trop cool comme article", true, true, null);
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(003, 03, '2020-12-19 06:28:00', "Trop cool comme article", true, true, null, false, 05);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(004, 03, '2020-12-28 07:30:21', "Trop cool comme article", true, true, null);
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(004, 03, '2020-12-28 07:30:21', "Trop cool comme article", true, true, null, false, 03);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(005, 03, '2020-12-29 17:31:38', "Trop cool comme article", true, true, null);
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(005, 03, '2020-12-29 17:31:38', "Trop cool comme article", true, true, null, false, 01);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(006, 03, '2020-12-29 09:31:27', "Pourri trop, trop comme article", false, false, "Trop insultant");
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(006, 03, '2020-12-29 09:31:27', "Pourri trop, trop comme article", false, false, "Trop insultant", false, 04);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(007, 03, '2020-12-02 16:33:41', "Trop cool comme article", true, true, null);
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(007, 03, '2020-12-02 16:33:41', "Trop cool comme article", true, true, null, false, 03);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(008, 03, '2020-12-03 12:41:47', "De la daube cet article", false, false, "Trop insultant");
-INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff)
+	(008, 03, '2020-12-03 12:41:47', "De la daube cet article", false, false, "Trop insultant", false, 02);
+INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, delLogiq, numMemb)
 VALUES
-	(009, 03, '2020-12-04 10:33:42', "Trop cool comme article", true, true, null);
+	(009, 03, '2020-12-04 10:33:42', "Trop cool comme article", true, true, null, false, 05);
 --
 -- --------------------------------------------------------------------
 
