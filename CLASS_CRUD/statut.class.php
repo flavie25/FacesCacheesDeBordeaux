@@ -63,9 +63,9 @@
 
 		try {
 			$db->beginTransaction();
-			$requete= "DELETE FROM STATUT WHERE idStat = $idStat; ";
+			$requete= "DELETE FROM STATUT WHERE idStat = ?; ";
 			$result = $db->prepare($requete);
-			$result->execute();
+			$result->execute([$idStat]);
 			$db->commit();
 			$result->closeCursor();
 
