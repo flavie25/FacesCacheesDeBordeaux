@@ -6,10 +6,10 @@
 */
     // PK USER
     $pseudoUser = "";
-    $pass1User = "";
-    $pass2User = "";
+    $passUser1 = "";
+    $passUser2 = "";
     $nomUser = "";
     $prenomUser = "";
-    $email1User = "";
-    $email2User = "";
+    $eMailUser1 = "";
+    $eMailUser2 = "";
     $idStat = "";

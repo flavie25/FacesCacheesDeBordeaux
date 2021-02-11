@@ -9,8 +9,12 @@
 
 		}
 
-		function get_AllUsers(){
-
+		function get_AllUser(){
+			global $db;
+			$query = 'SELECT * FROM USER;';
+			$result = $db->query($query);
+			$allUser = $result->fetchAll();
+			return($allUser);
 
 		}
 

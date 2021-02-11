@@ -125,7 +125,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <div class="control-group">
             <label for="pays">Num Pays :</label>  
             <select id="pays" name="pays"  onchange="select()">
-                
+            <option value="<?php echo $numPays;?>"><?php echo $frPays;?></option>
                 <?php 
                 global $db;
                 $requete = 'SELECT * FROM PAYS ;';
