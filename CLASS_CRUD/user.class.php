@@ -76,9 +76,9 @@
 			global $db;
 			try {
 				$db->beginTransaction();
-				$requete = 'UPDATE USER SET passUser=?, nomUser=?, prenomUser=?, emailUser=?, idStat = ? WHERE pseudoUser = ?;';
+				$requete = 'UPDATE USER SET nomUser=?, prenomUser=?, emailUser=?, idStat = ? WHERE pseudoUser = ? AND passUser=?;';
 				$result = $db->prepare($requete);
-				$result->execute([$passUser, $nomUser, $prenomUser, $emailUser, $idStat, $pseudoUser]);
+				$result->execute([$nomUser, $prenomUser, $emailUser, $idStat, $pseudoUser, $passUser]);
 	
 							$db->commit();
 							$result->closeCursor();

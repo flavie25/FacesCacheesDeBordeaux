@@ -36,8 +36,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         // Mode création
         if (((isset($_POST['pseudoUser'])) AND !empty($_POST['pseudoUser']))
             AND (!empty($_POST['Submit']) AND ($Submit === "Valider"))
-            AND (isset($_POST['passUser1'])) AND !empty($_POST['passUser1'])
-            AND (isset($_POST['passUser2'])) AND !empty($_POST['passUser2'])
+            AND (isset($_POST['passUser'])) AND !empty($_POST['passUser'])
             AND (isset($_POST['nomUser'])) AND !empty($_POST['nomUser'])
             AND (isset($_POST['prenomUser'])) AND !empty($_POST['prenomUser'])
             AND (isset($_POST['eMailUser1'])) AND !empty($_POST['eMailUser1'])
@@ -47,8 +46,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $erreur = false;
 
             $pseudoUser = ctrlSaisies($_POST['pseudoUser']);
-            $passUser1 = ctrlSaisies($_POST['passUser1']);
-            $passUser2 = ctrlSaisies($_POST['passUser2']);
+            $passUser = ctrlSaisies($_POST['passUser']);
             $nomUser = ctrlSaisies($_POST['nomUser']);
             $prenomUser = ctrlSaisies($_POST['prenomUser']);
             $eMailUser1 = ctrlSaisies($_POST['eMailUser1']);
@@ -68,18 +66,10 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 $errMail1 = "L'adresse mail entrée n'est pas valide"; 
             }
 
-            if($passUser1 == $passUser2){
-                $passwordOk = 1;
-            }
-            else{
-                $passwordOk = 0;
-                $errPass = "Le mot de passe et la confirmation de mot de passe ne sont pas identiques";
-            }
-
             
-            if(($pseudoUser !="") AND ($nomUser!="") AND ($prenomUser!="") AND ($idStat!="")AND ($eMailOk == 1) AND ($passwordOk == 1)){
+            if(($pseudoUser !="") AND ($nomUser!="") AND ($prenomUser!="") AND ($idStat!="")AND ($eMailOk == 1)){
                 
-                $user->update($pseudoUser, $passUser1, $nomUser, $prenomUser, $eMailUser1, $idStat);
+                $user->update($pseudoUser, $passUser, $nomUser, $prenomUser, $eMailUser1, $idStat);
                 header("Location: ./user.php");
             }
             else{
@@ -117,8 +107,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         if ($query) {
             $pseudoUser = $query['pseudoUser'];
-            $passUser1 = $query['passUser'];
-            $passUser2 = $query['passUser'];
+            $passUser = $query['passUser'];
             $nomUser = $query['nomUser'];
             $prenomUser = $query['prenomUser'];
             $eMailUser1 = $query['eMailUser'];
@@ -142,16 +131,12 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
       <input type="text" name="pseudoUser" id="pseudoUser" title="Vous ne pouvez pas changer votre pseudo" size="80" maxlength="80" value="<?= $pseudoUser; ?>" readonly />
   </div>
   <div class="control-group">
-      <label class="control-label" for="passUser1"><b>Mot de passe :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-      <input type="password" name="passUser1" id="passUser1" size="80" maxlength="80" value="<?= $passUser1; ?>" autofocus="autofocus" />
-  </div>
-  <div class="control-group">
-      <label class="control-label" for="passUser2"><b>Confirmation mot de passe :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-      <input type="password" name="passUser2" id="passUser2" size="80" maxlength="80" value="<?= $passUser2; ?>"  />
+      <label class="control-label" for="passUser"><b>Mot de passe :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+      <input type="password" name="passUser" id="passUser" title="Vous ne pouvez pas changer de mot de passe" size="80" maxlength="80" value="<?= $passUser; ?>" readonly />
   </div>
   <div class="control-group">
       <label class="control-label" for="nomUser"><b>Nom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-      <input type="text" name="nomUser" id="nomUser" size="80" maxlength="80" value="<?= $nomUser; ?>" " />
+      <input type="text" name="nomUser" id="nomUser" size="80" maxlength="80" value="<?= $nomUser; ?>" autofocus="autofocus" />
   </div>
   <div class="control-group">
       <label class="control-label" for="prenomUser"><b>Prénom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>

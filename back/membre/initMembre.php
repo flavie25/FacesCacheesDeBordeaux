@@ -9,8 +9,12 @@
     $prenomMembre = "";
     $nomMembre = "";
     $pseudoMembre = "";
-    $passMembre = "";
-    $emailMembre = "";
+    $passMembre1 = "";
+    $passMembre2 = "";
+    $emailMembre1 = "";
+    $emailMembre2 = "";
     $dtCreaMembre = "";
     $souvenirMembre = "";
     $accordMembre = "";
+    $idStat = "";
+    $libStat = "";

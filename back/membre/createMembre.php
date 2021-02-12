@@ -38,8 +38,10 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         AND (isset($_POST['prenomMemb'])) AND !empty($_POST['prenomMemb'])
         AND (isset($_POST['nomMemb'])) AND !empty($_POST['nomMemb'])
         AND (isset($_POST['pseudoMemb'])) AND !empty($_POST['pseudoMemb'])
-        AND (isset($_POST['passMemb'])) AND !empty($_POST['passMemb'])
-        AND (isset($_POST['eMailMemb'])) AND !empty($_POST['eMailMemb'])
+        AND (isset($_POST['passMemb1'])) AND !empty($_POST['passMemb1'])
+        AND (isset($_POST['passMemb2'])) AND !empty($_POST['passMemb2'])
+        AND (isset($_POST['eMailMemb1'])) AND !empty($_POST['eMailMemb1'])
+        AND (isset($_POST['eMailMemb2'])) AND !empty($_POST['eMailMemb2'])
         AND (isset($_POST['souvenirMemb'])) AND !empty($_POST['souvenirMemb'])
         AND (isset($_POST['accordMemb'])) AND ($_POST['accordMemb'] === "on"))
         {
@@ -49,10 +51,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $prenomMembre = ctrlSaisies($_POST['prenomMemb']);
             $nomMembre = ctrlSaisies($_POST['nomMemb']);
             $pseudoMembre = ctrlSaisies($_POST['pseudoMemb']);
-            $passMembre = password_hash($_POST['passMemb'], PASSWORD_DEFAULT);
-            $emailMembre = ctrlSaisies($_POST['eMailMemb']);
+            $passMembre1 = ctrlsaisies($_POST['passMemb1']);
+            $passMembre2 = ctrlsaisies($_POST['passMemb2']);
+            $emailMembre1 = ctrlSaisies($_POST['eMailMemb1']);
+            $emailMembre2 = ctrlSaisies($_POST['eMailMemb2']);
             $dtCreaMembre = date("Y-m-d h:i:s");
             $souvenirMembre = ctrlSaisies($_POST['souvenirMemb']);
+            $idStat = 1;
             if ($souvenirMembre == 'off'){
                 $souvenirMembre = 0;
             }
@@ -63,11 +68,37 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             if ($accordMembre == 'on'){
                 $accordMembre = 1;
             }
-            
+            if (filter_var($emailMembre1, FILTER_VALIDATE_EMAIL) AND filter_var($emailMembre2, FILTER_VALIDATE_EMAIL)) {
+                if ($emailMembre1 == $emailMembre2){
+                    $eMailOk = 1;
+                }
+                else{
+                    $eMailOk = 0;
+                    $errMail2 = "Les adresses mails entrées ne correspondent pas.";
+                }
+            }
+            else {
+                $errMail1 = "L'adresse mail entrée n'est pas valide"; 
+            }
 
-            $membre->create($prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre, $souvenirMembre,$accordMembre);
-            header("Location: ./membre.php");
-              
+            if($passMembre1 == $passMembre2){
+                $passwordOk = 1;
+                $passMembre1 = password_hash($_POST['passMemb1'], PASSWORD_DEFAULT);
+            }
+            else{
+                $passwordOk = 0;
+                $errPass = "Le mot de passe et la confirmation de mot de passe ne sont pas identiques";
+            }
+            if(($prenomMembre !="") AND ($nomMembre!="") AND ($pseudoMembre!="") AND ($idStat!="") AND ($dtCreaMembre!="") AND ($souvenirMembre!="") AND ($accordMembre!="") AND ($eMailOk == 1) AND ($passwordOk == 1)){
+                
+                $membre->create($prenomMembre, $nomMembre,$pseudoMembre,$passMembre1,$emailMembre1,$dtCreaMembre, $souvenirMembre,$accordMembre,$idStat);
+                header("Location: ./membre.php");
+            }
+            else{
+
+                header("Location: ./createMembre.php?id=".$numMembre."&err1=".$errMail1."&err2=".$errMail2."&err3=".$errPass);
+                
+            }       
 
         } 
         else {
@@ -115,12 +146,20 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <input type="text" name="pseudoMemb" id="pseudoMemb" size="80" maxlength="80" value="<?= $pseudoMembre; ?>"  />
         </div>
         <div class="control-group">
-            <label class="control-label" for="passMemb"><b>Mot de passe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="password" name="passMemb" id="passMemb" size="80" maxlength="80" value="<?= $passMembre; ?>"  />
+            <label class="control-label" for="passMemb1"><b>Mot de passe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="password" name="passMemb1" id="passMemb1" size="80" maxlength="80" value="<?= $passMembre1; ?>"  />
         </div>
         <div class="control-group">
-            <label class="control-label" for="eMailMemb"><b>e-Mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="eMailMemb" id="eMailMemb" size="80" maxlength="80" value="<?= $emailMembre; ?>" />
+            <label class="control-label" for="passMemb2"><b>Confirmation mot de passe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="password" name="passMemb2" id="passMemb2" size="80" maxlength="80" value="<?= $passMembre2; ?>"  />
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="eMailMemb1"><b>e-Mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="eMailMemb1" id="eMailMemb1" size="80" maxlength="80" value="<?= $emailMembre1; ?>" />
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="eMailMemb2"><b>Confirmation e-Mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="eMailMemb2" id="eMailMemb2" size="80" maxlength="80" value="<?= $emailMembre2; ?>" />
         </div>
 
         <div class="control-group">
@@ -169,6 +208,18 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 if (isset($_GET['id']) AND !empty($_GET['id'])) {
     $errSaisies = ($_GET['id']);
     echo $errSaisies;
+}
+if (isset($_GET['err1']) AND !empty($_GET['err1'])){
+    $errPass = $_GET['err1'];
+    echo $errPass.'</br>';
+}
+if (isset($_GET['err2']) AND !empty($_GET['err2'])){
+    $errMail1 = $_GET['err2'];
+    echo $errMail1.'</br>';
+}
+if (isset($_GET['err3']) AND !empty($_GET['err3'])){
+    $errMail2 = $_GET['err3'];
+    echo $errMail2.'</br>';
 } 
 
 require_once __DIR__ . '/footerMembre.php';

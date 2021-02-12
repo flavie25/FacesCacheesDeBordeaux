@@ -18,6 +18,13 @@
             $result->execute();
             return($result->fetchAll());
 		}
+		function get_1MembreByStat($idMembre){
+			global $db;
+            $query = 'SELECT * FROM MEMBRE INNER JOIN STATUT ON membre.idStat = statut.idStat WHERE numMemb = ?;';
+            $result = $db->prepare($query);
+            $result->execute([$idMembre]);
+            return($result->fetch());
+		}
 		
 
 		function get_NbAllMembreByLikeCom($numMembre){
@@ -47,13 +54,13 @@
 
         }
 		
-		function create($prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre,$souvenirMembre,$accordMembre){
+		function create($prenomMembre,$nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre,$souvenirMembre,$accordMembre,$idStat){
 			global $db;
 			try {
 				$db->beginTransaction();
-				$requete= 'INSERT INTO MEMBRE (prenomMemb, nomMemb,pseudoMemb,passMemb,eMailMemb,dtCreaMemb,souvenirMemb,accordMemb) VALUES (?,?,?,?,?,?,?,?);';
+				$requete= 'INSERT INTO MEMBRE (prenomMemb, nomMemb,pseudoMemb,passMemb,eMailMemb,dtCreaMemb,souvenirMemb,accordMemb,idStat) VALUES (?,?,?,?,?,?,?,?,?);';
 				$result = $db->prepare($requete);
-				$result->execute(array($prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre,$souvenirMembre,$accordMembre));
+				$result->execute(array($prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre,$souvenirMembre,$accordMembre,$idStat));
 				$db->commit();
 				$result->closeCursor();
 			}
@@ -65,13 +72,13 @@
 		}
 		
 
-		function update($numMembre,$prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre, $souvenirMembre){
+		function update($numMembre,$prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre, $souvenirMembre,$idStat){
 			global $db;
 			try {
 				$db->beginTransaction();
-				$requete="UPDATE MEMBRE SET prenomMemb = ?, nomMemb = ?, pseudoMemb = ?, passMemb = ?, eMailMemb = ?, dtCreaMemb = ?, souvenirMemb = ? WHERE numMemb = ?";
+				$requete="UPDATE MEMBRE SET prenomMemb = ?, nomMemb = ?, pseudoMemb = ?, passMemb = ?, eMailMemb = ?, dtCreaMemb = ?, souvenirMemb = ?, idStat = ? WHERE numMemb = ?";
 				$result = $db->prepare($requete);
-				$result->execute(array($prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre, $souvenirMembre, $numMembre));
+				$result->execute(array($prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre, $souvenirMembre, $idStat, $numMembre));
 				$db->commit();
 				$result->closeCursor();
 	
