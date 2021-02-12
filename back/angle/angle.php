@@ -10,7 +10,7 @@
 // Mode DEV
 require_once __DIR__ . '/../../util/utilErrOn.php';
 
-    // insertion classe STATUT
+    // insertion classe ANGLE
     require_once __DIR__ . '/../../CLASS_CRUD/angle.class.php';
     global $db;
     $monAngle = new ANGLE;
@@ -38,7 +38,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
     <hr /><br />
-	<h2>Nouveau angle :&nbsp;<a href="./createAngle.php"><i>Créer un angle</i></a></h2>
+	<h2>Nouvel angle :&nbsp;<a href="./createAngle.php"><i>Créer un angle</i></a></h2>
 	<br /><hr />
 	<h2>Tous les angle</h2>
 
@@ -55,7 +55,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 <?
     $allAngle = $monAngle->get_AllAngle();
     foreach($allAngle as $row){
-	// Appel méthode : tous les statuts en BDD
+	// Appel méthode : tous les angles en BDD
 
     // Boucle pour afficher
 	//foreach($all as $row) {

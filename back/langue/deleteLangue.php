@@ -1,9 +1,9 @@
 <?php
 ///////////////////////////////////////////////////////////////
 //
-//  CRUD STATUT (PDO) - Code Modifié - 23 Janvier 2021
+//  CRUD LANGUE (PDO) - Code Modifié - 23 Janvier 2021
 //
-//  Script  : deleteStatut.php  (ETUD)   -   BLOGART21
+//  Script  : deleteLangue.php  (ETUD)   -   BLOGART21
 //
 ///////////////////////////////////////////////////////////////
 
@@ -14,7 +14,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     // controle des saisies du formulaire
 
 
-    // insertion classe STATUT
+    // insertion classe LANGUE
     require_once __DIR__ . '/../../util/ctrlSaisies.php';
     require_once __DIR__ . '/../../CLASS_CRUD/langue.class.php';
     global $db;
@@ -33,7 +33,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
 
    // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
-   // suppression effective du statut
+   // suppression effective de la LANGUE
    if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Opérateur ternaire
@@ -69,21 +69,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 header("Location: ./langue.php?errCIR=".$errCIR);
             }
 
-           /* $idStat = ctrlSaisies($_POST['id']);
-
-            $allUser = $monUser->get_NbAllUsersByidStat($idStat);
-            
-            if($allUser < 1){
-                
-                $monStatut->delete($idStat);
-                header("Location: ./statut.php");
-
-            }
-            else{
-                $errCIR = 1;
-                header("Location: ./statut.php?errCIR=".$errCIR);
-            }   */     
-
     }   // End of if ((isset($_POST['id'])
 }   // End of if ($_SERVER["REQUEST_METHOD"] === "POST")
 // Init variables form
@@ -94,7 +79,7 @@ include __DIR__ . '/initLangue.php';
 <html lang="fr">
 <head>
     <meta charset="utf-8" />
-    <title>Admin - Gestion du CRUD Statut</title>
+    <title>Admin - Gestion du CRUD Langue</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -124,8 +109,8 @@ include __DIR__ . '/initLangue.php';
     </style>
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Statut</h1>
-    <h2>Suppression d'un statut</h2>
+    <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
+    <h2>Suppression d'une langue</h2>
 <?
      if (isset($_GET['id']) AND !empty($_GET['id'])) {
 

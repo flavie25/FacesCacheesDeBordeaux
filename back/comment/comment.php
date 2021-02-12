@@ -46,6 +46,8 @@ $comment = new COMMENT;
             <th>&nbsp;AttModOK&nbsp;</th>
             <th>&nbsp;AffComOK&nbsp;</th>
             <th>&nbsp;NotifComKOAff&nbsp;</th>
+            <th>&nbsp;delLogiq&nbsp;</th>
+            <th>&nbsp;numMemb&nbsp;</th>
             <th colspan="2">&nbsp;Action&nbsp;</th>
         </tr>
     </thead>
@@ -66,6 +68,8 @@ $comment = new COMMENT;
         <td>&nbsp; <?php echo $row["attModOK"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["affComOK"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["notifComKOAff"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["delLogiq"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["numMemb"]; ?> &nbsp;</td>
         <?
             $numSeqCom = $row["numSeqCom"];
             $numArt = $row["numArt"];

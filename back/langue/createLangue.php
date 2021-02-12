@@ -1,7 +1,7 @@
 <?php
 ///////////////////////////////////////////////////////////////
 //
-//  CRUD STATUT (PDO) - Code Modifié - 23 Janvier 2021
+//  CRUD LANGUE (PDO) - Code Modifié - 23 Janvier 2021
 //
 //  Script  : createLangue.php  (ETUD)   -   BLOGART21
 //
@@ -23,7 +23,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
 
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
-    // ajout effectif du statut
+    // ajout effectif de la langue
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Opérateur ternaire
@@ -56,7 +56,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                         header("Location: ./langue.php");
                     }
                 }
-        }   // Fin if ((isset($_POST['libStat'])) ...
+        }   // Fin if ((isset($_POST['lib1Lang'])) ...
         else {
             $erreur = true;
             $errSaisies =  "Erreur, la saisie est obligatoire !";

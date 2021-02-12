@@ -21,6 +21,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     $user = new USER;
 
 
+
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
     // ajout effectif du statut
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -41,7 +42,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             AND (isset($_POST['nomUser'])) AND !empty($_POST['nomUser'])
             AND (isset($_POST['prenomUser'])) AND !empty($_POST['prenomUser'])
             AND (isset($_POST['eMailUser1'])) AND !empty($_POST['eMailUser1'])
-            AND (isset($_POST['eMailUser2'])) AND !empty($_POST['eMailUser2'])) {
+            AND (isset($_POST['eMailUser2'])) AND !empty($_POST['eMailUser2'])
+            AND (isset($_POST['idStat'])) AND !empty($_POST['idStat'])) {
             // Saisies valides
             $erreur = false;
 
@@ -52,33 +54,49 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $prenomUser = ctrlSaisies($_POST['prenomUser']);
             $eMailUser1 = ctrlSaisies($_POST['eMailUser1']);
             $eMailUser2 = ctrlSaisies($_POST['eMailUser2']);
-            echo  $pseudoUser." ".$passUser1." ".$passUser2." ".$nomUser." ".$prenomUser." ".$eMailUser1." ".$eMailUser2;
+            $idStat = ctrlSaisies($_POST['idStat']);
+           
+            
+            $pseudoExist = $user->get_ExistPseudo($pseudoUser);
 
+            if($pseudoExist != 0){
+                $errPseudo = "Ce pseudo existe déjà. Veuillez en choisir un nouveau";
+            }
             if (filter_var($eMailUser1, FILTER_VALIDATE_EMAIL) AND filter_var($eMailUser2, FILTER_VALIDATE_EMAIL)) {
-                if ($eMailUser1 == $eMailUser2) {
+                if ($eMailUser1 == $eMailUser2){
                     $eMailOk = 1;
                 }
                 else{
                     $eMailOk = 0;
-                    echo "Les adresses mails entrées ne correspondent pas."
+                    $errMail2 = "Les adresses mails entrées ne correspondent pas.";
                 }
             }
             else {
-
-                echo "L'adresse mail entrée n'est pas valide";
+                $errMail1 = "L'adresse mail entrée n'est pas valide"; 
             }
-            
-
 
             if($passUser1 == $passUser2){
                 $passwordOk = 1;
             }
             else{
                 $passwordOk = 0;
-                echo "Le mot de passe et la confirmation de mot de passe ne sont pas identiques";
+                $errPass = "Le mot de passe et la confirmation de mot de passe ne sont pas identiques";
             }
 
-            if($pseudoUser !="" AND $nomUser!="" AND $prenomUser!="")
+            
+            if(($pseudoUser !="") AND ($nomUser!="") AND ($prenomUser!="") AND ($idStat!="")AND ($eMailOk == 1) AND ($passwordOk == 1) AND ($pseudoExist == 0)){
+                
+                $user->create($pseudoUser, $passUser1, $nomUser, $prenomUser, $eMailUser1, $idStat);
+                header("Location: ./user.php");
+            }
+            else{
+
+                header("Location: ./createUser.php?id=".$pseudoUser."&err1=".$errPseudo."&err2=".$errMail1."&err3=".$errMail2."&err4=".$errPass);
+                
+            }
+        }
+    
+    }   
     // Init variables form
     include __DIR__ . '/initUser.php';
 ?>
@@ -134,7 +152,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         </div>
         <div class="control-group">
             <label for="idStat">Statut:</label>  
-            <select id="numLang" name="numLang"  onchange="select()">
+            <select id="idStat" name="idStat"  onchange="select()">
                 <?php 
                 global $db;
                 $requete = 'SELECT idStat, libStat FROM STATUT ;';
@@ -164,6 +182,23 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
       </fieldset>
     </form>
 <?php
+if (isset($_GET['err1']) AND !empty($_GET['err1'])){
+    $errPseudo = $_GET['err1'];
+    echo $errPseudo.'</br>';
+}
+if (isset($_GET['err2']) AND !empty($_GET['err2'])){
+    $errMail1 = $_GET['err2'];
+    echo $errMail1.'</br>';
+}
+if (isset($_GET['err3']) AND !empty($_GET['err3'])){
+    $errMail2 = $_GET['err3'];
+    echo $errMail2.'</br>';
+}
+if (isset($_GET['err4']) AND !empty($_GET['err4'])){
+    $errPass = $_GET['err4'];
+    echo $errPass.'</br>';
+}
+
 require_once __DIR__ . '/footerUser.php';
 
 require_once __DIR__ . '/footer.php';

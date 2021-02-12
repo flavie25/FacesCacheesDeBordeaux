@@ -1,7 +1,7 @@
 <?php
 ///////////////////////////////////////////////////////////////
 //
-//  CRUD STATUT (PDO) - Code Modifié - 23 Janvier 2021
+//  CRUD ANGLE (PDO) - Code Modifié - 23 Janvier 2021
 //
 //  Script  : deleteAngle.php  (ETUD)   -   BLOGART21
 //
@@ -14,7 +14,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     // controle des saisies du formulaire
 
 
-    // insertion classe STATUT
+    // insertion classe ANGLE
     require_once __DIR__ . '/../../util/ctrlSaisies.php';
     require_once __DIR__ . '/../../CLASS_CRUD/angle.class.php';
     global $db;
@@ -22,7 +22,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
 
    // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
-   // suppression effective du statut
+   // suppression effective du angle
    if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Opérateur ternaire

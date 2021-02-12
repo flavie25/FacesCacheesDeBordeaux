@@ -54,6 +54,7 @@ $errSaisies ='';
             <th>&nbsp;DtCréaMembre&nbsp;</th>
             <th>&nbsp;SouvenirMembre&nbsp;</th>
             <th>&nbsp;AccordMembre&nbsp;</th>
+            <th>&nbsp;idStat&nbsp;</th>
 
             <th colspan="2">&nbsp;Action&nbsp;</th>
         </tr>
@@ -77,6 +78,7 @@ $errSaisies ='';
         <td>&nbsp; <?php echo $row["dtCreaMemb"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["souvenirMemb"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["accordMemb"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["idStat"]; ?> &nbsp;</td>
 
         <td>&nbsp;<a href="./updateMembre.php?id=<?=$row["numMemb"];?>"><i>Modifier</i></a>&nbsp;
         <br /></td>

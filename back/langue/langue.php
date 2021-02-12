@@ -40,7 +40,7 @@ $errCIR=0;
     <hr /><br />
 	<h2>Nouvelle Langue :&nbsp;<a href="./createLangue.php"><i>Créer une langue</i></a></h2>
 	<br /><hr />
-	<h2>Tous les statuts</h2>
+	<h2>Toutes les langues</h2>
 
     <br><br>
 

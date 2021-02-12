@@ -13,3 +13,7 @@
     $eMailUser1 = "";
     $eMailUser2 = "";
     $idStat = "";
+    $errPass ="";
+    $errMail1="";
+    $errMail2="";
+    $errPseudo="";

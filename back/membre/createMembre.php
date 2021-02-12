@@ -1,7 +1,7 @@
 <?php
 ///////////////////////////////////////////////////////////////
 //
-//  CRUD STATUT (PDO) - Code Modifié - 23 Janvier 2021
+//  CRUD MEMBRE (PDO) - Code Modifié - 23 Janvier 2021
 //
 //  Script  : createMembre.php  (ETUD)   -   BLOGART21
 //
@@ -14,7 +14,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     // controle des saisies du formulaire
 
 
-    // insertion classe STATUT
+    // insertion classe MEMBRE
     require_once __DIR__ . '/../../util/ctrlSaisies.php';
     require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
     global $db;
@@ -22,7 +22,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
 
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
-    // ajout effectif du statut
+    // ajout effectif du membre
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Opérateur ternaire

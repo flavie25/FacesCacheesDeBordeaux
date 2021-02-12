@@ -95,7 +95,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <br><br>
 <?php
 if ($errCIR == 1){
-    echo 'Vous ne pouvez pas supprimer cet utilisateur. Veuillez d\'abord supprimer cet utilisateur dans les autres tables';
+    echo 'Vous ne pouvez pas supprimer le super administrateur';
 }
 require_once __DIR__ . '/footer.php';
 ?>

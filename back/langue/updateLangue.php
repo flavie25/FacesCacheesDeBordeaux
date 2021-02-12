@@ -1,7 +1,7 @@
 <?php
 ///////////////////////////////////////////////////////////////
 //
-//  CRUD STATUT (PDO) - Code Modifié - 23 Janvier 2021
+//  CRUD LANGUE (PDO) - Code Modifié - 23 Janvier 2021
 //
 //  Script  : updateLangue.php  (ETUD)   -   BLOGART21
 //
@@ -57,7 +57,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
             header("Location: ./langue.php");
                       
-        }   // Fin if ((isset($_POST['libStat'])) ...
+        }   // Fin if ((isset($_POST['lib1Lang'])) ...
         else {
             $erreur = true;
             $errSaisies =  "Erreur, la saisie est obligatoire !";

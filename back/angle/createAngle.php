@@ -1,7 +1,7 @@
 <?php
 ///////////////////////////////////////////////////////////////
 //
-//  CRUD STATUT (PDO) - Code Modifié - 23 Janvier 2021
+//  CRUD ANGLE (PDO) - Code Modifié - 23 Janvier 2021
 //
 //  Script  : createAngle.php  (ETUD)   -   BLOGART21
 //
@@ -14,7 +14,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     // controle des saisies du formulaire
 
 
-    // insertion classe STATUT
+    // insertion classe ANGLE
     require_once __DIR__ . '/../../util/ctrlSaisies.php';
     require_once __DIR__ . '/../../CLASS_CRUD/getNextNumAngl.php';
     require_once __DIR__ . '/../../CLASS_CRUD/angle.class.php';
@@ -23,7 +23,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
 
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
-    // ajout effectif du statut
+    // ajout effectif du angle
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Opérateur ternaire
@@ -49,7 +49,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $monAngle->create($numAngl, $libAngl, $numLang);
 
             header("Location: ./angle.php");
-        }   // Fin if ((isset($_POST['libStat'])) ...
+        }   // Fin if ((isset($_POST['libAngl'])) ...
         else {
             $erreur = true;
             $errSaisies =  "Erreur, la saisie est obligatoire !";
@@ -79,8 +79,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
       <fieldset>
         <legend class="legend1">Formulaire Angle...</legend>
-
-        <!--<input type="hidden" id="id" name="id" value=": /*$_GET['id']; */-->
 
         <div class="control-group">
             <label class="control-label" for="libAngl"><b>Nom de l'angle :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>

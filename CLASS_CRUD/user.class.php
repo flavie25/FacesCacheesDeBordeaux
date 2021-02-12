@@ -23,18 +23,27 @@
 			$requete = 'SELECT * FROM USER WHERE pseudoUSER = ?;';
 			$result = $db->prepare($requete);
 			$result->execute([$pseudoUser]);
-			return($result->row_count());
+			return($result->rowCount());
 		}
+
+		function get_1UserByStatut($pseudoUser){
+			global $db;
+			$requete = 'SELECT * FROM USER INNER JOIN STATUT ON user.idStat = statut.idStat WHERE user.pseudoUser = ?;';
+			$result = $db->prepare($requete);
+			$result->execute([$pseudoUser]);
+			return($result->fetch());
+		}
+
+		
 
 		function get_AllUsersByStat(){
 
 
 		}
 
-
 		function get_NbAllUsersByidStat($idStat){
             global $db;
-            $query = 'SELECT * FROM USER US INNER JOIN STATUT ST ON US.idStat = ST.idStat WHERE ST.idStat = ?;';
+            $query = 'SELECT * FROM USER INNER JOIN STATUT ON user.idStat = statut.idStat WHERE statut.idStat = ?;';
             $result = $db->prepare($query);
             $result->execute([$idStat]);
             $allUsersStat = $result->fetchAll();
@@ -49,17 +58,17 @@
 			global $db;
 			try {
           	$db->beginTransaction();
-			$requete = 'INSERT INTO USER (pseudoUser, passUser, nomUser, prenomUser, emailUser, idStat) VALUES (?,?, ?, ?, ?,?);';
+			$requete = 'INSERT INTO USER (pseudoUser, passUser, nomUser, prenomUser, emailUser, idStat) VALUES (?,?, ?, ?, ?, ?);';
 			$result = $db->prepare($requete);
 			$result->execute([$pseudoUser, $passUser, $nomUser, $prenomUser, $emailUser, $idStat]);
 
 					$db->commit();
-					$request->closeCursor();
+					$result->closeCursor();
 			}
 			catch (PDOException $e) {
 					die('Erreur insert USER : ' . $e->getMessage());
 					$db->rollBack();
-					$request->closeCursor();
+					$result->closeCursor();
 			}
 		}
 
@@ -67,16 +76,17 @@
 			global $db;
 			try {
 				$db->beginTransaction();
-
-
-
+				$requete = 'UPDATE USER SET passUser=?, nomUser=?, prenomUser=?, emailUser=?, idStat = ? WHERE pseudoUser = ?;';
+				$result = $db->prepare($requete);
+				$result->execute([$passUser, $nomUser, $prenomUser, $emailUser, $idStat, $pseudoUser]);
+	
 							$db->commit();
-							$request->closeCursor();
+							$result->closeCursor();
 					}
 					catch (PDOException $e) {
 							die('Erreur update USER : ' . $e->getMessage());
 							$db->rollBack();
-							$request->closeCursor();
+							$result->closeCursor();
 					}
 		}
 
@@ -84,15 +94,18 @@
 			global $db;
 			try {
 				$db->beginTransaction();
+				$requete = "DELETE FROM USER WHERE pseudoUser = ? AND passUser = ? ;";
+				$result = $db->prepare($requete);
+				$result->execute([$pseudoUser, $passUser]);
 
 
 							$db->commit();
-							$request->closeCursor();
+							$result->closeCursor();
 					}
 					catch (PDOException $e) {
 							die('Erreur delete USER : ' . $e->getMessage());
 							$db->rollBack();
-							$request->closeCursor();
+							$result->closeCursor();
 					}
 		}
 
