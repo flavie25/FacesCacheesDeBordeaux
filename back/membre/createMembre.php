@@ -128,7 +128,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <h1>BLOGART21 Admin - Gestion du CRUD Membre</h1>
     <h2>Ajout d'un membre</h2>
 
-    <form method="post" action="./createMembre.php" enctype="multipart/form-data">
+    <form method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data">
 
       <fieldset>
         <legend class="legend1">Formulaire Membre...</legend>
