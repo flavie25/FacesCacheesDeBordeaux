@@ -30,7 +30,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
 
-            header("Location: ./updateAngle.php");
+            header("Location: ./angle.php");
         }   // End of if ((isset($_POST["submit"])) ...
 
         // Mode création

@@ -4,11 +4,11 @@
 	require_once __DIR__ . '../../CONNECT/database.php';
 
 	class ARTICLE{
-		function get_1Article($numArt){
+		function get_1ArticleByThemAngl($numArt){
             global $db;
-            $requete = 'SELECT * FROM ARTICLE WHERE numArt = ?;';
+            $requete = 'SELECT * FROM ARTICLE INNER JOIN THEMATIQUE ON article.numThem = thematique.numThem INNER JOIN ANGLE  ON article.numAngl = angle.numAngl WHERE numArt = ?;';
             $result = $db->prepare($requete);
-            $result->execute([$numArtt]);
+            $result->execute([$numArt]);
             return($result->fetch());
         }
 
@@ -28,8 +28,8 @@
 			  $requete= 'INSERT INTO ARTICLE (dtCreArt, libTitrArt, libChapoArt, libAccrochArt, parag1Art, libSsTitr1Art, parag2Art, libSsTitr2Art, parag3Art, libConclArt, numAngl, numThem) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);';
 			  $result = $db->prepare($requete);
 			  $result->execute([$dtCreArt, $libTitrArt, $libChapoArt, $libAccrochArt, $parag1Art, $libSsTitr1Art, $parag2Art, $libSsTitr2Art, $parag3Art, $libConclArt, $numAngl, $numThem]);
-              $dernier_id = $db->lastInsertId();
-              return($dernier_id);
+              //$dernier_id = $db->lastInsertId();
+              //return($dernier_id);
 					$db->commit();
 					$result->closeCursor();
 			}
@@ -40,40 +40,40 @@
 			}
 		}
 
-		function update($idStat, $libStat){
+		function update($numArt, $libTitrArt, $libChapoArt, $libAccrochArt, $parag1Art, $libSsTitr1Art, $parag2Art, $libSsTitr2Art, $parag3Art, $libConclArt, $numAngl, $numThem){
 			global $db;
-
 			try {
 				$db->beginTransaction();
-				$requete="UPDATE STATUT SET libStat = ? WHERE idStat = ? ";
+				$requete="UPDATE ARTICLE SET libTitrArt = ?, libChapoArt = ?, libAccrochArt = ?, parag1Art = ?, libSsTitr1Art = ?, parag2Art = ?, libSsTitr2Art = ?, parag3Art = ?, libConclArt = ?, numAngl = ?, numThem = ? WHERE numArt = ? ;";
 				$result = $db->prepare($requete);
-				$result->execute(array($libStat, $idStat));
+				$result->execute([$libTitrArt, $libChapoArt, $libAccrochArt, $parag1Art, $libSsTitr1Art, $parag2Art, $libSsTitr2Art, $parag3Art, $libConclArt, $numAngl, $numThem, $numArt]);
                
 				$db->commit();
 				$result->closeCursor();
 	
 				}
 				catch (PDOException $e) {
-						die('Erreur delete STATUT : ' . $e->getMessage());
+						die('Erreur update ARTICLE : ' . $e->getMessage());
 						$db->rollBack();
 						$result->closeCursor();
 				}
-			}
+		}
 
-		function delete($idStat){
+		
+		function delete($numArt){
 		global $db;
 
 		try {
 			$db->beginTransaction();
-			$requete= "DELETE FROM STATUT WHERE idStat = ?; ";
+			$requete= "DELETE FROM ARTICLE WHERE numArt = ?; ";
 			$result = $db->prepare($requete);
-			$result->execute([$idStat]);
+			$result->execute([$numArt]);
 			$db->commit();
 			$result->closeCursor();
 
 			}
 			catch (PDOException $e) {
-					die('Erreur delete STATUT : ' . $e->getMessage());
+					die('Erreur delete Article : ' . $e->getMessage());
 					$db->rollBack();
 					$result->closeCursor();
 			}

@@ -3,7 +3,7 @@
 //
 //  CRUD STATUT (PDO) - Code Modifié - 23 Janvier 2021
 //
-//  Script  : createArticle.php  (ETUD)   -   BLOGART21
+//  Script  : updateArticle.php  (ETUD)   -   BLOGART21
 //
 ///////////////////////////////////////////////////////////////
 
@@ -28,14 +28,15 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         // Opérateur ternaire
         $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
-        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
+        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Annuler")) {
 
-            header("Location: ./createArticle.php");
+            header("Location: ./article.php");
         }   // End of if ((isset($_POST["submit"])) ...
-
+    
         // Mode création
-        if (((isset($_POST['libTitrArt'])) AND !empty($_POST['libTitrArt']))
+        if (((isset($_POST['numArt'])) AND !empty($_POST['numArt']))
             AND (!empty($_POST['Submit']) AND ($Submit === "Valider"))
+            AND ((isset($_POST['libTitrArt'])) AND !empty($_POST['libTitrArt']))
             AND (isset($_POST['libChapoArt'])) AND !empty($_POST['libChapoArt'])
             AND (isset($_POST['libAccrochArt'])) AND !empty($_POST['libAccrochArt'])
             AND (isset($_POST['parag1Art'])) AND !empty($_POST['parag1Art'])
@@ -50,6 +51,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             // Saisies valides
             $erreur = false;
 
+            $numArt = ctrlSaisies($_POST['numArt']);
             $libTitrArt = ctrlSaisies($_POST['libTitrArt']);
             $libChapoArt = ctrlSaisies($_POST['libChapoArt']);
             $libAccrochArt = ctrlSaisies($_POST['libAccrochArt']);
@@ -62,10 +64,10 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $urlPhotArt = ctrlSaisies($_POST['urlPhotArt']);
             $numAngl = ctrlSaisies($_POST['numAngl']);
             $numThem = ctrlSaisies($_POST['numThem']);
-            $dtCreArt = date("Y-m-d h:i:s");
+            
 
            
-            $monArticle->create($dtCreArt, $libTitrArt, $libChapoArt, $libAccrochArt, $parag1Art, $libSsTitr1Art, $parag2Art, $libSsTitr2Art, $parag3Art, $libConclArt, $numAngl, $numThem);
+            $monArticle->update($numArt, $libTitrArt, $libChapoArt, $libAccrochArt, $parag1Art, $libSsTitr1Art, $parag2Art, $libSsTitr2Art, $parag3Art, $libConclArt, $numAngl, $numThem);
             
             /*if(!empty($_FILES['urlPhotArt']['name']))
             {
@@ -128,7 +130,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         }
         else{
 
-            header("Location: ./createArticle.php?id=");
+            header("Location: ./updateArticle.php?id=");
             
         }
     
@@ -149,14 +151,43 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Article</h1>
-    <h2>Ajout d'un article</h2>
+    <h2>Modification d'un article</h2>
+
+<?
+    // Modif : récup id à modifier
+    if (isset($_GET['id']) AND !empty($_GET['id'])) {
+
+        $id = ctrlSaisies(($_GET['id']));
+    
+        $query = (array)$monArticle->get_1ArticleByThemAngl($id);
+        
+        if ($query) {
+            $numArt = $query['numArt'];
+            $libTitrArt = $query['libTitrArt'];
+            $libChapoArt = $query['libChapoArt'];
+            $libAccrochArt = $query['libAccrochArt'];
+            $parag1Art = $query['parag1Art'];
+            $libSsTitr1Art = $query['libSsTitr1Art'];
+            $parag2Art = $query['parag2Art'];
+            $libSsTitr2Art= $query['libSsTitr2Art'];
+            $parag3Art = $query['parag3Art'];
+            $libConclArt = $query['libConclArt'];
+            $urlPhotArt = $query['urlPhotArt'];
+            $numAngl = $query['numAngl'];
+            $libAngl = $query['libAngl'];
+            $numThem = $query['numThem'];
+            $libThem = $query['libThem'];
+        }   // Fin if ($query)
+    }   // Fin if (isset($_GET['id'])...)
+
+?>
 
     <form method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data">
 
       <fieldset>
         <legend class="legend1">Formulaire Article...</legend>
 
-        <!--<input type="hidden" id="id" name="id" value=": /*$_GET['id']; */-->
+        <input type="hidden" id="numArt" name="numArt" value="<?= $_GET['id']; ?>" />
 
         <div class="control-group">
             <label class="control-label" for="libTitrArt"><b>Titre de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
@@ -201,6 +232,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <div class="control-group">
             <label for="numAngl">Angle:</label>  
             <select id="numAngl" name="numAngl"  onchange="select()">
+                <option value="<?php echo $numAngl;?>"><?php echo $libAngl;?></option>
                 <?php 
                 global $db;
                 $requete = 'SELECT numAngl, libAngl FROM ANGLE ;';
@@ -218,6 +250,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <div class="control-group">
             <label for="numThem">Thématiques:</label>  
             <select id="numThem" name="numThem"  onchange="select()">
+                <option value="<?php echo $numThem;?>"><?php echo $libThem;?></option>
                 <?php 
                 global $db;
                 $requete = 'SELECT numThem, libThem FROM THEMATIQUE ;';
@@ -237,7 +270,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <div class="controls">
                 <br><br>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                <input type="submit" value="Annuler" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
                 <br>
