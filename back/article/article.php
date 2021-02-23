@@ -9,6 +9,7 @@
 
 // Mode DEV
 require_once __DIR__ . '/../../util/utilErrOn.php';
+require_once __DIR__ . '/../../util/dateChangeFormat.php';
 
     // insertion classe STATUT
     require_once __DIR__ . '/../../CLASS_CRUD/article.class.php';
@@ -67,6 +68,10 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 <?
     $allArticle = $monArticle->get_AllArticle();
     foreach($allArticle as $row){
+        $dateIn = $row["dtCreArt"];
+        $from='Y-m-d H:i:s';
+        $to = 'd-m-Y H:i:s';
+        $dateOut = dateChangeFormat($dateIn, $from, $to);
 	// Appel méthode : tous les statuts en BDD
 
     // Boucle pour afficher
@@ -75,7 +80,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <tr>
 		<td><h4>&nbsp; <?php echo $row["numArt"]; ?> &nbsp;</h4></td>
 
-        <td>&nbsp; <?php echo $row["dtCreArt"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $dateOut; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["libTitrArt"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["libChapoArt"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["libAccrochArt"]; ?> &nbsp;</td>

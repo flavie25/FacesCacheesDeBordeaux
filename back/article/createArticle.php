@@ -44,7 +44,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             AND (isset($_POST['libSsTitr2Art'])) AND !empty($_POST['libSsTitr2Art'])
             AND (isset($_POST['parag3Art'])) AND !empty($_POST['parag3Art'])
             AND (isset($_POST['libConclArt'])) AND !empty($_POST['libConclArt'])
-            //AND (isset($_POST['urlPhotArt'])) AND !empty($_POST['urlPhotArt'])
+            AND ((isset($_FILES['monfichier']['tmp_name'])) AND !empty($_FILES['monfichier']['tmp_name']))
             AND (isset($_POST['numAngl'])) AND !empty($_POST['numAngl'])
             AND (isset($_POST['numThem'])) AND !empty($_POST['numThem'])) {
             // Saisies valides
@@ -59,70 +59,17 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $libSsTitr2Art= ctrlSaisies($_POST['libSsTitr2Art']);
             $parag3Art = ctrlSaisies($_POST['parag3Art']);
             $libConclArt = ctrlSaisies($_POST['libConclArt']);
-            $urlPhotArt = ctrlSaisies($_POST['urlPhotArt']);
             $numAngl = ctrlSaisies($_POST['numAngl']);
             $numThem = ctrlSaisies($_POST['numThem']);
             $dtCreArt = date("Y-m-d h:i:s");
 
+            require_once __DIR__ . '/ctrlerUploadImage.php';
+
+            $urlPhotArt = $nomImage;
+
            
-            $monArticle->create($dtCreArt, $libTitrArt, $libChapoArt, $libAccrochArt, $parag1Art, $libSsTitr1Art, $parag2Art, $libSsTitr2Art, $parag3Art, $libConclArt, $numAngl, $numThem);
+            $monArticle->create($dtCreArt, $libTitrArt, $libChapoArt, $libAccrochArt, $parag1Art, $libSsTitr1Art, $parag2Art, $libSsTitr2Art, $parag3Art, $libConclArt, $urlPhotArt, $numAngl, $numThem);
             
-            /*if(!empty($_FILES['urlPhotArt']['name']))
-            {
-              $file_name = $_FILES['urlPhotArt']['name'];
-              $file_size =$_FILES['urlPhotArt']['size']; // taille de l'image
-      
-              $temp = explode('.',$file_name);
-              $file_ext = strtolower(end($temp)); // extension de l'image
-      
-              $extensions= array("jpeg","jpg","png"); // extensions autorisées
-      
-              if (in_array($file_ext,$extensions) == true)
-              {
-                if($file_size != 0) {
-                  //si la taille du fichier est trop grande elle passe à 0
-                  // donc si l'image à un "name" mais que ça taille est 0 c'est qu'elle est trop grande
-      
-      
-                  // $uploaddir = "./images_uploads/";
-                  $uploaddir = "./upload/";
-                  // avec ce chemin, peut importe où le site est utilisé on est sûr que ça s'enregistrera au même endroit
-                  $uploadfile = "membre-".$dernier_id.".png";
-      
-      
-                  if (move_uploaded_file($_FILES['urlPhotArt']['tmp_name'], $uploaddir.$uploadfile))
-                  {
-                      echo "Succes !";
-      
-                      ///////////////// ajout de l'image et du reste dans la bd ///////////////////
-                      global $db;
-                      $requete="UPDATE ARTICLE SET urlPhotArt = ? WHERE numArt = ? ";
-                      $reponse=$db->prepare($requete);
-                      $reponse->execute([$uploadfile, $dernier_id]);
-                  }
-                  else
-                  {
-                      echo "Probleme sur le serveur.";
-                      $file_name='';
-                  }
-                } else {
-                  echo "Fichier trop gros";
-                  $file_name='';
-                }
-              }
-             else
-              {
-              echo "Pas le bon type de fichier";
-              $file_name='';
-              }
-            }
-            else
-            {
-              echo "pas de fichier spécifié";
-              $file_name='';
-            }*/
-
-
             header("Location: ./article.php");
                 
         }
@@ -135,6 +82,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     }   
     // Init variables form
     include __DIR__ . '/initArticle.php';
+    
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -195,8 +143,18 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <input type="text" name="libConclArt" id="libConclArt" size="80" maxlength="80" value="<?= $libConclArt; ?>" autofocus="autofocus" />
         </div>
         <div class="control-group">
-            <label for="urlPhotArt"> Photo Article:</label>
-            <input type="file" name="urlPhotArt" />
+            <label class="control-label" for="urlPhotArt"><b>Importez l'illustration :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <div class="controls">
+                
+                <input type="file" name="monfichier" id="monfichier" required="required" accept=".jpg,.gif,.png,.jpeg" size="70" maxlength="70" value="<? if(isset($_GET['id'])) echo $_POST['urlPhotArt']; else echo $urlPhotArt; ?>" tabindex="110" placeholder="Sur 70 car." title="Recherchez l'image à uploader !" />
+                <p>
+<?              // Gestion extension images acceptées
+                  $msgImagesOK = "&nbsp;&nbsp;>> Extension des images acceptées : .jpg, .gif, .png, .jpeg" . "<br>" .
+                    "(lageur, hauteur, taille max : 80000px, 80000px, 200 000 Go)";
+                  echo "<i>" . $msgImagesOK . "</i>";
+?>
+                </p>
+            </div>
         </div>
         <div class="control-group">
             <label for="numAngl">Angle:</label>  

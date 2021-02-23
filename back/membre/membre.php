@@ -9,6 +9,7 @@
 
 // Mode DEV
 require_once __DIR__ . '/../../util/utilErrOn.php';
+require_once __DIR__ . '/../../util/dateChangeFormat.php';
 
 require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
 global $db;
@@ -63,6 +64,10 @@ $errSaisies ='';
     <?
     $allMembre = $membre->get_AllMembre();
     foreach($allMembre as $row){
+        $dateIn = $row["dtCreaMemb"];
+        $from='Y-m-d H:i:s';
+        $to = 'd-m-Y H:i:s';
+        $dateOut = dateChangeFormat($dateIn, $from, $to);
     // Appel méthode : toutes les langues en BDD
 
     // Boucle pour afficher
@@ -75,7 +80,7 @@ $errSaisies ='';
         <td>&nbsp; <?php echo $row["pseudoMemb"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["passMemb"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["eMailMemb"]; ?> &nbsp;</td>
-        <td>&nbsp; <?php echo $row["dtCreaMemb"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $dateOut; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["souvenirMemb"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["accordMemb"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["idStat"]; ?> &nbsp;</td>
