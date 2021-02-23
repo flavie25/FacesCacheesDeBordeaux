@@ -1,0 +1,17 @@
+#motCle {
+    float: left;
+    width: auto;
+    height: auto;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+#selectMotCle {
+    float: left;
+    width: auto;
+    height: auto;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+}

@@ -25,9 +25,9 @@
 			global $db;
 			try {
 			  $db->beginTransaction();
-			  $requete= 'INSERT INTO ARTICLE (dtCreArt, libTitrArt, libChapoArt, libAccrochArt, parag1Art, libSsTitr1Art, parag2Art, libSsTitr2Art, parag3Art, libConclArt, urlPhotArt, numAngl, numThem) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);';
+			  $requete= 'INSERT INTO ARTICLE (dtCreArt, libTitrArt, libChapoArt, libAccrochArt, parag1Art, libSsTitr1Art, parag2Art, libSsTitr2Art, parag3Art, libConclArt,urlPhotArt, numAngl, numThem) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);';
 			  $result = $db->prepare($requete);
-			  $result->execute([$dtCreArt, $libTitrArt, $libChapoArt, $libAccrochArt, $parag1Art, $libSsTitr1Art, $parag2Art, $libSsTitr2Art, $parag3Art, $libConclArt, $urlPhotArt, $numAngl, $numThem]);
+			  $result->execute([$dtCreArt, $libTitrArt, $libChapoArt, $libAccrochArt, $parag1Art, $libSsTitr1Art, $parag2Art, $libSsTitr2Art, $parag3Art, $libConclArt, $urlPhotArt,$numAngl, $numThem]);
               //$dernier_id = $db->lastInsertId();
               //return($dernier_id);
 					$db->commit();
