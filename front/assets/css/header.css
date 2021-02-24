@@ -30,8 +30,8 @@ body {
     width: 20%;
     height: 100%;
 
-    transform: translateX(100%)
-    --transform: translateX(100%)
+    transform: translateX(100%);
+    --transform: translateX(100%);
 }
 
 .nav_barre ul {
