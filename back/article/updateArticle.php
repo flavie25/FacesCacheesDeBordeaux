@@ -19,7 +19,10 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     require_once __DIR__ . '/../../CLASS_CRUD/article.class.php';
     global $db;
     $monArticle = new ARTICLE;
-
+    
+    require_once __DIR__ .'./initVar.php';
+    require_once __DIR__ .'./initConst.php';
+    $TargetDir = TARGET;
 
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
     // ajout effectif du statut
@@ -52,7 +55,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
             if((isset($_FILES['monfichier']['tmp_name'])) AND !empty($_FILES['monfichier']['tmp_name'])){
                 
-                include __DIR__ . '/ctrlerUploadImage.php';
+                require_once __DIR__ . '/ctrlerUploadImage.php';
                 $urlPhotArt = $nomImage;
             }
             else{
@@ -125,9 +128,10 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $libSsTitr2Art= $query['libSsTitr2Art'];
             $parag3Art = $query['parag3Art'];
             $libConclArt = $query['libConclArt'];
-            //$urlPhotArt = $query['urlPhotArt'];
+            $urlPhotArt = $query['urlPhotArt'];
             $numAngl = $query['numAngl'];
             $libAngl = $query['libAngl'];
+            $numLang = $query['numLang'];
             $numThem = $query['numThem'];
             $libThem = $query['libThem'];
         }   // Fin if ($query)
@@ -178,32 +182,22 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <label class="control-label" for="libConclArt"><b>Conclusion de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
             <input type="text" name="libConclArt" id="libConclArt" size="80" maxlength="80" value="<?= $libConclArt; ?>"  />
         </div>
-        <div class="control-group">
-            <label class="control-label" for="urlPhotArt"><b>Importez l'illustration :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <div class="controls">
-                <input type="file" name="monfichier" id="monfichier"  accept=".jpg,.gif,.png,.jpeg" size="70" maxlength="70" value="<? if(isset($_GET['id'])) echo $_POST['urlPhotArt']; else echo $urlPhotArt; ?>" tabindex="110" placeholder="Sur 70 car." title="Recherchez l'image à uploader !" />
-                <p>
-                <? // Gestion extension images acceptées
-                  $msgImagesOK = "&nbsp;&nbsp;>> Extension des images acceptées : .jpg, .gif, .png, .jpeg" . "<br>" .
-                    "(lageur, hauteur, taille max : 80000px, 80000px, 200 000 Go)";
-                  echo "<i>" . $msgImagesOK . "</i>";
-                ?>
-                </p>
-            </div>
-        </div>
+       
         <div class="control-group">
             <label for="numAngl">Angle:</label>  
-            <select id="numAngl" name="numAngl"  onchange="select()">
-                <option value="<?php echo $numAngl;?>"><?php echo $libAngl;?></option>
+            <select id="numAngl" name="numAngl"  >
                 <?php 
                 global $db;
-                $requete = 'SELECT numAngl, libAngl FROM ANGLE ;';
-                $result = $db->query($requete);
+                $requete = 'SELECT numAngl, libAngl FROM ANGLE WHERE numLang = ? ORDER BY libAngl ASC;';
+                $result = $db->prepare($requete);
+                $result->execute([$numLang]);
                 $allAngle = $result->fetchAll();
                 foreach ($allAngle AS $angle)
                 {
                 ?>
-                <option value="<?php echo $angle['numAngl'];?>"><?php echo $angle['libAngl'];?></option>
+                <option value="<?= ($angle['numAngl']); ?>" <?= (isset($numAngl) && $numAngl == $angle['numAngl'] ) ? " selected=\"selected\"" : null; ?> >
+                    <?= $angle['libAngl']; ?>
+                </option>
                 <?php
                 }
                 ?>
@@ -211,21 +205,46 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         </div>
         <div class="control-group">
             <label for="numThem">Thématiques:</label>  
-            <select id="numThem" name="numThem"  onchange="select()">
-                <option value="<?php echo $numThem;?>"><?php echo $libThem;?></option>
+            <select id="numThem" name="numThem"  >
                 <?php 
                 global $db;
-                $requete = 'SELECT numThem, libThem FROM THEMATIQUE ;';
-                $result = $db->query($requete);
+                $requete = 'SELECT numThem, libThem FROM THEMATIQUE WHERE numLang = ?;';
+                $result = $db->prepare($requete);
+                $result->execute([$numLang]);
                 $allThem = $result->fetchAll();
                 foreach ($allThem AS $them)
                 {
                 ?>
-                <option value="<?php echo $them['numThem'];?>"><?php echo $them['libThem'];?></option>
+                <option value="<?= ($them['numThem']); ?>" <?= (isset($numThem) && $numThem == $them['numThem'] ) ? " selected=\"selected\"" : null; ?> >
+                        <?= $them['libThem']; ?>
+                </option>
                 <?php
                 }
                 ?>
             </select>
+        </div>
+        <div class="control-group">
+            <label for="motCle">Mots Clés:</label>  
+            <select id="motCle" name="motCle"  multiple="multiple" size="10">
+                
+            </select>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="monfichier"><b>Importez l'illustration :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <div class="controls">
+                <input type="file" name="monfichier" id="monfichier"  accept=".jpg,.gif,.png,.jpeg" size="70" maxlength="70" value="<?  echo $urlPhotArt;  ?>" tabindex="110" placeholder="Sur 70 car." title="Recherchez l'image à uploader !" />
+                <p>
+                <? // Gestion extension images acceptées
+                  $msgImagesOK = "&nbsp;&nbsp;>> Extension des images acceptées : .jpg, .gif, .png, .jpeg" . "<br>" .
+                    "(lageur, hauteur, taille max : 80000px, 80000px, 200 000 Go)";
+                  echo "<i>" . $msgImagesOK . "</i>";
+                ?>
+                </p>
+                <img alt="photo" scr="../../uploads/<?= $urlPhotArt;?>"/>
+                <? echo $urlPhotArt;?>
+            </div>
+            <img src="<?= $TargetDir.htmlspecialchars($urlPhotArt);?>"/>
         </div>
 
         <div class="control-group">

@@ -17,6 +17,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     // insertion classe STATUT
     require_once __DIR__ . '/../../util/ctrlSaisies.php';
     require_once __DIR__ . '/../../CLASS_CRUD/article.class.php';
+    
     global $db;
     $monArticle = new ARTICLE;
 
@@ -28,12 +29,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         // Opérateur ternaire
         $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
-        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
+        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Annuler")) {
 
-            header("Location: ./createArticle.php");
+            header("Location: ./article.php");
         }   // End of if ((isset($_POST["submit"])) ...
 
         // Mode création
+       
         if (((isset($_POST['libTitrArt'])) AND !empty($_POST['libTitrArt']))
             AND (!empty($_POST['Submit']) AND ($Submit === "Valider"))
             AND (isset($_POST['libChapoArt'])) AND !empty($_POST['libChapoArt'])
@@ -44,6 +46,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             AND (isset($_POST['libSsTitr2Art'])) AND !empty($_POST['libSsTitr2Art'])
             AND (isset($_POST['parag3Art'])) AND !empty($_POST['parag3Art'])
             AND (isset($_POST['libConclArt'])) AND !empty($_POST['libConclArt'])
+            AND ((isset($_POST['idMotCle'])) AND !empty($_POST['idMotCle']))
             AND ((isset($_FILES['monfichier']['tmp_name'])) AND !empty($_FILES['monfichier']['tmp_name']))
             AND (isset($_POST['idAngl'])) AND !empty($_POST['idAngl'])
             AND (isset($_POST['idThem'])) AND !empty($_POST['idThem'])) {
@@ -62,21 +65,39 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $numAngl = ctrlSaisies($_POST['idAngl']);
             $numThem = ctrlSaisies($_POST['idThem']);
             $dtCreArt = date("Y-m-d h:i:s");
+            $motCle = $_POST['idMotCle'];
 
             require_once __DIR__ . '/ctrlerUploadImage.php';
 
             $urlPhotArt = $nomImage;
             echo $urlPhotArt;
 
-           
             $monArticle->create($dtCreArt, $libTitrArt, $libChapoArt, $libAccrochArt, $parag1Art, $libSsTitr1Art, $parag2Art, $libSsTitr2Art, $parag3Art, $libConclArt,$urlPhotArt, $numAngl, $numThem);
             
+            $numArt = $monArticle->get_LastNumArt();
+
+            $motCle = $_POST['idMotCle'];
+            $nbMotCle = count($motCle);
+
+            if ($nbMotCle > 0){
+                for ($i = 0; $i < $nbMotCle; $i++) {
+                    global $db;
+                    $requete = 'INSERT INTO MOTCLEARTICLE (numMotCle, numArt) VALUES (?, ?);';
+                    $result = $db->prepare($requete);
+                    $result -> execute([$motCle[$i], $numArt]);
+                    
+                }
+            }
+             
+
             header("Location: ./article.php");
                 
         }
         else{
-            header("Location: ./createArticle.php?idAngl=".$_POST['idAngl']."&idThem=".$_POST['idThem']);
-            
+            $erreur = true;
+            $errSaisies =  "Erreur, la saisie est obligatoire !";
+            echo $errSaisies;
+                
         }
     
     }   
@@ -93,7 +114,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../../front/assets/css/draganddrop.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="../../front/assets/css/draganddrop.css" rel="stylesheet" type="text/css" /> -->
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Article</h1>
@@ -180,21 +201,19 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             </br>
 <!-- -------------------------------------------------------------- -->
             <label>Mots clés :&nbsp;&nbsp;</label>
-            <div id="motCle" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <ul name="idMotCle" id="idMotCle">
-                </ul>
+            <div id='motCle' style='display:inline'>
+                <select name='idMotCle[]' id="idMotCle" >
+                    <option value='-1'>- - - Choisir un / plusieurs mots clés - - -</option>
+                </select>
             </div>
-            <div id="selecMotCle" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <ul>
-                </ul>
-            </div>
+			<br/>
         </div>
 <!-- -------------------------------------------------------------- -->
 
         <div class="control-group">
             <label class="control-label" for="urlPhotArt"><b>Importez l'illustration :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
             <div class="controls"> 
-                <input type="file" name="monfichier" required="required" id="monfichier" accept=".jpg,.gif,.png,.jpeg" size="70" maxlength="70" value="<? if(isset($_GET['id'])) echo $_POST['urlPhotArt']; else echo $urlPhotArt; ?>" tabindex="110" placeholder="Sur 70 car." title="Recherchez l'image à uploader !" />
+                <input type="file" name="monfichier"  id="monfichier" accept=".jpg,.gif,.png,.jpeg" size="70" maxlength="70" value="<? if(isset($_GET['id'])) echo $_POST['urlPhotArt']; else echo $urlPhotArt; ?>" tabindex="110" placeholder="Sur 70 car." title="Recherchez l'image à uploader !" />
                 <p>
                 <? // Gestion extension images acceptées
                 $msgImagesOK = "&nbsp;&nbsp;>> Extension des images acceptées : .jpg, .gif, .png, .jpeg" . "<br>" .
@@ -209,7 +228,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <div class="controls">
                 <br><br>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                <input type="submit" value="Annuler" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
                 <br>
@@ -274,7 +293,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 				}
 			}
 
-			// Traitement POST
+			// Traitement POST ajaxAngle
 			xhr.open("POST","./ajaxAngle.php",true);
 			// pour le post
 			xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
@@ -283,7 +302,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 			//alert(idauteur);
 			xhr.send("langue="+langue);	// Recup PK auteur à passer en "m" à livre (FK)
 
-            // Traitement POST
+            // Traitement POST ajaxThem
 			xhr1.open("POST","./ajaxThem.php",true);
 			// pour le post
 			xhr1.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
@@ -292,7 +311,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 			//alert(idauteur);
 			xhr1.send("langue="+langue1);	// Recup PK auteur à passer en "m" à livre (FK)
 
-             // Traitement POST
+             // Traitement POST avaxMotCle
 			xhr2.open("POST","./ajaxMotCle.php",true);
 			// pour le post
 			xhr2.setRequestHeader('Content-Type','application/x-www-form-urlencoded');

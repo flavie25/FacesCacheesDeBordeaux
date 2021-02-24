@@ -125,7 +125,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <div class="control-group">
             <label for="pays">Num Pays :</label>  
             <select id="pays" name="pays"  onchange="select()">
-            <option value="<?php echo $numPays;?>"><?php echo $frPays;?></option>
                 <?php 
                 global $db;
                 $requete = 'SELECT * FROM PAYS ;';
@@ -134,7 +133,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 foreach ($allPays AS $pays)
                 {
                 ?>
-                <option value="<?php echo $pays['numPays'];?>"><?php echo $pays['frPays'];?></option>
+                <option value="<?= ($pays['numPays']); ?>" <?= (isset($numPays) && $numPays == $pays['numPays'] ) ? " selected=\"selected\"" : null; ?> >
+                    <?= $pays['frPays']; ?>
+                </option>
             <?php
             }
             ?>

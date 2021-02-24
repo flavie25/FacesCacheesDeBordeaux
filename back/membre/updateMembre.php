@@ -190,7 +190,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <div class="control-group">
             <label for="idStat">Statut:</label>  
             <select id="idStat" name="idStat"  onchange="select()">
-                <option value="<?php echo $idStat;?>"><?php echo $libStat;?></option>
                 <?php 
                 global $db;
                 $adminStat = 9;
@@ -201,8 +200,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 foreach ($allStatut AS $statut)
                 {
                 ?>
-                
-                <option value="<?php echo $statut['idStat'];?>"><?php echo $statut['libStat'];?></option>
+                <option value="<?= ($statut['idStat']); ?>" <?= (isset($idStat) && $idStat == $statut['idStat'] ) ? " selected=\"selected\"" : null; ?> >
+                    <?= $statut['libStat']; ?>
+                </option>
                 <?php
                 }
                 ?>

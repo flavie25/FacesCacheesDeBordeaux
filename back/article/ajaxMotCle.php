@@ -4,19 +4,23 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
 require_once __DIR__ . '/../../CONNECT/database.php';
 
-	echo "<ul id=\"motCle\" >";
+	echo "<select size=\"10\" multiple=\"multiple\"  id=\"idMotCle\" name=\"idMotCle[]\">";
 	$langue2 = $_REQUEST["langue"];
 
-    if (isset($langue2)) {
+	if (isset($langue2)) { 
         global $db;
-        $requete = "SELECT * FROM MOTCLE WHERE numLang = ?;";
+        $requete = 'SELECT * FROM MOTCLE WHERE numLang = ?;';
         $result = $db->prepare($requete);
-        $result -> execute([$langue2]);
+        $result->execute([$langue2]);
         $allMotCle = $result->fetchAll();
-        foreach($allMotCle as $motCle){
-            echo "<li draggable="true" ondragstart="drag(event)" id=".$motCle['numMotCle'].">".$motCle['libMotCle']."</li>";
+        foreach ($allMotCle AS $motcle)
+        {
+            echo "<option value='" . $motcle["numMotCle"] . "'>" . $motcle["libMotCle"] . "</option>";
         }
-    echo "</ul>";
+	}	// if (isset)
+	else {
+		echo "<option value='-1'>- - - Choisir un livre - - -</option>";
+	}
 
-    
+	echo "</select>";
     

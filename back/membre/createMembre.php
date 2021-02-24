@@ -51,13 +51,14 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $prenomMembre = ctrlSaisies($_POST['prenomMemb']);
             $nomMembre = ctrlSaisies($_POST['nomMemb']);
             $pseudoMembre = ctrlSaisies($_POST['pseudoMemb']);
-            $passMembre1 = ctrlsaisies($_POST['passMemb1']);
-            $passMembre2 = ctrlsaisies($_POST['passMemb2']);
+            $passMembre1 = ctrlSaisies($_POST['passMemb1']);
+            $passMembre2 = ctrlSaisies($_POST['passMemb2']);
             $emailMembre1 = ctrlSaisies($_POST['eMailMemb1']);
             $emailMembre2 = ctrlSaisies($_POST['eMailMemb2']);
             $dtCreaMembre = date("Y-m-d h:i:s");
             $souvenirMembre = ctrlSaisies($_POST['souvenirMemb']);
             $idStat = 1;
+           
             if ($souvenirMembre == 'off'){
                 $souvenirMembre = 0;
             }

@@ -120,8 +120,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 foreach ($allLangue AS $langue)
                 {
                 ?>
-                <option value="<?php echo $numLang;?>"><?php echo $lib1Lang;?></option>
-                <option value="<?php echo $langue['numLang'];?>"><?php echo $langue['lib1Lang'];?></option>
+                <option value="<?= ($langue['numLang']); ?>" <?= (isset($numLang) && $numLang == $langue['numLang'] ) ? " selected=\"selected\"" : null; ?> >
+                    <?= $langue['lib1Lang']; ?>
+                </option>
             <?php
             }
             ?>

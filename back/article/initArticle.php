@@ -34,3 +34,9 @@
     $numThem = "";
 
     $numLang = "";
+
+    $motCle = array();
+
+    $targetDir="";
+
+
