@@ -1,0 +1,63 @@
+
+
+.logo_titre{
+    width: 99vw;
+    z-index: 50;
+    margin-top: 15%;
+}
+
+.logo{
+    
+    width: 17vh;
+    height: auto;
+    margin: 0 auto;
+  
+
+}
+
+.titreH1{
+    font-family: 'Cinzel', serif;
+    font-size: 3em;
+    text-align: center;
+    margin-top: -5vh;   
+    color: white;
+    width: auto;
+    
+}
+
+h1{
+    text-align: center;
+}
+
+.imagebaniere{
+    position: absolute;
+    top: 0;
+    left: -3vh;
+    object-fit: cover;
+    width: 102vw;
+    height:fit-content;
+    filter:brightness(30%);
+    z-index: -100;
+}
+
+
+.presentation{
+    display: flex;
+    margin-top: 6%;
+    margin-left: 20%;
+    margin-right: 20%;
+    
+}
+
+.presentation_titre{
+    font-family: 'Bebas Neue', 'regular';
+    font-size: 2em;
+    writing-mode: vertical-lr;
+    border-right: 12px solid #113537;
+    margin-right: 2%;
+}
+
+h2{
+    padding: 0;
+    margin: 0;
+}

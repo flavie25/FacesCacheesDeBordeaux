@@ -1,23 +1,30 @@
-
- <!DOCTYPE html>
-    <link rel="stylesheet" href="C:\wamp64\www\Bubble_Groupe7_Blogart\front\includes\commons\Baniere_presentation.css">
+    <link rel="stylesheet" href="..\..\assets\css\normalize.css">
+    <link rel="stylesheet" href="..\..\assets\css\banierePresentation.css">
   
-<div class= "first page">   
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+    </style>
+
+<div class= "firstpage">   
     <div class="baniere">
+             <div class="imagebaniere">
+                <img src="..\..\assets\images\Bordeaux 1.jpg" width="100%" alt="les quais Bordealais">
+            </div>
+
+        <div class="logo_titre">
             <div class="logo">
-                <img src="" alt="Logo Les faces cachés">
+                <img src="..\..\assets\images\logo_bulle_blanc.svg" alt="Logo Les faces cachés">
             </div>
             
             <div class="titreH1">
-                <h1>Les faces cachés de bordeaux</h1>
+                <h1>Les faces cachés de <br> bordeaux</h1>
             </div>
-
-            <div class="image banière">
-                <img src="" alt="les quais Bordealais">
-            </div>
+        </div>
     </div>
-    <div class="présentation">
-        <div class ="présentation_titre">
+
+    <div class="presentation">
+        <div class ="presentation_titre">
             <h2>Présentation</h2>
         </div>
 
