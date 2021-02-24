@@ -1,0 +1,22 @@
+h1{
+    font-family: 'bebas neue';
+}
+
+label{
+    font-family: 'Bebas Neue';
+    font-size: 23px;
+}
+
+input{
+    font-family: 'Lato';
+    font-size: 20px;
+}
+
+input[type=text]{
+    border: 3px solid black;
+    border-radius: 5px;
+    width: 15em;
+    height: 2em;
+    margin-bottom: 1em;
+}
+
