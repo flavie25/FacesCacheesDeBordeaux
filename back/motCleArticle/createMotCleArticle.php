@@ -120,36 +120,14 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 $numLang = $_POST['numLang'];
                 ?>
                 <div class="control-group">
-                    <label for="numArt">Article</label>  
-                    <select id="numArt" name="numArt"  onchange="select()" title="Sélectionnez la classe !">
-                        <option value="-1">- - - Choisissez un article - - -</option>
-                        <?php 
-                        global $db;
-                        $requete = 'SELECT numArt, libTitrArt FROM ARTICLE WHERE numLang = ? ;';
-                        $result = $db->query($requete);
-                        $result->execute($numLang);
-                        $allArticle = ($result->fetchAll());
-                        foreach ($allArticle as $article)
-                        {
-                            $numArt = $article['numArt'];
-                            $libTitrArt = $article['libTitrArt'];
-                        ?>
-                        
-                        <option value="<?= ($numArt); ?>"<?= ((isset($numArt_selectionne) && $numArt_selectionne == $numArt) ? " selected=\"selected\"" : null); ?> > <?= ($libTitrArt); ?>
-                        </option>
-                        <?php
-                        }
-                        ?>
-                    </select>   
-                </div>
-                <div class="control-group">
                     <label for="numMotCle">Mot clé</label>  
                     <select id="numMotCLe" name="numMotCle"  onchange="select()">
                         <option value="-1">- - - Choisissez un mot clé - - -</option>
                         <?php 
                         global $db;
-                        $requete = 'SELECT numMotCle, libMotCle FROM MOTCLE ;';
-                        $result = $db->query($requete);
+                        $requete = 'SELECT numMotCle, libMotCle FROM MOTCLE WHERE numLang = ?;';
+                        $result = $db->prepare($requete);
+                        $result->execute([$numLang]);
                         $allMotCle = $result->fetchAll();
                         foreach ($allMotCle as $motCle)
                         {
