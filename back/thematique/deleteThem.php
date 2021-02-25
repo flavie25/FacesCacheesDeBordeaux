@@ -56,29 +56,9 @@ include __DIR__ . '/initThematique.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
-    <style type="text/css">
-        #p1 {
-            max-width: 600px;
-            width: 600px;
-            max-height: 200px;
-            height: 200px;
-            border: 1px solid #000000;
-            background-color: whitesmoke;
-            /* Coins arrondis et couleur du cadre */
-            border: 2px solid grey;
-            -moz-border-radius: 8px;
-            -webkit-border-radius: 8px;
-            border-radius: 8px;
-        }
-        .error {
-            padding: 2px;
-            border: solid 0px black;
-            color: red;
-            font-style: italic;
-            border-radius: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD THEMATIQUE</h1>

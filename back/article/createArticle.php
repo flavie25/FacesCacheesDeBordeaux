@@ -114,7 +114,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="../css/footer.css">
 
     <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

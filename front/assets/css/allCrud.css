@@ -1,16 +1,16 @@
-body{
+body {
     background-color: #FFF3FB;
 }
 
-.container{
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.button{
-    color:#FFF3FB;
+.button {
+    color: #FFF3FB;
     background-color: #433E3F;
     padding: 10px 40px;
     text-align: center;
@@ -20,16 +20,16 @@ body{
     margin-left: 5em;
 }
 
-.button:hover{
+.button:hover {
     color: #FFF3FB;
     background-color: #113638;
 }
 
-h1{
+h1 {
     font-family: 'bebas neue';
 }
 
-.crudAlign{
+.crudAlign {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,6 +39,6 @@ h1{
     margin-right: auto;
 }
 
-p{
+p {
     font-family: 'Lato';
 }

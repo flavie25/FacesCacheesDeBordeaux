@@ -33,12 +33,14 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
     <hr /><br />
-	<h2>Nouvel angle :&nbsp;<a href="./createAngle.php"><i>Créer un angle</i></a></h2>
+	<h2>Nouvel angle :&nbsp;<a class="button" href="./createAngle.php">Créer un angle</a></h2>
 	<br /><hr />
 	<h2>Tous les angle</h2>
 

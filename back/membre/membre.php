@@ -30,7 +30,9 @@ $errSaisies ='';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Membre</h1>

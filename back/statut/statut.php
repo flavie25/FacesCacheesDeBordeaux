@@ -44,6 +44,12 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             border-radius: 5px;
         }
     </style>
+
+
+
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
 </head>
 <body>
 	<h1>BLOGART21 Admin - Gestion du CRUD Statut</h1>

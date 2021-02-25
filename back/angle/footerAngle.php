@@ -11,7 +11,8 @@
 require_once __DIR__ . '/../../util/utilErrOn.php';
 ?>
 
-<footer>
-    <br /><br /><hr />
-    <h2>Retour à la gestion des angles : <a href="./angle.php">CRUD Angle</a></h2>
+<footer class="bas_back">
+
+    <a class="button" href="./angle.php">Gestion des ANGLES</a>
+
 </footer>

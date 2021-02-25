@@ -23,7 +23,9 @@ $comment = new COMMENT;
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Commentaire</h1>
@@ -88,7 +90,6 @@ $comment = new COMMENT;
     <br><br>
 
     <?
-    require_once __DIR__ . '/footerComment.php';
     require_once __DIR__ . '/footer.php';
     ?>
 </body>

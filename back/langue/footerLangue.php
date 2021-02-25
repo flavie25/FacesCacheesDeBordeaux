@@ -11,7 +11,8 @@
 require_once __DIR__ . '/../../util/utilErrOn.php';
 ?>
 
-<footer>
-    <br /><br /><hr />
-    <h2>Retour à la gestion des Langues : <a href="./langue.php">CRUD Langue</a></h2>
+<footer class="bas_back">
+
+    <a class="button" href="./langue.php">Gestion des LANGUES</a>
+
 </footer>

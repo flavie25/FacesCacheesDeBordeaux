@@ -34,7 +34,9 @@ require_once __DIR__ . '/../../util/dateChangeFormat.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Article</h1>
@@ -100,17 +102,17 @@ require_once __DIR__ . '/../../util/dateChangeFormat.php';
 		<td>&nbsp;<a href="./deleteArticle.php?id=<?=$row["numArt"];?>"><i>Supprimer</i></a>&nbsp;
 		<br /></td>
         </tr>
-<?
+    <?
 	}	// End of foreach
-?>
+    ?>
     </tbody>
     </table>
-    <br><br>
-<?php
-if ($errCIR == 1){
-    echo 'Vous ne pouvez pas supprimer cet utilisateur. Veuillez d\'abord supprimer cet utilisateur dans les autres tables';
-}
-require_once __DIR__ . '/footer.php';
-?>
+    <?php
+    if ($errCIR == 1){
+        echo 'Vous ne pouvez pas supprimer cet utilisateur. Veuillez d\'abord supprimer cet utilisateur dans les autres tables';
+    }
+    
+    require_once __DIR__ . '/footer.php';
+    ?>
 </body>
 </html>

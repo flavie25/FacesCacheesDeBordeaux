@@ -11,7 +11,8 @@
 require_once __DIR__ . '/../../util/utilErrOn.php';
 ?>
 
-<footer>
-    <br /><br /><hr />
-    <h2>Retour à la gestion des Mots Clés : <a href="./footerMotCle.php">CRUD Mots Clés</a></h2>
+<footer class="bas_back">
+
+    <a class="button" href="./motCle.php">Gestion des MOTS CLES</a>
+
 </footer>

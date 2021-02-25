@@ -73,7 +73,9 @@ include __DIR__ . '/initStatut.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
     <style type="text/css">
         #p1 {
             max-width: 600px;

@@ -11,14 +11,10 @@
 require_once __DIR__ . '/../../util/utilErrOn.php';
 ?>
 
-
-
-<link rel="stylesheet" href="../../front/assets/css/footer_back.css">
-
 <footer class="bas_back">
 
-    <button class="button" a href="../../index1.php"> Accueil </button>
-  
+    <a class="button" href="../../index1.php">Gestion des CRUD</a>
+
 </footer>
 
 

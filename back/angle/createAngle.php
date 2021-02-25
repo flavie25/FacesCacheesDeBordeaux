@@ -29,9 +29,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         // Opérateur ternaire
         $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
-        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
+        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Annuler")) {
 
-            header("Location: ./createAngle.php");
+            header("Location: ./angle.php");
         }   // End of if ((isset($_POST["submit"])) ...
 
         // Mode création
@@ -69,7 +69,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
@@ -81,13 +83,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <legend class="legend1">Formulaire Angle...</legend>
 
         <div class="control-group">
-            <label class="control-label" for="libAngl"><b>Nom de l'angle :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libAngl" id="libAngl" size="80" maxlength="80" value="<?= $libAngl; ?>" autofocus="autofocus" />
+            <label class="control-label" for="libAngl"><b>Nom de l'angle :&nbsp;</b></label>
+            <input type="text" name="libAngl" id="libAngl" size="60" maxlength="60" value="<?= $libAngl; ?>" autofocus="autofocus" placeholder="Saisir un nom pour l'angle (60 caractères max)" required/>
         </div>
 
         <div class="control-group">
-            <label for="numLang">Langue :</label>  
-            <select id="numLang" name="numLang"  onchange="select()">
+            <label for="numLang">Langue :&nbsp;</label>  
+            <select id="numLang" name="numLang" onchange="select()">
                 <?php 
                 global $db;
                 $requete = 'SELECT numLang, lib1Lang FROM LANGUE ;';
@@ -105,12 +107,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         <div class="control-group">
             <div class="controls">
-                <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                <br>
+                <input class="button" type="submit" value="Annuler" name="Submit" formnovalidate/>
+                <input class="button" type="submit" value="Valider" name="Submit" />
             </div>
         </div>
       </fieldset>
