@@ -17,8 +17,10 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     // insertion classe STATUT
     require_once __DIR__ . '/../../util/ctrlSaisies.php';
     require_once __DIR__ . '/../../CLASS_CRUD/article.class.php';
+    require_once __DIR__ . '/../../CLASS_CRUD/motCleArticle.class.php';
     global $db;
     $monArticle = new ARTICLE;
+    $motCleArticle = new MOTCLEARTICLE;
     
     require_once __DIR__ .'./initVar.php';
     require_once __DIR__ .'./initConst.php';
@@ -35,7 +37,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
             header("Location: ./article.php");
         }   // End of if ((isset($_POST["submit"])) ...
-    
+        
         // Mode création
         if (((isset($_POST['numArt'])) AND !empty($_POST['numArt']))
             AND (!empty($_POST['Submit']) AND ($Submit === "Valider"))
@@ -49,6 +51,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             AND (isset($_POST['parag3Art'])) AND !empty($_POST['parag3Art'])
             AND (isset($_POST['libConclArt'])) AND !empty($_POST['libConclArt'])
             AND (isset($_POST['numAngl'])) AND !empty($_POST['numAngl'])
+            AND (isset($_POST['idMotCle'])) AND !empty($_POST['idMotCle'])
             AND (isset($_POST['numThem'])) AND !empty($_POST['numThem'])) {
             // Saisies valides
             $erreur = false;
@@ -75,18 +78,33 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $libConclArt = ctrlSaisies($_POST['libConclArt']);
             $numAngl = ctrlSaisies($_POST['numAngl']);
             $numThem = ctrlSaisies($_POST['numThem']);
-            
-
            
             $monArticle->update($numArt, $libTitrArt, $libChapoArt, $libAccrochArt, $parag1Art, $libSsTitr1Art, $parag2Art, $libSsTitr2Art, $parag3Art, $libConclArt,$urlPhotArt, $numAngl, $numThem);
             
+
+            $motCle = $_POST['idMotCle'];
+            $nbMotCle = count($motCle);
+            
+
+            if ($nbMotCle > 0){ 
+                $motCleArticle->deleteMotCleArticle($numArt);
+                for ($i = 0; $i < $nbMotCle; $i++) {
+                    global $db;
+                    $requete = 'INSERT INTO MOTCLEARTICLE (numMotCle, numArt) VALUES (?, ?);';
+                    $result = $db->prepare($requete);
+                    $result -> execute([$motCle[$i], $numArt]);
+                    
+                }
+            }
 
             header("Location: ./article.php");
                 
         }
         else{
-
-            header("Location: ./updateArticle.php?id=");
+            $motcle= ($_POST['idMotCle']);
+            var_dump($motcle);
+            //header("Location: ./updateArticle.php?id=");
+            
             
         }
     
@@ -104,12 +122,36 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="author" content="" />
 
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link href="../css/style2.css" rel="stylesheet" />
+
+    <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 </head>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#add').click(function() {
+            return !$('#listMotCle option:selected')
+            .remove().appendTo('#idMotCle');
+        });
+        $('#remove').click(function() {
+            return !$('#idMotCle option:selected')
+            .remove().appendTo('#listMotCle');
+        });
+        function selectall()  {
+            $('#idMotCle').find('option').each(function() {
+                $(this).attr('selected', 'selected');
+            });
+        }
+    });
+</script>
+
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Article</h1>
     <h2>Modification d'un article</h2>
 
-<?
+    <?
     // Modif : récup id à modifier
     if (isset($_GET['id']) AND !empty($_GET['id'])) {
 
@@ -135,134 +177,190 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $numThem = $query['numThem'];
             $libThem = $query['libThem'];
         }   // Fin if ($query)
-    }   // Fin if (isset($_GET['id'])...)
 
-?>
+    }   // Fin if (isset($_GET['id'])...)
+    ?>
 
     <form method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data">
 
-      <fieldset>
-        <legend class="legend1">Formulaire Article...</legend>
+        <fieldset>
+            <legend class="legend1">Formulaire Article...</legend>
 
-        <input type="hidden" id="numArt" name="numArt" value="<?= $_GET['id']; ?>" />
+            <input type="hidden" id="numArt" name="numArt" value="<?= $_GET['id']; ?>" />
 
-        <div class="control-group">
-            <label class="control-label" for="libTitrArt"><b>Titre de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libTitrArt" id="libTitrArt" size="80" maxlength="80" value="<?= $libTitrArt; ?>" autofocus="autofocus" />
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="libChapoArt"><b>Chapô de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libChapoArt" id="libChapoArt" size="80" maxlength="80" value="<?= $libChapoArt; ?>"  />
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="libAccrochArt"><b>Accroche de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libAccrochArt" id="libAccrochArt" size="80" maxlength="80" value="<?= $libAccrochArt; ?>"  />
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="parag1Art"><b>Paragraphe 1 de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="parag1Art" id="parag1Art" size="80" maxlength="1400" value="<?= $parag1Art; ?>"  />
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="libSsTitr1Art"><b>Sous-titre 1 de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libSsTitr1Art" id="libSsTitr1Art" size="80" maxlength="80" value="<?= $libSsTitr1Art; ?>"  />
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="parag2Art"><b>Paragraphe 2 de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="parag2Art" id="parag2Art" size="80" maxlength="1400" value="<?= $parag2Art; ?>"  />
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="libSsTitr2Art"><b>Sous-titre 2 de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libSsTitr2Art" id="libSsTitr2Art" size="80" maxlength="80" value="<?= $libSsTitr2Art; ?>"  />
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="parag3Art"><b>Paragraphe 3 de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="parag3Art" id="parag3Art" size="80" maxlength="1400" value="<?= $parag3Art; ?>"  />
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="libConclArt"><b>Conclusion de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libConclArt" id="libConclArt" size="80" maxlength="80" value="<?= $libConclArt; ?>"  />
-        </div>
-       
-        <div class="control-group">
-            <label for="numAngl">Angle:</label>  
-            <select id="numAngl" name="numAngl"  >
-                <?php 
-                global $db;
-                $requete = 'SELECT numAngl, libAngl FROM ANGLE WHERE numLang = ? ORDER BY libAngl ASC;';
-                $result = $db->prepare($requete);
-                $result->execute([$numLang]);
-                $allAngle = $result->fetchAll();
-                foreach ($allAngle AS $angle)
-                {
-                ?>
-                <option value="<?= ($angle['numAngl']); ?>" <?= (isset($numAngl) && $numAngl == $angle['numAngl'] ) ? " selected=\"selected\"" : null; ?> >
-                    <?= $angle['libAngl']; ?>
-                </option>
-                <?php
-                }
-                ?>
-            </select>
-        </div>
-        <div class="control-group">
-            <label for="numThem">Thématiques:</label>  
-            <select id="numThem" name="numThem"  >
-                <?php 
-                global $db;
-                $requete = 'SELECT numThem, libThem FROM THEMATIQUE WHERE numLang = ?;';
-                $result = $db->prepare($requete);
-                $result->execute([$numLang]);
-                $allThem = $result->fetchAll();
-                foreach ($allThem AS $them)
-                {
-                ?>
-                <option value="<?= ($them['numThem']); ?>" <?= (isset($numThem) && $numThem == $them['numThem'] ) ? " selected=\"selected\"" : null; ?> >
-                        <?= $them['libThem']; ?>
-                </option>
-                <?php
-                }
-                ?>
-            </select>
-        </div>
-        <div class="control-group">
-            <label for="motCle">Mots Clés:</label>  
-            <select id="motCle" name="motCle"  multiple="multiple" size="10">
-                
-            </select>
-        </div>
-
-        <div class="control-group">
-            <label class="control-label" for="monfichier"><b>Importez l'illustration :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <div class="controls">
-                <input type="file" name="monfichier" id="monfichier"  accept=".jpg,.gif,.png,.jpeg" size="70" maxlength="70" value="<?  echo $urlPhotArt;  ?>" tabindex="110" placeholder="Sur 70 car." title="Recherchez l'image à uploader !" />
-                <p>
-                <? // Gestion extension images acceptées
-                  $msgImagesOK = "&nbsp;&nbsp;>> Extension des images acceptées : .jpg, .gif, .png, .jpeg" . "<br>" .
-                    "(lageur, hauteur, taille max : 80000px, 80000px, 200 000 Go)";
-                  echo "<i>" . $msgImagesOK . "</i>";
-                ?>
-                </p>
-                <img alt="photo" scr="../../uploads/<?= $urlPhotArt;?>"/>
-                <? echo $urlPhotArt;?>
+            <div class="control-group">
+                <label class="control-label" for="libTitrArt"><b>Titre de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" name="libTitrArt" id="libTitrArt" size="80" maxlength="80" value="<?= $libTitrArt; ?>" autofocus="autofocus" />
             </div>
-            <img src="<?= $TargetDir.htmlspecialchars($urlPhotArt);?>"/>
-        </div>
-
-        <div class="control-group">
-            <div class="controls">
-                <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Annuler" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                <br>
+            <div class="control-group">
+                <label class="control-label" for="libChapoArt"><b>Chapô de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" name="libChapoArt" id="libChapoArt" size="80" maxlength="80" value="<?= $libChapoArt; ?>"  />
             </div>
-        </div>
-      </fieldset>
+            <div class="control-group">
+                <label class="control-label" for="libAccrochArt"><b>Accroche de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" name="libAccrochArt" id="libAccrochArt" size="80" maxlength="80" value="<?= $libAccrochArt; ?>"  />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="parag1Art"><b>Paragraphe 1 de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" name="parag1Art" id="parag1Art" size="80" maxlength="1400" value="<?= $parag1Art; ?>"  />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="libSsTitr1Art"><b>Sous-titre 1 de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" name="libSsTitr1Art" id="libSsTitr1Art" size="80" maxlength="80" value="<?= $libSsTitr1Art; ?>"  />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="parag2Art"><b>Paragraphe 2 de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" name="parag2Art" id="parag2Art" size="80" maxlength="1400" value="<?= $parag2Art; ?>"  />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="libSsTitr2Art"><b>Sous-titre 2 de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" name="libSsTitr2Art" id="libSsTitr2Art" size="80" maxlength="80" value="<?= $libSsTitr2Art; ?>"  />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="parag3Art"><b>Paragraphe 3 de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" name="parag3Art" id="parag3Art" size="80" maxlength="1400" value="<?= $parag3Art; ?>"  />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="libConclArt"><b>Conclusion de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" name="libConclArt" id="libConclArt" size="80" maxlength="80" value="<?= $libConclArt; ?>"  />
+            </div>
+        
+            <div class="control-group">
+                <label for="numAngl">Angle:</label>  
+                <select id="numAngl" name="numAngl"  >
+                    <?php 
+                    global $db;
+                    $requete = 'SELECT numAngl, libAngl FROM ANGLE WHERE numLang = ? ORDER BY libAngl ASC;';
+                    $result = $db->prepare($requete);
+                    $result->execute([$numLang]);
+                    $allAngle = $result->fetchAll();
+                    foreach ($allAngle AS $angle)
+                    {
+                    ?>
+                    <option value="<?= ($angle['numAngl']); ?>" <?= (isset($numAngl) && $numAngl == $angle['numAngl'] ) ? " selected=\"selected\"" : null; ?> >
+                        <?= $angle['libAngl']; ?>
+                    </option>
+                    <?php
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="numThem">Thématiques:</label>  
+                <select id="numThem" name="numThem"  >
+                    <?php 
+                    global $db;
+                    $requete = 'SELECT numThem, libThem FROM THEMATIQUE WHERE numLang = ?;';
+                    $result = $db->prepare($requete);
+                    $result->execute([$numLang]);
+                    $allThem = $result->fetchAll();
+                    foreach ($allThem AS $them)
+                    {
+                    ?>
+                    <option value="<?= ($them['numThem']); ?>" <?= (isset($numThem) && $numThem == $them['numThem'] ) ? " selected=\"selected\"" : null; ?> >
+                            <?= $them['libThem']; ?>
+                    </option>
+                    <?php
+                    }
+                    ?>
+                </select>
+            </div>
+            <!-- --------------------------------------------------------------- -->
+            <!-- Drag and drop sur Mots clés -->
+            <!-- --------------------------------------------------------------- -->
+            <div class="list1">
+            <!-- <span class="span-text">Liste Mots clés</span> -->
+                <div class="controls">
+                    <label class="control-label" for="LibTypMotsCles2">
+                        <b>&nbsp;&nbsp;Liste Mots clés&nbsp;&nbsp;&nbsp;</b>
+                    </label>
+                </div>
+                <div id="motCle" style="display:inline">
+                    <select class="form-control" id ="listMotCle" name="listMotCle[]" multiple="multiple" style="height:150px;">
+                        <?
+                        global $db;
+                        $requete = 'SELECT * FROM MOTCLE WHERE numLang = ?;';
+                        $result = $db->prepare($requete);
+                        $result->execute([$numLang]);
+                        $allMotCleByLang = $result->fetchAll();
+                        $nbMotCleByLang = $result->rowCount();
+
+                        
+
+                        foreach ($allMotCleByLang AS $motCleByLang)
+                        {  
+                            echo "<option value='" . $motCleByLang["numMotCle"] . "'>" . $motCleByLang["libMotCle"] . "</option>";   
+                        }
+
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="btnsaddsuppr">
+                <div class="input-group btnadd">
+                    <label class="control-label">
+                        <button type="button" value="" class="btn btn-xs btn-primary " id="add" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px; font-size:13px" >Ajoutez&nbsp;&nbsp;>></button>
+                    </label>
+                </div>
+                <div class="input-group btnspr">
+                    <button type="button" value="" class="btn btn-xs btn-danger" id="remove" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px; font-size:13px"><<&nbsp;&nbsp;Supprimez</button>
+                </div>
+            </div>
+
+            <div class="list2">
+            <!-- <span class="span-text">Mots clés ajoutés</span> -->
+                <div class="controls">
+                    <label class="control-label" for="LibTypMotsCles">
+                        <b>&nbsp;&nbsp;Mots clés ajoutés&nbsp;&nbsp;&nbsp;</b>
+                    </label>
+                </div>
+                <div id="selectMotCle" style="display:inline">
+                    <select class="form-control" name="idMotCle[]" size="9" id="idMotCle" multiple="multiple" style="height:150px;">
+                        <?
+                        $allMotCleArticle = $motCleArticle -> get_AllMotCleArticleByArt($numArt);
+                        foreach ($allMotCleArticle AS $motcle)
+                        {
+                            echo "<option value='" . $motcle["numMotCle"] . "' selected >" . $motcle["libMotCle"] . "</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+           
+            <!-- --------------------------------------------------------------- -->
+            <!-- End of Drag and drop sur Mots clés -->
+            <!-- --------------------------------------------------------------- -->
+            <div class="control-group">
+                <label class="control-label" for="monfichier"><b>Importez l'illustration :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <div class="controls">
+                    <input type="file" name="monfichier" id="monfichier"  accept=".jpg,.gif,.png,.jpeg" size="70" maxlength="70" value="<?  echo $urlPhotArt;  ?>" tabindex="110" placeholder="Sur 70 car." title="Recherchez l'image à uploader !" />
+                    <p>
+                    <? // Gestion extension images acceptées
+                    $msgImagesOK = "&nbsp;&nbsp;>> Extension des images acceptées : .jpg, .gif, .png, .jpeg" . "<br>" .
+                        "(lageur, hauteur, taille max : 80000px, 80000px, 200 000 Go)";
+                    echo "<i>" . $msgImagesOK . "</i>";
+                    ?>
+                    </p>
+                </div>
+                <img src="<?= $TargetDir.htmlspecialchars($urlPhotArt);?>" height="200px"/>
+            </div>
+
+            <div class="control-group">
+                <div class="controls">
+                    <br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="submit" value="Annuler" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                    <br>
+                </div>
+            </div>
+        </fieldset>
     </form>
-<?php
-require_once __DIR__ . '/footerArticle.php';
+    <?php
+    require_once __DIR__ . '/footerArticle.php';
 
-require_once __DIR__ . '/footer.php';
-?>
+    require_once __DIR__ . '/footer.php';
+    ?>
 </body>
 </html>
