@@ -28,9 +28,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         // Opérateur ternaire
         $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
-        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
+        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Annuler")) {
 
-            header("Location: ./createStatut.php");
+            header("Location: ./statut.php");
         }   // End of if ((isset($_POST["submit"])) ...
 
         // Mode création
@@ -80,18 +80,14 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <!--<input type="hidden" id="id" name="id" value=": /*$_GET['id']; */-->
 
         <div class="control-group">
-            <label class="control-label" for="libStat"><b>Nom du statut :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat; ?>" autofocus="autofocus" />
+            <label class="control-label" for="libStat">Nom du statut :&nbsp;</label>
+            <input type="text" name="libStat" id="libStat" size="25" maxlength="25" value="<?= $libStat; ?>" placeholder="Saisir un statut (25 caractères max)" autofocus="autofocus" required/>
         </div>
 
         <div class="control-group">
             <div class="controls">
-                <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                <br>
+                <input class="button" type="submit" value="Annuler" name="Submit" formnovalidate/>
+                <input class="button" type="submit" value="Valider" name="Submit" />
             </div>
         </div>
       </fieldset>

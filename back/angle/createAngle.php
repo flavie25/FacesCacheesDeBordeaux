@@ -83,13 +83,14 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <legend class="legend1">Formulaire Angle...</legend>
 
         <div class="control-group">
-            <label class="control-label" for="libAngl"><b>Nom de l'angle :&nbsp;</b></label>
+            <label class="control-label" for="libAngl">Nom de l'angle :&nbsp;</label>
             <input type="text" name="libAngl" id="libAngl" size="60" maxlength="60" value="<?= $libAngl; ?>" autofocus="autofocus" placeholder="Saisir un nom pour l'angle (60 caractères max)" required/>
         </div>
 
         <div class="control-group">
             <label for="numLang">Langue :&nbsp;</label>  
-            <select id="numLang" name="numLang" onchange="select()">
+            <select id="numLang" name="numLang" onchange="select()" required>
+            <option value="" selected disabled hidden>Sélectionner une langue</option>
                 <?php 
                 global $db;
                 $requete = 'SELECT numLang, lib1Lang FROM LANGUE ;';

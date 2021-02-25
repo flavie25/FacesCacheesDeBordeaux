@@ -87,7 +87,7 @@ include __DIR__ . '/initAngle.php';
         <input type="hidden" id="id" name="id" value="<?= $_GET['id'];?>"/>
 
         <div class="control-group">
-            <label class="control-label" for="libAngl"><b>Nom de l'angle :&nbsp;</b></label>
+            <label class="control-label" for="libAngl">Nom de l'angle :&nbsp;</label>
             <input type="text" name="libAngl" id="libAngl" size="60" maxlength="60" value="<?= $libAngl; ?>" disabled="disabled" />
         </div>
         <div class="control-group">

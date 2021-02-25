@@ -13,6 +13,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
 <footer class="bas_back">
 
-    <a class="button" href="/comment.php">Gestion des COMMENTAIRES</a>
+    <a class="button" href="./comment.php">Gestion des COMMENTAIRES</a>
 
 </footer>

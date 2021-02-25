@@ -117,28 +117,24 @@ include __DIR__ . '/initLangue.php';
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
 
         <div class="control-group">
-            <label class="control-label" for="lib1Lang"><b>Langue libellé court&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="lib1Lang" id="lib1Lang" size="80" maxlength="80" value="<?= $lib1Lang; ?>" autofocus="autofocus" disabled="disabled" />
+            <label class="control-label" for="lib1Lang">Langue libellé court :&nbsp;</label>
+            <input type="text" name="lib1Lang" id="lib1Lang" size="30" maxlength="30" value="<?= $lib1Lang; ?>" disabled="disabled" />
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="lib2Lang"><b>Langue libellé long&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="lib2Lang" id="lib2Lang" size="80" maxlength="80" value="<?= $lib2Lang; ?>" disabled="disabled" />
+            <label class="control-label" for="lib2Lang"><b>Langue libellé long :&nbsp;</b></label>
+            <input type="text" name="lib2Lang" id="lib2Lang" size="60" maxlength="60" value="<?= $lib2Lang; ?>" disabled="disabled" />
         </div>
 
         <div class="control-group">
-            <label for="pays">Num Pays :</label>  
-            <input type="text" name="frPays" id="frPays" size="80" maxlength="80" value="<?= $frPays; ?>" disabled="disabled" />
+            <label for="pays">Pays :</label>  
+            <input type="text" name="frPays" id="frPays" size="60" maxlength="60" value="<?= $frPays; ?>" disabled="disabled" />
         </div>
 
         <div class="control-group">
             <div class="controls">
-                <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Annuler" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Supprimer" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                <br>
+                <input class="button" type="submit" value="Annuler" name="Submit" formnovalidate/>
+                <input class="button" type="submit" value="Supprimer" name="Submit" />
             </div>
         </div>
       </fieldset>

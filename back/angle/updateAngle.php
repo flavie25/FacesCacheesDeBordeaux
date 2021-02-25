@@ -28,9 +28,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         // Opérateur ternaire
         $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
-        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Annuler")) {
-
-            header("Location: ./angle.php");
+        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
+            $reload = $_POST['id'];
+            header("Location: ./updateAngle.php?id=".$reload);
         }   // End of if ((isset($_POST["submit"])) ...
 
         // Mode création
@@ -101,7 +101,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
 
         <div class="control-group">
-            <label class="control-label" for="libAngl"><b>Nouveau nom de l'angle :&nbsp;</b></label>
+            <label class="control-label" for="libAngl">Nouveau nom de l'angle :&nbsp;</label>
             <input type="text" name="libAngl" id="libAngl" size="60" maxlength="60" value="<?= $libAngl; ?>" autofocus="autofocus" placeholder="Saisir un nom pour l'angle (60 caractères max)" required/>
         </div>
         <div class="control-group">
@@ -126,8 +126,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         <div class="control-group">
             <div class="controls">
-                <input class="button" type="submit" value="Annuler" name="Submit" formnovalidate/>
-                <input class="button" type="submit" value="Valider" name="Submit" />
+                <input class="button" type="submit" value="Initialiser" name="Submit" formnovalidate/>
+                <input class="button" type="submit" value="Modifier" name="Submit" />
             </div>
         </div>
       </fieldset>

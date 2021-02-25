@@ -35,6 +35,15 @@
 			
         }
 
+        function get_AllAngleByLangue(){
+            global $db;
+            $query = 'SELECT numAngl, libAngl, lib1Lang FROM ANGLE INNER JOIN LANGUE ON angle.numLang = langue.numLang ORDER BY numAngl ASC;';
+            $result = $db->prepare($query);
+            $result->execute();
+            return($result->fetchAll());
+			
+        }
+
 		function create($numAngl, $libAngl, $numLang){ 
             global $db;
             try {

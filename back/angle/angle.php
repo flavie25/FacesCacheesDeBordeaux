@@ -47,15 +47,15 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <table border="3" bgcolor="aliceblue">
     <thead>
         <tr>
-            <th>&nbsp;numAngl&nbsp;</th>
-            <th>&nbsp;libAngl&nbsp;</th>
-            <th>&nbsp;numLang&nbsp;</th>
+            <th>&nbsp;Numéro angle&nbsp;</th>
+            <th>&nbsp;Libellé&nbsp;</th>
+            <th>&nbsp;Langue&nbsp;</th>
             <th colspan="2">&nbsp;Action&nbsp;</th>
         </tr>
     </thead>
     <tbody>
 <?
-    $allAngle = $monAngle->get_AllAngle();
+    $allAngle = $monAngle->get_AllAngleByLangue();
     foreach($allAngle as $row){
 	// Appel méthode : tous les angles en BDD
 
@@ -66,7 +66,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 		<td><h4>&nbsp; <?php echo $row["numAngl"]; ?> &nbsp;</h4></td>
 
         <td>&nbsp; <?php echo $row["libAngl"]; ?> &nbsp;</td>
-        <td>&nbsp; <?php echo $row["numLang"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["lib1Lang"]; ?> &nbsp;</td>
 
 		<td>&nbsp;<a href="./updateAngle.php?id=<?=$row["numAngl"];?>"><i>Modifier</i></a>&nbsp;
 		<br /></td>

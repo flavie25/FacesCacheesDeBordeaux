@@ -55,9 +55,14 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 	<h1>BLOGART21 Admin - Gestion du CRUD Statut</h1>
 
 	<hr /><br />
-	<h2>Nouveau statut :&nbsp;<a href="./createStatut.php"><i>Créer un statut</i></a></h2>
+	<h2>Nouveau statut :&nbsp;<a class="button" href="./createStatut.php">Créer un statut</a></h2>
 	<br /><hr />
 	<h2>Tous les statuts</h2>
+    <?php
+    if ($errCIR == 1){
+    echo 'Vous ne pouvez pas supprimer cet utilisateur. Veuillez d\'abord supprimer cet utilisateur dans les autres tables';
+    }
+    ?>
 
 	<table border="3" bgcolor="aliceblue">
     <thead>
@@ -93,9 +98,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     </table>
     <br><br>
 <?php
-if ($errCIR == 1){
-    echo 'Vous ne pouvez pas supprimer cet utilisateur. Veuillez d\'abord supprimer cet utilisateur dans les autres tables';
-}
 require_once __DIR__ . '/footer.php';
 ?>
 </body>
