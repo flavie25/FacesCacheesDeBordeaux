@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2? family = Bebas + Neue & display = swap');
+@import url('https://fonts.googleapis.com/css2? family = Lato & display = swap');
+@import url('https://fonts.googleapis.com/css2? family = Merriweather & display = swap');
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.img_accueil {
+    width: 450px;
+    height: 450px;  
+} 
+
+.articles {
+    width: calc(100vw - 300px);
+    padding-bottom: 125px;
+    padding-right: 150px;
+    padding-left: 150px;
+    padding-top: 300px;
+    height: auto;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.articles2 {
+    width: calc(100vw - 300px);
+    padding: 125px 150px;
+    height: auto;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* Image svg 1 */
+.bckgd {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-bottom: 20px;
+    width: 100vw;
+    height: auto;
+    z-index: -2;
+    transform: translateY(-150px);
+}
+
+/* Image svg 2 */
+.haut_droit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index:-1;
+    width: 75px;
+    height: 75px;
+}
+
+.bas_gauche {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index:-1;
+    width: 75px;
+    height: 75px;
+}
+
+/* Image svg 3 */
+.bckgd3 {
+    top: 50%;
+    left: 0;
+    width: 120%;
+    position: absolute;
+    transform: translateX(-55px);
+}
+
+/* Titre dans les pages de présentation des articles  */
+.grand_titre{
+    color: #FFF3FB;
+    font-size: 40px;
+    text-decoration: none;
+    font-family: "Bebas Neue", sans-serif;
+    text-align: center;
+}
+
+
+/*  Texte dans la page de présentation des articles  */
+.para_presentation {
+    color: #FFF3FB;
+    text-decoration: none;
+    font-size: 25px;
+    font-family: "Merriweather", sans-serif;
+    text-align: center;
+}
+
+/* ------------------ Concerne la partie 2 Pour changement de couleur -------------------  */
+
+/* Titre dans les pages de présentation des articles  */
+.grand_titre2{
+    color: #201D1E;
+    font-size: 40px;
+    text-decoration: none;
+    text-align: center;
+    font-family: "Bebas Neue", serif;
+}
+
+
+/*  Texte dans la page de présentation des articles  */
+.para_presentation2 {
+    color: #201D1E;
+    text-decoration: none;
+    font-size: 25px;
+    font-family: "Merriweather", sans-serif;
+    text-align: center;
+}
+
+/* ------------------ Fin de "Concerne la partie 2 [...]" -------------------  */
+
+
+/* ------------------ Partie droite du flex direction column -------------------  */
+
+.droite {
+    width: 550px;
+    display: flex;
+    justify-content:  center;
+    flex-direction: column;
+}
+
+.droite_svg {
+    width: calc(100% - 20px);
+    height: auto;
+    padding: 10px;
+    position: relative;
+}
+
+/* ------------------ Fin de "Partie droite du flex direction column" -------------------  */
+
+
+/* ------------------ Pour le bouton "voir plus" de chaque arcticle ------------------- */
+
+
+.btn_footer{
+    color:#433E3F;
+    background-color: #FFF3FB;
+    padding: 10px 40px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Lato', sans-serif;
+    margin: 20px 150px;
+    cursor: pointer;
+}
+
+.btn_footer2{
+    color:#FFF3FB;
+    background-color: #433E3F;
+    padding: 10px 40px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Lato', sans-serif;
+    margin: 20px 150px;
+    cursor: pointer;
+}
+
+.btn_footer:hover{
+    color: #433E3F;
+}
+
+.btn_footer2:hover{
+    color: #FFF3FB;
+}
+
+

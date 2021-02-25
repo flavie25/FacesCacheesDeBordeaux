@@ -1,7 +1,155 @@
-p {
-    color: blue;
-    background-color: black;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-body {
-    background-color: green;
+
+.bas_page {
+    background-color:#8E6E53;
+    height: 30%;
+}   
+
+.bas_footer {
+    width:100%;
+    padding: 50px 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.bas_footer ul {
+    list-style: none;
+}
+
+  
+.container_footer {
+      padding-top: 10px;
+      font-family: "Bebas Neue", serif;
+      font-weight: 500;
+      font-size: 20px;
+      color: #201D1E;
+      text-decoration: none;
+}
+
+.spe_footer {
+    font-family: "Bebas Neue", serif;
+      font-weight: 500;
+      font-size: 15px;
+      color: #201D1E;
+      text-decoration: none;
+}
+
+.container_footer a {
+    list-style: none;
+    margin-left: 50px;
+}
+
+
+
+.btn_footer3{
+    color:#FFF3FB;
+    background-color: #433E3F;
+     padding: 10px 40px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Lato';
+    margin: 20px 0;
+    cursor: pointer;
+    /* display: flex; */
+    /* flex-direction: column;
+    justify-content: space-between; */
+}
+
+.btn_footer3:hover{
+    color: #FFF3FB;
+    background-color: #113638;
+}
+
+.contain_1 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: auto;
+    flex-direction: column;
+}
+.contain_3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    flex-direction: column;
+}
+
+
+
+/* --------------------------------- Pour les réseaux sociaux ------------------------------------ */
+
+
+.contain_2 {
+	position: relative;
+	background-color: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 200px;
+}
+
+.contain_2 ul {
+    align-self: center;
+}
+
+.contain_2 ul li {
+    list-style: none;       /*enlève les puces*/
+    margin: 0 10px;         /*séparation horizontale entre les boutons*/
+}
+
+.contain_2 ul li .fa {
+    color: #201D1E;       /*couleur des icônes*/
+    font-size: 25px;        /*taille des icônes*/
+    line-height: 50px;
+    transition: .5s;
+}
+
+.contain_2 ul li .fa:hover {
+    color: none;            /*couleur des icônes lorsqu'elles sont survolées*/
+}
+
+.contain_2 ul li a {
+    position: relative;
+    display: block;
+    width: 50px;             /*largeur des rectangles*/
+    height: 50px;            /*hauteur des rectangles*/
+    border-radius: 50% ;     /*rondeur des angles*/
+    text-align: center;
+    padding-left: 50px;
+}
+
+
+
+.titre_mention {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #201D1E;
+}
+
+
+/* ----------------------------------------------- Zone des traits ----------------------------------------------- */
+
+#trait_dessus {
+    border-top: 1px solid #201D1E;
+    background-color: #201D1E;
+    width : 500px;
+    margin-left: auto;
+    margin-right: auto;
+} 
+
+.trait {
+    color: #201D1E;
+    background-color: #201D1E;
 }
