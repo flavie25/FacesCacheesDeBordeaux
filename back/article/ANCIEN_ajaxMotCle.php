@@ -4,7 +4,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
 require_once __DIR__ . '/../../CONNECT/database.php';
 
-	echo "<select size=\"10\" multiple=\"multiple\"  id=\"listMotCle\" name=\"listMotCle[]\">";
+	echo "<select size=\"10\" multiple=\"multiple\"  id=\"idMotCle\" name=\"idMotCle[]\">";
 	$langue2 = $_REQUEST["langue"];
 
 	if (isset($langue2)) { 
@@ -18,8 +18,9 @@ require_once __DIR__ . '/../../CONNECT/database.php';
             echo "<option value='" . $motcle["numMotCle"] . "'>" . $motcle["libMotCle"] . "</option>";
         }
 	}	// if (isset)
+	else {
+		echo "<option value='-1'>- - - Choisir un livre - - -</option>";
+	}
 
 	echo "</select>";
-?>
-
     

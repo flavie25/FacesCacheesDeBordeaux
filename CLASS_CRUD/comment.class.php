@@ -21,13 +21,13 @@ require_once __DIR__ . '../../CONNECT/database.php';
             return($result->fetch());
         }
         
-        function create($numSeqCom, $numArt, $dtCreaCom, $libCom){
+        function create($numSeqCom, $numArt, $dtCreaCom, $libCom, $numMemb){
             global $db;
             try {
                 $db->beginTransaction();
-                $requete = 'INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom) VALUES (?,?,?,?);';
+                $requete = 'INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, numMemb) VALUES (?,?,?,?,?);';
                 $result = $db->prepare($requete);
-                $result->execute([$numSeqCom, $numArt, $dtCreaCom, $libCom]);
+                $result->execute([$numSeqCom, $numArt, $dtCreaCom, $libCom, $numMemb]);
                 $db->commit();
                 $result->closeCursor();
 			}

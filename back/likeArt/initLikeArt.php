@@ -11,3 +11,7 @@
     // booléen
     $likeA = "";
 
+    $pseudoMemb="";
+    $libTitrArt="";
+    
+

@@ -114,33 +114,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style2.css" rel="stylesheet" />
-
-    <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js"></script>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
     <!-- <link href="../../front/assets/css/draganddrop.css" rel="stylesheet" type="text/css" /> -->
-
 </head>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#add').click(function() {
-            return !$('#listMotCle option:selected')
-            .remove().appendTo('#idMotCle');
-        });
-        $('#remove').click(function() {
-            return !$('#idMotCle option:selected')
-            .remove().appendTo('#listMotCle');
-        });
-        function selectall()  {
-            $('#idMotCle').find('option').each(function() {
-                $(this).attr('selected', 'selected');
-            });
-        }
-    });
-</script>
-
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Article</h1>
     <h2>Ajout d'un article</h2>
@@ -224,56 +199,16 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 				</select>
 			</div> 
             </br>
+<!-- -------------------------------------------------------------- -->
+            <label>Mots clés :&nbsp;&nbsp;</label>
+            <div id='motCle' style='display:inline'>
+                <select name='idMotCle[]' id="idMotCle" >
+                    <option value='-1'>- - - Choisir un / plusieurs mots clés - - -</option>
+                </select>
+            </div>
+			<br/>
         </div>
-<!-- --------------------------------------------------------------- -->
-<!-- Drag and drop sur Mots clés -->
-<!-- --------------------------------------------------------------- -->
-<br><br>
-    <div class="controls">
-            <label class="control-label" for="LibTypMotsCles1">
-                <b>Choisissez les mots clés liés à l'article :&nbsp;&nbsp;&nbsp;</b>
-            </label>
-    </div>
-    <div class="selectmotcle">
-        <div class="list1">
-    <!-- <span class="span-text">Liste Mots clés</span> -->
-        <div class="controls">
-            <label class="control-label" for="LibTypMotsCles2">
-                <b>&nbsp;&nbsp;Liste Mots clés&nbsp;&nbsp;&nbsp;</b>
-            </label>
-        </div>
-        <div id="motCle" style="display:inline">
-            <select class="form-control" id ="listMotCle" name="listMotCle[]" multiple="multiple" style="height:150px;">
-            </select>
-        </div>
-    </div>
-    <div class="btnsaddsuppr">
-        <div class="input-group btnadd">
-            <label class="control-label">
-                <button type="button" value="" class="btn btn-xs btn-primary " id="add" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px; font-size:13px" >Ajoutez&nbsp;&nbsp;>></button>
-            </label>
-        </div>
-        <div class="input-group btnspr">
-            <button type="button" value="" class="btn btn-xs btn-danger" id="remove" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px; font-size:13px"><<&nbsp;&nbsp;Supprimez</button>
-        </div>
-    </div>
-
-    <div class="list2">
-    <!-- <span class="span-text">Mots clés ajoutés</span> -->
-        <div class="controls">
-            <label class="control-label" for="LibTypMotsCles">
-                <b>&nbsp;&nbsp;Mots clés ajoutés&nbsp;&nbsp;&nbsp;</b>
-            </label>
-        </div>
-        <div id="selectMotCle" style="display:inline">
-            <select class="form-control" name="idMotCle[]" required size="9" id="idMotCle" multiple="multiple" style="height:150px;">
-            </select>
-        </div>
-    </div>
-</div>
-<!-- --------------------------------------------------------------- -->
-<!-- End of Drag and drop sur Mots clés -->
-<!-- --------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------- -->
 
         <div class="control-group">
             <label class="control-label" for="urlPhotArt"><b>Importez l'illustration :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
@@ -301,6 +236,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         </div>
       </fieldset>
     </form>
+    <script type='text/javascript' href="../../front/assets/js/draganddrop.js"></script>
     <script type='text/javascript'>
 		function getXhr() {
         var xhr = null;
@@ -329,7 +265,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 			var xhr = getXhr();
             var xhr1 = getXhr();
             var xhr2 = getXhr();
-            var xhr3 = getXhr();
 			// On définit ce qu'on va faire quand on aura la réponse
 			xhr.onreadystatechange = function() {
 				//alert(xhr.readyState);	// Affiche 1 popup à chq FK/PK lue
@@ -358,15 +293,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 				}
 			}
 
-            xhr3.onreadystatechange = function() {
-				//alert(xhr.readyState);	// Affiche 1 popup à chq FK/PK lue
-				// test si tout est reçu et si serveur est ok
-				if (xhr3.readyState == 4 && xhr3.status == 200) {
-					di = document.getElementById('selectMotCle');
-					di.innerHTML = xhr3.responseText;
-				}
-			}
-
 			// Traitement POST ajaxAngle
 			xhr.open("POST","./ajaxAngle.php",true);
 			// pour le post
@@ -385,7 +311,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 			//alert(idauteur);
 			xhr1.send("langue="+langue1);	// Recup PK auteur à passer en "m" à livre (FK)
 
-            // Traitement POST ajaxMotCle
+             // Traitement POST avaxMotCle
 			xhr2.open("POST","./ajaxMotCle.php",true);
 			// pour le post
 			xhr2.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
@@ -393,16 +319,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 			langue2 = document.getElementById('langue').options[document.getElementById('langue').selectedIndex].value;
 			//alert(idauteur);
 			xhr2.send("langue="+langue2);	// Recup PK auteur à passer en "m" à livre (FK)
-
-            // Traitement POST ajaxSelectMotCle
-            xhr3.open("POST","./ajaxSelectMotCle.php",true);
-			// pour le post
-			xhr3.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-			// poster les arguments : ici, l'id de l'auteur
-			langue3 = document.getElementById('langue').options[document.getElementById('langue').selectedIndex].value;
-			//alert(idauteur);
-			xhr3.send("langue="+langue3);	// Recup PK auteur à passer en "m" à livre (FK)
-
 		}	// End of function
   </script>
 <?php
@@ -412,7 +328,3 @@ require_once __DIR__ . '/footer.php';
 ?>
 </body>
 </html>
-
-
-
-<!-- ================================================================================================================================================ -->
