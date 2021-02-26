@@ -5,6 +5,23 @@
         <link rel="stylesheet" href="./../../assets/css/article.css">
     </header>
     <body>
+
+<? 
+require_once __DIR__."../../../util/utilErrOn.php";
+require_once __DIR__."../../../util/ctrlSaisies.php";
+require_once __DIR__."../../../CLASS_CRUD/article.class.php";
+global $db;
+$article = new ARTICLE;
+
+if(isset($_GET['id']) AND !empty($_GET['id'])){
+
+    $numArt = ctrlSaisies($_GET['id']);
+    $contenu = $article->get_1ArticleByThemAngl($numArt);
+    
+}
+
+
+?>
         
         <div class="articleContainer">
             <br>

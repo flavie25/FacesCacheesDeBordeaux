@@ -48,7 +48,12 @@ include __DIR__ ."/../../../back/session/sessionVerif.php";
 
                 <ul id="menu">
                     <a href="accueil.php"><li>Accueil</li></a>
-                    <a href="connexion.php"><li>Mon Compte</li></a>
+                    <?php if(isset($_SESSION['utilisateur'])){ ?>
+                    <a href="profil.php"><li>Mon compte</li></a>
+
+                    <?php } else {?>
+                        <a href="connexion.php"><li>Mon Compte</li></a>
+                    <?php } ?>
                     <a href="#"><li>Nous Contacter</li></a> <br> <br> <br> <br> <br> <br> <br> <br> <br>
                     <a href="accueil.php"><li>Me déconnecter</li></a>
                 </ul>

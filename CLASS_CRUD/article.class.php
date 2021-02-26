@@ -82,23 +82,5 @@
 		}
 
 		
-		function delete($numArt){
-		global $db;
-
-		try {
-			$db->beginTransaction();
-			$requete= "DELETE FROM ARTICLE WHERE numArt = ?; ";
-			$result = $db->prepare($requete);
-			$result->execute([$numArt]);
-			$db->commit();
-			$result->closeCursor();
-
-			}
-			catch (PDOException $e) {
-					die('Erreur delete Article : ' . $e->getMessage());
-					$db->rollBack();
-					$result->closeCursor();
-			}
-		}
 
 	}	// End of class
