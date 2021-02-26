@@ -2,17 +2,16 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 .bas_page {
+    width: 100vw;
     background-color:#8E6E53;
     height: 30%;
 }   
 
 .bas_footer {
-    width:100%;
-    padding: 50px 150px;
+    padding: 15px 150px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -24,20 +23,20 @@
 
   
 .container_footer {
-      padding-top: 10px;
-      font-family: "Bebas Neue", serif;
-      font-weight: 500;
-      font-size: 20px;
-      color: #201D1E;
-      text-decoration: none;
+    padding-top: 10px;
+    font-family: "Bebas Neue", serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #201D1E;
+    text-decoration: none;
 }
 
 .spe_footer {
     font-family: "Bebas Neue", serif;
-      font-weight: 500;
-      font-size: 15px;
-      color: #201D1E;
-      text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    color: #201D1E;
+    text-decoration: none;
 }
 
 .container_footer a {
@@ -69,11 +68,12 @@
 
 .contain_1 {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     width: auto;
     flex-direction: column;
 }
+
 .contain_3{
     display: flex;
     align-items: center;
@@ -118,12 +118,11 @@
 
 .contain_2 ul li a {
     position: relative;
-    display: block;
-    width: 50px;             /*largeur des rectangles*/
+    display: block;            
     height: 50px;            /*hauteur des rectangles*/
     border-radius: 50% ;     /*rondeur des angles*/
     text-align: center;
-    padding-left: 50px;
+
 }
 
 
@@ -133,9 +132,22 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     color: #201D1E;
+}
+
+.mention {
+    font-size: 1.2em;
+}
+
+.ment-alyssa {
+    text-decoration: none;
+    color: #201D1E;
+}
+
+.ment-alyssa:hover {
+    color: #FFF3FB;
 }
 
 

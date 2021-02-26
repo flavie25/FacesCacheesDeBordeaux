@@ -1,3 +1,23 @@
+<? 
+
+$error = isset($_GET['error']) ? $_GET['error'] : '';
+
+switch ($error) {
+    case 1:
+      $errLogin = "Merci de saisir un login et/ou un mot de passe !";
+      echo ("<font color='#FF0000'>>> " . $errLogin . "</font><br />");
+      break;
+
+    case 2:
+      echo ("<font color='#FF0000'>>> Le login et/ou le mot de passe ne sont pas valides !</font><br />");
+      break;
+
+    case 3:
+      echo ("<font color='#FF0000'>>> Vous devez être connecté(e) !</font><br />");
+      break;
+  }
+
+?>
 <html>
 
 <head>
@@ -12,18 +32,18 @@
         <h1> Connexion </h1>
         <p class="obligatoire"> *Champs obligatoires </p>
 
-        <form method="post" action="traitement.php">
+        <form method="post" action="../../../back/session/verif_connexion.php" enctype="multipart/form-data" accept-charset="UTF-8">
 
-        <label for="nom">E-Mail*</label> </br>
-        <input type="text" name="nom" id="nom" placeholder="Renseignez votre adresse mail" title="Renseignez votre adresse mail" /> </br>
+        <label for="eMailMemb">E-Mail*</label> </br>
+        <input type="text" name="eMailMemb" id="eMailMemb" required placeholder="Renseignez votre adresse mail" title="Renseignez votre adresse mail" /> </br>
 
-        <label for="prenom">Mot de passe*</label> </br>
-        <input type="password" name="prenom" id="prenom" placeholder="Renseignez votre mot de passe" title="Renseignez votre mot de passe" /> 
-    
+        <label for="passMemb">Mot de passe*</label> </br>
+        <input type="password" name="passMemb" id="passMemb" required placeholder="Renseignez votre mot de passe" title="Renseignez votre mot de passe" /> 
+        </br>
+        <input type="submit" class ="button" value="JE ME CONNECT"  name="Submit" /> 
         </form>
 
-        <button class="button"> JE ME CONNECTE </button>
-        <p> Pas de compte ? Inscris-toi ici ! </p>
+        <a href="inscription.php"> Pas de compte ? Inscris-toi ici ! </p>
     </div>
 
 </html>

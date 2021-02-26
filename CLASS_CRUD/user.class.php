@@ -20,7 +20,7 @@
 
 		function get_ExistPseudo($pseudoUser) {
 			global $db;
-			$requete = 'SELECT * FROM USER WHERE pseudoUSER = ?;';
+			$requete = 'SELECT * FROM USER WHERE pseudoUser = ?;';
 			$result = $db->prepare($requete);
 			$result->execute([$pseudoUser]);
 			return($result->rowCount());

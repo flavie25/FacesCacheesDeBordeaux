@@ -6,8 +6,9 @@
        <meta http-equiv="X-UA-Compatible" content="IE=edge">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
        <title>Blog La Face Cachée de Bordeaux</title>
-       <link rel="stylesheet" href="../../assets/css/navbar.css">
+       <link rel="stylesheet" href="../../assets/css/nav.css">
    </head>
+   
    <body class="corp">
 
     <header class="head">
@@ -28,10 +29,11 @@
             </div>
         </nav>
 
-        <img src="../../assets/images/logo" class="logo">
       <!--  <img src="../../assets/images/logo" class="connect"> -->
         <input type="image" src="../../assets/images/logo" class="connect" href="#" />
     </header>
+
+
 
     </body>
 </html>          
