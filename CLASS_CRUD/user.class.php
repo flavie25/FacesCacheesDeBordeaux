@@ -28,7 +28,7 @@
 
 		function get_1UserByStatut($pseudoUser){
 			global $db;
-			$requete = 'SELECT * FROM USER INNER JOIN STATUT ON user.idStat = statut.idStat WHERE user.pseudoUser = ?;';
+			$requete = 'SELECT * FROM user INNER JOIN statut ON user.idStat = statut.idStat WHERE user.pseudoUser = ?;';
 			$result = $db->prepare($requete);
 			$result->execute([$pseudoUser]);
 			return($result->fetch());
@@ -43,7 +43,7 @@
 
 		function get_NbAllUsersByidStat($idStat){
             global $db;
-            $query = 'SELECT * FROM USER INNER JOIN STATUT ON user.idStat = statut.idStat WHERE statut.idStat = ?;';
+            $query = 'SELECT * FROM user INNER JOIN statut ON user.idStat = statut.idStat WHERE statut.idStat = ?;';
             $result = $db->prepare($query);
             $result->execute([$idStat]);
             $allUsersStat = $result->fetchAll();
@@ -58,7 +58,7 @@
 			global $db;
 			try {
           	$db->beginTransaction();
-			$requete = 'INSERT INTO USER (pseudoUser, passUser, nomUser, prenomUser, emailUser, idStat) VALUES (?,?, ?, ?, ?, ?);';
+			$requete = 'INSERT INTO user (pseudoUser, passUser, nomUser, prenomUser, emailUser, idStat) VALUES (?,?, ?, ?, ?, ?);';
 			$result = $db->prepare($requete);
 			$result->execute([$pseudoUser, $passUser, $nomUser, $prenomUser, $emailUser, $idStat]);
 

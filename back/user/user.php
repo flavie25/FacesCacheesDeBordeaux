@@ -45,20 +45,34 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         }
     </style>
 
-<link rel="stylesheet" href="../../front/assets/css/normalize.css">
-<link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css" >
 
 </head>
 <body>
-	<h1>BLOGART21 Admin - Gestion du CRUD USER</h1>
+<div class="hautpage">
+    <div class="Titre">
+        <h1>BLOGART21 Admin - Gestion du CRUD User</h1>
 
-	<hr /><br />
-	<h2>Nouveau user :&nbsp;<a href="./createUser.php"><i>Créer un user</i></a></h2>
-	<br /><hr />
-	<h2>Tous les user</h2>
+        <h2>Tous les users</h2>
 
-	<table border="3" bgcolor="aliceblue">
-    <thead>
+    </div>
+
+    <div class="creerBt">
+        <button class="button" onclick="location.href='./createUser.php'">
+            Créer un user
+        </button>
+    </div>
+</div>
+<?php
+if ($errCIR == 1){
+    echo 'Vous ne pouvez pas supprimer le super administrateur';
+}
+?>
+<div class="tableArea">
+	<table class="tableau">
+    <thead class="entete">
         <tr>
             <th>&nbsp;pseudoUser&nbsp;</th>
             <th>&nbsp;passUser&nbsp;</th>
@@ -69,7 +83,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <th colspan="2">&nbsp;Action&nbsp;</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="body">
 <?
     $allUser = $user->get_AllUser();
     foreach($allUser as $row){
@@ -86,9 +100,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <td>&nbsp; <?php echo $row["eMailUser"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["idStat"]; ?> &nbsp;</td>
 
-		<td>&nbsp;<a href="./updateUser.php?id=<?=$row["pseudoUser"];?>"><i>Modifier</i></a>&nbsp;
+		<td>&nbsp;<a class="button" href="./updateUser.php?id=<?=$row["pseudoUser"];?>"><i>Modifier</i></a>&nbsp;
 		<br /></td>
-		<td>&nbsp;<a href="./deleteUser.php?id=<?=$row["pseudoUser"];?>"><i>Supprimer</i></a>&nbsp;
+		<td>&nbsp;<a class="button" href="./deleteUser.php?id=<?=$row["pseudoUser"];?>"><i>Supprimer</i></a>&nbsp;
 		<br /></td>
         </tr>
 <?
@@ -96,11 +110,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 ?>
     </tbody>
     </table>
+</div>
     <br><br>
 <?php
-if ($errCIR == 1){
-    echo 'Vous ne pouvez pas supprimer le super administrateur';
-}
 require_once __DIR__ . '/footer.php';
 ?>
 </body>

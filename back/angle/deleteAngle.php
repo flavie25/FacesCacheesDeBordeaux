@@ -20,10 +20,15 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     global $db;
     $monAngle = new ANGLE;
 
+    // Ctrl CIR
+    require_once __DIR__ . '/../../CLASS_CRUD/article.class.php';
+    global $db;
+    $monArticle = new ARTICLE;
+    $errCIR = 0;
 
-   // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
-   // suppression effective du angle
-   if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
+    // suppression effective de l'angle
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Opérateur ternaire
     $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
@@ -33,16 +38,30 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         header("Location: ./angle.php");
     }   // End of if ((isset($_POST["submit"])) ...
 
-    if ((isset($_POST['id']) AND !empty($_POST['id']))
-    AND (!empty($_POST['Submit']) AND ($Submit === "Supprimer"))) {
+    if (isset($_POST['id']) AND (!empty($_POST['id']))
+        AND (!empty($_POST['Submit']) AND ($Submit === "Supprimer"))) {
             
-            $numAngl = ctrlSaisies($_POST['id']); 
-              
-            $monAngle->delete($numAngl);
-            header("Location: ./angle.php");
+            $numAngl = ctrlSaisies($_POST['id']);
+
+            $allArticle = $monArticle->get_NbAllAnglByArt($numAngl);
+            
+            if($allArticle < 1){
+                
+                $monAngle->delete($numAngl);
+                header("Location: ./angle.php");
+
+            }
+            else{
+                $errCIR = 1;
+                header("Location: ./angle.php?errCIR=".$errCIR);
+            }        
 
     }   // End of if ((isset($_POST['id'])
+    else {
+        echo "Ne fonctionne pas";
+    }
 }   // End of if ($_SERVER["REQUEST_METHOD"] === "POST")
+
 // Init variables form
 include __DIR__ . '/initAngle.php';
 ?>
@@ -58,11 +77,15 @@ include __DIR__ . '/initAngle.php';
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css">
+    <link rel="stylesheet" href="../css/form.css">
 
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD ANGLE</h1>
-    <h2>Suppression d'un angle</h2>
+<div class="Titre">
+        <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
+            <h2>Suppression d'un angle</h2>
+    </div>
 <? 
 // Modif : récup id à modifier
     if (isset($_GET['id']) and !empty($_GET['id'])){

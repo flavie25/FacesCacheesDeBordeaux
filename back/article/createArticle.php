@@ -116,6 +116,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css">
+    <link rel="stylesheet" href="../css/form.css">
 
     <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -143,8 +145,10 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 </script>
 
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Article</h1>
-    <h2>Ajout d'un article</h2>
+    <div class="Titre">
+        <h1>BLOGART21 Admin - Gestion du CRUD Article</h1>
+            <h2>Ajout d'un article</h2>
+    </div>
 
     <form method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data" id="chgLang">
 
@@ -154,45 +158,46 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <!--<input type="hidden" id="id" name="id" value=": /*$_GET['id']; */-->
 
         <div class="control-group">
-            <label class="control-label" for="libTitrArt"><b>Titre de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libTitrArt" id="libTitrArt" size="80" maxlength="80" value="<?= $libTitrArt; ?>" autofocus="autofocus" />
+            <label class="control-label" for="libTitrArt">Titre de l'article :&nbsp;</label>
+            <input type="text" name="libTitrArt" id="libTitrArt" title="100 caractères max" size="100" maxlength="100" value="<?= $libTitrArt; ?>" autofocus="autofocus" placeholder="Saisir le titre de l'article" required/>
         </div>
         <div class="control-group">
-            <label class="control-label" for="libChapoArt"><b>Chapô de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libChapoArt" id="libChapoArt" size="80" maxlength="80" value="<?= $libChapoArt; ?>" autofocus="autofocus" />
+            <label class="control-label" for="libChapoArt">Chapeau de l'article :&nbsp;</label>
+            <textarea name="libChapoArt" id="libChapoArt" title="500 caractères max" cols="100" rows="5" maxlength="500" placeholder="Saisir le chapeau de l'article" required></textarea>
         </div>
         <div class="control-group">
-            <label class="control-label" for="libAccrochArt"><b>Accroche de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libAccrochArt" id="libAccrochArt" size="80" maxlength="80" value="<?= $libAccrochArt; ?>" autofocus="autofocus" />
+            <label class="control-label" for="libAccrochArt">Accroche de l'article :&nbsp;</label>
+            <input type="text" name="libAccrochArt" id="libAccrochArt" title="100 caractères max" size="100" maxlength="100" value="<?= $libAccrochArt; ?>" placeholder="Saisir une accroche" required/>
         </div>
         <div class="control-group">
-            <label class="control-label" for="parag1Art"><b>Paragraphe 1 de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <h3>Paragraphe 1</h3>
+            <label class="control-label" for="libSsTitr1Art">Sous-titre 1 de l'article :&nbsp;</label>
+            <input type="text" name="libSsTitr1Art" id="libSsTitr1Art" title="100 caractères max" size="100" maxlength="100" value="<?= $libSsTitr1Art; ?>" placeholder="Saisir un sous-titre pour le paragraphe 1" required/>
+        
+            <label class="control-label" for="parag1Art">Paragraphe 1 de l'article :&nbsp;</label>
             <input type="text" name="parag1Art" id="parag1Art" size="80" maxlength="1400" value="<?= $parag1Art; ?>" autofocus="autofocus" />
         </div>
         <div class="control-group">
-            <label class="control-label" for="libSsTitr1Art"><b>Sous-titre 1 de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libSsTitr1Art" id="libSsTitr1Art" size="80" maxlength="80" value="<?= $libSsTitr1Art; ?>" autofocus="autofocus" />
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="parag2Art"><b>Paragraphe 2 de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <h3>Paragraphe 2</h3>
+            <label class="control-label" for="libSsTitr2Art">Sous-titre 2 de l'article :&nbsp;</label>
+            <input type="text" name="libSsTitr2Art" id="libSsTitr2Art" title="100 caractères max" size="100" maxlength="100" value="<?= $libSsTitr2Art; ?>"  placeholder="Saisir un sous-titre pour le paragraphe 2" required/>
+        
+            <label class="control-label" for="parag2Art">Paragraphe 2 de l'article :&nbsp;</label>
             <input type="text" name="parag2Art" id="parag2Art" size="80" maxlength="1400" value="<?= $parag2Art; ?>" autofocus="autofocus" />
         </div>
         <div class="control-group">
-            <label class="control-label" for="libSsTitr2Art"><b>Sous-titre 2 de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libSsTitr2Art" id="libSsTitr2Art" size="80" maxlength="80" value="<?= $libSsTitr2Art; ?>" autofocus="autofocus" />
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="parag3Art"><b>Paragraphe 3 de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <h3>Paragraphe 3</h3>
+            <label class="control-label" for="parag3Art">Paragraphe 3 de l'article :&nbsp;</label>
             <input type="text" name="parag3Art" id="parag3Art" size="80" maxlength="1400" value="<?= $parag3Art; ?>" autofocus="autofocus" />
         </div>
         <div class="control-group">
-            <label class="control-label" for="libConclArt"><b>Conclusion de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <label class="control-label" for="libConclArt">Conclusion de l'article :&nbsp;</label>
             <input type="text" name="libConclArt" id="libConclArt" size="80" maxlength="80" value="<?= $libConclArt; ?>" autofocus="autofocus" />
         </div>
 
         <div class="control-group">
 <!-- -------------------------------------------------------------- -->
-			<label>Langues :&nbsp;&nbsp;</label>
+			<label>Langues :&nbsp;</label>
 			<select name='langue' id='langue' onchange='change()'>
 				<option value='-1'>- - - Choisir une langue - - -</option>
                 <?
@@ -210,7 +215,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 ?>
 			</select><br/>
 <!-- -------------------------------------------------------------- -->
-            <label>Angle :&nbsp;&nbsp;</label>
+            <label>Angle :&nbsp;</label>
             <div id='angle' style='display:inline'>
                 <select name='idAngl' id="idAngl">
                     <option value='-1'>- - - Choisir un angle - - -</option>
@@ -226,78 +231,72 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 			</div> 
             </br>
         </div>
+        <br/>
 <!-- --------------------------------------------------------------- -->
 <!-- Drag and drop sur Mots clés -->
 <!-- --------------------------------------------------------------- -->
-<br><br>
-    <div class="controls">
-            <label class="control-label" for="LibTypMotsCles1">
-                <b>Choisissez les mots clés liés à l'article :&nbsp;&nbsp;&nbsp;</b>
-            </label>
-    </div>
-    <div class="selectmotcle">
-        <div class="list1">
-    <!-- <span class="span-text">Liste Mots clés</span> -->
+    <div class="control-group">
         <div class="controls">
-            <label class="control-label" for="LibTypMotsCles2">
-                <b>&nbsp;&nbsp;Liste Mots clés&nbsp;&nbsp;&nbsp;</b>
-            </label>
+                <label class="control-label" for="LibTypMotsCles1">
+                    Choisissez les mots clés liés à l'article :&nbsp;
+                </label>
         </div>
-        <div id="motCle" style="display:inline">
-            <select class="form-control" id ="listMotCle" name="listMotCle[]" multiple="multiple" style="height:150px;">
-            </select>
-        </div>
-    </div>
-    <div class="btnsaddsuppr">
-        <div class="input-group btnadd">
-            <label class="control-label">
-                <button type="button" value="" class="btn btn-xs btn-primary " id="add" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px; font-size:13px" >Ajoutez&nbsp;&nbsp;>></button>
-            </label>
-        </div>
-        <div class="input-group btnspr">
-            <button type="button" value="" class="btn btn-xs btn-danger" id="remove" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px; font-size:13px"><<&nbsp;&nbsp;Supprimez</button>
-        </div>
-    </div>
+        <div class="selectmotcle">
+            <div class="list1">
+                <div class="controls">
+                    <label class="control-label" for="LibTypMotsCles2">
+                        Liste Mots clés&nbsp;
+                    </label>
+                </div>
+                <div id="motCle" style="display:inline">
+                    <select class="form-control" id ="listMotCle" name="listMotCle[]" multiple="multiple" style="height:150px;">
+                    </select>
+                </div>
+            </div>
+            <div class="btnsaddsuppr">
+                <div class="input-group btnadd">
+                    <label class="control-label">
+                        <button class="button" type="button" value="" class="btn btn-xs btn-primary " id="add" style="cursor:pointer;" >Ajoutez&nbsp;>></button>
+                    </label>
+                </div>
+                <div class="input-group btnspr">
+                    <button class="button" type="button" value="" class="btn btn-xs btn-danger" id="remove" style="cursor:pointer;"><<&nbsp;Supprimez</button>
+                </div>
+            </div>
 
-    <div class="list2">
-    <!-- <span class="span-text">Mots clés ajoutés</span> -->
-        <div class="controls">
-            <label class="control-label" for="LibTypMotsCles">
-                <b>&nbsp;&nbsp;Mots clés ajoutés&nbsp;&nbsp;&nbsp;</b>
-            </label>
-        </div>
-        <div id="selectMotCle" style="display:inline">
-            <select class="form-control" name="idMotCle[]" required size="9" id="idMotCle" multiple="multiple" style="height:150px;">
-            </select>
+            <div class="list2">
+                <div class="controls">
+                    <label class="control-label" for="LibTypMotsCles">
+                        Mots clés ajoutés&nbsp;
+                    </label>
+                </div>
+                <div id="selectMotCle" style="display:inline">
+                    <select class="form-control" name="idMotCle[]" required size="9" id="idMotCle" multiple="multiple" style="height:150px;">
+                    </select>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 <!-- --------------------------------------------------------------- -->
 <!-- End of Drag and drop sur Mots clés -->
 <!-- --------------------------------------------------------------- -->
 
         <div class="control-group">
-            <label class="control-label" for="urlPhotArt"><b>Importez l'illustration :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <div class="controls"> 
-                <input type="file" name="monfichier"  id="monfichier" accept=".jpg,.gif,.png,.jpeg" size="70" maxlength="70" value="<? if(isset($_GET['id'])) echo $_POST['urlPhotArt']; else echo $urlPhotArt; ?>" tabindex="110" placeholder="Sur 70 car." title="Recherchez l'image à uploader !" />
-                <p>
-                <? // Gestion extension images acceptées
-                $msgImagesOK = "&nbsp;&nbsp;>> Extension des images acceptées : .jpg, .gif, .png, .jpeg" . "<br>" .
-                    "(lageur, hauteur, taille max : 80000px, 80000px, 200 000 Go)";
-                echo "<i>" . $msgImagesOK . "</i>";
-                ?>
-                </p>
-            </div>
+            <label class="control-label" for="urlPhotArt">Importez l'illustration :&nbsp;</label>
+            <input class="button2" type="file" name="monfichier"  id="monfichier" accept=".jpg,.gif,.png,.jpeg" size="70" maxlength="70" value="<? if(isset($_GET['id'])) echo $_POST['urlPhotArt']; else echo $urlPhotArt; ?>" tabindex="110" placeholder="Sur 70 car." title="Recherchez l'image à uploader !" />
+            <p>
+            <? // Gestion extension images acceptées
+            $msgImagesOK = "&nbsp;&nbsp;>> Extension des images acceptées : .jpg, .gif, .png, .jpeg" . "<br>" .
+                "(lageur, hauteur, taille max : 80000px, 80000px, 200 000 Go)";
+            echo "<i>" . $msgImagesOK . "</i>";
+            ?>
+            </p>
         </div>
 
         <div class="control-group">
             <div class="controls">
-                <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Annuler" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                <br>
+                <input class="button" type="submit" value="Annuler" name="Submit" formnovalidate/>
+                <input class="button" type="submit" value="Valider" name="Submit" />
             </div>
         </div>
       </fieldset>

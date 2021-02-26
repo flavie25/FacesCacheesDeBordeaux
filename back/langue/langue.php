@@ -33,6 +33,7 @@ $errCIR=0;
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css" >
 
 </head>
 <body>
@@ -55,6 +56,7 @@ $errCIR=0;
     echo 'Vous ne pouvez pas supprimer cette langue. Veuillez d\'abord supprimer cette langue dans les autres tables';
     }
     ?>
+<div class="tableArea">
     <table class="tableau">
     <thead class="entete">
         <tr>
@@ -90,6 +92,7 @@ $errCIR=0;
 ?>
     </tbody>
     </table>
+</div>
 
     <br><br>
 
