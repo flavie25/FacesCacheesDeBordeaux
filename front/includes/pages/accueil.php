@@ -1,3 +1,7 @@
+<? 
+include __DIR__ ."/../../../back/session/sessionVerif.php";
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -32,7 +36,7 @@
     <body class="corp">
 
 <header class="head">
- <nav role="navigation">
+    <nav role="navigation">
         <div id="menuToggle">
         <input type="checkbox">      
        

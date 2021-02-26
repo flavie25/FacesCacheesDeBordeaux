@@ -34,13 +34,13 @@ switch ($error) {
 
         <form method="post" action="../../../back/session/verif_connexion.php" enctype="multipart/form-data" accept-charset="UTF-8">
 
-        <label for="eMailMemb">E-Mail*</label> </br>
-        <input type="text" name="eMailMemb" id="eMailMemb" required placeholder="Renseignez votre adresse mail" title="Renseignez votre adresse mail" /> </br>
+        <label for="pseudoMemb">Pseudo*</label> </br>
+        <input type="text" name="pseudoMemb" id="pseudoMemb" required placeholder="Renseignez votre pseudo" title="Renseignez votre pseudo" /> </br>
 
         <label for="passMemb">Mot de passe*</label> </br>
         <input type="password" name="passMemb" id="passMemb" required placeholder="Renseignez votre mot de passe" title="Renseignez votre mot de passe" /> 
         </br>
-        <input type="submit" class ="button" value="JE ME CONNECT"  name="Submit" /> 
+        <input type="submit" class ="button" value="JE ME CONNECTE"  name="Submit" /> 
         </form>
 
         <a href="inscription.php"> Pas de compte ? Inscris-toi ici ! </p>
