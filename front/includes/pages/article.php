@@ -9,7 +9,7 @@
         <div class="articleContainer">
             <br>
             <br>
-            <img src="../../assets/images/Banniere_article.png" style="display: block;margin-left: auto;margin-right: auto;">
+            <img src="../../assets/images/Banniere_article.png" style="display: block;margin-left: auto;margin-right: auto; transform:translate(-2%)">
             <br>
             <p>
                 Il fait partie intégrante de chaque ville et pourtant il reste malgré tout illégal. Cet art génère cependant une grande fascination chez de nombreux artistes et n’est pas prêt de s’éteindre ! Découvrez ce qu’il en est à Bordeaux et ses artistes phare tels que Alber ou encore Michaël Husser, un street artiste venu habiller les murs de la belle endormie.
@@ -52,11 +52,11 @@ L’histoire de cette pratique commence à New York dans les années 40. Où un 
                 <div style="display:flex;flex-direction:column; margin-left: 2%;">
                     <div>
                         <label style="margin-left: 1%;font-size: 1.375em;">24/02/2021</label>
-                        <label style="margin-left: 5%;">Jean mi du 13 sisi gangang :</label>
+                        <label style="margin-left: 5%;">Edouard-pinceau :</label>
                     </div>
                     <div>
                         <form action="">
-                        <textarea id="commentaire" name="commentaire" class="formulaire" cols="40" rows="3" readonly="readonly" style="resize: none;">Waaa c tro bi1 g tro émé kan vou avé parlé dé amende ct rigolo</textarea><br>
+                        <textarea id="commentaire" name="commentaire" class="formulaire" cols="40" rows="3" readonly="readonly" style="resize: none;">Oh ! je connaissais pas !</textarea><br>
                         <button class="button">Répondre</button>
                         <img src="../../assets/images/Like.png" style="margin-left: 1%;transform: translateY(5px);">
                         <label id="nbLikes">0</label>
@@ -83,16 +83,20 @@ L’histoire de cette pratique commence à New York dans les années 40. Où un 
                     <div>
                         <form action="">
                             <textarea id="commentaire" name="commentaire" placeholder="Écrivez un commentaire" class="formulaire" cols="40" rows="3" style="resize: none;"></textarea><br>
-                            <button class="button">Envoyer</button>
+                            <button class="button" style="margin-top:15px">Envoyer</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
         <br>
-            <div style="margin: 0 auto;width: 500px;">
-                <img src="../../assets/images/Boutonprecedent.png" alt="precedent" style="width:50%; margin-right: 0px;">
-                <img src="../../assets/images/Boutonsuivant.png" alt="suivant" style="width:49%">
+        <div style="display:flex;flex-direction:row">
+            <div style="margin: 0 25%;">
+                <img src="../../assets/images/Boutonprecedent.png" alt="precedent" style="width:250px;height:50px; margin-right: 10%;">
             </div>
+            <div style="margin: 0 auto;width: 50%;">
+                <img src="../../assets/images/Boutonsuivant.png" alt="suivant" style="width:250px;height:50px;margin-left: 10%;">
+            </div>
+        </div>
     </body>
 </html>
