@@ -107,7 +107,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                     }
                     if(($prenomMembre !="") AND ($nomMembre!="") AND ($idStat!="") AND ($dtCreaMembre!="") AND ($souvenirMembre!="") AND ($accordMembre!="") AND ($eMailOk == 1) AND ($passwordOk == 1) AND ($pseudoExist == 0)){
                         
-                        $membre->create($prenomMembre, $nomMembre,$pseudoMembre,$passMembre1,$emailMembre1,$dtCreaMembre, $souvenirMembre,$accordMembre,$idStat);
+                        $membre->create($prenomMembre, $nomMembre,$pseudoMembre,$passMembre2,$emailMembre1,$dtCreaMembre, $souvenirMembre,$accordMembre,$idStat);
                         header("Location: ./membre.php");
                     }
                     

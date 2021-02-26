@@ -1,3 +1,7 @@
+<? 
+include __DIR__ ."/../../../back/session/sessionVerif.php";
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -31,45 +35,58 @@
 
     <body class="corp">
 
-<header class="head">
- <nav role="navigation">
-        <div id="menuToggle">
-        <input type="checkbox">      
-       
-        <span></span>
-        <span></span>
-        <span></span>           
+<header>
+    <div class="head">
+        <div class="flavie">
+            <nav role="navigation">
+                <div id="menuToggle">
+                <input type="checkbox">      
+            
+                <span></span>
+                <span></span>
+                <span></span>           
 
-        <ul id="menu">
-            <a href="accueil.php"><li>Accueil</li></a>
-            <a href="inscription.php"><li>Mon Compte</li></a>
-            <a href="#"><li>Nous Contacter</li></a> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-            <a href="accueil.php"><li>Me déconnecter</li></a>
-        </ul>
+                <ul id="menu">
+                    <a href="accueil.php"><li>Accueil</li></a>
+                    <a href="connexion.php"><li>Mon Compte</li></a>
+                    <a href="#"><li>Nous Contacter</li></a> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+                    <a href="accueil.php"><li>Me déconnecter</li></a>
+                </ul>
+                </div>
+            </nav>
         </div>
-    </nav>
+            
 
-  <!--  <img src="../../assets/images/logo" class="connect"> -->
-    <input type="image" src="../../assets/images/loggin.png" class="connect" href="connexion.php" />
+                <!-- ----------------------------Code de la barre de recherche------------------------ -->
+            <div class="tous_bar">
+                <div class="bar_re">
+                    <div class="recherche">
+                        <label for="site-search">Rechercher dans le site : </label>
+                        <input type="search" id="site-search" placeholder="..." name="recherche" >
+                    </div>
+                    <button class="button"> Rechercher </button>
+                </div>
+
+
+            <!-- ----------------------------Fin Code de la barre de recherche------------------------ -->
+
+        <!--  <img src="../../assets/images/logo" class="connect"> -->
+
+                <!-- Pour login -->
+                <a href="connexion.php" >
+                    <i class="fas fa-user"></i>
+                    <!-- <img  src="../../assets/images/alber.png" class="connect" />  -->
+                </a>
+                
+                    
+            </div>
+        </div>
 </header>
 
 
     <!-- ----------------------------Fin Code de la navbar------------------------ -->
 
-    <!-- ----------------------------Code de la barre de recherche------------------------ -->
-       
-    <div class="bar_re">
-        <div class="sep">
-            <label for="site-search">Rechercher dans le site : </label>
-           
-                <input type="search" id="site-search" >
-        </div>        
 
-                <button class="button"> Rechercher </button>
-    </div>
-
-
-    <!-- ----------------------------Fin Code de la barre de recherche------------------------ -->
 
         
     <!-- ------------------------------------------- FIN FENETRE POP UP MENTIONS LEGALES ----------------------------------------->
@@ -101,25 +118,25 @@
     <!------------------------------------------------- FENETRE POP UP COOKIES -------------------------------------------->
            
     <div id="overlay" class="overlay">
-                    <div id="popup" class="popup">
+        <div id="popup" class="popup">
 
-                        <div class="separation">
-                            <p class="para_cookie"> - Avec votre accord, nous utilisons des cookies pour stocker et accéder à des informations personnelles. 
-                                                        Vous pouvez les refuser en ignorant ce message.
-                                                        Nous traitons les données suivantes : 
-                                
-                            </p>
+            <div class="separation">
+                <p class="para_cookie"> - Avec votre accord, nous utilisons des cookies pour stocker et accéder à des informations personnelles. 
+                                            Vous pouvez les refuser en ignorant ce message.
+                                            Nous traitons les données suivantes : 
+                    
+                </p>
 
-                            <p class="para_cookie"> - Données de géolocalisation précises et identification par analyse du terminal,
-                                                        données d’audience et développement de produit, Stocker et/ou accéder à des informations sur un terminal. 
-                            </p>
-                        </div>
+                <p class="para_cookie"> - Données de géolocalisation précises et identification par analyse du terminal,
+                                            données d’audience et développement de produit, Stocker et/ou accéder à des informations sur un terminal. 
+                </p>
+            </div>
 
-                        <button id="button" class="button" > Accepter les cookies </button>
-                        <span id="btnClose" class="btnClose" >&times;</span>
+            <button id="button" class="button" > Accepter les cookies </button>
+            <span id="btnClose" class="btnClose" >&times;</span>
 
-                    </div>
-                </div>
+        </div>
+    </div>
 
                 <srcipt src="../../assets/css/cookies.css">
 
@@ -351,7 +368,7 @@
         <div id="trait_dessus"><hr></div>
 
         <div class="titre_mention">
-            <h2 class="mention" > <a class="ment-alyssa"  href="https://drive.google.com/drive/u/0/folders/1HBglrX0-kUXurgdlhxJJsTzM3MyDvSqP?ths=true"> Mentions Légales</h2>
+            <h2 class="mention" > <a class="ment-alyssa"  href="mentions.php"> Mentions Légales</h2>
         </div>  
 
     </footer>
