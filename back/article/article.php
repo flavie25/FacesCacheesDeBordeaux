@@ -36,18 +36,26 @@ require_once __DIR__ . '/../../util/dateChangeFormat.php';
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css" >
 
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Article</h1>
+<div class="hautpage">
+    <div class="Titre">
+        <h1>BLOGART21 Admin - Gestion du CRUD Article</h1>
 
-    <hr /><br />
-	<h2>Nouveau statut :&nbsp;<a href="./createArticle.php"><i>Créer un article</i></a></h2>
-	<br /><hr />
-	<h2>Tous les statuts</h2>
+        <h2>Tous les articles</h2>
 
-	<table border="3" bgcolor="aliceblue">
-    <thead>
+    </div>
+
+    <div class="creerBt">
+        <button class="button" onclick="location.href='./createArticle.php'">
+            Créer un article
+        </button>
+    </div>
+</div>
+	<table class="tableau">
+    <thead class="entete">
         <tr>
             <th>&nbsp;Numéro Article&nbsp;</th>
             <th>&nbsp;Date de création&nbsp;</th>
@@ -66,7 +74,7 @@ require_once __DIR__ . '/../../util/dateChangeFormat.php';
             <th colspan="2">&nbsp;Action&nbsp;</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="body">
 <?
     $allArticle = $monArticle->get_AllArticle();
     foreach($allArticle as $row){
@@ -97,9 +105,9 @@ require_once __DIR__ . '/../../util/dateChangeFormat.php';
         <td>&nbsp; <?php echo $row["numThem"]; ?> &nbsp;</td>
         
 
-		<td>&nbsp;<a href="./updateArticle.php?id=<?=$row["numArt"];?>"><i>Modifier</i></a>&nbsp;
+		<td>&nbsp;<a class="button" href="./updateArticle.php?id=<?=$row["numArt"];?>"><i>Modifier</i></a>&nbsp;
 		<br /></td>
-		<td>&nbsp;<a href="./deleteArticle.php?id=<?=$row["numArt"];?>"><i>Supprimer</i></a>&nbsp;
+		<td>&nbsp;<a class="button" href="./deleteArticle.php?id=<?=$row["numArt"];?>"><i>Supprimer</i></a>&nbsp;
 		<br /></td>
         </tr>
     <?

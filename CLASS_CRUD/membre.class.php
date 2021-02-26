@@ -25,6 +25,14 @@
             $result->execute([$idMembre]);
             return($result->fetch());
 		}
+
+		function get_ExistPseudo($pseudoMemb) {
+			global $db;
+			$requete = 'SELECT * FROM membre WHERE pseudoMemb = ?;';
+			$result = $db->prepare($requete);
+			$result->execute([$pseudoMemb]);
+			return($result->rowCount());
+		}
 		
 
 		function get_NbAllMembreByLikeCom($numMembre){

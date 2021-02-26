@@ -31,55 +31,55 @@ require_once __DIR__ . '/util/utilErrOn.php';
 		<h2>Gestion de tous les CRUD</h2>
 		<div class="crudAlign">
 			<p> Gestion de</p>
-			<a class="button" href="./BACK/angle/angle.php">Angle </a>
+			<a class="button" href="./back/angle/angle.php">Angle </a>
 		</div>
 		<div class="crudAlign">
 			<p> Gestion de</p>
-			<a class="button" href="./BACK/article/article.php">Article </a>
+			<a class="button" href="./back/article/article.php">Article </a>
 		</div>
 		<div class="crudAlign">
 			<p> Gestion de</p>
-			<a class="button" href="./BACK/comment/comment.php">Commentaire </a>
+			<a class="button" href="./back/comment/comment.php">Commentaire </a>
 		</div>
 		<div class="crudAlign">
 			<p> Gestion de</p>
-			<a class="button" href="./BACK/commentplus/commentplus.php">Réponse sur Commentaire </a>
+			<a class="button" href="./back/commentplus/commentplus.php">Réponse sur Commentaire </a>
 		</div>
 		<div class="crudAlign">
 			<p> Gestion de</p>
-			<a class="button" href="./BACK/langue/langue.php">Langue </a>
+			<a class="button" href="./back/langue/langue.php">Langue </a>
 		</div>
 		<div class="crudAlign">
 			<p> Gestion de</p>
-			<a class="button" href="./BACK/likeart/likeart.php">Like Article </a>
+			<a class="button" href="./back/likeart/likeart.php">Like Article </a>
 		</div>
 		<div class="crudAlign">
 			<p> Gestion de</p>
-			<a class="button" href="./BACK/likecom/likecom.php">Like Commentaire </a>
+			<a class="button" href="./back/likecom/likecom.php">Like Commentaire </a>
 		</div>
 		<div class="crudAlign">
 			<p> Gestion de</p>
-			<a class="button" href="./BACK/membre/membre.php">Membre </a>
+			<a class="button" href="./back/membre/membre.php">Membre </a>
 		</div>
 		<div class="crudAlign">
 			<p> Gestion de</p>
-			<a class="button" href="./BACK/motcle/motcle.php">Mot-clé </a>
+			<a class="button" href="./back/motcle/motcle.php">Mot-clé </a>
 		</div>
 		<div class="crudAlign">
 			<p> Gestion de</p>
-			<a class="button" href="./BACK/motclearticle/motclearticle.php">Mot-clé Article </a>
+			<a class="button" href="./back/motclearticle/motclearticle.php">Mot-clé Article </a>
 		</div>
 		<div class="crudAlign">
 			<p> Gestion de</p>
-			<a class="button" href="./BACK/statut/statut.php">Statut</a>
+			<a class="button" href="./back/statut/statut.php">Statut</a>
 		</div>
 		<div class="crudAlign">
 			<p> Gestion de</p>
-			<a class="button" href="./BACK/thematique/thematique.php">Thématique </a>
+			<a class="button" href="./back/thematique/thematique.php">Thématique </a>
 		</div>
 		<div class="crudAlign">
 			<p> Gestion de</p>
-			<a class="button" href="./BACK/user/user.php">User </a>
+			<a class="button" href="./back/user/user.php">User </a>
 		</div>
 	</div>
 

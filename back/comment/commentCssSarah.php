@@ -23,15 +23,9 @@ $comment = new COMMENT;
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link rel="stylesheet" href="../css/gestionCommentaire.css" >
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css" >
   
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
-        @import url('https://fonts.googleapis.com/css2family=Lato&display=swap');
-   </style>
 
 </head>
 <body>
@@ -45,7 +39,7 @@ $comment = new COMMENT;
 
     <div class="creerBt">
         <button class="button" onclick="location.href='./createComment.php'">
-            <h2>Créer un commentaire</h2>
+            Créer un commentaire
         </button>
     </div>
 </div>

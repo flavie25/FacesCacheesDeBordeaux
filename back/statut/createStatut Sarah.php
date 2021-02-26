@@ -84,27 +84,26 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
     <form method="post" action="./createStatut.php" enctype="multipart/form-data">
 
+    <legend class="legend1">Formulaire Statut</legend>
+
       <fieldset>
-    
-    <div class="sousTitre">
-      <legend class="legend1">Formulaire Statut</legend>
-    </div>   
 
         <!--<input type="hidden" id="id" name="id" value=": /*$_GET['id']; */-->
 
         <div class="control-group">
-            <label class="control-label" for="libStat"><b>Nom du statut :</label>
+                <div class="createTitre">
+                    <label class="control-label" for="libStat"><b>Nom du statut :</label>
+                    <br>
+                </div>
+
             <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat; ?>" autofocus="autofocus" />
+
         </div>
 
-        <div class="control-group">
-            <div class="controls">
-                
+            <div class="controls">     
                 <input class="button" type="submit" value="Initialiser" style="cursor:pointer" name="Submit" />
                 <input class="button" type="submit" value="Valider" style="cursor:pointer" name="Submit" />
-
             </div>
-        </div>
       </fieldset>
     </form>
 <?php

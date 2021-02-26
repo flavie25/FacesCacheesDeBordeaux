@@ -35,25 +35,42 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css" >
 
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
-    <hr /><br />
-	<h2>Nouvel angle :&nbsp;<a class="button" href="./createAngle.php">Créer un angle</a></h2>
-	<br /><hr />
-	<h2>Tous les angle</h2>
+<div class="hautpage">
+<div class="hautpage">
+    <div class="Titre">
+        <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
 
-    <table border="3" bgcolor="aliceblue">
-    <thead>
-        <tr>
-            <th>&nbsp;Numéro angle&nbsp;</th>
-            <th>&nbsp;Libellé&nbsp;</th>
-            <th>&nbsp;Langue&nbsp;</th>
-            <th colspan="2">&nbsp;Action&nbsp;</th>
-        </tr>
-    </thead>
-    <tbody>
+        <h2>Tous les angles</h2>
+
+    </div>
+
+    <div class="creerBt">
+        <button class="button" onclick="location.href='./createAngle.php'">
+            Créer un angle
+        </button>
+    </div>
+</div>
+    <?
+    if ($errCIR == 1){
+        echo 'Vous ne pouvez pas supprimer cet utilisateur. Veuillez d\'abord supprimer cet utilisateur dans les autres tables';
+    }
+    ?>
+</div>
+    <table class="tableau">
+        <thead class="entete">
+            <tr>
+                <th>&nbsp;Numéro angle&nbsp;</th>
+                <th>&nbsp;Libellé&nbsp;</th>
+                <th>&nbsp;Langue&nbsp;</th>
+                <th colspan="2">&nbsp;Action&nbsp;</th>
+            </tr>
+        </thead>
+    </div>
+    <tbody class="body">
 <?
     $allAngle = $monAngle->get_AllAngleByLangue();
     foreach($allAngle as $row){
@@ -68,9 +85,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <td>&nbsp; <?php echo $row["libAngl"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["lib1Lang"]; ?> &nbsp;</td>
 
-		<td>&nbsp;<a href="./updateAngle.php?id=<?=$row["numAngl"];?>"><i>Modifier</i></a>&nbsp;
+		<td>&nbsp;<a class="button" href="./updateAngle.php?id=<?=$row["numAngl"];?>"><i>Modifier</i></a>&nbsp;
 		<br /></td>
-		<td>&nbsp;<a href="./deleteAngle.php?id=<?=$row["numAngl"];?>"><i>Supprimer</i></a>&nbsp;
+		<td>&nbsp;<a class="button" href="./deleteAngle.php?id=<?=$row["numAngl"];?>"><i>Supprimer</i></a>&nbsp;
 		<br /></td>
         </tr>
 <?
@@ -80,9 +97,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     </table>
     <br><br>
 <?php
-if ($errCIR == 1){
-    echo 'Vous ne pouvez pas supprimer cet utilisateur. Veuillez d\'abord supprimer cet utilisateur dans les autres tables';
-}
 require_once __DIR__ . '/footer.php';
 ?>
 </body>

@@ -1,7 +1,7 @@
 <?
 /////////////////////////////////////////////////////
 //
-//  CRUD LIKECOM (PDO) - Modifié - 6 Décembre 2020
+//  CRUD LIKEART (PDO) - Modifié - 6 Décembre 2020
 //
 //  Script  : likeCom.php  (ETUD)   -   BLOGART21
 //
@@ -9,6 +9,11 @@
 
 // Mode DEV
 require_once __DIR__ . '/../../util/utilErrOn.php';
+
+    // insertion classe STATUT
+    require_once __DIR__ . '/../../CLASS_CRUD/likeCom.class.php';
+    global $db;
+    $likeCom = new LIKECOM;
 
 ?>
 <!DOCTYPE html>
@@ -25,10 +30,44 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Like sur Commentaire</h1>
 
-    <br><br>
+    <hr /><br />
+	<h2>Nouveau like sur commentaire :&nbsp;<a href="./createLikeCom.php"><i>Liker un commentaire</i></a></h2>
+	<br /><hr />
+	<h2>Tous les likes</h2>
 
-    <h2>En construction :-)</h2>
+	<table border="3" bgcolor="aliceblue">
+    <thead>
+        <tr>
+            <th>&nbsp;Membre&nbsp;</th>
+            <th>&nbsp;Article&nbsp;</th>
+            <th>&nbsp;Commentaire&nbsp;</th>
+            <th>&nbsp;Like&nbsp;</th>
+            <th colspan="2">&nbsp;Action&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+<?
+    $allLikeCom = $likeCom->get_AllLikeCom();
+    foreach($allLikeCom as $row){
+	// Appel méthode : tous les statuts en BDD
 
+    // Boucle pour afficher
+	//foreach($all as $row) {
+?>
+        <tr>
+		<td><h4>&nbsp; <?php echo $row["pseudoMemb"]; ?> &nbsp;</h4></td>
+        <td>&nbsp; <?php echo $row["libTitrArt"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["libCom"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["likeC"]; ?> &nbsp;</td>
+
+		<td>&nbsp;<a href="./updateLikeCom.php?id1=<?=$row["numMemb"];?>&id2=<?=$row["numArt"];?>&id3=<?=$row["numSeqCom"];?>"><i>Modifier</i></a>&nbsp;
+		<br/></td>
+        </tr>
+<?
+	}	// End of foreach
+?>
+    </tbody>
+    </table>
     <br><br>
 
 <?
