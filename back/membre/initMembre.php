@@ -18,3 +18,5 @@
     $accordMembre = "";
     $idStat = "";
     $libStat = "";
+    $errPseudo="";
+    $pseudoExist="";

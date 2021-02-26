@@ -16,24 +16,81 @@
             </svg>
         </div>
             <form action="">
-                <label for="fname">Nom:</label><br>
-                <input type="text" id="nom" name="nom" placeholder="Nom" class="formulaire"><br>
-                <label for="lname">Prénom:</label><br>
-                <input type="text" id="prenom" name="prenom" placeholder="Prénom"class="formulaire"><br><br>
-                <label for="lname">Pseudonyme:</label><br>
-                <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo"class="formulaire"><br><br>
-                <label for="lname">e-mail:</label><br>
-                <input type="email" id="email" name="email" placeholder="email"class="formulaire"><br><br>
-                <label for="lname">Mot de passe:</label><br>
-                <input type="password" id="mdp" name="mdp"class="formulaire"><br><br>
-                <label for="lname">Confirmez votre mot de passe:</label><br>
-                <input type="password" id="vmdp" name="vmdp"class="formulaire"><br><br>
+            <fieldset>
+        <legend class="legend1">Formulaire Membre...</legend>
+
+        <div class="control-group">
+            <label class="control-label" for="prenomMemb"><b>Prénom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="prenomMemb" id="prenomMemb" size="80" maxlength="80" value="<?= $prenomMembre; ?>" autofocus="autofocus" />
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="nomMemb"><b>Nom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="nomMemb" id="nomMemb" size="80" maxlength="80" value="<?= $nomMembre; ?>" />
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="pseudoMemb"><b>Pseudo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="pseudoMemb" id="pseudoMemb" size="80" maxlength="80" value="<?= $pseudoMembre; ?>"  />
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="passMemb1"><b>Mot de passe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="password" name="passMemb1" id="passMemb1" size="80" maxlength="80" value="<?= $passMembre1; ?>"  />
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="passMemb2"><b>Confirmation mot de passe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="password" name="passMemb2" id="passMemb2" size="80" maxlength="80" value="<?= $passMembre2; ?>"  />
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="eMailMemb1"><b>e-Mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="eMailMemb1" id="eMailMemb1" size="80" maxlength="80" value="<?= $emailMembre1; ?>" />
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="eMailMemb2"><b>Confirmation e-Mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="eMailMemb2" id="eMailMemb2" size="80" maxlength="80" value="<?= $emailMembre2; ?>" />
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="souvenirMemb"><b>Se souvenir de moi :</b></label>
+            <div class="controls">
+               <fieldset>
+                  <input type="radio" name="souvenirMemb"
+                  <?= ($souvenirMembre == "on") ? 'checked="checked"' : ''
+                  ?> value="on" />&nbsp;&nbsp;Oui&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="souvenirMemb"
+                  <?= ($souvenirMembre == "off") ? 'checked="checked"' : ''
+                  ?> value="off" checked="checked" />&nbsp;&nbsp;Non
+               </fieldset>
+            </div>
+        </div>
+      
+        <div class="control-group">
+            <label class="control-label" for="accordMemb"><b>J'accepte que mes données soient conservées :</b></label>
+            <div class="controls">
+               <fieldset>
+                  <input type="radio" name="accordMemb"
+                  <?= ($accordMembre == "on") ? 'checked="checked"' : ''
+                  ?> value="on" />&nbsp;&nbsp;Oui&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="accordMemb"
+                  <?= ($accordMembre == "off") ? 'checked="checked"' : ''
+                  ?> value="off" checked="checked" />&nbsp;&nbsp;Non
+               </fieldset>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <div class="g-recaptcha" data-sitekey="<?= $configData->CAPTCHA_SITE_KEY; ?>"></div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
                 <br>
-                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                <label for="vehicle1">Se souvenir de moi</label><br>
-                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-                <label for="vehicle2">J'autorise le stockage de mes données</label><br><br><br>
-                <button class="button">JE M'INSCRIS</button>
+            </div>
+        </div>
+      </fieldset>
             </form> 
         </div>
     </body>
