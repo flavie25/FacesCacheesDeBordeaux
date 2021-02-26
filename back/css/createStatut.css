@@ -1,0 +1,14 @@
+fieldset{
+    font-family: 'Lato',sans-serif;
+    max-width:70%;
+    padding:2%;	
+    margin-bottom:3vh;
+    margin-left:8vh;
+    border:4px solid ;
+    border-radius: 8px;
+  
+}
+.legend1{
+  margin-bottom:3vh;
+  margin-left:8vh;
+}
