@@ -1,33 +1,33 @@
-fieldset{
-    font-family: 'Lato',sans-serif;
+fieldset {
+    font-family: 'Lato', sans-serif;
     font-size: 1.5em;
-    max-width:70%;
-    padding:2%;	
-    margin-bottom:8vh;
-    margin-left:12%;
-    border:4px solid ;
+    max-width: 70%;
+    padding: 2%;
+    margin-bottom: 8vh;
+    margin-left: 12%;
+    border: 4px solid;
     border-radius: 8px;
-  
-}
-.legend1{
-    font-family: 'Lato',sans-serif;
-    font-weight: bold;
-    font-size: 1.5em;
-    margin-bottom:1.5vh;
-    margin-left:14%;
 }
 
-.control-group{
+.legend1 {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 1.5vh;
+    margin-left: 14%;
+}
+
+.control-group {
     padding-left: 3%;
     margin: 2%;
     margin-bottom: 3%;
 }
 
-.createTitre{
+.createTitre {
     margin-bottom: 2vh;
 }
 
-.controls{
+.controls {
     display: flex;
     justify-content: space-between;
     max-width: 25vw;
