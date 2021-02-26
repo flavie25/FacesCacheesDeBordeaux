@@ -1,0 +1,29 @@
+
+
+.bar_re {
+    margin-left: 1150px;
+    margin-top: 15px;
+}
+
+.sep{
+
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.button{
+    margin-top: 15px;
+    color:#FFF3FB;
+    background-color: #433E3F;
+    padding: 10px 40px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Lato';
+}
+
+.button:hover{
+    color: #FFF3FB;
+    background-color: #113638;
+}

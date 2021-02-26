@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-body{
+.imgpop_mention{
     font-family: 'Merriweather', serif;
     background-image: url("../images/bg.png");
     background-color: #cccccc;
@@ -11,20 +11,22 @@ body{
 .bulle{
     border-radius: 25px;
     background-color: RGBA(255,254,255,0.9); 
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50% , -50%);
     position: fixed;
-    height: 80vh;
+    height: 65vh;
     width: 80vw;
 }
 
 .titre{
+    margin-top: 10px;
     font-family: 'Bebas Neue', cursive;
     text-align: center;
     text-transform: uppercase;
     font-size: 6.25em;
     opacity: 100%;
+    color: #201D1E;
 }
 
 .message{
@@ -34,7 +36,9 @@ body{
     font-weight: 600;
     vertical-align: middle;
     opacity: 100%;
+    color: #201D1E;
 }
+
 .bouton-container{
     margin: 0 auto; 
     width: 656px;
@@ -42,6 +46,7 @@ body{
     padding-top: 50px;
     opacity: 100%;
 }
+
 .bouton{
     padding-left: 25px;
     padding-right: 25px;
@@ -54,7 +59,9 @@ body{
     height: 50px;
     border-radius: 25px;
     font-size : 1.25em;
+    cursor: pointer;
 }
+
 .alien{
     font-family: 'lato', sans-serif;
     color: black;

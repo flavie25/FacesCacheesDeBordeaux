@@ -4,7 +4,7 @@
         <title>popup</title>
         <link rel="stylesheet" href="../../assets/css/popUp.css">
     </header>
-    <body>
+    <body class="imgpop_mention">
         <div id="id-element" class="bulle">
             <h1 class="titre" >Mentions Légales</h1>
             <br>
@@ -16,12 +16,12 @@
                 <a href="http:\\www.youtube.fr" class="alien">Toutes les mentions légales</a>
         </div>
         </div>
-        <div style="height: 100vh;"></div>
-        <div style="height: 100vh;"></div>
-    </body>
-</html>
-<script>
+
+        <script>
     function afficher(){
         document.getElementById("id-element").style.display ="none";
     }
 </script>
+
+    </body>
+</html>
