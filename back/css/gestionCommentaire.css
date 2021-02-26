@@ -1,0 +1,69 @@
+
+body{
+    background-color: #FFF3FB;
+}
+.Titre{
+    text-align: center;
+    margin-top: 18vh;
+    margin-bottom: 12vh;
+}
+
+.Titre h1{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 4em;
+}
+
+.Titre h2{
+    font-family: 'Lato', sans-serif;
+    Font-size:2.1em ;
+}
+
+.button{
+    color:#FFF3FB;
+    text-decoration: none;
+    background-color: #433E3F;
+    padding: 10px 40px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Lato',sans-serif;
+}
+.button:hover{
+    color: #FFF3FB;
+    background-color: #113638;
+}
+
+.creerBt button{
+    margin-top: 5vh;
+    margin-left: 38.5%; 
+}
+
+.tableau{
+    font-family: 'Lato', sans-serif;
+    font-size: 1.15em;
+    margin :7%;
+    margin-top:5%;
+    border: medium solid black;
+    border-radius: 8px;
+    border-collapse: collapse;
+    width: 85%;
+    justify-content: center;
+}
+
+th {
+    padding : 18px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color:#113537 ;
+    color: #FFF3FB;
+}
+
+td {
+    font-family: sans-serif;
+    border: thin solid ;
+    padding: 5px;
+    text-align: center;
+}
+
+
+    
