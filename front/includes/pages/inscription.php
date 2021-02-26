@@ -23,17 +23,22 @@
                 <label for="lname">Pseudonyme:</label><br>
                 <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo"class="formulaire"><br><br>
                 <label for="lname">e-mail:</label><br>
-                <input type="email" id="email" name="email" placeholder="email"class="formulaire"><br><br>
+                <input type="email" id="email" name="email" placeholder="email"class="formulaire"><br><br>                
+                <label for="lname">Confirmez votre e-mail:</label><br>
+                <input type="email" id="Cemail" name="Cemail" placeholder="Confirmez email"class="formulaire"><br><br>
                 <label for="lname">Mot de passe:</label><br>
-                <input type="password" id="mdp" name="mdp"class="formulaire"><br><br>
+                <input type="password" id="mdp" name="mdp"class="formulaire" placeholder="Mot de passe"><br><br>
                 <label for="lname">Confirmez votre mot de passe:</label><br>
-                <input type="password" id="vmdp" name="vmdp"class="formulaire"><br><br>
+                <input type="password" id="vmdp" name="vmdp"class="formulaire" placeholder="Confirmez votre mot de passe"><br><br>
                 <br>
-                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                <label for="vehicle1">Se souvenir de moi</label><br>
-                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-                <label for="vehicle2">J'autorise le stockage de mes données</label><br><br><br>
+                <label style="font-family: 'Lato';">Se souvenir de moi :</label><br>
+                <input style="transform: translateY(25%);" type="checkbox" id="oui" name="oui" value="oui"><label style="font-family: 'Lato';" for="oui">Oui</label><input style="transform: translateY(25%);" type="checkbox" id="non" name="non" value="non"><label for="non" style="font-family: 'Lato';">Non</label>
+                <br>
+                <label style="font-family: 'Lato';">J'autorise le stockage de mes données :</label><br>
+                <input style="transform: translateY(25%);" type="checkbox" id="oui2" name="oui" value="oui"><label for="oui" style="font-family: 'Lato';">Oui</label><input style="transform: translateY(25%);" type="checkbox" id="non2" name="non" value="non"><label for="non" style="font-family: 'Lato';">Non</label>
+                <br><br><br>
                 <button class="button">JE M'INSCRIS</button>
+                </div>
             </form> 
         </div>
     </body>
