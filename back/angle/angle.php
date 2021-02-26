@@ -40,7 +40,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 </head>
 <body>
 <div class="hautpage">
-<div class="hautpage">
     <div class="Titre">
         <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
 
@@ -56,10 +55,10 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 </div>
     <?
     if ($errCIR == 1){
-        echo 'Vous ne pouvez pas supprimer cet utilisateur. Veuillez d\'abord supprimer cet utilisateur dans les autres tables';
+        echo 'Vous ne pouvez pas supprimer cet angle. Veuillez d\'abord supprimer cet angle dans la table article';
     }
     ?>
-</div>
+<div class="tableArea">
     <table class="tableau">
         <thead class="entete">
             <tr>
@@ -95,6 +94,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 ?>
     </tbody>
     </table>
+</div>
     <br><br>
 <?php
 require_once __DIR__ . '/footer.php';

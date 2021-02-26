@@ -10,3 +10,5 @@
     $libAngl = "";
     // FK langue
     $numLang = "";
+
+    $lib1Lang = "";

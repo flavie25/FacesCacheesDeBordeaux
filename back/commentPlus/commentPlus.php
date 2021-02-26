@@ -22,6 +22,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css" >
 
 </head>
 <body>

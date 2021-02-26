@@ -71,11 +71,15 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css">
+    <link rel="stylesheet" href="../css/form.css">
 
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
-    <h2>Modification d'un Angle</h2>
+    <div class="Titre">
+        <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
+            <h2>Modification d'un angle</h2>
+    </div>
 <?
     // Modif : récup id à modifier
     if (isset($_GET['id']) and !empty($_GET['id'])) {
@@ -102,7 +106,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         <div class="control-group">
             <label class="control-label" for="libAngl">Nouveau nom de l'angle :&nbsp;</label>
-            <input type="text" name="libAngl" id="libAngl" size="60" maxlength="60" value="<?= $libAngl; ?>" autofocus="autofocus" placeholder="Saisir un nom pour l'angle (60 caractères max)" required/>
+            <input type="text" name="libAngl" id="libAngl" pattern=[a-zA-Z0-9À-ž\s]+ title="Lettres, chiffres et espaces uniquement, 60 caractères max" size="60" maxlength="60" value="<?= $libAngl; ?>" autofocus="autofocus" placeholder="Saisir un nom pour l'angle" required/>
         </div>
         <div class="control-group">
             <label for="numLang">Langue :</label>  

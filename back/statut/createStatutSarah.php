@@ -67,6 +67,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <link href="../css/createStatut.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
     <link rel="stylesheet" href="../css/gestionCommentaire.css" >
+    <link rel="stylesheet" href="../css/form.css" >
+
   
   <style>
       @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap');

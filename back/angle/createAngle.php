@@ -71,12 +71,16 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css">
+    <link rel="stylesheet" href="../css/form.css">
+
 
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
-    <h2>Ajout d'un angle</h2>
-
+    <div class="Titre">
+        <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
+            <h2>Ajout d'un angle</h2>
+    </div>
     <form method="post" action="./createAngle.php" enctype="multipart/form-data">
 
       <fieldset>
@@ -84,7 +88,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         <div class="control-group">
             <label class="control-label" for="libAngl">Nom de l'angle :&nbsp;</label>
-            <input type="text" name="libAngl" id="libAngl" size="60" maxlength="60" value="<?= $libAngl; ?>" autofocus="autofocus" placeholder="Saisir un nom pour l'angle (60 caractères max)" required/>
+            <input type="text" name="libAngl" id="libAngl" pattern=[a-zA-Z0-9À-ž\s]+ title="Lettres, chiffres et espaces uniquement, 60 caractères max" size="60" maxlength="60" value="<?= $libAngl; ?>" autofocus="autofocus" placeholder="Saisir un nom pour l'angle" required/>
         </div>
 
         <div class="control-group">

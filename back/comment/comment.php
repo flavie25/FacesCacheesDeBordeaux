@@ -43,6 +43,7 @@ $comment = new COMMENT;
         </button>
     </div>
 </div>
+<div class="tableArea">
     <table class="tableau">
         <thead class="entete">
             <tr>

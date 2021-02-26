@@ -7,7 +7,7 @@
 		
 		function get_NbAllAngleByidLangue($id){
             global $db;
-            $query = 'SELECT * FROM ANGLE INNER JOIN LANGUE ON angle.numLang = langue.numLang WHERE angle.numLang = ?;';
+            $query = 'SELECT * FROM angle INNER JOIN langue ON angle.numLang = langue.numLang WHERE angle.numLang = ?;';
             $result = $db->prepare($query);
             $result->execute([$id]);
             $allNbAngleById = $result->fetchAll();
@@ -20,7 +20,7 @@
 
 		function get_AllAngle(){
             global $db;
-            $query = 'SELECT * FROM ANGLE ;';
+            $query = 'SELECT * FROM angle ;';
             $result = $db->prepare($query);
             $result->execute();
             return($result->fetchAll());
@@ -28,7 +28,7 @@
         }
         function get_1AngleByLangue($numAngl){
             global $db;
-            $query = 'SELECT * FROM ANGLE INNER JOIN LANGUE ON angle.numLang = langue.numLang WHERE angle.numAngl = ? ;';
+            $query = 'SELECT * FROM angle INNER JOIN langue ON angle.numLang = langue.numLang WHERE angle.numAngl = ? ;';
             $result = $db->prepare($query);
             $result->execute([$numAngl]);
             return($result->fetch());
@@ -37,7 +37,7 @@
 
         function get_AllAngleByLangue(){
             global $db;
-            $query = 'SELECT numAngl, libAngl, lib1Lang FROM ANGLE INNER JOIN LANGUE ON angle.numLang = langue.numLang ORDER BY numAngl ASC;';
+            $query = 'SELECT numAngl, libAngl, lib1Lang FROM angle INNER JOIN langue ON angle.numLang = langue.numLang ORDER BY numAngl ASC;';
             $result = $db->prepare($query);
             $result->execute();
             return($result->fetchAll());
@@ -48,7 +48,7 @@
             global $db;
             try {
 				$db->beginTransaction();
-                $query = 'INSERT INTO ANGLE (numAngl, libAngl, numLang) VALUES (?, ?, ?);';
+                $query = 'INSERT INTO angle (numAngl, libAngl, numLang) VALUES (?, ?, ?);';
                 $result = $db->prepare($query);
                 $result->execute([$numAngl, $libAngl, $numLang]);
 				$db->commit();
@@ -67,7 +67,7 @@
             global $db;
             try {
 				$db->beginTransaction();
-                $query = 'UPDATE ANGLE SET libAngl = ?, numLang = ? WHERE numAngl = ?;';
+                $query = 'UPDATE angle SET libAngl = ?, numLang = ? WHERE numAngl = ?;';
                 $result = $db->prepare($query);
                 $result->execute([$libAngl, $numLang, $numAngl]);
 				$db->commit();
@@ -86,7 +86,7 @@
             global $db;
             try {
 				$db->beginTransaction();
-                $query = 'DELETE FROM ANGLE WHERE numAngl = ?;';
+                $query = 'DELETE FROM angle WHERE numAngl = ?;';
                 $result = $db->prepare($query);
                 $result->execute([$numAngl]);
 				$db->commit();

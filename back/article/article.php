@@ -54,6 +54,12 @@ require_once __DIR__ . '/../../util/dateChangeFormat.php';
         </button>
     </div>
 </div>
+<?php
+if ($errCIR == 1){
+    echo 'Vous ne pouvez pas supprimer cet article. Veuillez d\'abord supprimer cet article dans les autres tables';
+}
+?>
+<div class="tableArea">
 	<table class="tableau">
     <thead class="entete">
         <tr>
@@ -62,11 +68,11 @@ require_once __DIR__ . '/../../util/dateChangeFormat.php';
             <th>&nbsp;Titre&nbsp;</th>
             <th>&nbsp;Chapô&nbsp;</th>
             <th>&nbsp;Accroche&nbsp;</th>
-            <th>&nbsp;Paragraphe1&nbsp;</th>
-            <th>&nbsp;Sous-titre1&nbsp;</th>
-            <th>&nbsp;Paragraphe2&nbsp;</th>
-            <th>&nbsp;Sous-titre2&nbsp;</th>
-            <th>&nbsp;Paragraphe3&nbsp;</th>
+            <th>&nbsp;Sous-titre 1&nbsp;</th>
+            <th>&nbsp;Paragraphe 1&nbsp;</th>
+            <th>&nbsp;Sous-titre 2&nbsp;</th>
+            <th>&nbsp;Paragraphe 2&nbsp;</th>
+            <th>&nbsp;Paragraphe 3&nbsp;</th>
             <th>&nbsp;Conclusion&nbsp;</th>
             <th>&nbsp;URL Photo&nbsp;</th>
             <th>&nbsp;Angle&nbsp;</th>
@@ -76,7 +82,7 @@ require_once __DIR__ . '/../../util/dateChangeFormat.php';
     </thead>
     <tbody class="body">
 <?
-    $allArticle = $monArticle->get_AllArticle();
+    $allArticle = $monArticle->get_AllArticleByThemAngl();
     foreach($allArticle as $row){
         $dateIn = $row["dtCreArt"];
         $from='Y-m-d H:i:s';
@@ -94,15 +100,15 @@ require_once __DIR__ . '/../../util/dateChangeFormat.php';
         <td>&nbsp; <?php echo $row["libTitrArt"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["libChapoArt"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["libAccrochArt"]; ?> &nbsp;</td>
-        <td>&nbsp; <?php echo $row["parag1Art"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["libSsTitr1Art"]; ?> &nbsp;</td>
-        <td>&nbsp; <?php echo $row["parag2Art"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["parag1Art"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["libSsTitr2Art"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["parag2Art"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["parag3Art"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["libConclArt"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["urlPhotArt"]; ?> &nbsp;</td>
-        <td>&nbsp; <?php echo $row["numAngl"]; ?> &nbsp;</td>
-        <td>&nbsp; <?php echo $row["numThem"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["libAngl"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["libThem"]; ?> &nbsp;</td>
         
 
 		<td>&nbsp;<a class="button" href="./updateArticle.php?id=<?=$row["numArt"];?>"><i>Modifier</i></a>&nbsp;
@@ -115,11 +121,8 @@ require_once __DIR__ . '/../../util/dateChangeFormat.php';
     ?>
     </tbody>
     </table>
+</div>
     <?php
-    if ($errCIR == 1){
-        echo 'Vous ne pouvez pas supprimer cet utilisateur. Veuillez d\'abord supprimer cet utilisateur dans les autres tables';
-    }
-    
     require_once __DIR__ . '/footer.php';
     ?>
 </body>

@@ -4,6 +4,10 @@
 @import url('https://fonts.googleapis.com/css2family=Lato&display=swap');
 body {
     background-color: #FFF3FB;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .Titre {
@@ -39,20 +43,23 @@ body {
 }
 
 .creerBt {
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.tableArea {
+    margin: 50px 100px;
+    width: 85%;
+    overflow-x: scroll;
 }
 
 .tableau {
     font-family: 'Lato', sans-serif;
     font-size: 1.15em;
-    margin: 7%;
-    margin-top: 5%;
     border: medium solid black;
     border-radius: 8px;
     border-collapse: collapse;
-    width: 85%;
     justify-content: center;
 }
 
