@@ -1,4 +1,9 @@
+/* -------------------- Polices ------------------------ */
 
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2family=Lato&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -6,9 +11,9 @@
 
 .bas_page {
     width: auto;
-    background-color:#8E6E53;
+    background-color: #8E6E53;
     height: 30%;
-}   
+}
 
 .bas_footer {
     padding: 15px 150px;
@@ -21,7 +26,6 @@
     list-style: none;
 }
 
-  
 .container_footer {
     text-align: center;
     padding-top: 10px;
@@ -45,12 +49,10 @@
     margin-left: 50px;
 }
 
-
-
-.btn_footer3{
-    color:#FFF3FB;
+.btn_footer3 {
+    color: #FFF3FB;
     background-color: #433E3F;
-     padding: 10px 40px;
+    padding: 10px 40px;
     text-align: center;
     border: none;
     border-radius: 5px;
@@ -62,7 +64,7 @@
     justify-content: space-between; */
 }
 
-.btn_footer3:hover{
+.btn_footer3:hover {
     color: #FFF3FB;
     background-color: #113638;
 }
@@ -71,12 +73,12 @@
     text-align: center;
     position: relative;
     align-self: center;
-	flex-direction: column;
+    flex-direction: column;
     width: auto;
     flex-direction: column;
 }
 
-.contain_3{
+.contain_3 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,17 +87,15 @@
 }
 
 
-
 /* --------------------------------- Pour les réseaux sociaux ------------------------------------ */
 
-
 .contain_2 {
-	background-color: none;
-	display: flex;
+    background-color: none;
+    display: flex;
     position: relative;
     justify-content: center;
-	flex-direction: column;
-	height: 200px;
+    flex-direction: column;
+    height: 200px;
 }
 
 .contain_2 ul {
@@ -103,29 +103,36 @@
 }
 
 .contain_2 ul li {
-    list-style: none;       /*enlève les puces*/
-    margin: 16px 15px;         /*séparation horizontale entre les boutons*/
+    list-style: none;
+    /*enlève les puces*/
+    margin: 16px 15px;
+    /*séparation horizontale entre les boutons*/
 }
 
 .contain_2 ul li .fa {
-    color: #FFF3FB;       /*couleur des icônes*/
-    font-size: 20px;        /*taille des icônes*/
+    color: #FFF3FB;
+    /*couleur des icônes*/
+    font-size: 20px;
+    /*taille des icônes*/
     transition: .5s;
 }
 
 .contain_2 ul li .fa:hover {
-    color: none;            /*couleur des icônes lorsqu'elles sont survolées*/
+    color: none;
+    /*couleur des icônes lorsqu'elles sont survolées*/
 }
 
 .contain_2 ul li a {
     position: relative;
-    display: block;                     /*hauteur des rectangles*/
-    border-radius: 50% ;     /*rondeur des angles*/
+    display: block;
+    /*hauteur des rectangles*/
+    border-radius: 50%;
+    /*rondeur des angles*/
     text-align: center;
 }
 
 .titre_mention {
-    display: flex; 
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -153,12 +160,30 @@
 #trait_dessus {
     border-top: 1px solid #201D1E;
     background-color: #201D1E;
-    width : 500px;
+    width: 500px;
     margin-left: auto;
     margin-right: auto;
-} 
+}
 
 .trait {
     color: #201D1E;
     background-color: #201D1E;
+}
+
+
+/* ----------------------------------------------- Boutons ----------------------------------------------- */
+
+.button {
+    color: #FFF3FB;
+    background-color: #433E3F;
+    padding: 10px 40px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Lato';
+}
+
+.button:hover {
+    color: #FFF3FB;
+    background-color: #113638;
 }

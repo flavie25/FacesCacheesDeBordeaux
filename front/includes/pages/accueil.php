@@ -1,5 +1,5 @@
 <? 
-include __DIR__ ."/../../../back/session/sessionVerif.php";
+//include __DIR__ ."/../../../back/session/sessionVerif.php";
 ?>
 
 <!DOCTYPE html>
@@ -9,18 +9,17 @@ include __DIR__ ."/../../../back/session/sessionVerif.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
-    <link rel="stylesheet" href="../../assets/css/accueil.css"> 
-
+    
     <link rel="stylesheet" href="../../assets/css/normalize.css">
-    <link rel="stylesheet" href="../../assets/css/banierePresentation.css"> 
 
     <link rel="stylesheet" href="../../assets/css/nav.css">
+    <link rel="stylesheet" href="../../assets/css/cookies.css">
+    <link rel="stylesheet" href="../../assets/css/banner.css"> 
+
+    <link rel="stylesheet" href="../../assets/css/presentation.css"> 
+    <link rel="stylesheet" href="../../assets/css/accueil.css"> 
 
     <link rel="stylesheet" href="../../assets/css/footer.css">
-
-    <link rel="stylesheet" href="../../assets/css/cookies.css"> 
-
-    <link rel="stylesheet" href="../../assets/css/bar_recherche.css">
 
     <!-- popup mentions légales <link rel="stylesheet" href="../../assets/css/popUp.css"> -->
 
@@ -28,170 +27,23 @@ include __DIR__ ."/../../../back/session/sessionVerif.php";
     <script src="https://kit.fontawesome.com/68b1f887b3.js" crossorigin="anonymous"></script>
 
 </head>
-    
-    <body>
 
-    <!-- ---------------------------- Code de la navbar------------------------ -->
+<body class="corp">
 
-    <body class="corp">
+    <?
+        include __DIR__ ."./../commons/navbar.php";
 
-<header>
-    <div class="head">
-        <div class="flavie">
-            <nav role="navigation">
-                <div id="menuToggle">
-                <input type="checkbox">      
-            
-                <span></span>
-                <span></span>
-                <span></span>           
+        include __DIR__ ."./../components/cookies.php";
 
-                <ul id="menu">
-                    <a href="accueil.php"><li>Accueil</li></a>
-                    <?php if(isset($_SESSION['utilisateur'])){ ?>
-                    <a href="profil.php"><li>Mon compte</li></a>
+        include __DIR__ ."./../commons/banner.php";
 
-                    <?php } else {?>
-                        <a href="connexion.php"><li>Mon Compte</li></a>
-                    <?php } ?>
-                    <a href="#"><li>Nous Contacter</li></a> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-                    <a href="accueil.php"><li>Me déconnecter</li></a>
-                </ul>
-                </div>
-            </nav>
-        </div>
-            
+        include __DIR__ ."./../components/presentation.php";
 
-                <!-- ----------------------------Code de la barre de recherche------------------------ -->
-            <div class="tous_bar">
-                <div class="bar_re">
-                    <div class="recherche">
-                        <label for="site-search">Rechercher dans le site : </label>
-                        <input type="search" id="site-search" placeholder="..." name="recherche" >
-                    </div>
-                    <button class="button"> Rechercher </button>
-                </div>
+        include __DIR__ ."./../components/accueilArticles.php";
 
+    ?>
 
-            <!-- ----------------------------Fin Code de la barre de recherche------------------------ -->
-
-        <!--  <img src="../../assets/images/logo" class="connect"> -->
-
-                <!-- Pour login -->
-                <a href="connexion.php" >
-                    <i class="fas fa-user"></i>
-                    <!-- <img  src="../../assets/images/alber.png" class="connect" />  -->
-                </a>
-                
-                    
-            </div>
-        </div>
-</header>
-
-
-    <!-- ----------------------------Fin Code de la navbar------------------------ -->
-
-
-
-        
-    <!-- ------------------------------------------- FIN FENETRE POP UP MENTIONS LEGALES ----------------------------------------->
-
-    <!-- <body class="imgpop_mention">
-        <div id="id-element" class="bulle">
-            <h1 class="titre" >Mentions Légales</h1>
-            <br>
-            <p class="message">Afin de naviguer sur notre blog, vous devez accepter<br> nos mentions légales ainsi que nos conditions<br> d’utilisation.</p>
-            <br>
-            <br>
-            <div class="bouton-container">
-                <button onclick="afficher()" type="submit" class="bouton">Accepter les conditions</button>
-                <a href="http:\\www.youtube.fr" class="alien">Toutes les mentions légales</a>
-        </div>
-        </div>
-        <div style="height: 100vh;"></div>
-        <div style="height: 100vh;"></div>
-
-        <script>
-    function afficher(){
-        document.getElementById("id-element").style.display ="none";
-    }
-</script> -->
-
-    <!--------------------------------------------- FIN FENETRE POP UP MENTIONS LEGALES --------------------------------------- -->
-
-
-    <!------------------------------------------------- FENETRE POP UP COOKIES -------------------------------------------->
-           
-    <div id="overlay" class="overlay">
-        <div id="popup" class="popup">
-
-            <div class="separation">
-                <p class="para_cookie"> - Avec votre accord, nous utilisons des cookies pour stocker et accéder à des informations personnelles. 
-                                            Vous pouvez les refuser en ignorant ce message.
-                                            Nous traitons les données suivantes : 
-                    
-                </p>
-
-                <p class="para_cookie"> - Données de géolocalisation précises et identification par analyse du terminal,
-                                            données d’audience et développement de produit, Stocker et/ou accéder à des informations sur un terminal. 
-                </p>
-            </div>
-
-            <button id="button" class="button" > Accepter les cookies </button>
-            <span id="btnClose" class="btnClose" >&times;</span>
-
-        </div>
-    </div>
-
-                <srcipt src="../../assets/css/cookies.css">
-
-                <script src="../../assets/js/cookies.js"></script>
-
-    <!------------------------------------------------- FIN FENETRE POP UP COOKIES -------------------------------------------->
-
-    <!-- -------------------------------------------------Code de Sarah Banniere---------------------------------------------- -->
-  
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
-    </style>
-
-<div class= "firstpage">   
-    <div class="baniere">
-             <div class="imagebaniere">
-                <img src="..\..\assets\images\Bordeaux 1.jpg" width="100%" alt="les quais Bordealais">
-            </div>
-
-        <div class="logo_titre">
-            <div class="logo">
-                <img src="..\..\assets\images\logo_bulle_blanc.svg" alt="Logo Les faces cachés">
-            </div>
-            
-            <div class="titreH1">
-                <h1>Les faces cachées de <br> bordeaux</h1>
-            </div>
-        </div>
-    </div>
-
-    <div class="presentation">
-        <div class ="presentation_titre">
-            <h2>Présentation</h2>
-        </div>
-
-        <div class="presentation_texte">
-            <p>Laissez-vous guider par notre blog “Les Faces Cachées de Bordeaux”. Ce blog saura vous montrer le chemin vers toutes les surprises que nous réserve notre ville ! Des visages qui se cachent et vous observent en silence en passant par des événements historiques, plus rien n’aura de secret pour vous ! Prêt.e à tenter l’aventure ? 
-            </p>
-        </div>
-    </div> 
-</div>
-
-
-
-    <!-- ------------------------------------------------Partie de Sarah Fin--------------------------------------- -->
-
-    <!-- -------------------------------------------1ere partie des articles présentation--------------------------------- -->
-
+   
         <div class="articles">
 
             <svg class="bckgd" width="1440" height="917" viewBox="0 0 1440 917" fill="none" xmlns="http://www.w3.org/2000/svg">

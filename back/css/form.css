@@ -1,6 +1,6 @@
 fieldset {
     font-family: 'Lato', sans-serif;
-    width: 100%;
+    width: 80%;
     padding: 2%;
     border: 4px solid;
     border-radius: 8px;
@@ -19,10 +19,6 @@ fieldset {
     padding-left: 3%;
     margin: 2%;
     margin-bottom: 3%;
-}
-
-.createTitre {
-    margin-bottom: 2vh;
 }
 
 .controls {

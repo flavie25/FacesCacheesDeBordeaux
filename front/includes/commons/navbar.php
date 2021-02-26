@@ -1,42 +1,54 @@
-     
-<!DOCTYPE html>
-<html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Blog La Face Cachée de Bordeaux</title>
-       <link rel="stylesheet" href="../../assets/css/nav.css">
-   </head>
-   
-   <body class="corp">
+<header>
+    <div class="head">
+            <nav role="navigation">
+                <div id="menuToggle">
+                    <input type="checkbox">      
+                
+                    <span></span>
+                    <span></span>
+                    <span></span>           
 
-    <header class="head">
-     <nav role="navigation">
-            <div id="menuToggle">
-            <input type="checkbox">      
-           
-            <span></span>
-            <span></span>
-            <span></span>           
+                    <ul id="menu">
+                        <a href="accueil.php"><li>Accueil</li></a>
+                        <?php if(isset($_SESSION['utilisateur'])){ ?>
+                        <a href="profil.php"><li>Mon compte</li></a>
 
-            <ul id="menu">
-                <a href="#"><li>Accueil</li></a>
-                <a href="#"><li>Mon Compte</li></a>
-                <a href="#"><li>Nous Contacter</li></a> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-                <a href="#"><li>Me déconnecter</li></a>
-            </ul>
+                        <?php } else {?>
+                            <a href="connexion.php"><li>Mon Compte</li></a>
+                        <?php } ?>
+                        <a href="#"><li>Nous Contacter</li></a> <br><br>
+                        <a href="accueil.php"><li>Me déconnecter</li></a>
+                    </ul>
+                </div>
+            </nav>
+            
+
+                <!-- ----------------------------Code de la barre de recherche------------------------ -->
+            <div class="tous_bar">
+                <div class="bar_re">
+                    <div class="recherche">
+                        <label for="site-search">Rechercher dans le site : </label>
+                        <input type="search" id="site-search" placeholder="..." name="recherche" >
+                    </div>
+                    <button class="button"> Rechercher </button>
+                </div>
+
+
+            <!-- ----------------------------Fin Code de la barre de recherche------------------------ -->
+
+        <!--  <img src="../../assets/images/logo" class="connect"> -->
+
+                <!-- Pour login -->
+                <a href="connexion.php" >
+                    <i class="fas fa-user"></i>
+                    <!-- <img  src="../../assets/images/alber.png" class="connect" />  -->
+                </a>
+                
+                    
             </div>
-        </nav>
+        </div>
+</header>     
 
-      <!--  <img src="../../assets/images/logo" class="connect"> -->
-        <input type="image" src="../../assets/images/logo" class="connect" href="#" />
-    </header>
-
-
-
-    </body>
-</html>          
 
 
 

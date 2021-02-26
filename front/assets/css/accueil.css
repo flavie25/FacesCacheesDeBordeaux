@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2? family = Bebas + Neue & display = swap');
 @import url('https://fonts.googleapis.com/css2? family = Lato & display = swap');
 @import url('https://fonts.googleapis.com/css2? family = Merriweather & display = swap');
-
-
 body {
     margin: 0;
     padding: 0;
@@ -10,8 +8,8 @@ body {
 
 .img_accueil {
     width: 450px;
-    height: 450px;  
-} 
+    height: 450px;
+}
 
 .articles {
     padding-bottom: 125px;
@@ -34,7 +32,9 @@ body {
     justify-content: space-between;
 }
 
+
 /* Image svg 1 */
+
 .bckgd {
     width: 100%;
     position: absolute;
@@ -43,11 +43,11 @@ body {
     padding-bottom: 20px;
     height: auto;
     z-index: -2;
-    transform: translateY(-150px);
 }
 
 
 /* Image svg 3 */
+
 .bckgd3 {
     top: 50%;
     left: 0;
@@ -55,12 +55,14 @@ body {
     transform: translateX(-55px);
 }
 
+
 /* Image svg 2 */
+
 .haut_droit {
     position: absolute;
     top: 0;
     right: 0;
-    z-index:-1;
+    z-index: -1;
     width: 75px;
     height: 75px;
 }
@@ -69,14 +71,15 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
-    z-index:-1;
+    z-index: -1;
     width: 75px;
     height: 75px;
 }
 
 
 /* Titre dans les pages de présentation des articles  */
-.grand_titre{
+
+.grand_titre {
     color: #FFF3FB;
     font-size: 40px;
     text-decoration: none;
@@ -86,6 +89,7 @@ body {
 
 
 /*  Texte dans la page de présentation des articles  */
+
 .para_presentation {
     color: #FFF3FB;
     text-decoration: none;
@@ -94,10 +98,13 @@ body {
     text-align: center;
 }
 
+
 /* ------------------ Concerne la partie 2 Pour changement de couleur -------------------  */
 
+
 /* Titre dans les pages de présentation des articles  */
-.grand_titre2{
+
+.grand_titre2 {
     color: #201D1E;
     font-size: 40px;
     text-decoration: none;
@@ -107,6 +114,7 @@ body {
 
 
 /*  Texte dans la page de présentation des articles  */
+
 .para_presentation2 {
     color: #201D1E;
     text-decoration: none;
@@ -114,6 +122,7 @@ body {
     font-family: "Merriweather", sans-serif;
     text-align: center;
 }
+
 
 /* ------------------ Fin de "Concerne la partie 2 [...]" -------------------  */
 
@@ -123,7 +132,7 @@ body {
 .droite {
     width: 550px;
     display: flex;
-    justify-content:  center;
+    justify-content: center;
     flex-direction: column;
 }
 
@@ -134,14 +143,14 @@ body {
     position: relative;
 }
 
+
 /* ------------------ Fin de "Partie droite du flex direction column" -------------------  */
 
 
 /* ------------------ Pour le bouton "voir plus" de chaque arcticle ------------------- */
 
-
-.btn_footer{
-    color:#433E3F;
+.btn_footer {
+    color: #433E3F;
     background-color: #FFF3FB;
     padding: 10px 40px;
     text-align: center;
@@ -152,8 +161,8 @@ body {
     cursor: pointer;
 }
 
-.btn_footer2{
-    color:#FFF3FB;
+.btn_footer2 {
+    color: #FFF3FB;
     background-color: #433E3F;
     padding: 10px 40px;
     text-align: center;
@@ -164,13 +173,10 @@ body {
     cursor: pointer;
 }
 
-.btn_footer:hover{
+.btn_footer:hover {
     color: #433E3F;
 }
 
-.btn_footer2:hover{
+.btn_footer2:hover {
     color: #FFF3FB;
 }
-
-
-
