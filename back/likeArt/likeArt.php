@@ -10,6 +10,11 @@
 // Mode DEV
 require_once __DIR__ . '/../../util/utilErrOn.php';
 
+    // insertion classe STATUT
+    require_once __DIR__ . '/../../CLASS_CRUD/likeArt.class.php';
+    global $db;
+    $likeArt = new LIKEART;
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -25,10 +30,42 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Like sur Artcile</h1>
 
-    <br><br>
+    <hr /><br />
+	<h2>Nouveau like sur article :&nbsp;<a href="./createLikeArt.php"><i>Liker un article</i></a></h2>
+	<br /><hr />
+	<h2>Tous les likes</h2>
 
-    <h2>En construction :-)</h2>
+	<table border="3" bgcolor="aliceblue">
+    <thead>
+        <tr>
+            <th>&nbsp;Membre&nbsp;</th>
+            <th>&nbsp;Article&nbsp;</th>
+            <th>&nbsp;Like&nbsp;</th>
+            <th colspan="2">&nbsp;Action&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+<?
+    $allLikeArt = $likeArt->get_AllLikeArt();
+    foreach($allLikeArt as $row){
+	// Appel méthode : tous les statuts en BDD
 
+    // Boucle pour afficher
+	//foreach($all as $row) {
+?>
+        <tr>
+		<td><h4>&nbsp; <?php echo $row["pseudoMemb"]; ?> &nbsp;</h4></td>
+        <td>&nbsp; <?php echo $row["libTitrArt"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["likeA"]; ?> &nbsp;</td>
+
+		<td>&nbsp;<a href="./updateLikeArt.php?id1=<?=$row["numMemb"];?>&id2=<?=$row["numArt"];?>"><i>Modifier</i></a>&nbsp;
+		<br/></td>
+        </tr>
+<?
+	}	// End of foreach
+?>
+    </tbody>
+    </table>
     <br><br>
 
 <?

@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+body{
+    font-family: 'Merriweather', serif;
+    background-color: #FFF3FB;
+    color: #201d1e;
+    overflow:visible;
+}
+
+h2{
+    font-family: 'Bebas Neue';
+    font-size: 2.375em;
+}
+
+p{
+    font-family: 'Merriweather', serif;
+    font-size: 1.375em;
+}
+.articleContainer{
+    width: 70%;
+    text-align: left;
+    position:relative;
+    left: 15%;
+}
+
+* {
+    box-sizing: border-box;
+  }
+  
+  .column {
+    float: left;
+    width: 50%; 
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Clearfix (clear floats) */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  .button{
+
+    color:#FFF3FB;
+    background-color: #433E3F;
+    padding: 10px 40px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Lato';
+    top: 50%;
+    left: 50%;
+}
+.formulaire{
+  font-family: 'Merriweather', serif;
+  background-color: transparent;
+  color: #201d1e;
+  height: 4.375em;
+  border-radius: 5px;
+  border-style: solid; 
+  border-color: #201d1e;
+  padding-left: 10px;
+  width: 40vw;
+  text-align: center;
+  font-size: 1.375em;
+}
+label{
+  font-family: 'Bebas Neue';
+  font-size: 2.375em;
+}
+
+#element1 {float:left;}
+#element2 {float:right;}

@@ -31,7 +31,11 @@
 		}
 
 		function get_AllLanguesByPays(){
-			
+			global $db;
+            $requete = 'SELECT * FROM LANGUE INNER JOIN PAYS ON langue.numPays = pays.numPays ORDER BY numLang ASC;';
+            $result = $db->prepare($requete);
+            $result->execute();
+            return($result->fetchAll());
 
 
 		}

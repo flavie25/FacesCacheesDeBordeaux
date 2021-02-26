@@ -29,9 +29,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         // Opérateur ternaire
         $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
-        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
+        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Annuler")) {
 
-            header("Location: ./createLangue.php");
+            header("Location: ./langue.php");
         }   // End of if ((isset($_POST["submit"])) ...
 
         // Mode création
@@ -76,7 +76,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
@@ -90,17 +91,17 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <!--<input type="hidden" id="id" name="id" value=": /*$_GET['id']; */-->
         
         <div class="control-group">
-            <label class="control-label" for="lib1Lang"><b>Langue libellé court&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="lib1Lang" id="lib1Lang" size="80" maxlength="80" value="<?= $lib1Lang; ?>" autofocus="autofocus" />
+            <label class="control-label" for="lib1Lang">Langue libellé court :&nbsp;</label>
+            <input type="text" name="lib1Lang" id="lib1Lang" size="30" maxlength="30" value="<?= $lib1Lang; ?>" placeholder="Saisir un libellé court (30 caractères max)" autofocus="autofocus" required/>
         </div>
         <div class="control-group">
-            <label class="control-label" for="lib2Lang"><b>Langue libellé long&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="lib2Lang" id="lib2Lang" size="80" maxlength="80" value="<?= $lib2Lang; ?>" autofocus="autofocus" />
+            <label class="control-label" for="lib2Lang">Langue libellé long :&nbsp;</label>
+            <input type="text" name="lib2Lang" id="lib2Lang" size="60" maxlength="60" value="<?= $lib2Lang; ?>" placeholder="Saisir un libellé long (60 caractères max)" required/>
         </div>
         <div class="control-group">
             <label for="pays">Num Pays :</label>  
-            <select id="pays" name="pays"  onchange="select()">
-                <option value="" selected disabled hidden>Sélectionner Pays</option>
+            <select id="pays" name="pays"  onchange="select()" required>
+                <option value="" selected disabled hidden>Sélectionner un pays</option>
                 <?php 
                 global $db;
                 $requete = 'SELECT * FROM PAYS ;';
@@ -115,13 +116,11 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             ?>
             </select>
         </div>
-        <div class="controls">
-            <br><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-            <br>
+        <div class="control-group">
+            <div class="controls">
+                <input class="button" type="submit" value="Annuler" name="Submit" formnovalidate/>
+                <input class="button" type="submit" value="Valider" name="Submit" />
+            </div>
         </div>
       </fieldset>
     </form>

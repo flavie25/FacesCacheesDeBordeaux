@@ -75,7 +75,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Mots Clés</h1>
@@ -120,8 +122,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 foreach ($allLangue AS $langue)
                 {
                 ?>
-                <option value="<?php echo $numLang;?>"><?php echo $lib1Lang;?></option>
-                <option value="<?php echo $langue['numLang'];?>"><?php echo $langue['lib1Lang'];?></option>
+                <option value="<?= ($langue['numLang']); ?>" <?= (isset($numLang) && $numLang == $langue['numLang'] ) ? " selected=\"selected\"" : null; ?> >
+                    <?= $langue['lib1Lang']; ?>
+                </option>
             <?php
             }
             ?>

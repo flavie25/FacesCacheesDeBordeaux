@@ -11,7 +11,8 @@
 require_once __DIR__ . '/../../util/utilErrOn.php';
 ?>
 
-<footer>
-    <br /><br /><hr />
-    <h2>Retour à la gestion des Statuts : <a href="./statut.php">CRUD Statut</a></h2>
+<footer class="bas_back">
+
+    <a class="button" href="./statut.php">Gestion des STATUTS</a>
+
 </footer>

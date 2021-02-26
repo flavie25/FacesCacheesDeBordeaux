@@ -20,6 +20,22 @@
 			return($allArticle);
 
 		}
+		// Fonction pour recupérer la dernière PK de ARTICLE
+		// avant insert des n occurr dans TJ MOTCLEARTICLE
+		function get_LastNumArt() {
+			global $db;
+	
+			$requete = "SELECT MAX(numArt) AS numArt FROM ARTICLE;";
+			$result = $db->query($requete);
+	
+			if ($result) {
+				$tuple = $result->fetch();
+				$lastNumArt = $tuple["numArt"];
+	
+			}   // End of if ($result)
+			return $lastNumArt;
+		} // End of function
+	
 
 		function create($dtCreArt, $libTitrArt, $libChapoArt, $libAccrochArt, $parag1Art, $libSsTitr1Art, $parag2Art, $libSsTitr2Art, $parag3Art, $libConclArt, $urlPhotArt, $numAngl, $numThem){
 			global $db;

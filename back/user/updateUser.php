@@ -92,7 +92,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD User</h1>
@@ -122,54 +124,53 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <form method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data">
 
 <fieldset>
-  <legend class="legend1">Formulaire User...</legend>
+    <legend class="legend1">Formulaire User...</legend>
 
-  <!--<input type="hidden" id="id" name="id" value=": /*$_GET['id']; */-->
+    <!--<input type="hidden" id="id" name="id" value=": /*$_GET['id']; */-->
 
-  <div class="control-group">
-      <label class="control-label" for="pseudoUser"><b>Pseudo :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-      <input type="text" name="pseudoUser" id="pseudoUser" title="Vous ne pouvez pas changer votre pseudo" size="80" maxlength="80" value="<?= $pseudoUser; ?>" readonly />
-  </div>
-  <div class="control-group">
-      <label class="control-label" for="passUser"><b>Mot de passe :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-      <input type="password" name="passUser" id="passUser" title="Vous ne pouvez pas changer de mot de passe" size="80" maxlength="80" value="<?= $passUser; ?>" readonly />
-  </div>
-  <div class="control-group">
-      <label class="control-label" for="nomUser"><b>Nom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-      <input type="text" name="nomUser" id="nomUser" size="80" maxlength="80" value="<?= $nomUser; ?>" autofocus="autofocus" />
-  </div>
-  <div class="control-group">
-      <label class="control-label" for="prenomUser"><b>Prénom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-      <input type="text" name="prenomUser" id="prenomUser" size="80" maxlength="80" value="<?= $prenomUser; ?>"  />
-  </div>
-  <div class="control-group">
-      <label class="control-label" for="eMailUser1"><b>eMail :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-      <input type="text" name="eMailUser1" id="eMailUser1" size="80" maxlength="80" value="<?= $eMailUser1; ?>"  />
-  </div>
-  <div class="control-group">
-      <label class="control-label" for="eMailUser2"><b>Confirmation eMail :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-      <input type="text" name="eMailUser2" id="eMailUser2" size="80" maxlength="80" value="<?= $eMailUser2; ?>" />
-  </div>
-  <div class="control-group">
-      <label for="idStat">Statut:</label>  
-      <select id="idStat" name="idStat"  onchange="select()">
-        <option value="<?php echo $idStat;?>"><?php echo $libStat;?></option>
-          <?php 
-          global $db;
-          $requete = 'SELECT idStat, libStat FROM STATUT ;';
-          $result = $db->query($requete);
-          $allStatut = $result->fetchAll();
-          foreach ($allStatut AS $statut)
-          {
-          ?>
-          
-          <option value="<?php echo $statut['idStat'];?>"><?php echo $statut['libStat'];?></option>
-          <?php
-          }
-          ?>
-      </select>
-  </div>
-
+    <div class="control-group">
+        <label class="control-label" for="pseudoUser"><b>Pseudo :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+        <input type="text" name="pseudoUser" id="pseudoUser" title="Vous ne pouvez pas changer votre pseudo" size="80" maxlength="80" value="<?= $pseudoUser; ?>" readonly />
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="passUser"><b>Mot de passe :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+        <input type="password" name="passUser" id="passUser" title="Vous ne pouvez pas changer de mot de passe" size="80" maxlength="80" value="<?= $passUser; ?>" readonly />
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="nomUser"><b>Nom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+        <input type="text" name="nomUser" id="nomUser" size="80" maxlength="80" value="<?= $nomUser; ?>" autofocus="autofocus" />
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="prenomUser"><b>Prénom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+        <input type="text" name="prenomUser" id="prenomUser" size="80" maxlength="80" value="<?= $prenomUser; ?>"  />
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="eMailUser1"><b>eMail :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+        <input type="text" name="eMailUser1" id="eMailUser1" size="80" maxlength="80" value="<?= $eMailUser1; ?>"  />
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="eMailUser2"><b>Confirmation eMail :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+        <input type="text" name="eMailUser2" id="eMailUser2" size="80" maxlength="80" value="<?= $eMailUser2; ?>" />
+    </div>
+    <div class="control-group">
+        <label for="idStat">Statut:</label>  
+        <select id="idStat" name="idStat"  onchange="select()">
+            <?php 
+            global $db;
+            $requete = 'SELECT idStat, libStat FROM STATUT ;';
+            $result = $db->query($requete);
+            $allStatut = $result->fetchAll();
+            foreach ($allStatut AS $statut)
+            {
+            ?>
+            <option value="<?= ($statut['idStat']); ?>" <?= (isset($idStat) && $idStat == $statut['idStat'] ) ? " selected=\"selected\"" : null; ?> >
+                <?= $statut['libStat']; ?>
+            </option>
+            <?php
+            }
+            ?>
+        </select>
+    </div>
 
   <div class="control-group">
       <div class="controls">

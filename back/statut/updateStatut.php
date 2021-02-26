@@ -29,13 +29,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
         if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
-
-            header("Location: ./updateStatut.php");
+            $reload = $_POST['id'];
+            header("Location: ./updateStatut.php?id=".$reload);
         }   // End of if ((isset($_POST["submit"])) ...
 
         // Mode création
         if ((isset($_POST['id']) AND $_POST['id'] > 0)
-        AND (!empty($_POST['Submit']) AND ($Submit === "Valider"))) {
+        AND (!empty($_POST['Submit']) AND ($Submit === "Modifier"))) {
 
             $idStat = ctrlSaisies($_POST['id']);
 
@@ -71,7 +71,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Statut</h1>
@@ -100,18 +102,14 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
 
         <div class="control-group">
-            <label class="control-label" for="libStat"><b>Nouveau nom du statut :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat; ?>" autofocus="autofocus" />
+            <label class="control-label" for="libStat">Nouveau nom du statut :&nbsp;</label>
+            <input type="text" name="libStat" id="libStat" size="25" maxlength="25" value="<?= $libStat; ?>" placeholder="Saisir un statut (25 caractères max)" autofocus="autofocus" required/>
         </div>
 
         <div class="control-group">
             <div class="controls">
-                <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                <br>
+                <input class="button" type="submit" value="Initialiser" name="Submit" formnovalidate/>
+                <input class="button" type="submit" value="Modifier" name="Submit" />
             </div>
         </div>
       </fieldset>

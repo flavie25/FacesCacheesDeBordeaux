@@ -17,6 +17,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     // insertion classe STATUT
     require_once __DIR__ . '/../../util/ctrlSaisies.php';
     require_once __DIR__ . '/../../CLASS_CRUD/article.class.php';
+    
     global $db;
     $monArticle = new ARTICLE;
 
@@ -28,12 +29,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         // Opérateur ternaire
         $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
-        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
+        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Annuler")) {
 
-            header("Location: ./createArticle.php");
+            header("Location: ./article.php");
         }   // End of if ((isset($_POST["submit"])) ...
 
         // Mode création
+       
         if (((isset($_POST['libTitrArt'])) AND !empty($_POST['libTitrArt']))
             AND (!empty($_POST['Submit']) AND ($Submit === "Valider"))
             AND (isset($_POST['libChapoArt'])) AND !empty($_POST['libChapoArt'])
@@ -44,6 +46,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             AND (isset($_POST['libSsTitr2Art'])) AND !empty($_POST['libSsTitr2Art'])
             AND (isset($_POST['parag3Art'])) AND !empty($_POST['parag3Art'])
             AND (isset($_POST['libConclArt'])) AND !empty($_POST['libConclArt'])
+            AND ((isset($_POST['idMotCle'])) AND !empty($_POST['idMotCle']))
             AND ((isset($_FILES['monfichier']['tmp_name'])) AND !empty($_FILES['monfichier']['tmp_name']))
             AND (isset($_POST['idAngl'])) AND !empty($_POST['idAngl'])
             AND (isset($_POST['idThem'])) AND !empty($_POST['idThem'])) {
@@ -62,21 +65,39 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $numAngl = ctrlSaisies($_POST['idAngl']);
             $numThem = ctrlSaisies($_POST['idThem']);
             $dtCreArt = date("Y-m-d h:i:s");
+            $motCle = $_POST['idMotCle'];
 
             require_once __DIR__ . '/ctrlerUploadImage.php';
 
             $urlPhotArt = $nomImage;
             echo $urlPhotArt;
 
-           
             $monArticle->create($dtCreArt, $libTitrArt, $libChapoArt, $libAccrochArt, $parag1Art, $libSsTitr1Art, $parag2Art, $libSsTitr2Art, $parag3Art, $libConclArt,$urlPhotArt, $numAngl, $numThem);
             
+            $numArt = $monArticle->get_LastNumArt();
+
+            $motCle = $_POST['idMotCle'];
+            $nbMotCle = count($motCle);
+
+            if ($nbMotCle > 0){
+                for ($i = 0; $i < $nbMotCle; $i++) {
+                    global $db;
+                    $requete = 'INSERT INTO MOTCLEARTICLE (numMotCle, numArt) VALUES (?, ?);';
+                    $result = $db->prepare($requete);
+                    $result -> execute([$motCle[$i], $numArt]);
+                    
+                }
+            }
+             
+
             header("Location: ./article.php");
                 
         }
         else{
-            header("Location: ./createArticle.php?idAngl=".$_POST['idAngl']."&idThem=".$_POST['idThem']);
-            
+            $erreur = true;
+            $errSaisies =  "Erreur, la saisie est obligatoire !";
+            echo $errSaisies;
+                
         }
     
     }   
@@ -93,8 +114,34 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../../front/assets/css/draganddrop.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
+    <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- <link href="../../front/assets/css/draganddrop.css" rel="stylesheet" type="text/css" /> -->
+
 </head>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#add').click(function() {
+            return !$('#listMotCle option:selected')
+            .remove().appendTo('#idMotCle');
+        });
+        $('#remove').click(function() {
+            return !$('#idMotCle option:selected')
+            .remove().appendTo('#listMotCle');
+        });
+        function selectall()  {
+            $('#idMotCle').find('option').each(function() {
+                $(this).attr('selected', 'selected');
+            });
+        }
+    });
+</script>
+
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Article</h1>
     <h2>Ajout d'un article</h2>
@@ -178,23 +225,61 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 				</select>
 			</div> 
             </br>
-<!-- -------------------------------------------------------------- -->
-            <label>Mots clés :&nbsp;&nbsp;</label>
-            <div id="motCle" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <ul name="idMotCle" id="idMotCle">
-                </ul>
-            </div>
-            <div id="selecMotCle" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <ul>
-                </ul>
-            </div>
         </div>
-<!-- -------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------- -->
+<!-- Drag and drop sur Mots clés -->
+<!-- --------------------------------------------------------------- -->
+<br><br>
+    <div class="controls">
+            <label class="control-label" for="LibTypMotsCles1">
+                <b>Choisissez les mots clés liés à l'article :&nbsp;&nbsp;&nbsp;</b>
+            </label>
+    </div>
+    <div class="selectmotcle">
+        <div class="list1">
+    <!-- <span class="span-text">Liste Mots clés</span> -->
+        <div class="controls">
+            <label class="control-label" for="LibTypMotsCles2">
+                <b>&nbsp;&nbsp;Liste Mots clés&nbsp;&nbsp;&nbsp;</b>
+            </label>
+        </div>
+        <div id="motCle" style="display:inline">
+            <select class="form-control" id ="listMotCle" name="listMotCle[]" multiple="multiple" style="height:150px;">
+            </select>
+        </div>
+    </div>
+    <div class="btnsaddsuppr">
+        <div class="input-group btnadd">
+            <label class="control-label">
+                <button type="button" value="" class="btn btn-xs btn-primary " id="add" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px; font-size:13px" >Ajoutez&nbsp;&nbsp;>></button>
+            </label>
+        </div>
+        <div class="input-group btnspr">
+            <button type="button" value="" class="btn btn-xs btn-danger" id="remove" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px; font-size:13px"><<&nbsp;&nbsp;Supprimez</button>
+        </div>
+    </div>
+
+    <div class="list2">
+    <!-- <span class="span-text">Mots clés ajoutés</span> -->
+        <div class="controls">
+            <label class="control-label" for="LibTypMotsCles">
+                <b>&nbsp;&nbsp;Mots clés ajoutés&nbsp;&nbsp;&nbsp;</b>
+            </label>
+        </div>
+        <div id="selectMotCle" style="display:inline">
+            <select class="form-control" name="idMotCle[]" required size="9" id="idMotCle" multiple="multiple" style="height:150px;">
+            </select>
+        </div>
+    </div>
+</div>
+<!-- --------------------------------------------------------------- -->
+<!-- End of Drag and drop sur Mots clés -->
+<!-- --------------------------------------------------------------- -->
 
         <div class="control-group">
             <label class="control-label" for="urlPhotArt"><b>Importez l'illustration :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
             <div class="controls"> 
-                <input type="file" name="monfichier" required="required" id="monfichier" accept=".jpg,.gif,.png,.jpeg" size="70" maxlength="70" value="<? if(isset($_GET['id'])) echo $_POST['urlPhotArt']; else echo $urlPhotArt; ?>" tabindex="110" placeholder="Sur 70 car." title="Recherchez l'image à uploader !" />
+                <input type="file" name="monfichier"  id="monfichier" accept=".jpg,.gif,.png,.jpeg" size="70" maxlength="70" value="<? if(isset($_GET['id'])) echo $_POST['urlPhotArt']; else echo $urlPhotArt; ?>" tabindex="110" placeholder="Sur 70 car." title="Recherchez l'image à uploader !" />
                 <p>
                 <? // Gestion extension images acceptées
                 $msgImagesOK = "&nbsp;&nbsp;>> Extension des images acceptées : .jpg, .gif, .png, .jpeg" . "<br>" .
@@ -209,7 +294,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <div class="controls">
                 <br><br>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                <input type="submit" value="Annuler" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
                 <br>
@@ -217,7 +302,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         </div>
       </fieldset>
     </form>
-    <script type='text/javascript' href="../../front/assets/js/draganddrop.js"></script>
     <script type='text/javascript'>
 		function getXhr() {
         var xhr = null;
@@ -246,6 +330,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 			var xhr = getXhr();
             var xhr1 = getXhr();
             var xhr2 = getXhr();
+            var xhr3 = getXhr();
 			// On définit ce qu'on va faire quand on aura la réponse
 			xhr.onreadystatechange = function() {
 				//alert(xhr.readyState);	// Affiche 1 popup à chq FK/PK lue
@@ -274,7 +359,16 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 				}
 			}
 
-			// Traitement POST
+            xhr3.onreadystatechange = function() {
+				//alert(xhr.readyState);	// Affiche 1 popup à chq FK/PK lue
+				// test si tout est reçu et si serveur est ok
+				if (xhr3.readyState == 4 && xhr3.status == 200) {
+					di = document.getElementById('selectMotCle');
+					di.innerHTML = xhr3.responseText;
+				}
+			}
+
+			// Traitement POST ajaxAngle
 			xhr.open("POST","./ajaxAngle.php",true);
 			// pour le post
 			xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
@@ -283,7 +377,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 			//alert(idauteur);
 			xhr.send("langue="+langue);	// Recup PK auteur à passer en "m" à livre (FK)
 
-            // Traitement POST
+            // Traitement POST ajaxThem
 			xhr1.open("POST","./ajaxThem.php",true);
 			// pour le post
 			xhr1.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
@@ -292,7 +386,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 			//alert(idauteur);
 			xhr1.send("langue="+langue1);	// Recup PK auteur à passer en "m" à livre (FK)
 
-             // Traitement POST
+            // Traitement POST ajaxMotCle
 			xhr2.open("POST","./ajaxMotCle.php",true);
 			// pour le post
 			xhr2.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
@@ -300,6 +394,16 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 			langue2 = document.getElementById('langue').options[document.getElementById('langue').selectedIndex].value;
 			//alert(idauteur);
 			xhr2.send("langue="+langue2);	// Recup PK auteur à passer en "m" à livre (FK)
+
+            // Traitement POST ajaxSelectMotCle
+            xhr3.open("POST","./ajaxSelectMotCle.php",true);
+			// pour le post
+			xhr3.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+			// poster les arguments : ici, l'id de l'auteur
+			langue3 = document.getElementById('langue').options[document.getElementById('langue').selectedIndex].value;
+			//alert(idauteur);
+			xhr3.send("langue="+langue3);	// Recup PK auteur à passer en "m" à livre (FK)
+
 		}	// End of function
   </script>
 <?php
@@ -309,3 +413,7 @@ require_once __DIR__ . '/footer.php';
 ?>
 </body>
 </html>
+
+
+
+<!-- ================================================================================================================================================ -->

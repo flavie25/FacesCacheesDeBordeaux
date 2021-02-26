@@ -29,14 +29,14 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
         if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
-
-            header("Location: ./angle.php");
+            $reload = $_POST['id'];
+            header("Location: ./updateAngle.php?id=".$reload);
         }   // End of if ((isset($_POST["submit"])) ...
 
         // Mode création
         if (((isset($_POST['id'])) AND !empty($_POST['id']))
             AND((isset($_POST['libAngl'])) AND !empty($_POST['libAngl']))
-            AND (!empty($_POST['Submit']) AND ($Submit === "Valider"))
+            AND (!empty($_POST['Submit']) AND ($Submit === "Modifier"))
             AND ((isset($_POST['numLang'])) AND !empty($_POST['numLang']))) {
             // Saisies valides
             $erreur = false;
@@ -69,7 +69,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
@@ -99,13 +101,12 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
 
         <div class="control-group">
-            <label class="control-label" for="libAngl"><b>Nouveau nom de l'angle :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libAngl" id="libAngl" size="80" maxlength="80" value="<?= $libAngl; ?>" autofocus="autofocus" />
+            <label class="control-label" for="libAngl">Nouveau nom de l'angle :&nbsp;</label>
+            <input type="text" name="libAngl" id="libAngl" size="60" maxlength="60" value="<?= $libAngl; ?>" autofocus="autofocus" placeholder="Saisir un nom pour l'angle (60 caractères max)" required/>
         </div>
         <div class="control-group">
             <label for="numLang">Langue :</label>  
             <select id="numLang" name="numLang"  onchange="select()">
-            <option value="<?php echo $numLang;?>"><?php echo $lib1Lang;?></option>
             <?php 
             global $db;
             $requete = 'SELECT * FROM LANGUE ;';
@@ -114,7 +115,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             foreach ($allLangue AS $langue)
             {
             ?>
-            <option value="<?php echo $langue['numLang'];?>"><?php echo $langue['lib1Lang'];?></option>
+            <option value="<?= ($langue['numLang']); ?>" <?= (isset($numLang) && $numLang == $langue['numLang'] ) ? " selected=\"selected\"" : null; ?> >
+                <?= $langue['lib1Lang']; ?>
+            </option>
             <?php
             }
             ?>
@@ -123,12 +126,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         <div class="control-group">
             <div class="controls">
-                <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                <br>
+                <input class="button" type="submit" value="Initialiser" name="Submit" formnovalidate/>
+                <input class="button" type="submit" value="Modifier" name="Submit" />
             </div>
         </div>
       </fieldset>

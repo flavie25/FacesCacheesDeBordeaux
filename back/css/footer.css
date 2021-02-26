@@ -1,0 +1,27 @@
+body {
+    background-color: #FFF3FB;
+}
+
+.bas_back {
+    padding: 50px 100px;
+    background-color: #8E6E53;
+    height: auto;
+}
+
+.button {
+    color: #FFF3FB;
+    background-color: #433E3F;
+    padding: 10px 40px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Lato';
+    text-decoration: none;
+    margin: 5px 10px;
+}
+
+.button:hover {
+    color: #FFF3FB;
+    background-color: #113638;
+    cursor: pointer;
+}

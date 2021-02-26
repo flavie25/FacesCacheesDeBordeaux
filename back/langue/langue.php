@@ -31,32 +31,34 @@ $errCIR=0;
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
-
-	<h2>Tous les Langues</h2>
     <hr /><br />
-	<h2>Nouvelle Langue :&nbsp;<a href="./createLangue.php"><i>Créer une langue</i></a></h2>
+	<h2>Nouvelle Langue :&nbsp;<a class="button" href="./createLangue.php">Créer une langue</a></h2>
 	<br /><hr />
 	<h2>Toutes les langues</h2>
-
-    <br><br>
-
+    <?php
+    if ($errCIR == 1){
+    echo 'Vous ne pouvez pas supprimer cette langue. Veuillez d\'abord supprimer cette langue dans les autres tables';
+    }
+    ?>
     <table border="3" bgcolor="aliceblue">
     <thead>
         <tr>
-            <th>&nbsp;NumLang&nbsp;</th>
-            <th>&nbsp;Lib1&nbsp;</th>
-            <th>&nbsp;Lib2&nbsp;</th>
-            <th>&nbsp;NumPays&nbsp;</th>
+            <th>&nbsp;Numéro Langue&nbsp;</th>
+            <th>&nbsp;Libellé court&nbsp;</th>
+            <th>&nbsp;Libellé long&nbsp;</th>
+            <th>&nbsp;Pays&nbsp;</th>
             <th colspan="2">&nbsp;Action&nbsp;</th>
         </tr>
     </thead>
     <tbody>
 <?
-    $allLangue = $maLangue->get_AllLangues();
+    $allLangue = $maLangue->get_AllLanguesByPays();
     foreach($allLangue as $row){
 	// Appel méthode : toutes les langues en BDD
 
@@ -67,7 +69,7 @@ $errCIR=0;
 		<td><h4>&nbsp; <?php echo $row["numLang"]; ?> &nbsp;</h4></td>
         <td>&nbsp; <?php echo $row["lib1Lang"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["lib2Lang"]; ?> &nbsp;</td>
-        <td>&nbsp; <?php echo $row["numPays"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["frPays"]; ?> &nbsp;</td>
 
 		<td>&nbsp;<a href="./updateLangue.php?id=<?=$row["numLang"];?>"><i>Modifier</i></a>&nbsp;
 		<br /></td>
@@ -83,9 +85,6 @@ $errCIR=0;
     <br><br>
 
 <?
-if ($errCIR == 1){
-    echo 'Vous ne pouvez pas supprimer cet utilisateur. Veuillez d\'abord supprimer cet utilisateur dans les autres tables';
-} 
 require_once __DIR__ . '/footer.php';
 ?>
 </body>

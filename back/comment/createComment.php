@@ -37,17 +37,19 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         // Mode création
         if (((isset($_POST['libCom'])) AND !empty($_POST['libCom']))
             AND (!empty($_POST['Submit']) AND ($Submit === "Envoyer"))
-            AND ((isset($_POST['numArt'])) AND !empty($_POST['numArt']))) {    
+            AND ((isset($_POST['numArt'])) AND !empty($_POST['numArt']))
+            AND ((isset($_POST['numMemb'])) AND !empty($_POST['numMemb']))) {    
             
             // Saisies valides
             $erreur = false;
 
             $libCom = ctrlSaisies(($_POST['libCom']));
             $numArt = ctrlSaisies(($_POST['numArt']));
+            $numMemb = ctrlSaisies(($_POST['numMemb']));
             $dtCreaCom = date("Y-m-d h:i:s");
             $numSeqCom = getNextNumCom($numArt);
 
-            $monComment->create($numSeqCom, $numArt, $dtCreaCom, $libCom);
+            $monComment->create($numSeqCom, $numArt, $dtCreaCom, $libCom, $numMemb);
             header("Location: ./comment.php");
 
                   
@@ -71,7 +73,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Comment</h1>
@@ -101,6 +105,24 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 {
                 ?>
                 <option value="<?php echo $pays['numArt'];?>"><?php echo $pays['libTitrArt'];?></option>
+                <?php
+            }
+            ?>
+            </select>
+        </div>
+        <div class="control-group">
+            <label for="numMemb">Membres :</label>  
+            <select id="numMemb" name="numMemb">
+                <option value="" selected disabled hidden>Sélectionner un membre</option>
+                <?php 
+                global $db;
+                $requete = 'SELECT * FROM MEMBRE ;';
+                $result = $db->query($requete);
+                $allMemb = $result->fetchAll();
+                foreach ($allMemb AS $membre)
+                {
+                ?>
+                <option value="<?php echo $membre['numMemb'];?>"><?php echo $membre['pseudoMemb'];?></option>
                 <?php
             }
             ?>

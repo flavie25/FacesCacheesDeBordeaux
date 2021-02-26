@@ -51,13 +51,14 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $prenomMembre = ctrlSaisies($_POST['prenomMemb']);
             $nomMembre = ctrlSaisies($_POST['nomMemb']);
             $pseudoMembre = ctrlSaisies($_POST['pseudoMemb']);
-            $passMembre1 = ctrlsaisies($_POST['passMemb1']);
-            $passMembre2 = ctrlsaisies($_POST['passMemb2']);
+            $passMembre1 = ctrlSaisies($_POST['passMemb1']);
+            $passMembre2 = ctrlSaisies($_POST['passMemb2']);
             $emailMembre1 = ctrlSaisies($_POST['eMailMemb1']);
             $emailMembre2 = ctrlSaisies($_POST['eMailMemb2']);
             $dtCreaMembre = date("Y-m-d h:i:s");
             $souvenirMembre = ctrlSaisies($_POST['souvenirMemb']);
             $idStat = 1;
+           
             if ($souvenirMembre == 'off'){
                 $souvenirMembre = 0;
             }
@@ -122,7 +123,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Membre</h1>

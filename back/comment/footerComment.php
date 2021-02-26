@@ -11,7 +11,8 @@
 require_once __DIR__ . '/../../util/utilErrOn.php';
 ?>
 
-<footer>
-    <br /><br /><hr />
-    <h2>Retour à la gestion des commentaires sur article : <a href="./comment.php">CRUD Commentaire sur Article</a></h2>
+<footer class="bas_back">
+
+    <a class="button" href="./comment.php">Gestion des COMMENTAIRES</a>
+
 </footer>
