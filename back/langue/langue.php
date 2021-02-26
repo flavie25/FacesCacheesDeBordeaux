@@ -36,18 +36,27 @@ $errCIR=0;
 
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
-    <hr /><br />
-	<h2>Nouvelle Langue :&nbsp;<a class="button" href="./createLangue.php">Créer une langue</a></h2>
-	<br /><hr />
-	<h2>Toutes les langues</h2>
+<div class="hautpage">
+    <div class="Titre">
+        <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
+
+        <h2>Toutes les langues</h2>
+
+    </div>
+
+    <div class="creerBt">
+        <button class="button" onclick="location.href='./createLangue.php'">
+            Créer une langue
+        </button>
+    </div>
+</div>
     <?php
     if ($errCIR == 1){
     echo 'Vous ne pouvez pas supprimer cette langue. Veuillez d\'abord supprimer cette langue dans les autres tables';
     }
     ?>
-    <table border="3" bgcolor="aliceblue">
-    <thead>
+    <table class="tableau">
+    <thead class="entete">
         <tr>
             <th>&nbsp;Numéro Langue&nbsp;</th>
             <th>&nbsp;Libellé court&nbsp;</th>
