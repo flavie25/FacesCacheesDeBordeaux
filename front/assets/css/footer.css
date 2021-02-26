@@ -5,7 +5,7 @@
 }
 
 .bas_page {
-    width: 100vw;
+    width: auto;
     background-color:#8E6E53;
     height: 30%;
 }   
@@ -23,19 +23,20 @@
 
   
 .container_footer {
+    text-align: center;
     padding-top: 10px;
     font-family: "Bebas Neue", serif;
     font-weight: 500;
-    font-size: 20px;
-    color: #201D1E;
+    font-size: 25px;
+    color: #FFF3FB;
     text-decoration: none;
 }
 
 .spe_footer {
-    font-family: "Bebas Neue", serif;
+    font-family: "Merriweather", serif;
     font-weight: 500;
-    font-size: 15px;
-    color: #201D1E;
+    font-size: 20px;
+    color: #FFF3FB;
     text-decoration: none;
 }
 
@@ -67,9 +68,10 @@
 }
 
 .contain_1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+    position: relative;
+    align-self: center;
+	flex-direction: column;
     width: auto;
     flex-direction: column;
 }
@@ -88,11 +90,11 @@
 
 
 .contain_2 {
-	position: relative;
 	background-color: none;
 	display: flex;
+    position: relative;
+    justify-content: center;
 	flex-direction: column;
-	justify-content: center;
 	height: 200px;
 }
 
@@ -102,13 +104,12 @@
 
 .contain_2 ul li {
     list-style: none;       /*enlève les puces*/
-    margin: 0 10px;         /*séparation horizontale entre les boutons*/
+    margin: 16px 15px;         /*séparation horizontale entre les boutons*/
 }
 
 .contain_2 ul li .fa {
-    color: #201D1E;       /*couleur des icônes*/
-    font-size: 25px;        /*taille des icônes*/
-    line-height: 50px;
+    color: #FFF3FB;       /*couleur des icônes*/
+    font-size: 20px;        /*taille des icônes*/
     transition: .5s;
 }
 
@@ -118,14 +119,10 @@
 
 .contain_2 ul li a {
     position: relative;
-    display: block;            
-    height: 50px;            /*hauteur des rectangles*/
+    display: block;                     /*hauteur des rectangles*/
     border-radius: 50% ;     /*rondeur des angles*/
     text-align: center;
-
 }
-
-
 
 .titre_mention {
     display: flex; 
@@ -143,7 +140,7 @@
 
 .ment-alyssa {
     text-decoration: none;
-    color: #201D1E;
+    color: #FFF3FB;
 }
 
 .ment-alyssa:hover {
