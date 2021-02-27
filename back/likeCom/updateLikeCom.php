@@ -32,7 +32,7 @@
             $sameId1 = $_POST['id1'];
             $sameId2 = $_POST['id2'];
             $sameId3 = $_POST['id3'];
-            header("Location: ./updateLikecom.php?id1=".$sameId1."&id2=".$sameId2."&id3=".$sameId3);
+            header("Location: ./updateLikeCom.php?id1=".$sameId1."&id2=".$sameId2."&id3=".$sameId3);
         }
         // Mode création
         if (((isset($_POST['id1'])) AND !empty($_POST['id1']))
@@ -71,12 +71,24 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css">
+    <link rel="stylesheet" href="../css/form.css">
+
 </head>
 
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Like Commentaire</h1>
-    <h2>Modification d'un like commentaire</h2>
+<?php
+include __DIR__ ."./../../front/includes/commons/navbar.php";
+?>
+<div class="wrapper">
+    <div class="Titre">
+        <h1>BLOGART21 Admin - Gestion du CRUD Like Commentaire</h1>
+        <h2>Modification d'un like commentaire</h2>
+    </div>
     <?
     global $db;
      if (isset($_GET['id1']) and $_GET['id1'] AND isset($_GET['id2']) and $_GET['id2' ]AND isset($_GET['id3']) and $_GET['id3']) {
@@ -109,15 +121,15 @@
 
             <div class="control-group">
                 <label class="control-label" for="pseudoMemb"><b>Membre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="text" name="pseudoMemb" id="pseudoMemb" size="80" maxlength="80" value="<?= $pseudoMemb; ?>" disabled />
+                <input type="text" name="pseudoMemb" id="pseudoMemb" size="80" maxlength="80" value="<?= $pseudoMemb; ?>" readonly/>
             </div>
             <div class="control-group">
                 <label class="control-label" for="libTitrArt"><b>Titre de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="text" name="libTitrArt" id="libTitrArt" size="80" maxlength="80" value="<?= $libTitrArt; ?>"disabled  />
+                <input type="text" name="libTitrArt" id="libTitrArt" size="80" maxlength="80" value="<?= $libTitrArt; ?>" readonly/>
             </div>
             <div class="control-group">
                 <label class="control-label" for="libCom"><b>Titre de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="text" name="libCom" id="libCom" size="80" maxlength="80" value="<?= $libCom; ?>"disabled  />
+                <input type="text" name="libCom" id="libCom" size="80" maxlength="80" value="<?= $libCom; ?>" readonly/>
             </div>
                 
             <br><br>
@@ -127,7 +139,6 @@
 
 
 
-            </div>
 
             <?
             if ($erreur)
@@ -140,19 +151,15 @@
     
             }
 ?>
-            <div class="control-group">
-
-                <div class="controls">
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="submit" value="Annuler" name="Submit" />
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="submit" value="Valider" name="Submit" />
-                    <br>
-                </div>
+        <div class="control-group">
+            <div class="controls">
+                <input class="button" type="submit" value="Initialiser" name="Submit" formnovalidate/>
+                <input class="button" type="submit" value="Modifier" name="Submit" />
             </div>
-        </fieldset>
+        </div>
+      </fieldset>
     </form>
+</div>
     <?
 require_once __DIR__ . '/footerLikeCom.php';
 

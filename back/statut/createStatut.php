@@ -63,14 +63,24 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-
+   
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
-    
+    <link rel="stylesheet" href="../css/gestionCRUD.css">
+    <link rel="stylesheet" href="../css/form.css">
+
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Statut</h1>
-    <h2>Ajout d'un statut</h2>
+<?php
+include __DIR__ ."./../../front/includes/commons/navbar.php";
+?>
+<div class="wrapper">
+    <div class="Titre">
+        <h1>BLOGART21 Admin - Gestion du CRUD Statut</h1>
+        <h2>Ajout d'un statut</h2>
+    </div>
 
     <form method="post" action="./createStatut.php" enctype="multipart/form-data">
 
@@ -92,6 +102,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         </div>
       </fieldset>
     </form>
+</div>
 <?php
 require_once __DIR__ . '/footerStatut.php';
 

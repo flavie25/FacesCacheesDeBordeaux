@@ -44,11 +44,11 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $etudFind = true;
 
 
-            $queryText = 'SELECT LibClas, NomEtu, PrenomEtu FROM CLASSE CL INNER JOIN ETUDIANT ET ON CL.NumClas = ET.NumClas WHERE NumEtu = :NumEtu AND ET.NumClas = :NumClas;';
+            $queryText = 'SELECT LibClas, NomEtu, PrenomEtu FROM class INNER JOIN etudiant ON classe.numClas = etudiant.numClas WHERE numEtu = :numEtu AND etudiant.numClas = :numClas;';
             $query = $db->prepare($queryText);
 
-            $query->bindParam(':NumClas', $NumClas);
-            $query->bindParam(':NumEtu', $NumEtu);
+            $query->bindParam(':numClas', $NumClas);
+            $query->bindParam(':numEtu', $NumEtu);
             $query->execute();
 
             //$query = get_1EtudiantByEtudByClas($NumClas, $NumEtu);
@@ -97,7 +97,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                     <option value="-1">- - - Choisissez une langue - - -</option>
                     <?php 
                     global $db;
-                    $requete = 'SELECT numLang, lib1Lang FROM LANGUE ORDER BY lib1Lang ;';
+                    $requete = 'SELECT numLang, lib1Lang FROM langue ORDER BY lib1Lang ;';
                     $result = $db->query($requete);
                     $allLangue = $result->fetchAll();
                     foreach ($allLangue as $langue)
@@ -127,7 +127,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                         <option value="-1">- - - Choisissez un mot clé - - -</option>
                         <?php 
                         global $db;
-                        $requete = 'SELECT numMotCle, libMotCle FROM MOTCLE WHERE numLang = ?;';
+                        $requete = 'SELECT numMotCle, libMotCle FROM motcle WHERE numLang = ?;';
                         $result = $db->prepare($requete);
                         $result->execute([$numLang]);
                         $allMotCle = $result->fetchAll();

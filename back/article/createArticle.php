@@ -47,9 +47,10 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             AND (isset($_POST['parag3Art'])) AND !empty($_POST['parag3Art'])
             AND (isset($_POST['libConclArt'])) AND !empty($_POST['libConclArt'])
             AND ((isset($_POST['idMotCle'])) AND !empty($_POST['idMotCle']))
-            AND ((isset($_FILES['monfichier']['tmp_name'])) AND !empty($_FILES['monfichier']['tmp_name']))
+            //AND ((isset($_FILES['monfichier']['tmp_name'])) AND !empty($_FILES['monfichier']['tmp_name']))
             AND (isset($_POST['idAngl'])) AND !empty($_POST['idAngl'])
-            AND (isset($_POST['idThem'])) AND !empty($_POST['idThem'])) {
+            AND (isset($_POST['idThem'])) AND !empty($_POST['idThem'])
+            ){
             // Saisies valides
             $erreur = false;
 
@@ -70,7 +71,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             require_once __DIR__ . '/ctrlerUploadImage.php';
 
             $urlPhotArt = $nomImage;
-            echo $urlPhotArt;
 
             $monArticle->create($dtCreArt, $libTitrArt, $libChapoArt, $libAccrochArt, $parag1Art, $libSsTitr1Art, $parag2Art, $libSsTitr2Art, $parag3Art, $libConclArt,$urlPhotArt, $numAngl, $numThem);
             
@@ -82,7 +82,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             if ($nbMotCle > 0){
                 for ($i = 0; $i < $nbMotCle; $i++) {
                     global $db;
-                    $requete = 'INSERT INTO MOTCLEARTICLE (numMotCle, numArt) VALUES (?, ?);';
+                    $requete = 'INSERT INTO motclearticle (numMotCle, numArt) VALUES (?, ?);';
                     $result = $db->prepare($requete);
                     $result -> execute([$motCle[$i], $numArt]);
                     
@@ -96,7 +96,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         else{
             $erreur = true;
             $errSaisies =  "Erreur, la saisie est obligatoire !";
-            echo $errSaisies;
                 
         }
     
@@ -115,6 +114,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="author" content="" />
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/gestionCRUD.css">
     <link rel="stylesheet" href="../css/form.css">
@@ -145,6 +146,10 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 </script>
 
 <body>
+<?php
+include __DIR__ ."./../../front/includes/commons/navbar.php";
+?>
+<div class="wrapper">
     <div class="Titre">
         <h1>BLOGART21 Admin - Gestion du CRUD Article</h1>
             <h2>Ajout d'un article</h2>
@@ -155,15 +160,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
       <fieldset>
         <legend class="legend1">Formulaire Article...</legend>
 
-        <!--<input type="hidden" id="id" name="id" value=": /*$_GET['id']; */-->
-
         <div class="control-group">
             <label class="control-label" for="libTitrArt">Titre de l'article :&nbsp;</label>
             <input type="text" name="libTitrArt" id="libTitrArt" title="100 caractères max" size="100" maxlength="100" value="<?= $libTitrArt; ?>" autofocus="autofocus" placeholder="Saisir le titre de l'article" required/>
         </div>
         <div class="control-group">
             <label class="control-label" for="libChapoArt">Chapeau de l'article :&nbsp;</label>
-            <textarea name="libChapoArt" id="libChapoArt" title="500 caractères max" cols="100" rows="5" maxlength="500" placeholder="Saisir le chapeau de l'article" required></textarea>
+            <textarea name="libChapoArt" id="libChapoArt" title="500 caractères max" cols="100" rows="5" maxlength="500" placeholder="Saisir le chapeau de l'article" required><?= $libChapoArt; ?></textarea>
         </div>
         <div class="control-group">
             <label class="control-label" for="libAccrochArt">Accroche de l'article :&nbsp;</label>
@@ -172,36 +175,36 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <div class="control-group">
             <h3>Paragraphe 1</h3>
             <label class="control-label" for="libSsTitr1Art">Sous-titre 1 de l'article :&nbsp;</label>
-            <input type="text" name="libSsTitr1Art" id="libSsTitr1Art" title="100 caractères max" size="100" maxlength="100" value="<?= $libSsTitr1Art; ?>" placeholder="Saisir un sous-titre pour le paragraphe 1" required/>
+            <input type="text" name="libSsTitr1Art" id="libSsTitr1Art" title="100 caractères max" size="100" maxlength="100" value="<?= $libSsTitr1Art; ?>" placeholder="Saisir un sous-titre pour le paragraphe 1" required/><br/>
         
             <label class="control-label" for="parag1Art">Paragraphe 1 de l'article :&nbsp;</label>
-            <input type="text" name="parag1Art" id="parag1Art" size="80" maxlength="1400" value="<?= $parag1Art; ?>" autofocus="autofocus" />
+            <textarea name="parag1Art" id="parag1Art" title="1200 caractères max" cols="100" rows="12" maxlength="1200" placeholder="Saisir le paragraphe 1" required><?= $parag1Art; ?></textarea>
         </div>
         <div class="control-group">
             <h3>Paragraphe 2</h3>
             <label class="control-label" for="libSsTitr2Art">Sous-titre 2 de l'article :&nbsp;</label>
-            <input type="text" name="libSsTitr2Art" id="libSsTitr2Art" title="100 caractères max" size="100" maxlength="100" value="<?= $libSsTitr2Art; ?>"  placeholder="Saisir un sous-titre pour le paragraphe 2" required/>
+            <input type="text" name="libSsTitr2Art" id="libSsTitr2Art" title="100 caractères max" size="100" maxlength="100" value="<?= $libSsTitr2Art; ?>" placeholder="Saisir un sous-titre pour le paragraphe 2" required/><br/>
         
             <label class="control-label" for="parag2Art">Paragraphe 2 de l'article :&nbsp;</label>
-            <input type="text" name="parag2Art" id="parag2Art" size="80" maxlength="1400" value="<?= $parag2Art; ?>" autofocus="autofocus" />
+            <textarea name="parag2Art" id="parag2Art" title="1200 caractères max" cols="100" rows="12" maxlength="1200" placeholder="Saisir le paragraphe 2" required><?= $parag2Art; ?></textarea>
         </div>
         <div class="control-group">
             <h3>Paragraphe 3</h3>
             <label class="control-label" for="parag3Art">Paragraphe 3 de l'article :&nbsp;</label>
-            <input type="text" name="parag3Art" id="parag3Art" size="80" maxlength="1400" value="<?= $parag3Art; ?>" autofocus="autofocus" />
-        </div>
+            <textarea name="parag3Art" id="parag3Art" title="1200 caractères max" cols="100" rows="12" maxlength="1200" placeholder="Saisir le paragraphe 3" required><?= $parag3Art; ?></textarea>
+       </div>
         <div class="control-group">
             <label class="control-label" for="libConclArt">Conclusion de l'article :&nbsp;</label>
-            <input type="text" name="libConclArt" id="libConclArt" size="80" maxlength="80" value="<?= $libConclArt; ?>" autofocus="autofocus" />
+            <textarea name="libConclArt" id="libConclArt" title="800 caractères max" cols="100" rows="8" maxlength="800" placeholder="Saisir la conclusion" required><?= $libConclArt; ?></textarea>
         </div>
 
         <div class="control-group">
 <!-- -------------------------------------------------------------- -->
-			<label>Langues :&nbsp;</label>
-			<select name='langue' id='langue' onchange='change()'>
-				<option value='-1'>- - - Choisir une langue - - -</option>
+			<label>Langue :&nbsp;</label>
+			<select name='langue' id='langue' onchange='change()' required>
+            <option value="" selected disabled hidden>Sélectionner une langue</option>
                 <?
-				$requete = "SELECT * FROM LANGUE ;";
+				$requete = "SELECT * FROM langue ;";
 				$result = $db->query($requete);
 				if ($result) {
                     while ($tuple = $result->fetch()) {
@@ -217,16 +220,16 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 <!-- -------------------------------------------------------------- -->
             <label>Angle :&nbsp;</label>
             <div id='angle' style='display:inline'>
-                <select name='idAngl' id="idAngl">
-                    <option value='-1'>- - - Choisir un angle - - -</option>
+                <select name='idAngl' id="idAngl" required>
+                <option value="" selected disabled hidden>Sélectionner un angle</option>
                 </select>
             </div>
 			<br/>
 <!-- -------------------------------------------------------------- -->
-            <label>Thématique :&nbsp;&nbsp;</label>
+            <label>Thématique :&nbsp;</label>
 			<div id='them' style='display:inline'>
-				<select name='idThem' id="idThem">
-					<option value='-1'>- - - Choisir une thématique - - -</option>
+				<select name='idThem' id="idThem" required>
+                <option value="" selected disabled hidden>Sélectionner une thématique</option>
 				</select>
 			</div> 
             </br>
@@ -256,11 +259,11 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <div class="btnsaddsuppr">
                 <div class="input-group btnadd">
                     <label class="control-label">
-                        <button class="button" type="button" value="" class="btn btn-xs btn-primary " id="add" style="cursor:pointer;" >Ajoutez&nbsp;>></button>
+                        <button class="button" type="button" value="" id="add" style="cursor:pointer;" >Ajoutez&nbsp;>></button>
                     </label>
                 </div>
                 <div class="input-group btnspr">
-                    <button class="button" type="button" value="" class="btn btn-xs btn-danger" id="remove" style="cursor:pointer;"><<&nbsp;Supprimez</button>
+                    <button class="button" type="button" value="" id="remove" style="cursor:pointer;"><<&nbsp;Supprimez</button>
                 </div>
             </div>
 
@@ -271,7 +274,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                     </label>
                 </div>
                 <div id="selectMotCle" style="display:inline">
-                    <select class="form-control" name="idMotCle[]" required size="9" id="idMotCle" multiple="multiple" style="height:150px;">
+                    <select class="form-control" name="idMotCle[]" size="9" id="idMotCle" multiple="multiple" style="height:150px;" required>
                     </select>
                 </div>
             </div>
@@ -283,7 +286,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         <div class="control-group">
             <label class="control-label" for="urlPhotArt">Importez l'illustration :&nbsp;</label>
-            <input class="button2" type="file" name="monfichier"  id="monfichier" accept=".jpg,.gif,.png,.jpeg" size="70" maxlength="70" value="<? if(isset($_GET['id'])) echo $_POST['urlPhotArt']; else echo $urlPhotArt; ?>" tabindex="110" placeholder="Sur 70 car." title="Recherchez l'image à uploader !" />
+            <input class="button2" type="file" name="monfichier"  id="monfichier" accept=".jpg,.gif,.png,.jpeg" size="70" maxlength="70" value="<? if(isset($_GET['id'])) echo $_POST['urlPhotArt']; else echo $urlPhotArt; ?>" tabindex="110" placeholder="Sur 70 car." title="Recherchez l'image à uploader" required/>
             <p>
             <? // Gestion extension images acceptées
             $msgImagesOK = "&nbsp;&nbsp;>> Extension des images acceptées : .jpg, .gif, .png, .jpeg" . "<br>" .
@@ -301,6 +304,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         </div>
       </fieldset>
     </form>
+</div>
     <script type='text/javascript'>
 		function getXhr() {
         var xhr = null;
@@ -412,7 +416,3 @@ require_once __DIR__ . '/footer.php';
 ?>
 </body>
 </html>
-
-
-
-<!-- ================================================================================================================================================ -->

@@ -77,11 +77,22 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="author" content="" />
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css">
+    <link rel="stylesheet" href="../css/form.css">
+
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
-    <h2>Ajout d'une langue</h2>
+<?php
+include __DIR__ ."./../../front/includes/commons/navbar.php";
+?>
+<div class="wrapper">
+    <div class="Titre">
+        <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
+        <h2>Ajout d'une langue</h2>
+    </div>
 
     <form method="post" action="./createLangue.php" enctype="multipart/form-data">
 
@@ -104,7 +115,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 <option value="" selected disabled hidden>Sélectionner un pays</option>
                 <?php 
                 global $db;
-                $requete = 'SELECT * FROM PAYS ;';
+                $requete = 'SELECT * FROM pays ;';
                 $result = $db->query($requete);
                 $allPays = $result->fetchAll();
                 foreach ($allPays AS $pays)
@@ -124,6 +135,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         </div>
       </fieldset>
     </form>
+</div>
 <?php
 require_once __DIR__ . '/footerLangue.php';
 require_once __DIR__ . '/footer.php';

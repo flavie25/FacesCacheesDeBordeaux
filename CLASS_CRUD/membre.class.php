@@ -6,21 +6,21 @@
 	class MEMBRE{
 		function get_1Membre($idMembre){
             global $db;
-            $query = 'SELECT * FROM MEMBRE WHERE numMemb = ?;';
+            $query = 'SELECT * FROM membre WHERE numMemb = ?;';
             $result = $db->prepare($query);
             $result->execute([$idMembre]);
             return($result->fetch());
         }
 		function get_AllMembre(){
 			global $db;
-            $requete = 'SELECT * FROM MEMBRE ;';
+            $requete = 'SELECT * FROM membre ;';
             $result = $db->prepare($requete);
             $result->execute();
             return($result->fetchAll());
 		}
 		function get_1MembreByStat($idMembre){
 			global $db;
-            $query = 'SELECT * FROM MEMBRE INNER JOIN STATUT ON membre.idStat = statut.idStat WHERE numMemb = ?;';
+            $query = 'SELECT * FROM membre INNER JOIN statut ON membre.idStat = statut.idStat WHERE numMemb = ?;';
             $result = $db->prepare($query);
             $result->execute([$idMembre]);
             return($result->fetch());
@@ -37,7 +37,7 @@
 
 		function get_NbAllMembreByLikeCom($numMembre){
             global $db;
-            $query = 'SELECT * FROM MEMBRE INNER JOIN LIKECOM ON membre.numMemb = likecom.numMemb WHERE membre.numMemb= ?;';
+            $query = 'SELECT * FROM membre INNER JOIN likecom ON membre.numMemb = likecom.numMemb WHERE membre.numMemb= ?;';
             $result = $db->prepare($query);
             $result->execute([$numMembre]);
             $allNbMembreByLikeC = $result->fetchAll();
@@ -50,7 +50,7 @@
 
 		function get_NbAllMembreByLikeArt($numMembre){
             global $db;
-            $query = 'SELECT * FROM MEMBRE INNER JOIN LIKEART ON membre.numMemb = likeart.numMemb WHERE membre.numMemb= ?;';
+            $query = 'SELECT * FROM membre INNER JOIN likeart ON membre.numMemb = likeart.numMemb WHERE membre.numMemb= ?;';
             $result = $db->prepare($query);
             $result->execute([$numMembre]);
             $allNbMembreByLikeA = $result->fetchAll();
@@ -66,14 +66,14 @@
 			global $db;
 			try {
 				$db->beginTransaction();
-				$requete= 'INSERT INTO MEMBRE (prenomMemb, nomMemb,pseudoMemb,passMemb,eMailMemb,dtCreaMemb,souvenirMemb,accordMemb,idStat) VALUES (?,?,?,?,?,?,?,?,?);';
+				$requete= 'INSERT INTO membre (prenomMemb, nomMemb,pseudoMemb,passMemb,eMailMemb,dtCreaMemb,souvenirMemb,accordMemb,idStat) VALUES (?,?,?,?,?,?,?,?,?);';
 				$result = $db->prepare($requete);
 				$result->execute(array($prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre,$souvenirMembre,$accordMembre,$idStat));
 				$db->commit();
 				$result->closeCursor();
 			}
 			catch (PDOException $e) {
-					die('Erreur insert Membre : ' . $e->getMessage());
+					die('Erreur insert MEMBRE : ' . $e->getMessage());
 					$db->rollBack();
 					$result->closeCursor();
 			}
@@ -84,7 +84,7 @@
 			global $db;
 			try {
 				$db->beginTransaction();
-				$requete="UPDATE MEMBRE SET prenomMemb = ?, nomMemb = ?, pseudoMemb = ?, passMemb = ?, eMailMemb = ?, dtCreaMemb = ?, souvenirMemb = ?, idStat = ? WHERE numMemb = ?";
+				$requete="UPDATE membre SET prenomMemb = ?, nomMemb = ?, pseudoMemb = ?, passMemb = ?, eMailMemb = ?, dtCreaMemb = ?, souvenirMemb = ?, idStat = ? WHERE numMemb = ?";
 				$result = $db->prepare($requete);
 				$result->execute(array($prenomMembre, $nomMembre,$pseudoMembre,$passMembre,$emailMembre,$dtCreaMembre, $souvenirMembre, $idStat, $numMembre));
 				$db->commit();
@@ -104,7 +104,7 @@
 			global $db;
 			try {
 				$db->beginTransaction();
-				$requete= "DELETE FROM  MEMBRE WHERE numMemb = ?; ";
+				$requete= "DELETE FROM  membre WHERE numMemb = ?; ";
 				$result = $db->prepare($requete);
 				$result->execute([$numMembre]);
 				$db->commit();
@@ -112,7 +112,7 @@
 	
 				}
 				catch (PDOException $e) {
-						die('Erreur delete STATUT : ' . $e->getMessage());
+						die('Erreur delete MEMBRE : ' . $e->getMessage());
 						$db->rollBack();
 						$result->closeCursor();
 				}

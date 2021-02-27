@@ -30,7 +30,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
     if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Annuler")) {
 
-        header("Location: ./angle.php");
+        header("Location: ./thematique.php");
     }   // End of if ((isset($_POST["submit"])) ...
 
     if ((isset($_POST['id']) AND !empty($_POST['id']))
@@ -57,12 +57,22 @@ include __DIR__ . '/initThematique.php';
     <meta name="author" content="" />
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css">
+    <link rel="stylesheet" href="../css/form.css">
 
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD THEMATIQUE</h1>
+<?php
+include __DIR__ ."./../../front/includes/commons/navbar.php";
+?>
+<div class="wrapper">
+<div class="Titre">
+<h1>BLOGART21 Admin - Gestion du CRUD THématiques</h1>
     <h2>Suppression d'une thématique</h2>
+    </div>
 <? 
     // Modif : récup id à modifier
     if (isset($_GET['id']) and !empty($_GET['id'])) {
@@ -87,26 +97,21 @@ include __DIR__ . '/initThematique.php';
 
         <div class="control-group">
             <label class="control-label" for="libThem"><b>Nom de la thématique :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libThem" id="libThem" size="80" maxlength="80" value="<?= $libThem; ?>" disabled="disabled" />
+            <input type="text" name="libThem" id="libThem" size="80" maxlength="80" value="<?= $libThem; ?>" readonly />
         </div>
         <div class="control-group">
             <label class="control-label" for="lib1Lang"><b>Langue :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="lib1Lang" id="lib1Lang" size="80" maxlength="80" value="<?= $lib1Lang; ?>" disabled="disabled" />
+            <input type="text" name="lib1Lang" id="lib1Lang" size="80" maxlength="80" value="<?= $lib1Lang; ?>" readonly />
         </div>
         
-        <div class="control-group">
-            <div class="controls">
-                <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Annuler" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Supprimer" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                <br>
+        <div class="controls">
+                <input class="button" type="submit" value="Annuler" name="Submit" formnovalidate/>
+                <input class="button" type="submit" value="Supprimer" name="Submit" />
             </div>
         </div>
       </fieldset>
     </form>
-    <br>
+</div>
 <?php
 require_once __DIR__ . '/footerThematique.php';
 

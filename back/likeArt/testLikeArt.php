@@ -4,7 +4,7 @@
                 <option value="" selected disabled hidden>Sélectionner un membre</option>
                 <?php 
                 global $db;
-                $requete = 'SELECT * FROM MEMBRE ;';
+                $requete = 'SELECT * FROM membre ;';
                 $result = $db->query($requete);
                 $allMembre = $result->fetchAll();
                 foreach ($allMembre AS $membre)
@@ -22,7 +22,7 @@
                 <option value="" selected disabled hidden>Sélectionner un Article</option>
                 <?php 
                 global $db;
-                $requete = 'SELECT * FROM ARTICLE ;';
+                $requete = 'SELECT * FROM article ;';
                 $result = $db->query($requete);
                 $allArticle = $result->fetchAll();
                 foreach ($allArticle AS $article)

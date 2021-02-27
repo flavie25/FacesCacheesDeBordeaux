@@ -9,7 +9,7 @@ require_once __DIR__ . '/../../CONNECT/database.php';
 
 	if (isset($langue1)) {
 		global $db;
-		$requete = "SELECT numThem, libThem FROM THEMATIQUE WHERE numLang = ?;" ;
+		$requete = "SELECT numThem, libThem FROM thematique WHERE numLang = ?;" ;
 		$result = $db->prepare($requete);
 		$result->execute([$langue1]);
 		$allThemByLangue = $result->fetchAll();

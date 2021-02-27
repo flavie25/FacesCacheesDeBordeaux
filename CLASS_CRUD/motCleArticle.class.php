@@ -6,7 +6,7 @@
 	class MOTCLEARTICLE{
     function get_AllMotCleArticle(){
 			global $db;
-      $requete = 'SELECT * FROM MOTCLEARTICLE;';
+      $requete = 'SELECT * FROM motclearticle;';
       $result = $db->prepare($requete);
       $result->execute();
       return($result->fetchAll());
@@ -14,7 +14,7 @@
 
     function get_AllMotCleArticleByArt($numArt){
 			global $db;
-      $requete = 'SELECT * FROM MOTCLEARTICLE INNER JOIN MOTCLE  ON motclearticle.numMotCle = motcle.numMotCle WHERE motclearticle.numArt = ?';
+      $requete = 'SELECT * FROM motclearticle INNER JOIN motcle  ON motclearticle.numMotCle = motcle.numMotCle WHERE motclearticle.numArt = ?';
       $result = $db->prepare($requete);
       $result->execute([$numArt]);
       return( $result->fetchAll());
@@ -22,7 +22,7 @@
 
     function get_nbMotCleArticleByArt($numArt){
 			global $db;
-      $requete = 'SELECT * FROM MOTCLEARTICLE INNER JOIN MOTCLE  ON motclearticle.numMotCle = motcle.numMotCle WHERE motclearticle.numArt = ?';
+      $requete = 'SELECT * FROM motclearticle INNER JOIN motcle  ON motclearticle.numMotCle = motcle.numMotCle WHERE motclearticle.numArt = ?';
       $result = $db->prepare($requete);
       $result->execute([$numArt]);
       $result->fetchAll();
@@ -31,7 +31,7 @@
 
     function deleteMotCleArticle($numArt){
       global $db;
-      $requete = 'DELETE FROM MOTCLEARTICLE WHERE numArt = ?;';
+      $requete = 'DELETE FROM motclearticle WHERE numArt = ?;';
       $result = $db->prepare($requete);
       $result->execute([$numArt]);
 

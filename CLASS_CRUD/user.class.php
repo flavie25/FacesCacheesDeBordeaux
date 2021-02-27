@@ -11,7 +11,7 @@
 
 		function get_AllUser(){
 			global $db;
-			$query = 'SELECT * FROM USER;';
+			$query = 'SELECT * FROM user;';
 			$result = $db->query($query);
 			$allUser = $result->fetchAll();
 			return($allUser);
@@ -20,7 +20,7 @@
 
 		function get_ExistPseudo($pseudoUser) {
 			global $db;
-			$requete = 'SELECT * FROM USER WHERE pseudoUser = ?;';
+			$requete = 'SELECT * FROM user WHERE pseudoUser = ?;';
 			$result = $db->prepare($requete);
 			$result->execute([$pseudoUser]);
 			return($result->rowCount());
@@ -76,7 +76,7 @@
 			global $db;
 			try {
 				$db->beginTransaction();
-				$requete = 'UPDATE USER SET nomUser=?, prenomUser=?, emailUser=?, idStat = ? WHERE pseudoUser = ? AND passUser=?;';
+				$requete = 'UPDATE user SET nomUser=?, prenomUser=?, emailUser=?, idStat = ? WHERE pseudoUser = ? AND passUser=?;';
 				$result = $db->prepare($requete);
 				$result->execute([$nomUser, $prenomUser, $emailUser, $idStat, $pseudoUser, $passUser]);
 	
@@ -94,7 +94,7 @@
 			global $db;
 			try {
 				$db->beginTransaction();
-				$requete = "DELETE FROM USER WHERE pseudoUser = ? AND passUser = ? ;";
+				$requete = "DELETE FROM user WHERE pseudoUser = ? AND passUser = ? ;";
 				$result = $db->prepare($requete);
 				$result->execute([$pseudoUser, $passUser]);
 

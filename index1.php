@@ -20,11 +20,17 @@ require_once __DIR__ . '/util/utilErrOn.php';
     <meta name="author" content="" />
 
 	<link rel="stylesheet" href="front/assets/css/normalize.css">
-	<link rel="stylesheet" href="back/css/footer.css">
+
+	<link rel="stylesheet" href="front/assets/css/nav.css">
 	<link rel="stylesheet" href="back/css/allCrud.css">
+	<link rel="stylesheet" href="back/css/footer.css">
 
 </head>
 <body>
+
+	<?php
+    include __DIR__ ."./front/includes/commons/navbar.php";
+    ?>
 
 	<div class="container">
 		<h1> Panneau administrateur</h1>
@@ -43,7 +49,7 @@ require_once __DIR__ . '/util/utilErrOn.php';
 		</div>
 		<div class="crudAlign">
 			<p> Gestion de</p>
-			<a class="button" href="./back/commentplus/commentplus.php">Réponse sur Commentaire </a>
+			<a class="button" href="./back/commentplus/commentPlus.php">Réponse sur Commentaire </a>
 		</div>
 		<div class="crudAlign">
 			<p> Gestion de</p>
@@ -51,11 +57,11 @@ require_once __DIR__ . '/util/utilErrOn.php';
 		</div>
 		<div class="crudAlign">
 			<p> Gestion de</p>
-			<a class="button" href="./back/likeart/likeart.php">Like Article </a>
+			<a class="button" href="./back/likeart/likeArt.php">Like Article </a>
 		</div>
 		<div class="crudAlign">
 			<p> Gestion de</p>
-			<a class="button" href="./back/likecom/likecom.php">Like Commentaire </a>
+			<a class="button" href="./back/likecom/likeCom.php">Like Commentaire </a>
 		</div>
 		<div class="crudAlign">
 			<p> Gestion de</p>
@@ -63,12 +69,12 @@ require_once __DIR__ . '/util/utilErrOn.php';
 		</div>
 		<div class="crudAlign">
 			<p> Gestion de</p>
-			<a class="button" href="./back/motcle/motcle.php">Mot-clé </a>
+			<a class="button" href="./back/motcle/motCle.php">Mot-clé </a>
 		</div>
-		<div class="crudAlign">
+		<!-- <div class="crudAlign">
 			<p> Gestion de</p>
-			<a class="button" href="./back/motclearticle/motclearticle.php">Mot-clé Article </a>
-		</div>
+			<a class="button" href="./back/motclearticle/motCleArticle.php">Mot-clé Article </a>
+		</div> -->
 		<div class="crudAlign">
 			<p> Gestion de</p>
 			<a class="button" href="./back/statut/statut.php">Statut</a>

@@ -36,7 +36,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         
         if ((isset($_POST['id'])) AND !empty($_POST['id'])
         AND (isset($_POST['id2'])) AND !empty($_POST['id2'])
-        AND (!empty($_POST['Submit'])) AND ($Submit === "Confirmer"))
+        AND (!empty($_POST['Submit'])) AND ($Submit === "Valider"))
         {
             // Saisies valides
             $erreur = false;
@@ -76,12 +76,22 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="author" content="" />
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css">
+    <link rel="stylesheet" href="../css/form.css">
 
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Commentaire</h1>
-    <h2>Modification d'un commentaire</h2>
+<?php
+include __DIR__ ."./../../front/includes/commons/navbar.php";
+?>
+<div class="wrapper">
+    <div class="Titre">
+        <h1>BLOGART21 Admin - Gestion du CRUD Commentaire</h1>
+        <h2>Validation d'un commentaire</h2>
+    </div>
 <?
     // Modif : récup id à modifier
     if (isset($_GET['id']) AND !empty($_GET['id'])
@@ -106,34 +116,31 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <form method="post" action="./updateComment.php" enctype="multipart/form-data">
 
       <fieldset>
-        <legend class="legend1">Modification Langue...</legend>
+        <legend class="legend1">Validation d'un commentaire...</legend>
 
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
         <input type="hidden" id="id2" name="id2" value="<?= $_GET['id2']; ?>" />
 
         <div class="control-group">
             <label class="control-label" for="libCom"><b>Commentaire&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libCom" id="libCom" size="80" maxlength="80" value="<?= $libCom; ?>" autofocus="autofocus" disabled/>
+            <input type="text" name="libCom" id="libCom" size="80" maxlength="80" value="<?= $libCom; ?>" autofocus="autofocus" readonly/>
         </div>
 
         <div class="control-group">
             <label class="control-label" for="libTitrArt"><b>Titre de l'article&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libTitrArt" id="libTitrArt" size="80" maxlength="80" value="<?= $libTitrArt; ?>"  disabled/>
+            <input type="text" name="libTitrArt" id="libTitrArt" size="80" maxlength="80" value="<?= $libTitrArt; ?>"  readonly/>
         </div>
         <input type="hidden" id="attModOK" name="attModOK" value="<?= $attModOK; ?>" />
         <input type="hidden" id="affComOK" name="affComOK" value="<?= $affComOK; ?>" />
         <div class="control-group">
             <div class="controls">
-                <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Annuler" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Confirmer" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                <br>
+                <input class="button" type="submit" value="Annuler" name="Submit" formnovalidate/>
+                <input class="button" type="submit" value="Valider" name="Submit" />
             </div>
         </div>
       </fieldset>
     </form>
+</div>
 <?php
 require_once __DIR__ . '/footerComment.php';
 

@@ -6,7 +6,7 @@
 	class LIKEART{
 		function get_1LikeArt($numMemb, $numArt){
             global $db;
-            $query = 'SELECT * FROM LIKEART INNER JOIN ARTICLE ON likeart.numArt = article.numArt INNER JOIN MEMBRE ON likeart.numMemb = membre.numMemb WHERE likeart.numMemb = ? AND likeart.numArt = ? ;';
+            $query = 'SELECT * FROM likeart INNER JOIN article ON likeart.numArt = article.numArt INNER JOIN membre ON likeart.numMemb = membre.numMemb WHERE likeart.numMemb = ? AND likeart.numArt = ? ;';
             $result = $db->prepare($query);
             $result->execute([$numMemb,$numArt]);
 			$likeart = $result->fetch();
@@ -15,7 +15,7 @@
 
 		function get_AllLikeArt(){
 			global $db;
-			$query = 'SELECT * FROM LIKEART INNER JOIN ARTICLE ON likeart.numArt = article.numArt INNER JOIN MEMBRE ON likeart.numMemb = membre.numMemb ;';
+			$query = 'SELECT * FROM likeart INNER JOIN article ON likeart.numArt = article.numArt INNER JOIN membre ON likeart.numMemb = membre.numMemb ;';
 			$result = $db->query($query);
 			$allLikeArt = $result->fetchAll();
 			return($allLikeArt);
@@ -26,7 +26,7 @@
 			global $db;
 			try {
 				$db->beginTransaction();
-				$requete= "INSERT INTO LIKEART (numArt,numMemb, likeA) VALUES (?,?,?);";
+				$requete= "INSERT INTO likeart (numArt,numMemb, likeA) VALUES (?,?,?);";
 				$result = $db->prepare($requete);
 				$result->execute([ $numArt, $numMemb, $likeArt]);
 
@@ -44,7 +44,7 @@
 			global $db;
 			try {
 				$db->beginTransaction();
-				$requete="UPDATE LIKEART SET likeA = ? WHERE  numArt = ? AND  numMemb = ? ;";
+				$requete="UPDATE likeart SET likeA = ? WHERE  numArt = ? AND  numMemb = ? ;";
 				$result = $db->prepare($requete);
 				$result->execute([$likeArt,$numArt,$numMemb]);
 				$db->commit();

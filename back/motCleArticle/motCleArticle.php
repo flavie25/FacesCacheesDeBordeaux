@@ -24,29 +24,34 @@ $monMotCleArticle = new MOTCLEARTICLE;
     <meta name="author" content="" />
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css" >
 
 </head>
-<body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Mots-Clés / Article</h1>
+<body>*<?php
+    include __DIR__ ."./../../front/includes/commons/navbar.php";
+    ?>
+    <div class="wrapper">
+        <div class="hautpage">
+            <div class="Titre">
+                <h1>BLOGART21 Admin - Gestion du CRUD Mots Clés / Articles</h1>
 
-    <h2>Tous les Mots Clés / Article</h2>
-    <hr /><br />
-    <h2>Nouvelle jointure mot clé / article :&nbsp;<a href="./createMotCleArticle.php"><i>Créer une jointure mot clé / article</i></a></h2>
-    <br /><hr />
-    <h2>Toutes les jointures mots clés / articles</h2>
+                <h2>Toutes les jointures mots clés / articles</h2>
 
-    <br><br>
-
-    <table border="3" bgcolor="aliceblue">
-    <thead>
+            </div>
+        </div>
+    <div class="tableArea">
+    <table class="tableau">
+    <thead class="entete">
         <tr>
             <th>&nbsp;NumArt&nbsp;</th>
             <th>&nbsp;NumMotCle&nbsp;</th>
-            <th>&nbsp;Action&nbsp;</th>
+            <!-- <th>&nbsp;Action&nbsp;</th> -->
         </tr>
     </thead>
-    <tbody>
+    <tbody class="body">
     <?
     $allMotCleArticle = $monMotCleArticle->get_AllMotCleArticle();
     foreach($allMotCleArticle as $row){
@@ -59,17 +64,16 @@ $monMotCleArticle = new MOTCLEARTICLE;
         <td><h4>&nbsp; <?php echo $row["numArt"]; ?> &nbsp;</h4></td>
         <td>&nbsp; <?php echo $row["numMotCle"]; ?> &nbsp;</td>
 
-        <td>&nbsp;<a href="./deleteMotCleArticle.php?id=<?=$row["numMotCle"];?>"><i>Supprimer</i></a>&nbsp;
-        <br /></td>
+        <!-- <td>&nbsp;<a class="button" href="./deleteMotCleArticle.php?id=$row["numMotCle"];"><i>Supprimer</i></a>&nbsp; -->
+        </td>
         </tr>
     <?
     }	// End of foreach
     ?>
     </tbody>
     </table>
-
-    <br><br>
-
+</div>
+</div>
     <?
     require_once __DIR__ . '/footer.php';
     ?>

@@ -32,19 +32,24 @@ $errCIR=0;
     <meta name="author" content="" />
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/gestionCRUD.css" >
 
 </head>
 <body>
-<div class="hautpage">
-    <div class="Titre">
-        <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
+<?php
+    include __DIR__ ."./../../front/includes/commons/navbar.php";
+    ?>
+    <div class="wrapper">
+        <div class="hautpage">
+            <div class="Titre">
+                <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
 
-        <h2>Toutes les langues</h2>
+                <h2>Toutes les langues</h2>
 
-    </div>
-
+            </div>
     <div class="creerBt">
         <button class="button" onclick="location.href='./createLangue.php'">
             Créer une langue
@@ -82,9 +87,9 @@ $errCIR=0;
         <td>&nbsp; <?php echo $row["lib2Lang"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["frPays"]; ?> &nbsp;</td>
 
-		<td>&nbsp;<a href="./updateLangue.php?id=<?=$row["numLang"];?>"><i>Modifier</i></a>&nbsp;
+		<td>&nbsp;<a class="button" href="./updateLangue.php?id=<?=$row["numLang"];?>"><i>Modifier</i></a>&nbsp;
 		<br /></td>
-		<td>&nbsp;<a href="./deleteLangue.php?id=<?=$row["numLang"];?>"><i>Supprimer</i></a>&nbsp;
+		<td>&nbsp;<a class="button" href="./deleteLangue.php?id=<?=$row["numLang"];?>"><i>Supprimer</i></a>&nbsp;
 		<br /></td>
         </tr>
 <?
@@ -93,8 +98,7 @@ $errCIR=0;
     </tbody>
     </table>
 </div>
-
-    <br><br>
+</div>
 
 <?
 require_once __DIR__ . '/footer.php';

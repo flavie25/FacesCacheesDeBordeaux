@@ -76,15 +76,21 @@ include __DIR__ . '/initAngle.php';
     <meta name="author" content="" />
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/gestionCRUD.css">
     <link rel="stylesheet" href="../css/form.css">
 
 </head>
 <body>
+<?php
+include __DIR__ ."./../../front/includes/commons/navbar.php";
+?>
+<div class="wrapper">
 <div class="Titre">
         <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
-            <h2>Suppression d'un angle</h2>
+        <h2>Suppression d'un angle</h2>
     </div>
 <? 
 // Modif : récup id à modifier
@@ -111,11 +117,11 @@ include __DIR__ . '/initAngle.php';
 
         <div class="control-group">
             <label class="control-label" for="libAngl">Nom de l'angle :&nbsp;</label>
-            <input type="text" name="libAngl" id="libAngl" size="60" maxlength="60" value="<?= $libAngl; ?>" disabled="disabled" />
+            <input type="text" name="libAngl" id="libAngl" size="60" maxlength="60" value="<?= $libAngl; ?>" readonly/>
         </div>
         <div class="control-group">
             <label class="control-label" for="lib1Lang">Langue :&nbsp;</label>
-            <input type="text" name="lib1Lang" id="lib1Lang" size="60" value="<?= $lib1Lang; ?>" disabled="disabled" />
+            <input type="text" name="lib1Lang" id="lib1Lang" size="60" value="<?= $lib1Lang; ?>" readonly/>
         </div>
         
         <div class="control-group">
@@ -126,7 +132,7 @@ include __DIR__ . '/initAngle.php';
         </div>
       </fieldset>
     </form>
-    <br>
+</div>
 <?php
 require_once __DIR__ . '/footerAngle.php';
 

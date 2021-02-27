@@ -37,9 +37,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 // Opérateur ternaire
                 $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
-                if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
+                if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Annuler")) {
 
-                    header("Location: ./createMembre.php");
+                    header("Location: ./membre.php");
                 }   // End of if ((isset($_POST["submit"])) ...
 
                 // Mode création
@@ -150,13 +150,25 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="author" content="" />
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css">
+    <link rel="stylesheet" href="../css/form.css">
+
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Membre</h1>
-    <h2>Ajout d'un membre</h2>
+<?php
+include __DIR__ ."./../../front/includes/commons/navbar.php";
+?>
+<div class="wrapper">
+    <div class="Titre">
+        <h1>BLOGART21 Admin - Gestion du CRUD Membre</h1>
+        <h2>Ajout d'un membre</h2>
+    </div>
+
 
     <form method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data">
 
@@ -226,17 +238,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         <div class="control-group">
             <div class="controls">
-                <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                <br>
+                <input class="button" type="submit" value="Annuler" name="Submit" formnovalidate/>
+                <input class="button" type="submit" value="Valider" name="Submit" />
             </div>
         </div>
       </fieldset>
     </form>
-    
+</div>
 <?php
 
 if (isset($_GET['id']) AND !empty($_GET['id'])) {

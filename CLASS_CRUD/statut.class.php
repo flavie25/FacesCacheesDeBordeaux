@@ -6,7 +6,7 @@
 	class STATUT{
 		function get_1Statut($idStat){
             global $db;
-            $query = 'SELECT * FROM STATUT WHERE idStat = ?;';
+            $query = 'SELECT * FROM statut WHERE idStat = ?;';
             $result = $db->prepare($query);
             $result->execute([$idStat]);
             return($result->fetch());
@@ -14,7 +14,7 @@
 
 		function get_AllStatuts(){
 			global $db;
-			$query = 'SELECT * FROM STATUT;';
+			$query = 'SELECT * FROM statut;';
 			$result = $db->query($query);
 			$allstatuts = $result->fetchAll();
 			return($allstatuts);
@@ -25,7 +25,7 @@
 			global $db;
 			try {
 			  $db->beginTransaction();
-			  $requete= 'INSERT INTO STATUT (libStat) VALUES (?);';
+			  $requete= 'INSERT INTO statut (libStat) VALUES (?);';
 			  $result = $db->prepare($requete);
 			  $result->execute(array($libStat));
 
@@ -44,7 +44,7 @@
 
 			try {
 				$db->beginTransaction();
-				$requete="UPDATE STATUT SET libStat = ? WHERE idStat = ? ";
+				$requete="UPDATE statut SET libStat = ? WHERE idStat = ? ";
 				$result = $db->prepare($requete);
 				$result->execute(array($libStat, $idStat));
 				$db->commit();
@@ -63,7 +63,7 @@
 
 		try {
 			$db->beginTransaction();
-			$requete= "DELETE FROM STATUT WHERE idStat = ?; ";
+			$requete= "DELETE FROM statut WHERE idStat = ?; ";
 			$result = $db->prepare($requete);
 			$result->execute([$idStat]);
 			$db->commit();

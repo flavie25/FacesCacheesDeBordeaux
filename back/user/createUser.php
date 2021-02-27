@@ -29,9 +29,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         // Opérateur ternaire
         $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
-        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
+        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Annuler")) {
 
-            header("Location: ./createUser.php");
+            header("Location: ./user.php");
         }   // End of if ((isset($_POST["submit"])) ...
 
         // Mode création
@@ -110,13 +110,41 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="author" content="" />
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css">
+    <link rel="stylesheet" href="../css/form.css">
     
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD User</h1>
-    <h2>Ajout d'un user</h2>
-
+<?php
+include __DIR__ ."./../../front/includes/commons/navbar.php";
+?>
+<div class="wrapper">
+    <div class="Titre">
+        <h1>BLOGART21 Admin - Gestion du CRUD User</h1>
+        <h2>Ajout d'un user</h2>
+    </div>
+    <?php
+    if (isset($_GET['err1']) AND !empty($_GET['err1'])){
+        $errPseudo = $_GET['err1'];
+        echo $errPseudo.'</br>';
+    }
+    if (isset($_GET['err2']) AND !empty($_GET['err2'])){
+        $errMail1 = $_GET['err2'];
+        echo $errMail1.'</br>';
+    }
+    if (isset($_GET['err3']) AND !empty($_GET['err3'])){
+        $errMail2 = $_GET['err3'];
+        echo $errMail2.'</br>';
+    }
+    if (isset($_GET['err4']) AND !empty($_GET['err4'])){
+        $errPass = $_GET['err4'];
+        echo $errPass.'</br>';
+    }
+    ?>
+    
     <form method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data">
 
       <fieldset>
@@ -157,7 +185,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <select id="idStat" name="idStat"  onchange="select()">
                 <?php 
                 global $db;
-                $requete = 'SELECT idStat, libStat FROM STATUT ;';
+                $requete = 'SELECT idStat, libStat FROM statut ;';
                 $result = $db->query($requete);
                 $allStatut = $result->fetchAll();
                 foreach ($allStatut AS $statut)
@@ -169,38 +197,16 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 ?>
             </select>
         </div>
-
-
         <div class="control-group">
             <div class="controls">
-                <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                <br>
+                <input class="button" type="submit" value="Annuler" name="Submit" formnovalidate/>
+                <input class="button" type="submit" value="Valider" name="Submit" />
             </div>
         </div>
       </fieldset>
     </form>
+</div>
 <?php
-if (isset($_GET['err1']) AND !empty($_GET['err1'])){
-    $errPseudo = $_GET['err1'];
-    echo $errPseudo.'</br>';
-}
-if (isset($_GET['err2']) AND !empty($_GET['err2'])){
-    $errMail1 = $_GET['err2'];
-    echo $errMail1.'</br>';
-}
-if (isset($_GET['err3']) AND !empty($_GET['err3'])){
-    $errMail2 = $_GET['err3'];
-    echo $errMail2.'</br>';
-}
-if (isset($_GET['err4']) AND !empty($_GET['err4'])){
-    $errPass = $_GET['err4'];
-    echo $errPass.'</br>';
-}
-
 require_once __DIR__ . '/footerUser.php';
 
 require_once __DIR__ . '/footer.php';

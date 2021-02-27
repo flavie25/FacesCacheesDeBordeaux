@@ -85,12 +85,22 @@ include __DIR__ . '/initLangue.php';
     <meta name="author" content="" />
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css">
+    <link rel="stylesheet" href="../css/form.css">
 
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
-    <h2>Suppression d'une langue</h2>
+<?php
+include __DIR__ ."./../../front/includes/commons/navbar.php";
+?>
+<div class="wrapper">
+    <div class="Titre">
+        <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
+        <h2>Suppression d'une langue</h2>
+    </div>
 <?
      if (isset($_GET['id']) AND !empty($_GET['id'])) {
 
@@ -118,17 +128,17 @@ include __DIR__ . '/initLangue.php';
 
         <div class="control-group">
             <label class="control-label" for="lib1Lang">Langue libellé court :&nbsp;</label>
-            <input type="text" name="lib1Lang" id="lib1Lang" size="30" maxlength="30" value="<?= $lib1Lang; ?>" disabled="disabled" />
+            <input type="text" name="lib1Lang" id="lib1Lang" size="30" maxlength="30" value="<?= $lib1Lang; ?>" readonly />
         </div>
 
         <div class="control-group">
             <label class="control-label" for="lib2Lang"><b>Langue libellé long :&nbsp;</b></label>
-            <input type="text" name="lib2Lang" id="lib2Lang" size="60" maxlength="60" value="<?= $lib2Lang; ?>" disabled="disabled" />
+            <input type="text" name="lib2Lang" id="lib2Lang" size="60" maxlength="60" value="<?= $lib2Lang; ?>" readonly />
         </div>
 
         <div class="control-group">
             <label for="pays">Pays :</label>  
-            <input type="text" name="frPays" id="frPays" size="60" maxlength="60" value="<?= $frPays; ?>" disabled="disabled" />
+            <input type="text" name="frPays" id="frPays" size="60" maxlength="60" value="<?= $frPays; ?>" readonly />
         </div>
 
         <div class="control-group">

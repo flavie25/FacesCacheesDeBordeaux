@@ -31,20 +31,36 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
+    
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css" >
 
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Thématique</h1>
+<?php
+    include __DIR__ ."./../../front/includes/commons/navbar.php";
+    ?>
+    <div class="wrapper">
+        <div class="hautpage">
+            <div class="Titre">
+                <h1>BLOGART21 Admin - Gestion du CRUD Thématiques</h1>
 
-    <hr /><br />
-	<h2>Nouvelle thématique :&nbsp;<a href="./createThem.php"><i>Créer une thématique</i></a></h2>
-	<br /><hr />
-	<h2>Toutes les thématiques</h2>
+                <h2>Toutes les thématiques</h2>
 
-    <table border="3" bgcolor="aliceblue">
-    <thead>
+            </div>
+
+            <div class="creerBt">
+                <button class="button" onclick="location.href='./createThem.php'">
+                    Créer une thématique
+                </button>
+            </div>
+        </div>
+<div class="tableArea">
+    <table class="tableau">
+    <thead class="entete">
         <tr>
             <th>&nbsp;numThem&nbsp;</th>
             <th>&nbsp;libThem&nbsp;</th>
@@ -52,7 +68,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <th colspan="2">&nbsp;Action&nbsp;</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="body">
 <?
     $allThem = $maThematique->get_AllThem();
     foreach($allThem as $row){
@@ -67,9 +83,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <td>&nbsp; <?php echo $row["libThem"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["numLang"]; ?> &nbsp;</td>
 
-		<td>&nbsp;<a href="./updateThem.php?id=<?=$row["numThem"];?>"><i>Modifier</i></a>&nbsp;
+		<td>&nbsp;<a class="button" href="./updateThem.php?id=<?=$row["numThem"];?>"><i>Modifier</i></a>&nbsp;
 		<br /></td>
-		<td>&nbsp;<a href="./deleteThem.php?id=<?=$row["numThem"];?>"><i>Supprimer</i></a>&nbsp;
+		<td>&nbsp;<a class="button" href="./deleteThem.php?id=<?=$row["numThem"];?>"><i>Supprimer</i></a>&nbsp;
 		<br /></td>
         </tr>
 <?
@@ -77,7 +93,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 ?>
     </tbody>
     </table>
-    <br><br>
+</div>
+</div>
 <?php
 if ($errCIR == 1){
     echo 'Vous ne pouvez pas supprimer cet utilisateur. Veuillez d\'abord supprimer cet utilisateur dans les autres tables';

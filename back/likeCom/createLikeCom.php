@@ -26,8 +26,8 @@
         // Opérateur ternaire
         $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
         //Submit = "";
-        if ((isset($_POST['Submit'])) AND ($_POST["Submit"] === "Initialiser")) {
-            header("Location: ./createLikecom.php");
+        if ((isset($_POST['Submit'])) AND ($_POST["Submit"] === "Annuler")) {
+            header("Location: ./likeCom.php");
         }
         // Mode création
         if (((isset($_POST['numArt'])) AND !empty($_POST['numArt']))
@@ -70,12 +70,24 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css">
+    <link rel="stylesheet" href="../css/form.css">
+
 </head>
 
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Like Commentaire</h1>
-    <h2>Ajout d'une langue</h2>
+<?php
+include __DIR__ ."./../../front/includes/commons/navbar.php";
+?>
+<div class="wrapper">
+    <div class="Titre">
+        <h1>BLOGART21 Admin - Gestion du CRUD Like Commentaire</h1>
+        <h2>Ajout d'une langue</h2>
+    </div>
 
     <form method="POST" action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data" accept-charset="UTF-8">
 
@@ -95,7 +107,7 @@
                 $numMemb = "";
                 $pseudoMemb = "";
 
-                $queryText = 'SELECT * FROM MEMBRE ORDER BY pseudoMemb;';
+                $queryText = 'SELECT * FROM membre ORDER BY pseudoMemb;';
                 $result = $db->query($queryText);
                 if ($result) {
                     while ($tuple = $result->fetch()) {
@@ -121,7 +133,7 @@
                 $numArt = "";
                 $libTitrArt = "";
 
-                $queryText = 'SELECT * FROM ARTICLE ORDER BY libTitrArt;';
+                $queryText = 'SELECT * FROM article ORDER BY libTitrArt;';
                 $result = $db->query($queryText);
                 if ($result) {
                     while ($tuple = $result->fetch()) {
@@ -149,7 +161,7 @@
                 $numArt = "";
                 $libCom = "";
 
-                $queryText = 'SELECT * FROM COMMENT ORDER BY libCom;';
+                $queryText = 'SELECT * FROM comment ORDER BY libCom;';
                 $result = $db->query($queryText);
                 if ($result) {
                     while ($tuple = $result->fetch()) {
@@ -186,18 +198,14 @@
             }
 ?>
             <div class="control-group">
-
-                <div class="controls">
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="submit" value="Initialiser" name="Submit" />
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="submit" value="Valider" name="Submit" />
-                    <br>
-                </div>
+            <div class="controls">
+                <input class="button" type="submit" value="Annuler" name="Submit" formnovalidate/>
+                <input class="button" type="submit" value="Valider" name="Submit" />
             </div>
-        </fieldset>
+        </div>
+      </fieldset>
     </form>
+</div>
     <?
 require_once __DIR__ . '/footerLikeCom.php';
 

@@ -6,14 +6,14 @@
 	class MOTCLE{
 		function get_1MotCleByLangue($numMotCle){
 			global $db;
-            $requete = 'SELECT * FROM MOTCLE INNER JOIN LANGUE ON  motcle.numLang = langue.numLang WHERE motcle.numMotCle = ?;';
+            $requete = 'SELECT * FROM motcle INNER JOIN langue ON  motcle.numLang = langue.numLang WHERE motcle.numMotCle = ?;';
             $result = $db->prepare($requete);
             $result->execute([$numMotCle]);
             return($result->fetch());
 		}
 		function get_AllMotCleByLangue(){
 			global $db;
-            $requete = 'SELECT * FROM MOTCLE INNER JOIN LANGUE ON  motcle.numLang = langue.numLang ORDER BY motcle.numMotCle ASC;';
+            $requete = 'SELECT * FROM motcle INNER JOIN langue ON  motcle.numLang = langue.numLang ORDER BY motcle.numMotCle ASC;';
             $result = $db->prepare($requete);
             $result->execute();
             return($result->fetchAll());
@@ -21,7 +21,7 @@
 		
 		function get_NbAllMotCleByidLangue($id){
             global $db;
-            $query = 'SELECT * FROM MOTCLE INNER JOIN LANGUE ON motcle.numLang = langue.numLang WHERE motcle.numLang= ?;';
+            $query = 'SELECT * FROM motcle INNER JOIN langue ON motcle.numLang = langue.numLang WHERE motcle.numLang= ?;';
             $result = $db->prepare($query);
             $result->execute([$id]);
             $allNbMotCleByLangue = $result->fetchAll();
@@ -34,7 +34,7 @@
 
 		function get_NbAllMotCleByMotCleArticle($id){
             global $db;
-            $query = 'SELECT * FROM MOTCLE INNER JOIN MOTCLEARTICLE ON motcle.numMotCle = motclearticle.numMotCle WHERE motcle.numMotCle= ?;';
+            $query = 'SELECT * FROM motcle INNER JOIN motclearticle ON motcle.numMotCle = motclearticle.numMotCle WHERE motcle.numMotCle= ?;';
             $result = $db->prepare($query);
             $result->execute([$id]);
             $allNbMotCleByArticle = $result->fetchAll();
@@ -49,7 +49,7 @@
 			global $db;
 			try {
 			  $db->beginTransaction();
-			  $requete= 'INSERT INTO MOTCLE (libMotCle, numLang) VALUES (?,?);';
+			  $requete= 'INSERT INTO motcle (libMotCle, numLang) VALUES (?,?);';
 			  $result = $db->prepare($requete);
 			  $result->execute(array($libMotCle, $numLang));
 
@@ -57,7 +57,7 @@
 					$result->closeCursor();
 			}
 			catch (PDOException $e) {
-					die('Erreur insert STATUT : ' . $e->getMessage());
+					die('Erreur insert MOTCLE : ' . $e->getMessage());
 					$db->rollBack();
 					$result->closeCursor();
 			}
@@ -68,7 +68,7 @@
 			global $db;
 			try {
 				$db->beginTransaction();
-				$requete="UPDATE MOTCLE SET libMotCle = ?, numLang = ? WHERE numMotCle = ?";
+				$requete="UPDATE motcle SET libMotCle = ?, numLang = ? WHERE numMotCle = ?";
 				$result = $db->prepare($requete);
 				$result->execute(array($libMotCle, $numLang, $numMotCle));
 				$db->commit();
@@ -76,7 +76,7 @@
 	
 				}
 				catch (PDOException $e) {
-						die('Erreur delete STATUT : ' . $e->getMessage());
+						die('Erreur delete MOTCLE : ' . $e->getMessage());
 						$db->rollBack();
 						$result->closeCursor();
 				}
@@ -88,7 +88,7 @@
 			global $db;
 			try {
 				$db->beginTransaction();
-				$requete= "DELETE FROM  MOTCLE WHERE numMotCle = ?; ";
+				$requete= "DELETE FROM  motcle WHERE numMotCle = ?; ";
 				$result = $db->prepare($requete);
 				$result->execute([$numMotCle]);
 				$db->commit();
@@ -96,7 +96,7 @@
 	
 				}
 				catch (PDOException $e) {
-						die('Erreur delete STATUT : ' . $e->getMessage());
+						die('Erreur delete MOCTLE : ' . $e->getMessage());
 						$db->rollBack();
 						$result->closeCursor();
 				}

@@ -29,8 +29,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
         if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
-
-            header("Location: ./updateMembre.php");
+            $reload = $_POST['id'];
+            header("Location: ./updateMembre.php?id=".$reload);
         }   // End of if ((isset($_POST["submit"])) ...
 
         // Mode création
@@ -121,12 +121,23 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="author" content="" />
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
-    <link rel="stylesheet" href="../css/footer.css">
+
+<link rel="stylesheet" href="../../front/assets/css/nav.css">
+<link rel="stylesheet" href="../css/footer.css">
+<link rel="stylesheet" href="../css/gestionCRUD.css">
+<link rel="stylesheet" href="../css/form.css">
 
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Membre</h1>
+<?php
+include __DIR__ ."./../../front/includes/commons/navbar.php";
+?>
+<div class="wrapper">
+<div class="Titre">
+<h1>BLOGART21 Admin - Gestion du CRUD Membre</h1>
     <h2>Modification d'un membre</h2>
+</div>
+    
 <?
     // Modif : récup id à modifier
     if (isset($_GET['id']) and $_GET['id'] > 0) {
@@ -195,7 +206,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 <?php 
                 global $db;
                 $adminStat = 9;
-                $requete = 'SELECT idStat, libStat FROM STATUT WHERE idStat < ? ;';
+                $requete = 'SELECT idStat, libStat FROM statut WHERE idStat < ? ;';
                 $result = $db->prepare($requete);
                 $result->execute([$adminStat]);
                 $allStatut = $result->fetchAll();
@@ -248,19 +259,15 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             </div>
         </div>
 
-
         <div class="control-group">
             <div class="controls">
-                <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                <br>
+                <input class="button" type="submit" value="Initialiser" name="Submit" formnovalidate/>
+                <input class="button" type="submit" value="Modifier" name="Submit" />
             </div>
         </div>
       </fieldset>
     </form>
+</div>
 <?php
 if (isset($_GET['err1']) AND !empty($_GET['err1'])){
     $errPass = $_GET['err1'];

@@ -7,7 +7,7 @@ require_once __DIR__ . '../../CONNECT/database.php';
 
         function get_AllComment(){
             global $db;
-            $requete = 'SELECT * FROM COMMENT;';
+            $requete = 'SELECT * FROM comment;';
             $result = $db->prepare($requete);
             $result->execute();
             return($result->fetchAll());
@@ -15,7 +15,7 @@ require_once __DIR__ . '../../CONNECT/database.php';
 
         function get_1CommentByArt($numSeqCom,$numArt){
             global $db;
-            $query = 'SELECT * FROM COMMENT INNER JOIN ARTICLE ON comment.numArt = article.numArt WHERE comment.numSeqCom = ? AND comment.numArt = ?;';
+            $query = 'SELECT * FROM comment INNER JOIN article ON comment.numArt = article.numArt WHERE comment.numSeqCom = ? AND comment.numArt = ?;';
             $result = $db->prepare($query);
             $result->execute([$numSeqCom,$numArt]);
             return($result->fetch());
@@ -25,14 +25,14 @@ require_once __DIR__ . '../../CONNECT/database.php';
             global $db;
             try {
                 $db->beginTransaction();
-                $requete = 'INSERT INTO COMMENT (numSeqCom, numArt, dtCreCom, libCom, numMemb) VALUES (?,?,?,?,?);';
+                $requete = 'INSERT INTO comment (numSeqCom, numArt, dtCreCom, libCom, numMemb) VALUES (?,?,?,?,?);';
                 $result = $db->prepare($requete);
                 $result->execute([$numSeqCom, $numArt, $dtCreaCom, $libCom, $numMemb]);
                 $db->commit();
                 $result->closeCursor();
 			}
 			catch (PDOException $e) {
-					die('Erreur ajout commentaire : ' . $e->getMessage());
+					die('Erreur insert COMMENT : ' . $e->getMessage());
 					$db->rollBack();
 					$result->closeCursor();
 			}
@@ -42,14 +42,14 @@ require_once __DIR__ . '../../CONNECT/database.php';
             global $db;
             try {
                 $db->beginTransaction();
-                $requete = 'UPDATE COMMENT SET attModOK = ?, affComOK = ?, notifComKOAff = ? WHERE numSeqCom = ? AND numArt = ?';
+                $requete = 'UPDATE comment SET attModOK = ?, affComOK = ?, notifComKOAff = ? WHERE numSeqCom = ? AND numArt = ?';
                 $result = $db->prepare($requete);
                 $result->execute([$attModOK, $affComOK,$notifComKOAff,$numSeqCom, $numArt]);
                 $db->commit();
                 $result->closeCursor();
 			}
 			catch (PDOException $e) {
-					die('Erreur ajout commentaire : ' . $e->getMessage());
+					die('Erreur update COMMENT : ' . $e->getMessage());
 					$db->rollBack();
 					$result->closeCursor();
 			}

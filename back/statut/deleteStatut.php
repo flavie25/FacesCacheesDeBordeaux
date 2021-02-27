@@ -72,14 +72,24 @@ include __DIR__ . '/initStatut.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-
+  
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css">
+    <link rel="stylesheet" href="../css/form.css">
 
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Statut</h1>
+<?php
+include __DIR__ ."./../../front/includes/commons/navbar.php";
+?>
+<div class="wrapper">
+<div class="Titre">
+<h1>BLOGART21 Admin - Gestion du CRUD Statut</h1>
     <h2>Suppression d'un statut</h2>
+    </div>
 <?
     if (isset($_GET['id']) and $_GET['id'] > 0) {
 
@@ -92,7 +102,6 @@ include __DIR__ . '/initStatut.php';
             $idStat = $query['idStat'];
         }   // Fin if ($query)
     }   // Fin if (isset($_GET['id'])...)
-   
 
 ?>    <form method="post" action="./deleteStatut.php" enctype="multipart/form-data">
 
@@ -103,18 +112,17 @@ include __DIR__ . '/initStatut.php';
 
         <div class="control-group">
             <label class="control-label" for="libStat">Nom du statut :&nbsp;</label>
-            <input type="text" name="libStat" id="libStat" size="25" maxlength="25" value="<?= $libStat; ?>" disabled="disabled"/>
+            <input type="text" name="libStat" id="libStat" size="25" maxlength="25" value="<?= $libStat; ?>" readonly/>
         </div>
 
-        <div class="control-group">
-            <div class="controls">
+        <div class="controls">
                 <input class="button" type="submit" value="Annuler" name="Submit" formnovalidate/>
                 <input class="button" type="submit" value="Supprimer" name="Submit" />
             </div>
         </div>
       </fieldset>
     </form>
-    <br>
+</div>
 <?php
 require_once __DIR__ . '/footerStatut.php';
 

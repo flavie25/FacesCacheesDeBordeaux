@@ -81,12 +81,22 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="author" content="" />
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css">
+    <link rel="stylesheet" href="../css/form.css">
 
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
-    <h2>Modification d'une langue</h2>
+<?php
+include __DIR__ ."./../../front/includes/commons/navbar.php";
+?>
+<div class="wrapper">
+    <div class="Titre">
+        <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
+            <h2>Modification d'une langue</h2>
+    </div>
 <?
     // Modif : récup id à modifier
     if (isset($_GET['id']) AND !empty($_GET['id'])) {
@@ -129,7 +139,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <select id="pays" name="pays"  onchange="select()" required>
                 <?php 
                 global $db;
-                $requete = 'SELECT * FROM PAYS ;';
+                $requete = 'SELECT * FROM pays ;';
                 $result = $db->query($requete);
                 $allPays = $result->fetchAll();
                 foreach ($allPays AS $pays)
@@ -151,6 +161,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         </div>
       </fieldset>
     </form>
+</div>
 <?php
 require_once __DIR__ . '/footerLangue.php';
 

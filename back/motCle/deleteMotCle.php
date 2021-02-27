@@ -64,18 +64,28 @@ include __DIR__ . '/initMotCle.php';
 <html lang="fr">
 <head>
     <meta charset="utf-8" />
-    <title>Admin - Gestion du CRUD Statut</title>
+    <title>Admin - Gestion du CRUD Mots Clés</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-
+    
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css">
+    <link rel="stylesheet" href="../css/form.css">
 
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Statut</h1>
-    <h2>Suppression d'un statut</h2>
+<?php
+include __DIR__ ."./../../front/includes/commons/navbar.php";
+?>
+<div class="wrapper">
+<div class="Titre">
+        <h1>BLOGART21 Admin - Gestion du CRUD Mots Clés</h1>
+        <h2>Suppression d'un mot clé</h2>
+    </div>
 <?
      // Modif : récup id à modifier
     if (isset($_GET['id']) AND !empty($_GET['id'])) {
@@ -103,26 +113,22 @@ include __DIR__ . '/initMotCle.php';
 
             <div class="control-group">
                 <label class="control-label" for="libMotCle"><b>Mot Clé&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="text" name="libMotCle" id="libMotCle" size="60" maxlength="80" value="<?= $libMotCle; ?>" autofocus="autofocus" />
+                <input type="text" name="libMotCle" id="libMotCle" size="60" maxlength="80" value="<?= $libMotCle; ?>" readonly />
             </div>
             
             <div class="control-group">
                 <label for="lib1Lang">Langue :</label>  
-                <input type="text" name="lib1Lang" id="lib1Lang" size="60" maxlength="80" value="<?= $lib1Lang; ?>" autofocus="autofocus" />
+                <input type="text" name="lib1Lang" id="lib1Lang" size="60" maxlength="80" value="<?= $lib1Lang; ?>" readonly />
             </div>
             <div class="control-group">
-                <div class="controls">
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="submit" value="Annuler" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="submit" value="Supprimer" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                    <br>
-                </div>
+            <div class="controls">
+                <input class="button" type="submit" value="Annuler" name="Submit" formnovalidate/>
+                <input class="button" type="submit" value="Supprimer" name="Submit" />
             </div>
-        </fieldset>
+        </div>
+      </fieldset>
     </form>
-    <br>
+</div>
 <?php
 require_once __DIR__ . '/footerMotCle.php';
 require_once __DIR__ . '/footer.php';

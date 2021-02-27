@@ -29,14 +29,15 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
         if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
-
-            header("Location: ./updateThem.php");
+            $reload = $_POST['id'];
+            header("Location: ./updateThem.php?id=".$reload);
         }   // End of if ((isset($_POST["submit"])) ...
+    
 
         // Mode création
         if (((isset($_POST['id'])) AND !empty($_POST['id']))
             AND((isset($_POST['libThem'])) AND !empty($_POST['libThem']))
-            AND (!empty($_POST['Submit']) AND ($Submit === "Valider"))
+            AND (!empty($_POST['Submit']) AND ($Submit === "Modifier"))
             AND ((isset($_POST['numLang'])) AND !empty($_POST['numLang']))) {
             // Saisies valides
             $erreur = false;
@@ -70,12 +71,22 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="author" content="" />
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css">
+    <link rel="stylesheet" href="../css/form.css">
 
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Thématique</h1>
+<?php
+include __DIR__ ."./../../front/includes/commons/navbar.php";
+?>
+<div class="wrapper">
+    <div class="Titre">
+    <h1>BLOGART21 Admin - Gestion du CRUD Thématiques</h1>
     <h2>Modification d'une thématique</h2>
+    </div>
 <?
     // Modif : récup id à modifier
     if (isset($_GET['id']) and !empty($_GET['id'])) {
@@ -109,7 +120,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <select id="numLang" name="numLang"  onchange="select()">
             <?php 
             global $db;
-            $requete = 'SELECT * FROM LANGUE ;';
+            $requete = 'SELECT * FROM langue ;';
             $result = $db->query($requete);
             $allLangue = $result->fetchAll();
             foreach ($allLangue AS $langue)
@@ -126,16 +137,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         <div class="control-group">
             <div class="controls">
-                <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                <br>
+                <input class="button" type="submit" value="Initialiser" name="Submit" formnovalidate/>
+                <input class="button" type="submit" value="Modifier" name="Submit" />
             </div>
         </div>
       </fieldset>
     </form>
+</div>
 <?php
 require_once __DIR__ . '/footerThematique.php';
 

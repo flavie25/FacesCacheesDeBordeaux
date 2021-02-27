@@ -16,7 +16,7 @@ require_once __DIR__ . '/util/utilErrOn.php';
 
       global $db;
 
-      $requete = "SELECT MAX(numArt) AS numArt FROM ARTICLE;";
+      $requete = "SELECT MAX(numArt) AS numArt FROM article;";
       $result = $db->query($requete);
 
       if ($result) {

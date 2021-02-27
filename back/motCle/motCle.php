@@ -29,22 +29,34 @@ $errCIR=0;
     <meta name="author" content="" />
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css" >
 
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Mot Clé</h1>
+<?php
+    include __DIR__ ."./../../front/includes/commons/navbar.php";
+    ?>
+    <div class="wrapper">
+        <div class="hautpage">
+            <div class="Titre">
+                <h1>BLOGART21 Admin - Gestion du CRUD Mots Clés</h1>
 
-    <h2>Tous les Mots Clés</h2>
-    <hr /><br />
-    <h2>Nouveau mot clé :&nbsp;<a href="./createMotCle.php"><i>Créer un mot clé</i></a></h2>
-    <br /><hr />
-    <h2>Tous les mots clés</h2>
+                <h2>Tous les mots clés</h2>
 
-    <br><br>
+            </div>
 
-    <table border="3" bgcolor="aliceblue">
-    <thead>
+            <div class="creerBt">
+                <button class="button" onclick="location.href='./createMotCle.php'">
+                    Créer un mot clé
+                </button>
+            </div>
+        </div>
+<div class="tableArea">
+    <table class="tableau">
+    <thead class="entete">
         <tr>
             <th>&nbsp;Id&nbsp;</th>
             <th>&nbsp;Mot clé&nbsp;</th>
@@ -52,7 +64,7 @@ $errCIR=0;
             <th colspan="2">&nbsp;Action&nbsp;</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="body">
     <?
     $allMotCle = $monMotCle->get_AllMotCleByLangue();
     foreach($allMotCle as $row){
@@ -66,9 +78,9 @@ $errCIR=0;
         <td>&nbsp; <?php echo $row["libMotCle"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["lib1Lang"]; ?> &nbsp;</td>
 
-        <td>&nbsp;<a href="./updateMotCle.php?id=<?=$row["numMotCle"];?>"><i>Modifier</i></a>&nbsp;
+        <td>&nbsp;<a class="button" href="./updateMotCle.php?id=<?=$row["numMotCle"];?>"><i>Modifier</i></a>&nbsp;
         <br /></td>
-        <td>&nbsp;<a href="./deleteMotCle.php?id=<?=$row["numMotCle"];?>"><i>Supprimer</i></a>&nbsp;
+        <td>&nbsp;<a class="button" href="./deleteMotCle.php?id=<?=$row["numMotCle"];?>"><i>Supprimer</i></a>&nbsp;
         <br /></td>
         </tr>
     <?
@@ -76,9 +88,8 @@ $errCIR=0;
     ?>
     </tbody>
     </table>
-
-    <br><br>
-
+</div>
+</div>
     <?
     if ($errCIR == 1){
     echo 'Vous ne pouvez pas supprimer cet utilisateur. Veuillez d\'abord supprimer cet utilisateur dans les autres tables';

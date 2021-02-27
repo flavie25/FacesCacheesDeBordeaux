@@ -24,18 +24,24 @@ $comment = new COMMENT;
     <meta name="author" content="" />
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/gestionCRUD.css" >
 
 </head>
-<body class="fullpage">
-<div class="hautpage">
-    <div class="Titre">
-        <h1>BLOGART21 Admin - Gestion du CRUD Commentaire</h1>
+<body>
+<?php
+    include __DIR__ ."./../../front/includes/commons/navbar.php";
+    ?>
+    <div class="wrapper">
+        <div class="hautpage">
+            <div class="Titre">
+                <h1>BLOGART21 Admin - Gestion du CRUD Commentaire</h1>
 
-        <h2>Tous les commentaires</h2>
+                <h2>Tous les commentaires</h2>
 
-    </div>
+            </div>
 
     <div class="creerBt">
         <button class="button" onclick="location.href='./createComment.php'">
@@ -87,14 +93,13 @@ $comment = new COMMENT;
                 <td>&nbsp;<a class="button" href="./deleteComment.php?id=<?=$numSeqCom."&id2=".$numArt;?>"><i>Supprimer</i></a>&nbsp;
                 <br /></td>
                 </tr>
-            <?
-            }	// End of foreach
-            ?>
+                <?
+                }	// End of foreach
+                ?>
             </tbody>
-    </table>
+        </table>
+    </div>
 </div>
-
-    <br><br>
 
     <?
     require_once __DIR__ . '/footer.php';

@@ -1,14 +1,11 @@
-
 @import url('https://fonts.googleapis.com/css2? family = Bebas + Neue & display = swap');
 @import url('https://fonts.googleapis.com/css2? family = Lato & display = swap');
 @import url('https://fonts.googleapis.com/css2? family = Merriweather & display = swap');
 
-
-
 /* ----------------------------- Partie sur les boutons ----------------------------- */
 
-.button{
-    color:#FFF3FB;
+.button {
+    color: #FFF3FB;
     background-color: #433E3F;
     padding: 10px 40px;
     text-align: center;
@@ -18,11 +15,11 @@
     cursor: pointer;
 }
 
-
-.button:hover{
+.button:hover {
     color: #FFF3FB;
     background-color: #113638;
 }
+
 
 /* ---------------------- Fin Partie sur les boutons ------------------------------ */
 
@@ -59,25 +56,24 @@
 }
 
 
-
 /*textes et titres popup*/
+
 .titre_cookie {
-	font-family: "Bebas Neue";
-	font-size:20pt;
-	color: #201D1E;
+    font-family: "Bebas Neue";
+    font-size: 20pt;
+    color: #201D1E;
     text-align: center;
 }
 
 .para_cookie {
     text-align: center;
-	font-family: "Merriweather";
-	font-size: 10pt;
-	color: #201D1E;
+    font-family: "Merriweather";
+    font-size: 10pt;
+    color: #201D1E;
 }
 
-
-.button{
-    color:#FFF3FB;
+.button {
+    color: #FFF3FB;
     background-color: #433E3F;
     padding: 10px 40px;
     text-align: center;
@@ -86,9 +82,7 @@
     font-family: 'Lato';
 }
 
-.button:hover{
+.button:hover {
     color: #FFF3FB;
     background-color: #113638;
 }
-
-

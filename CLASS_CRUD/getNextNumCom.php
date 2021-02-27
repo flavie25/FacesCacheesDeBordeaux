@@ -20,7 +20,7 @@ require_once __DIR__ . '/../util/utilErrOn.php';
       global $db;
 
       //récup id de l'article et num séquence comment
-      $queryText = "SELECT CO.numArt, MAX(numSeqCom) AS numSeqCom FROM ARTICLE AR INNER JOIN COMMENT CO ON AR.numArt = CO.numArt WHERE AR.numArt = ?;";
+      $queryText = "SELECT comment.numArt, MAX(numSeqCom) AS numSeqCom FROM article INNER JOIN comment ON article.numArt = comment.numArt WHERE article.numArt = ?;";
       $result = $db->prepare($queryText);
       $result->execute(array($numArt));
 

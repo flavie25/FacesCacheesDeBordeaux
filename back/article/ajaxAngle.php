@@ -9,7 +9,7 @@ require_once __DIR__ . '/../../CONNECT/database.php';
 
 	if (isset($langue)) {
 		global $db;
-		$requete = "SELECT numAngl, libAngl FROM ANGLE WHERE numLang = ?;" ;
+		$requete = "SELECT numAngl, libAngl FROM angle WHERE numLang = ?;" ;
 		$result = $db->prepare($requete);
 		$result->execute([$langue]);
 		$allAngleByLangue = $result->fetchAll();

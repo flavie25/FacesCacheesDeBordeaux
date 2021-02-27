@@ -7,7 +7,7 @@
 		
 		function get_NbAllThematiqueByidLangue($id){
             global $db;
-            $query = 'SELECT * FROM THEMATIQUE INNER JOIN LANGUE ON thematique.numLang = langue.numLang WHERE thematique.numLang = ?;';
+            $query = 'SELECT * FROM thematique INNER JOIN langue ON thematique.numLang = langue.numLang WHERE thematique.numLang = ?;';
             $result = $db->prepare($query);
             $result->execute([$id]);
             $allNbThematiqueById = $result->fetchAll();
@@ -20,7 +20,7 @@
 		
 		function get_1ThemByLangue($id){
             global $db;
-            $query = 'SELECT * FROM THEMATIQUE INNER JOIN LANGUE ON thematique.numLang = langue.numLang WHERE numThem = ?;';
+            $query = 'SELECT * FROM thematique INNER JOIN langue ON thematique.numLang = langue.numLang WHERE numThem = ?;';
             $result = $db->prepare($query);
             $result->execute([$id]);
             return($result->fetch());
@@ -29,7 +29,7 @@
 
 		function get_AllThem(){
             global $db;
-            $query = 'SELECT * FROM THEMATIQUE ;';
+            $query = 'SELECT * FROM thematique ;';
             $result = $db->prepare($query);
             $result->execute();
             return($result->fetchAll());
@@ -39,7 +39,7 @@
             global $db;
             try {
 				$db->beginTransaction();
-                $query = 'INSERT INTO THEMATIQUE (numThem, libThem, numLang) VALUES (?, ?, ?);';
+                $query = 'INSERT INTO thematique (numThem, libThem, numLang) VALUES (?, ?, ?);';
                 $result = $db->prepare($query);
                 $result->execute([$numThem, $libThem, $numLang]);
 				$db->commit();
@@ -57,7 +57,7 @@
             global $db;
             try {
 				$db->beginTransaction();
-                $query = 'UPDATE THEMATIQUE SET libThem = ?, numLang = ? WHERE numThem = ?;';
+                $query = 'UPDATE thematique SET libThem = ?, numLang = ? WHERE numThem = ?;';
                 $result = $db->prepare($query);
                 $result->execute([$libThem, $numLang, $numThem]);
 				$db->commit();
@@ -65,7 +65,7 @@
 	
 				}
 				catch (PDOException $e) {
-						die('Erreur insert Angle : ' . $e->getMessage());
+						die('Erreur insert THEMATIQUE : ' . $e->getMessage());
 						$db->rollBack();
 						$result->closeCursor();
 				}
@@ -76,7 +76,7 @@
             global $db;
             try {
 				$db->beginTransaction();
-                $query = 'DELETE FROM THEMATIQUE WHERE numThem = ?;';
+                $query = 'DELETE FROM thematique WHERE numThem = ?;';
                 $result = $db->prepare($query);
                 $result->execute([$numThem]);
 				$db->commit();
@@ -84,7 +84,7 @@
 	
 				}
 				catch (PDOException $e) {
-						die('Erreur delete Angle : ' . $e->getMessage());
+						die('Erreur delete THEMATIQUE : ' . $e->getMessage());
 						$db->rollBack();
 						$result->closeCursor();
 				}

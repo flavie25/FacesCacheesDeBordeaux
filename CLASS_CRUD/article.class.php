@@ -73,7 +73,7 @@
 					$result->closeCursor();
 			}
 			catch (PDOException $e) {
-					die('Erreur insert Article : ' . $e->getMessage());
+					die('Erreur insert ARTICLE : ' . $e->getMessage());
 					$db->rollBack();
 					$result->closeCursor();
 			}

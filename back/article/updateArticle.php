@@ -17,10 +17,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     // insertion classe STATUT
     require_once __DIR__ . '/../../util/ctrlSaisies.php';
     require_once __DIR__ . '/../../CLASS_CRUD/article.class.php';
+    require_once __DIR__ . '/../../CLASS_CRUD/angle.class.php';
     require_once __DIR__ . '/../../CLASS_CRUD/motCleArticle.class.php';
     global $db;
     $monArticle = new ARTICLE;
+    $monAngle = new ANGLE;
     $motCleArticle = new MOTCLEARTICLE;
+
     
     require_once __DIR__ .'./initVar.php';
     require_once __DIR__ .'./initConst.php';
@@ -33,14 +36,14 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         // Opérateur ternaire
         $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
-        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Annuler")) {
-
-            header("Location: ./article.php");
+        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
+            $reload = $_POST['numArt'];
+            header("Location: ./updateArticle.php?id=".$reload);
         }   // End of if ((isset($_POST["submit"])) ...
         
         // Mode création
         if (((isset($_POST['numArt'])) AND !empty($_POST['numArt']))
-            AND (!empty($_POST['Submit']) AND ($Submit === "Valider"))
+            AND (!empty($_POST['Submit']) AND ($Submit === "Modifier"))
             AND ((isset($_POST['libTitrArt'])) AND !empty($_POST['libTitrArt']))
             AND (isset($_POST['libChapoArt'])) AND !empty($_POST['libChapoArt'])
             AND (isset($_POST['libAccrochArt'])) AND !empty($_POST['libAccrochArt'])
@@ -90,7 +93,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 $motCleArticle->deleteMotCleArticle($numArt);
                 for ($i = 0; $i < $nbMotCle; $i++) {
                     global $db;
-                    $requete = 'INSERT INTO MOTCLEARTICLE (numMotCle, numArt) VALUES (?, ?);';
+                    $requete = 'INSERT INTO motclearticle (numMotCle, numArt) VALUES (?, ?);';
                     $result = $db->prepare($requete);
                     $result -> execute([$motCle[$i], $numArt]);
                     
@@ -122,7 +125,11 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="author" content="" />
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css">
+    <link rel="stylesheet" href="../css/form.css">
 
     <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -148,8 +155,14 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 </script>
 
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Article</h1>
-    <h2>Modification d'un article</h2>
+<?php
+include __DIR__ ."./../../front/includes/commons/navbar.php";
+?>
+<div class="wrapper">
+    <div class="Titre">
+        <h1>BLOGART21 Admin - Gestion du CRUD Article</h1>
+            <h2>Modification d'un article</h2>
+    </div>
 
     <?
     // Modif : récup id à modifier
@@ -176,7 +189,15 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $numLang = $query['numLang'];
             $numThem = $query['numThem'];
             $libThem = $query['libThem'];
+
+            $query2 = (array)$monAngle->get_1AngleByLangue($numAngl);
+
+            if ($query2) {
+                $lib1Lang = $query2['lib1Lang'];
+            }
+            
         }   // Fin if ($query)
+
 
     }   // Fin if (isset($_GET['id'])...)
     ?>
@@ -189,48 +210,52 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <input type="hidden" id="numArt" name="numArt" value="<?= $_GET['id']; ?>" />
 
             <div class="control-group">
-                <label class="control-label" for="libTitrArt"><b>Titre de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="text" name="libTitrArt" id="libTitrArt" size="80" maxlength="80" value="<?= $libTitrArt; ?>" autofocus="autofocus" />
+                <label class="control-label" for="libTitrArt">Titre de l'article :&nbsp;</label>
+                <input type="text" name="libTitrArt" id="libTitrArt" title="100 caractères max" size="100" maxlength="100" value="<?= $libTitrArt; ?>" autofocus="autofocus" placeholder="Saisir le titre de l'article" required/>
             </div>
             <div class="control-group">
-                <label class="control-label" for="libChapoArt"><b>Chapô de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="text" name="libChapoArt" id="libChapoArt" size="80" maxlength="80" value="<?= $libChapoArt; ?>"  />
+                <label class="control-label" for="libChapoArt">Chapeau de l'article :&nbsp;</label>
+                <textarea name="libChapoArt" id="libChapoArt" title="500 caractères max" cols="100" rows="5" maxlength="500" placeholder="Saisir le chapeau de l'article" required><?= $libChapoArt; ?></textarea>
             </div>
             <div class="control-group">
-                <label class="control-label" for="libAccrochArt"><b>Accroche de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="text" name="libAccrochArt" id="libAccrochArt" size="80" maxlength="80" value="<?= $libAccrochArt; ?>"  />
+                <label class="control-label" for="libAccrochArt">Accroche de l'article :&nbsp;</label>
+                <input type="text" name="libAccrochArt" id="libAccrochArt" title="100 caractères max" size="100" maxlength="100" value="<?= $libAccrochArt; ?>" placeholder="Saisir une accroche" required/>
             </div>
             <div class="control-group">
-                <label class="control-label" for="parag1Art"><b>Paragraphe 1 de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="text" name="parag1Art" id="parag1Art" size="80" maxlength="1400" value="<?= $parag1Art; ?>"  />
+                <h3>Paragraphe 1</h3>
+                <label class="control-label" for="libSsTitr1Art">Sous-titre 1 de l'article :&nbsp;</label>
+                <input type="text" name="libSsTitr1Art" id="libSsTitr1Art" title="100 caractères max" size="100" maxlength="100" value="<?= $libSsTitr1Art; ?>" placeholder="Saisir un sous-titre pour le paragraphe 1" required/><br/>
+            
+                <label class="control-label" for="parag1Art">Paragraphe 1 de l'article :&nbsp;</label>
+                <textarea name="parag1Art" id="parag1Art" title="1200 caractères max" cols="100" rows="12" maxlength="1200" placeholder="Saisir le paragraphe 1" required><?= $parag1Art; ?></textarea>
             </div>
             <div class="control-group">
-                <label class="control-label" for="libSsTitr1Art"><b>Sous-titre 1 de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="text" name="libSsTitr1Art" id="libSsTitr1Art" size="80" maxlength="80" value="<?= $libSsTitr1Art; ?>"  />
+                <h3>Paragraphe 2</h3>
+                <label class="control-label" for="libSsTitr2Art">Sous-titre 2 de l'article :&nbsp;</label>
+                <input type="text" name="libSsTitr2Art" id="libSsTitr2Art" title="100 caractères max" size="100" maxlength="100" value="<?= $libSsTitr2Art; ?>" placeholder="Saisir un sous-titre pour le paragraphe 2" required/><br/>
+            
+                <label class="control-label" for="parag2Art">Paragraphe 2 de l'article :&nbsp;</label>
+                <textarea name="parag2Art" id="parag2Art" title="1200 caractères max" cols="100" rows="12" maxlength="1200" placeholder="Saisir le paragraphe 2" required><?= $parag2Art; ?></textarea>
             </div>
             <div class="control-group">
-                <label class="control-label" for="parag2Art"><b>Paragraphe 2 de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="text" name="parag2Art" id="parag2Art" size="80" maxlength="1400" value="<?= $parag2Art; ?>"  />
+                <h3>Paragraphe 3</h3>
+                <label class="control-label" for="parag3Art">Paragraphe 3 de l'article :&nbsp;</label>
+                <textarea name="parag3Art" id="parag3Art" title="1200 caractères max" cols="100" rows="12" maxlength="1200" placeholder="Saisir le paragraphe 3" required><?= $parag3Art; ?></textarea>
             </div>
             <div class="control-group">
-                <label class="control-label" for="libSsTitr2Art"><b>Sous-titre 2 de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="text" name="libSsTitr2Art" id="libSsTitr2Art" size="80" maxlength="80" value="<?= $libSsTitr2Art; ?>"  />
+                <label class="control-label" for="libConclArt">Conclusion de l'article :&nbsp;</label>
+                <textarea name="libConclArt" id="libConclArt" title="800 caractères max" cols="100" rows="8" maxlength="800" placeholder="Saisir la conclusion" required><?= $libConclArt; ?></textarea>
             </div>
             <div class="control-group">
-                <label class="control-label" for="parag3Art"><b>Paragraphe 3 de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="text" name="parag3Art" id="parag3Art" size="80" maxlength="1400" value="<?= $parag3Art; ?>"  />
+                <label for="lib1Lang">Langue :</label>  
+                <input type="text" name="lib1Lang" id="lib1Lang" title="Vous ne pouvez pas changer la langue" value="<?php echo $lib1Lang;?>" readonly/>
             </div>
             <div class="control-group">
-                <label class="control-label" for="libConclArt"><b>Conclusion de l'article:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="text" name="libConclArt" id="libConclArt" size="80" maxlength="80" value="<?= $libConclArt; ?>"  />
-            </div>
-        
-            <div class="control-group">
-                <label for="numAngl">Angle:</label>  
-                <select id="numAngl" name="numAngl"  >
+                <label for="numAngl">Angle :</label>  
+                <select id="numAngl" name="numAngl" required>
                     <?php 
                     global $db;
-                    $requete = 'SELECT numAngl, libAngl FROM ANGLE WHERE numLang = ? ORDER BY libAngl ASC;';
+                    $requete = 'SELECT numAngl, libAngl FROM angle WHERE numLang = ? ORDER BY libAngl ASC;';
                     $result = $db->prepare($requete);
                     $result->execute([$numLang]);
                     $allAngle = $result->fetchAll();
@@ -246,11 +271,11 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 </select>
             </div>
             <div class="control-group">
-                <label for="numThem">Thématiques:</label>  
-                <select id="numThem" name="numThem"  >
+                <label for="numThem">Thématique :</label>  
+                <select id="numThem" name="numThem" required>
                     <?php 
                     global $db;
-                    $requete = 'SELECT numThem, libThem FROM THEMATIQUE WHERE numLang = ?;';
+                    $requete = 'SELECT numThem, libThem FROM thematique WHERE numLang = ?;';
                     $result = $db->prepare($requete);
                     $result->execute([$numLang]);
                     $allThem = $result->fetchAll();
@@ -268,95 +293,91 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <!-- --------------------------------------------------------------- -->
             <!-- Drag and drop sur Mots clés -->
             <!-- --------------------------------------------------------------- -->
-            <div class="list1">
-            <!-- <span class="span-text">Liste Mots clés</span> -->
-                <div class="controls">
-                    <label class="control-label" for="LibTypMotsCles2">
-                        <b>&nbsp;&nbsp;Liste Mots clés&nbsp;&nbsp;&nbsp;</b>
-                    </label>
-                </div>
-                <div id="motCle" style="display:inline">
-                    <select class="form-control" id ="listMotCle" name="listMotCle[]" multiple="multiple" style="height:150px;">
-                        <?
-                        global $db;
-                        $requete = 'SELECT * FROM MOTCLE WHERE numLang = ?;';
-                        $result = $db->prepare($requete);
-                        $result->execute([$numLang]);
-                        $allMotCleByLang = $result->fetchAll();
-                        $nbMotCleByLang = $result->rowCount();
+            <div class="control-group">
+                <div class="selectmotcle">
+                    <div class="list1">
+                        <div class="controls">
+                            <label class="control-label" for="LibTypMotsCles2">
+                                Liste Mots clés&nbsp;
+                            </label>
+                        </div>
+                        <div id="motCle" style="display:inline">
+                            <select class="form-control" id ="listMotCle" name="listMotCle[]" multiple="multiple" style="height:150px;">
+                                <?
+                                global $db;
+                                $requete = 'SELECT * FROM motcle WHERE numLang = ?;';
+                                $result = $db->prepare($requete);
+                                $result->execute([$numLang]);
+                                $allMotCleByLang = $result->fetchAll();
+                                $nbMotCleByLang = $result->rowCount();
 
-                        
+                                
 
-                        foreach ($allMotCleByLang AS $motCleByLang)
-                        {  
-                            echo "<option value='" . $motCleByLang["numMotCle"] . "'>" . $motCleByLang["libMotCle"] . "</option>";   
-                        }
+                                foreach ($allMotCleByLang AS $motCleByLang)
+                                {  
+                                    echo "<option value='" . $motCleByLang["numMotCle"] . "'>" . $motCleByLang["libMotCle"] . "</option>";   
+                                }
 
-                        ?>
-                    </select>
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="btnsaddsuppr">
+                        <div class="input-group btnadd">
+                            <label class="control-label">
+                                <button class="button" type="button" value="" id="add">Ajoutez&nbsp;>></button>
+                            </label>
+                        </div>
+                        <div class="input-group btnspr">
+                            <button class="button" type="button" value="" id="remove"><<&nbsp;Supprimez</button>
+                        </div>
+                    </div>
+
+                    <div class="list2">
+                        <div class="controls">
+                            <label class="control-label" for="LibTypMotsCles">
+                                Mots clés ajoutés&nbsp;
+                            </label>
+                        </div>
+                        <div id="selectMotCle" style="display:inline">
+                            <select class="form-control" name="idMotCle[]" size="9" id="idMotCle" multiple="multiple" style="height:150px;" required>
+                                <?
+                                $allMotCleArticle = $motCleArticle -> get_AllMotCleArticleByArt($numArt);
+                                foreach ($allMotCleArticle AS $motcle)
+                                {
+                                    echo "<option value='" . $motcle["numMotCle"] . "' selected >" . $motcle["libMotCle"] . "</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="btnsaddsuppr">
-                <div class="input-group btnadd">
-                    <label class="control-label">
-                        <button type="button" value="" class="btn btn-xs btn-primary " id="add" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px; font-size:13px" >Ajoutez&nbsp;&nbsp;>></button>
-                    </label>
-                </div>
-                <div class="input-group btnspr">
-                    <button type="button" value="" class="btn btn-xs btn-danger" id="remove" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px; font-size:13px"><<&nbsp;&nbsp;Supprimez</button>
-                </div>
-            </div>
-
-            <div class="list2">
-            <!-- <span class="span-text">Mots clés ajoutés</span> -->
-                <div class="controls">
-                    <label class="control-label" for="LibTypMotsCles">
-                        <b>&nbsp;&nbsp;Mots clés ajoutés&nbsp;&nbsp;&nbsp;</b>
-                    </label>
-                </div>
-                <div id="selectMotCle" style="display:inline">
-                    <select class="form-control" name="idMotCle[]" size="9" id="idMotCle" multiple="multiple" style="height:150px;">
-                        <?
-                        $allMotCleArticle = $motCleArticle -> get_AllMotCleArticleByArt($numArt);
-                        foreach ($allMotCleArticle AS $motcle)
-                        {
-                            echo "<option value='" . $motcle["numMotCle"] . "' selected >" . $motcle["libMotCle"] . "</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-            </div>
-           
             <!-- --------------------------------------------------------------- -->
             <!-- End of Drag and drop sur Mots clés -->
             <!-- --------------------------------------------------------------- -->
             <div class="control-group">
-                <label class="control-label" for="monfichier"><b>Importez l'illustration :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <div class="controls">
-                    <input type="file" name="monfichier" id="monfichier"  accept=".jpg,.gif,.png,.jpeg" size="70" maxlength="70" value="<?  echo $urlPhotArt;  ?>" tabindex="110" placeholder="Sur 70 car." title="Recherchez l'image à uploader !" />
-                    <p>
-                    <? // Gestion extension images acceptées
-                    $msgImagesOK = "&nbsp;&nbsp;>> Extension des images acceptées : .jpg, .gif, .png, .jpeg" . "<br>" .
-                        "(lageur, hauteur, taille max : 80000px, 80000px, 200 000 Go)";
-                    echo "<i>" . $msgImagesOK . "</i>";
-                    ?>
-                    </p>
-                </div>
+                <label class="control-label" for="monfichier">Importez l'illustration :</label>
+                <input class="button2" type="file" name="monfichier" id="monfichier"  accept=".jpg,.gif,.png,.jpeg" size="70" maxlength="70" value="<?  echo $urlPhotArt;  ?>" tabindex="110" placeholder="Sur 70 car." title="Recherchez l'image à uploader !" />
+                <p>
+                <? // Gestion extension images acceptées
+                $msgImagesOK = "&nbsp;&nbsp;>> Extension des images acceptées : .jpg, .gif, .png, .jpeg" . "<br>" .
+                    "(lageur, hauteur, taille max : 80000px, 80000px, 200 000 Go)";
+                echo "<i>" . $msgImagesOK . "</i>";
+                ?>
+                </p>
                 <img src="<?= $TargetDir.htmlspecialchars($urlPhotArt);?>" height="200px"/>
             </div>
 
             <div class="control-group">
                 <div class="controls">
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="submit" value="Annuler" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                    <br>
+                    <input class="button" type="submit" value="Initialiser" name="Submit" formnovalidate/>
+                    <input class="button" type="submit" value="Modifier" name="Submit" />
                 </div>
             </div>
         </fieldset>
     </form>
+</div>
     <?php
     require_once __DIR__ . '/footerArticle.php';
 

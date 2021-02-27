@@ -70,18 +70,29 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 <html lang="fr">
 <head>
     <meta charset="utf-8" />
-    <title>Admin - Gestion du CRUD MotClé</title>
+    <title>Admin - Gestion du CRUD Mots Clés</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css">
+    <link rel="stylesheet" href="../css/form.css">
 
 </head>
 <body>
+<?php
+include __DIR__ ."./../../front/includes/commons/navbar.php";
+?>
+<div class="wrapper">
+    <div class="Titre">
     <h1>BLOGART21 Admin - Gestion du CRUD Mots Clés</h1>
-    <h2>Modification d'un Mot Clé</h2>
+    <h2>Modification d'un mot clé</h2>
+    </div>
+    
 <?
     // Modif : récup id à modifier
     if (isset($_GET['id']) AND !empty($_GET['id'])) {
@@ -116,7 +127,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <select id="numLang" name="numLang"  onchange="select()"> 
                 <?php
                 global $db;
-                $requete = 'SELECT numLang, lib1Lang FROM LANGUE ;';
+                $requete = 'SELECT numLang, lib1Lang FROM langue ;';
                 $result = $db->query($requete);
                 $allLangue = $result->fetchAll();
                 foreach ($allLangue AS $langue)
@@ -132,16 +143,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         </div>
         <div class="control-group">
             <div class="controls">
-                <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                <br>
+                <input class="button" type="submit" value="Initialiser" name="Submit" formnovalidate/>
+                <input class="button" type="submit" value="Modifier" name="Submit" />
             </div>
         </div>
       </fieldset>
     </form>
+</div>
 <?php
 require_once __DIR__ . '/footerMotCle.php';
 

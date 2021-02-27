@@ -56,7 +56,7 @@
 	
 				}
 				catch (PDOException $e) {
-						die('Erreur insert Angle : ' . $e->getMessage());
+						die('Erreur insert ANGLE : ' . $e->getMessage());
 						$db->rollBack();
 						$result->closeCursor();
 				}
@@ -75,7 +75,7 @@
 	
 				}
 				catch (PDOException $e) {
-						die('Erreur insert Angle : ' . $e->getMessage());
+						die('Erreur insert ANGLE : ' . $e->getMessage());
 						$db->rollBack();
 						$result->closeCursor();
 				}
@@ -94,7 +94,7 @@
 	
 				}
 				catch (PDOException $e) {
-						die('Erreur delete Angle : ' . $e->getMessage());
+						die('Erreur delete ANGLE : ' . $e->getMessage());
 						$db->rollBack();
 						$result->closeCursor();
 				}

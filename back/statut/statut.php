@@ -35,44 +35,48 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <style type="text/css">
-        .error {
-            padding: 2px;
-            border: solid 0px black;
-            color: red;
-            font-style: italic;
-            border-radius: 5px;
-        }
-    </style>
-
-
-
+    
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css" >
 
 </head>
 <body>
-	<h1>BLOGART21 Admin - Gestion du CRUD Statut</h1>
+<?php
+    include __DIR__ ."./../../front/includes/commons/navbar.php";
+    ?>
+    <div class="wrapper">
+        <div class="hautpage">
+            <div class="Titre">
+                <h1>BLOGART21 Admin - Gestion du CRUD Statuts</h1>
 
-	<hr /><br />
-	<h2>Nouveau statut :&nbsp;<a class="button" href="./createStatut.php">Créer un statut</a></h2>
-	<br /><hr />
-	<h2>Tous les statuts</h2>
+                <h2>Tous les statuts</h2>
+
+            </div>
+
+            <div class="creerBt">
+                <button class="button" onclick="location.href='./createStatut.php'">
+                    Créer un statut
+                </button>
+            </div>
+        </div>
     <?php
     if ($errCIR == 1){
     echo 'Vous ne pouvez pas supprimer cet utilisateur. Veuillez d\'abord supprimer cet utilisateur dans les autres tables';
     }
     ?>
-
-	<table border="3" bgcolor="aliceblue">
-    <thead>
+<div class="tableArea">
+	<table class="tableau">
+    <thead class="entete">
         <tr>
             <th>&nbsp;Numéro&nbsp;</th>
             <th>&nbsp;Nom&nbsp;</th>
             <th colspan="2">&nbsp;Action&nbsp;</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="body">
 <?
     $allStatuts = $monStatut->get_AllStatuts();
     foreach($allStatuts as $row){
@@ -86,9 +90,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         <td>&nbsp; <?php echo $row["libStat"]; ?> &nbsp;</td>
 
-		<td>&nbsp;<a href="./updateStatut.php?id=<?=$row["idStat"];?>"><i>Modifier</i></a>&nbsp;
+		<td>&nbsp;<a class="button" href="./updateStatut.php?id=<?=$row["idStat"];?>"><i>Modifier</i></a>&nbsp;
 		<br /></td>
-		<td>&nbsp;<a href="./deleteStatut.php?id=<?=$row["idStat"];?>"><i>Supprimer</i></a>&nbsp;
+		<td>&nbsp;<a class="button" href="./deleteStatut.php?id=<?=$row["idStat"];?>"><i>Supprimer</i></a>&nbsp;
 		<br /></td>
         </tr>
 <?
@@ -96,7 +100,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 ?>
     </tbody>
     </table>
-    <br><br>
+</div>
+</div>
 <?php
 require_once __DIR__ . '/footer.php';
 ?>

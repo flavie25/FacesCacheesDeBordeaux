@@ -70,12 +70,18 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="author" content="" />
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/gestionCRUD.css">
     <link rel="stylesheet" href="../css/form.css">
 
 </head>
 <body>
+<?php
+include __DIR__ ."./../../front/includes/commons/navbar.php";
+?>
+<div class="wrapper">
     <div class="Titre">
         <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
             <h2>Modification d'un angle</h2>
@@ -136,6 +142,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         </div>
       </fieldset>
     </form>
+</div>
 <?php
 require_once __DIR__ . '/footerAngle.php';
 

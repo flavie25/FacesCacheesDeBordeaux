@@ -6,7 +6,7 @@
 	class LANGUE{
 		function get_1Langue($numLang){
 			global $db;
-            $query = 'SELECT * FROM LANGUE WHERE numLang = ?;';
+            $query = 'SELECT * FROM langue WHERE numLang = ?;';
             $result = $db->prepare($query);
             $result->execute([$numLang]);
             return($result->fetch());
@@ -15,7 +15,7 @@
 
 		function get_1LangueByPays($numLang){
 			global $db;
-            $requete = 'SELECT * FROM LANGUE INNER JOIN PAYS ON langue.numPays = pays.numPays WHERE langue.numLang = ?;';
+            $requete = 'SELECT * FROM langue INNER JOIN PAYS ON langue.numPays = pays.numPays WHERE langue.numLang = ?;';
             $result = $db->prepare($requete);
             $result->execute([$numLang]);
             return($result->fetch());
@@ -24,7 +24,7 @@
 
 		function get_AllLangues(){
 			global $db;
-			$query = 'SELECT * FROM LANGUE;';
+			$query = 'SELECT * FROM langue;';
 			$result = $db->query($query);
 			$allLangues = $result->fetchAll();
 			return($allLangues);
@@ -32,7 +32,7 @@
 
 		function get_AllLanguesByPays(){
 			global $db;
-            $requete = 'SELECT * FROM LANGUE INNER JOIN PAYS ON langue.numPays = pays.numPays ORDER BY numLang ASC;';
+            $requete = 'SELECT * FROM langue INNER JOIN pays ON langue.numPays = pays.numPays ORDER BY numLang ASC;';
             $result = $db->prepare($requete);
             $result->execute();
             return($result->fetchAll());
@@ -44,7 +44,7 @@
 			global $db;
 			try {
 			  $db->beginTransaction();
-			  $requete= 'INSERT INTO LANGUE (numLang,lib1Lang,lib2Lang,numPays) VALUES (?,?,?,?);';
+			  $requete= 'INSERT INTO langue (numLang,lib1Lang,lib2Lang,numPays) VALUES (?,?,?,?);';
 			  $result = $db->prepare($requete);
 			  $result->execute(array($numLang,$lib1Lang,$lib2Lang,$numPays));
 
@@ -52,7 +52,7 @@
 					$result->closeCursor();
 			}
 			catch (PDOException $e) {
-					die('Erreur insert STATUT : ' . $e->getMessage());
+					die('Erreur insert LANGUE : ' . $e->getMessage());
 					$db->rollBack();
 					$result->closeCursor();
 			}
@@ -62,7 +62,7 @@
 			global $db;
 			try {
 				$db->beginTransaction();
-				$requete="UPDATE LANGUE SET lib1Lang = ?, lib2Lang = ?, numPays = ? WHERE numLang = ?";
+				$requete="UPDATE langue SET lib1Lang = ?, lib2Lang = ?, numPays = ? WHERE numLang = ?";
 				$result = $db->prepare($requete);
 				$result->execute(array($lib1Lang, $lib2Lang, $numPays, $numLang));
 				$db->commit();
@@ -70,7 +70,7 @@
 	
 				}
 				catch (PDOException $e) {
-						die('Erreur delete STATUT : ' . $e->getMessage());
+						die('Erreur delete LANGUE : ' . $e->getMessage());
 						$db->rollBack();
 						$result->closeCursor();
 				}
@@ -81,7 +81,7 @@
 		global $db;
 		try {
 			$db->beginTransaction();
-			$requete= "DELETE FROM LANGUE WHERE numLang = ?; ";
+			$requete= "DELETE FROM langue WHERE numLang = ?; ";
 			$result = $db->prepare($requete);
 			$result->execute([$numLang]);
 			$db->commit();
@@ -89,7 +89,7 @@
 
 			}
 			catch (PDOException $e) {
-					die('Erreur delete STATUT : ' . $e->getMessage());
+					die('Erreur delete LANGUE : ' . $e->getMessage());
 					$db->rollBack();
 					$result->closeCursor();
 			}

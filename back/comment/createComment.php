@@ -74,13 +74,22 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="author" content="" />
 
     <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+
+    <link rel="stylesheet" href="../../front/assets/css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/gestionCRUD.css">
+    <link rel="stylesheet" href="../css/form.css">
 
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Comment</h1>
-    <h2>Ajout d'un commentaire</h2>
-
+<?php
+include __DIR__ ."./../../front/includes/commons/navbar.php";
+?>
+<div class="wrapper">
+    <div class="Titre">
+        <h1>BLOGART21 Admin - Gestion du CRUD Commentaire</h1>
+            <h2>Ajout d'un commentaire</h2>
+    </div>
     <form method="post" action="./createComment.php" enctype="multipart/form-data">
 
       <fieldset>
@@ -98,7 +107,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 <option value="" selected disabled hidden>Sélectionner un article</option>
                 <?php 
                 global $db;
-                $requete = 'SELECT numArt, libTitrArt FROM ARTICLE ;';
+                $requete = 'SELECT numArt, libTitrArt FROM article ;';
                 $result = $db->query($requete);
                 $allArticle = $result->fetchAll();
                 foreach ($allArticle AS $pays)
@@ -116,7 +125,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 <option value="" selected disabled hidden>Sélectionner un membre</option>
                 <?php 
                 global $db;
-                $requete = 'SELECT * FROM MEMBRE ;';
+                $requete = 'SELECT * FROM membre ;';
                 $result = $db->query($requete);
                 $allMemb = $result->fetchAll();
                 foreach ($allMemb AS $membre)
@@ -129,17 +138,15 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             </select>
         </div>
       
-        <div class="controls">
-            <br><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="submit" value="Annuler" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="submit" value="Envoyer" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-            <br>
+        <div class="control-group">
+            <div class="controls">
+                <input class="button" type="submit" value="Annuler" name="Submit" formnovalidate/>
+                <input class="button" type="submit" value="Valider" name="Submit" />
+            </div>
         </div>
-
       </fieldset>
     </form>
+</div>
 <?php
 require_once __DIR__ . '/footerComment.php';
 require_once __DIR__ . '/footer.php';
