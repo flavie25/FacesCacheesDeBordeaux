@@ -25,7 +25,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
     // ajout effectif du statucommentairet
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
         // Opérateur ternaire
         $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
@@ -36,7 +35,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         // Mode création
         if (((isset($_POST['libCom'])) AND !empty($_POST['libCom']))
-            AND (!empty($_POST['Submit']) AND ($Submit === "Envoyer"))
+            AND (!empty($_POST['Submit']) AND ($_POST["Submit"] ==="Envoyer"))
             AND ((isset($_POST['numArt'])) AND !empty($_POST['numArt']))
             AND ((isset($_POST['numMemb'])) AND !empty($_POST['numMemb']))) {    
             
@@ -57,6 +56,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         else {
             $erreur = true;
             $errSaisies =  "Erreur, la saisie est obligatoire !";
+            header("Location: ./createComment.php?id=".$numArt.$numMemb.$libCom);
         }   // End of else erreur saisies
 
     }   // Fin if ($_SERVER["REQUEST_METHOD"] == "POST")
@@ -141,7 +141,7 @@ include __DIR__ ."./../../front/includes/commons/navbar.php";
         <div class="control-group">
             <div class="controls">
                 <input class="button" type="submit" value="Annuler" name="Submit" formnovalidate/>
-                <input class="button" type="submit" value="Valider" name="Submit" />
+                <input class="button" type="submit" value="Envoyer" name="Submit" />
             </div>
         </div>
       </fieldset>

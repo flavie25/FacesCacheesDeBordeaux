@@ -32,7 +32,7 @@ require_once __DIR__ . '/../../CONNECT/database.php';
 
         if (!ctrlerSaisieConnect($pseudoMemb, $passMemb)) {
           // pass invalid => error = 2
-          header('Location: ./../../front/includes/pages/connexion.php?error=2&login=' . $pseudoMemb);
+          header('Location: ./../../front/includes/pages/connexion.php?error=2&login='.$pseudoMemb);
         }
         else {
           // numéro unique délivré au user
@@ -44,9 +44,9 @@ require_once __DIR__ . '/../../CONNECT/database.php';
           $_SESSION['logged'] = true;
 
           // Créat cookie si login existe
-          if (isset($_POST["pseudoMemb"]))
-            setcookie("pseudoMemb", $_POST["pseudoMemb"], time()+24*2600, null, null, false, true);
-
+          if (isset($_POST["pseudoMemb"])){
+            setcookie("accueil.php", $_POST["pseudoMemb"], time()+24*2600, null, null, false, true);
+          }
           //$login = isset($_COOKIE['login']) ? $_COOKIE['login'] : '';
 
           // Re-diriger le visiteur vers une nouvelle page

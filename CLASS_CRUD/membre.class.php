@@ -11,6 +11,13 @@
             $result->execute([$idMembre]);
             return($result->fetch());
         }
+		function get_1Memb($pseudoMemb){
+            global $db;
+            $query = 'SELECT * FROM membre WHERE pseudoMemb = ?;';
+            $result = $db->prepare($query);
+            $result->execute([$pseudoMemb]);
+            return($result->fetch());
+        }
 		function get_AllMembre(){
 			global $db;
             $requete = 'SELECT * FROM membre ;';

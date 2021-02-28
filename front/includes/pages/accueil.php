@@ -1,7 +1,7 @@
-<? 
-//include __DIR__ ."/../../../back/session/sessionVerif.php";
-?>
+<?
+setcookie('page', 'accueil.php', 3600*24, null, null, false, true);
 
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -39,7 +39,7 @@
 
         include __DIR__ ."./../components/presentation.php";
 
-        include __DIR__ ."./../components/accueilArticles.php";
+        //include __DIR__ ."./../components/accueilArticles.php";
 
     ?>
 
@@ -81,7 +81,7 @@
                     </svg>      <!-- Ce code concerne la forme qui encadre les écritures 2 bas gauche-->
                         
                 </div> 
-
+                <a class="btn_footer" href="article.php?id=52">VOIR L'ARTICLE</a>
                 <button class="btn_footer" href="#">VOIR L'ARTICLE</button>
 
             </div>
@@ -123,7 +123,7 @@
                     </svg>   <!-- Ce code concerne la forme qui encadre les écritures 2 bas gauche-->
                     
                 </div> 
-
+                <a class="btn_footer" href="article.php?id=51">VOIR L'ARTICLE</a>
                 <button class="btn_footer2" href="#">VOIR L'ARTICLE</button>
 
             </div>
@@ -168,17 +168,16 @@
                         <line x1="72.2878" y1="59.1425" x2="0.288634" y2="59.4986" stroke="#FFF3FB" stroke-width="5"/>
                         <line x1="2.49997" y1="0.987637" x2="2.77691" y2="56.987" stroke="#FFF3FB" stroke-width="5"/>
                     </svg>      <!-- Ce code concerne la forme qui encadre les écritures 2 bas gauche-->
-                        
-                </div> 
-
-                <button class="btn_footer" href="#">VOIR L'ARTICLE</button>
+                </div>       
+                <a class="btn_footer" href="article.php?id=50">VOIR L'ARTICLE</a>
+                <button class="btn_footer" href="article.php">VOIR L'ARTICLE</button>
 
             </div>
 
         </div> 
 
     <!--------------------------------------------- Partie Footer --------------------------------------------------->
-
+<!-- 
         <footer class="bas_page">
 
         <div class="bas_footer">
@@ -228,11 +227,15 @@
             <h2 class="mention" > <a class="ment-alyssa"  href="mentions.php"> Mentions Légales</h2>
         </div>  
 
-    </footer>
+    </footer> -->
 
 
 
+<?
 
+include __DIR__."./../commons/footer.php";
+
+?>
 
     </body>
 

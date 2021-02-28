@@ -47,7 +47,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             AND (isset($_POST['parag3Art'])) AND !empty($_POST['parag3Art'])
             AND (isset($_POST['libConclArt'])) AND !empty($_POST['libConclArt'])
             AND ((isset($_POST['idMotCle'])) AND !empty($_POST['idMotCle']))
-            //AND ((isset($_FILES['monfichier']['tmp_name'])) AND !empty($_FILES['monfichier']['tmp_name']))
+            AND ((isset($_FILES['monfichier']['tmp_name'])) AND !empty($_FILES['monfichier']['tmp_name']))
             AND (isset($_POST['idAngl'])) AND !empty($_POST['idAngl'])
             AND (isset($_POST['idThem'])) AND !empty($_POST['idThem'])
             ){
@@ -170,7 +170,7 @@ include __DIR__ ."./../../front/includes/commons/navbar.php";
         </div>
         <div class="control-group">
             <label class="control-label" for="libAccrochArt">Accroche de l'article :&nbsp;</label>
-            <input type="text" name="libAccrochArt" id="libAccrochArt" title="100 caractères max" size="100" maxlength="100" value="<?= $libAccrochArt; ?>" placeholder="Saisir une accroche" required/>
+            <input type="text" name="libAccrochArt" id="libAccrochArt" title="100 caractères max" size="100" maxlength="150" value="<?= $libAccrochArt; ?>" placeholder="Saisir une accroche" required/>
         </div>
         <div class="control-group">
             <h3>Paragraphe 1</h3>
@@ -178,7 +178,7 @@ include __DIR__ ."./../../front/includes/commons/navbar.php";
             <input type="text" name="libSsTitr1Art" id="libSsTitr1Art" title="100 caractères max" size="100" maxlength="100" value="<?= $libSsTitr1Art; ?>" placeholder="Saisir un sous-titre pour le paragraphe 1" required/><br/>
         
             <label class="control-label" for="parag1Art">Paragraphe 1 de l'article :&nbsp;</label>
-            <textarea name="parag1Art" id="parag1Art" title="1200 caractères max" cols="100" rows="12" maxlength="1200" placeholder="Saisir le paragraphe 1" required><?= $parag1Art; ?></textarea>
+            <textarea name="parag1Art" id="parag1Art" title="1200 caractères max" cols="100" rows="12" maxlength="1600" placeholder="Saisir le paragraphe 1" required><?= $parag1Art; ?></textarea>
         </div>
         <div class="control-group">
             <h3>Paragraphe 2</h3>
@@ -186,16 +186,16 @@ include __DIR__ ."./../../front/includes/commons/navbar.php";
             <input type="text" name="libSsTitr2Art" id="libSsTitr2Art" title="100 caractères max" size="100" maxlength="100" value="<?= $libSsTitr2Art; ?>" placeholder="Saisir un sous-titre pour le paragraphe 2" required/><br/>
         
             <label class="control-label" for="parag2Art">Paragraphe 2 de l'article :&nbsp;</label>
-            <textarea name="parag2Art" id="parag2Art" title="1200 caractères max" cols="100" rows="12" maxlength="1200" placeholder="Saisir le paragraphe 2" required><?= $parag2Art; ?></textarea>
+            <textarea name="parag2Art" id="parag2Art" title="1200 caractères max" cols="100" rows="12" maxlength="1600" placeholder="Saisir le paragraphe 2" required><?= $parag2Art; ?></textarea>
         </div>
         <div class="control-group">
             <h3>Paragraphe 3</h3>
             <label class="control-label" for="parag3Art">Paragraphe 3 de l'article :&nbsp;</label>
-            <textarea name="parag3Art" id="parag3Art" title="1200 caractères max" cols="100" rows="12" maxlength="1200" placeholder="Saisir le paragraphe 3" required><?= $parag3Art; ?></textarea>
+            <textarea name="parag3Art" id="parag3Art" title="1200 caractères max" cols="100" rows="12" maxlength="1600" placeholder="Saisir le paragraphe 3" required><?= $parag3Art; ?></textarea>
        </div>
         <div class="control-group">
             <label class="control-label" for="libConclArt">Conclusion de l'article :&nbsp;</label>
-            <textarea name="libConclArt" id="libConclArt" title="800 caractères max" cols="100" rows="8" maxlength="800" placeholder="Saisir la conclusion" required><?= $libConclArt; ?></textarea>
+            <textarea name="libConclArt" id="libConclArt" title="800 caractères max" cols="100" rows="8" maxlength="900" placeholder="Saisir la conclusion" required><?= $libConclArt; ?></textarea>
         </div>
 
         <div class="control-group">

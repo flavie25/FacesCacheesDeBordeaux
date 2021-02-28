@@ -40,7 +40,7 @@ switch ($error) {
         <label for="passMemb">Mot de passe*</label> </br>
         <input type="password" name="passMemb" id="passMemb" required placeholder="Renseignez votre mot de passe" title="Renseignez votre mot de passe" /> 
         </br>
-        <input type="submit" class ="button" value="JE ME CONNECTE"  name="Submit" /> 
+        <input type="submit" class="button" value="JE ME CONNECTE"  name="Submit" /> 
         </form>
 
         <a href="inscription.php"> Pas de compte ? Inscris-toi ici ! </p>

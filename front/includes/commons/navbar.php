@@ -1,3 +1,8 @@
+<? 
+session_start();
+
+?>
+
 <header>
     <div class="head">
             <nav role="navigation">
@@ -6,11 +11,15 @@
                 
                     <span></span>
                     <span></span>
-                    <span></span>           
+                    <span></span> 
 
+                   
                     <ul id="menu">
                         <a href="accueil.php"><li>Accueil</li></a>
-                        <?php if(isset($_SESSION['utilisateur'])){ ?>
+                        <?  //include __DIR__ ."/../../../back/session/sessionVerif.php"; ?>
+
+                        <?php 
+                         if(isset($_SESSION['pseudoMemb'])){ ?>
                         <a href="profil.php"><li>Mon compte</li></a>
 
                         <?php } else {?>
@@ -39,11 +48,23 @@
         <!--  <img src="../../assets/images/logo" class="connect"> -->
 
                 <!-- Pour login -->
-                <a href="connexion.php" >
-                    <i class="fas fa-user"></i>
-                    <!-- <img  src="../../assets/images/alber.png" class="connect" />  -->
-                </a>
-                
+                <?
+                    if(isset($_SESSION['pseudoMemb'])){ 
+                ?>
+                        <a href="profil.php" >
+                            <i class="fas fa-user"></i>
+                        </a>
+
+                <?php 
+                    } 
+                    else {
+                ?>
+                        <a href="connexion.php" >
+                            <i class="fas fa-user"></i>
+                        </a>
+                <?php 
+                    } 
+                ?>
                     
             </div>
         </div>

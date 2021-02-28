@@ -20,6 +20,23 @@ require_once __DIR__ . '../../CONNECT/database.php';
             $result->execute([$numSeqCom,$numArt]);
             return($result->fetch());
         }
+
+        function get_AllCommentByArt($numArt){
+            global $db;
+            $affComOK = 1;
+            $query = 'SELECT * FROM comment INNER JOIN membre ON comment.numMemb = membre.numMemb WHERE numArt = ? AND affComOk = ?;';
+            $result = $db->prepare($query);
+            $result->execute([$numArt, $affComOK]);
+            return($result->fetchAll());
+        }
+
+        function get_nbComment($numArt){
+            global $db;
+            $requete = 'SELECT * FROM comment WHERE numArt = ?;';
+            $result = $db->prepare($requete);
+            $result->execute([$numArt]);
+            return($result->rowCount());
+        }
         
         function create($numSeqCom, $numArt, $dtCreaCom, $libCom, $numMemb){
             global $db;

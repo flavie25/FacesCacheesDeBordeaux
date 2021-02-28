@@ -1,36 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-body{
+body {
     font-family: 'Merriweather', serif;
     background-color: #FFF3FB;
     color: white;
-    overflow:visible;
+    overflow: visible;
 }
+
 ::-webkit-scrollbar {
     display: none;
-  }
-.formulaire-container{
+}
+
+.formulaire-container {
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-25%);
+    transform: translate(-50%, -25%);
     position: absolute;
     height: 200vh;
     margin-top: 5%;
 }
-.formulaire{
+
+.formulaire {
     background-color: transparent;
     color: white;
     height: 40px;
     border-radius: 5px;
-    border-style: solid; 
+    border-style: solid;
     border-color: white;
     padding-left: 10px;
     width: 20vw;
     text-align: center;
 }
-.button{
 
-    color:#FFF3FB;
+.button {
+    color: #FFF3FB;
     background-color: #433E3F;
     padding: 10px 40px;
     text-align: center;
@@ -40,22 +43,24 @@ body{
     top: 50%;
     left: 50%;
 }
-.button:hover{
+
+.button:hover {
     color: #FFF3FB;
     background-color: #071718;
 }
 
-label{
+label {
     font-family: 'Bebas Neue';
     font-size: 23px;
 }
 
-input{
+input {
     font-family: 'Lato';
     font-size: 20px;
+    border-radius: 15px;
 }
 
-input[type=checkbox]{
+input[type=checkbox] {
     border: 3px solid #201d1e;
     border-radius: 5px;
     width: 2em;
@@ -63,7 +68,7 @@ input[type=checkbox]{
     margin-bottom: 1em;
 }
 
-.svg{
+.svg {
     transform: translate(100px);
     position: relative;
 }
