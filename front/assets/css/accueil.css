@@ -15,7 +15,9 @@ body {
     padding-bottom: 125px;
     padding-right: 150px;
     padding-left: 150px;
-    padding-top: 300px;
+    padding-top: 150px;
+    margin: auto;
+    width: 70%;
     height: auto;
     position: relative;
     display: flex;
@@ -25,6 +27,9 @@ body {
 
 .articles2 {
     padding: 125px 150px;
+    margin: auto;
+    margin-top: 45px;
+    width: 70%;
     height: auto;
     position: relative;
     display: flex;
@@ -35,14 +40,26 @@ body {
 
 /* Image svg 1 */
 
+.svgBackground {}
+
 .bckgd {
     width: 100%;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 118%;
+    left: 0%;
     padding-bottom: 20px;
     height: auto;
-    z-index: -2;
+    z-index: -15;
+}
+
+.bckgd2 {
+    width: 100%;
+    position: absolute;
+    top: 270%;
+    left: 0%;
+    padding-bottom: 20px;
+    height: auto;
+    z-index: -15;
 }
 
 

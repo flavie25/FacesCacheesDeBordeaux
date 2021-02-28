@@ -4,6 +4,7 @@
     margin: 100px 20%;
     /* width: 55vw; */
     color: #113537;
+    z-index: 9;
 }
 
 .presentation_titre {

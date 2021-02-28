@@ -42,14 +42,12 @@ setcookie('page', 'accueil.php', 3600*24, null, null, false, true);
         //include __DIR__ ."./../components/accueilArticles.php";
 
     ?>
-
-   
-        <div class="articles">
-
+        <div class="svgBackground">
             <svg class="bckgd" width="1440" height="917" viewBox="0 0 1440 917" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1366.22 17.2388C1048.72 60.2854 888.511 83.0967 817.01 146.251C754.372 201.585 802.432 222.269 737.86 278.374C642.485 361.256 446.349 395.43 284.585 379.415C103.85 361.518 77.3235 291.966 -87.1471 289.263C-245.002 286.661 -364.851 348.35 -395.013 363.874C-665.213 502.953 -703.729 819.939 -547.625 887.712C-412.676 946.308 -244.414 769.953 126.286 788.23C381.96 800.839 388.275 888.983 689.878 909.473C821.415 918.412 1133.58 939.622 1311.04 822.422C1408.62 757.971 1435.96 671.149 1591.63 631.229C1666.69 611.985 1687.02 625.314 1728.33 607.909C1928.74 523.477 1824.82 51.8116 1546.07 1.68945C1530.81 -1.05604 1513.75 -2.75926 1366.22 17.2388Z" fill="#113638"/>
             </svg> <!-- Ce code concerne la forme svg verte 1 -->
-
+        </div>
+        <div class="articles">
             <img class="img_accueil" src="../../assets/images/alber.png" alt="Une image"> <!-- Image Alber -->
             
             <div class="droite">
@@ -82,8 +80,6 @@ setcookie('page', 'accueil.php', 3600*24, null, null, false, true);
                         
                 </div> 
                 <a class="btn_footer" href="article.php?id=52">VOIR L'ARTICLE</a>
-                <button class="btn_footer" href="#">VOIR L'ARTICLE</button>
-
             </div>
 
         </div> 
@@ -123,8 +119,7 @@ setcookie('page', 'accueil.php', 3600*24, null, null, false, true);
                     </svg>   <!-- Ce code concerne la forme qui encadre les écritures 2 bas gauche-->
                     
                 </div> 
-                <a class="btn_footer" href="article.php?id=51">VOIR L'ARTICLE</a>
-                <button class="btn_footer2" href="#">VOIR L'ARTICLE</button>
+                <a class="btn_footer2" href="article.php?id=51">VOIR L'ARTICLE</a>
 
             </div>
 
@@ -132,13 +127,11 @@ setcookie('page', 'accueil.php', 3600*24, null, null, false, true);
 
 
         <!--------------------------------------------- Troisième Partie --------------------------------------------------->
-
+        <svg class="bckgd2" width="1440" height="917" viewBox="0 0 1440 917" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1366.22 17.2388C1048.72 60.2854 888.511 83.0967 817.01 146.251C754.372 201.585 802.432 222.269 737.86 278.374C642.485 361.256 446.349 395.43 284.585 379.415C103.85 361.518 77.3235 291.966 -87.1471 289.263C-245.002 286.661 -364.851 348.35 -395.013 363.874C-665.213 502.953 -703.729 819.939 -547.625 887.712C-412.676 946.308 -244.414 769.953 126.286 788.23C381.96 800.839 388.275 888.983 689.878 909.473C821.415 918.412 1133.58 939.622 1311.04 822.422C1408.62 757.971 1435.96 671.149 1591.63 631.229C1666.69 611.985 1687.02 625.314 1728.33 607.909C1928.74 523.477 1824.82 51.8116 1546.07 1.68945C1530.81 -1.05604 1513.75 -2.75926 1366.22 17.2388Z" fill="#113638"/>
+        </svg> <!-- Ce code concerne la forme svg verte 1 -->
         
         <div class="articles2">
-
-            <svg class="bckgd" width="1440" height="917" viewBox="0 0 1440 917" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1366.22 17.2388C1048.72 60.2854 888.511 83.0967 817.01 146.251C754.372 201.585 802.432 222.269 737.86 278.374C642.485 361.256 446.349 395.43 284.585 379.415C103.85 361.518 77.3235 291.966 -87.1471 289.263C-245.002 286.661 -364.851 348.35 -395.013 363.874C-665.213 502.953 -703.729 819.939 -547.625 887.712C-412.676 946.308 -244.414 769.953 126.286 788.23C381.96 800.839 388.275 888.983 689.878 909.473C821.415 918.412 1133.58 939.622 1311.04 822.422C1408.62 757.971 1435.96 671.149 1591.63 631.229C1666.69 611.985 1687.02 625.314 1728.33 607.909C1928.74 523.477 1824.82 51.8116 1546.07 1.68945C1530.81 -1.05604 1513.75 -2.75926 1366.22 17.2388Z" fill="#113638"/>
-            </svg> <!-- Ce code concerne la forme svg verte 1 -->
 
             <img class="img_accueil" src="../../assets/images/mascarons.png" alt="Une image"> <!-- Image Mascarons -->
             
@@ -170,7 +163,6 @@ setcookie('page', 'accueil.php', 3600*24, null, null, false, true);
                     </svg>      <!-- Ce code concerne la forme qui encadre les écritures 2 bas gauche-->
                 </div>       
                 <a class="btn_footer" href="article.php?id=50">VOIR L'ARTICLE</a>
-                <button class="btn_footer" href="article.php">VOIR L'ARTICLE</button>
 
             </div>
 
