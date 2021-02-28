@@ -21,6 +21,14 @@
 			return($allLikeCom);
 
 		}
+		function get_AllLikeComByArt($numArt){
+			global $db;
+			$query = 'SELECT * FROM likecom WHERE numArt = ?';
+			$result = $db->prepare($query);
+			$result->execute([$numArt]);
+			return($result->rowCount());
+
+		}
 
 		function create($numMemb, $numArt, $numSeqCom, $likeC){
 			global $db;

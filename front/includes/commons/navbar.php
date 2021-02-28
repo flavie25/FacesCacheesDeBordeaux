@@ -3,6 +3,8 @@ session_start();
 
 ?>
 
+<script src="https://kit.fontawesome.com/68b1f887b3.js" crossorigin="anonymous"></script>
+
 <header>
     <div class="head">
             <nav role="navigation">

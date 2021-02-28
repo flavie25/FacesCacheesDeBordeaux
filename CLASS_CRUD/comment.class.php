@@ -32,9 +32,10 @@ require_once __DIR__ . '../../CONNECT/database.php';
 
         function get_nbComment($numArt){
             global $db;
-            $requete = 'SELECT * FROM comment WHERE numArt = ?;';
+            $affComOK = 1;
+            $requete = 'SELECT * FROM comment WHERE numArt = ? AND affComOk = ?;';
             $result = $db->prepare($requete);
-            $result->execute([$numArt]);
+            $result->execute([$numArt, $affComOK]);
             return($result->rowCount());
         }
         

@@ -183,6 +183,10 @@
     font-family: 'Lato';
 }
 
+a .button {
+    text-decoration: none;
+}
+
 .button:hover {
     color: #FFF3FB;
     background-color: #113638;

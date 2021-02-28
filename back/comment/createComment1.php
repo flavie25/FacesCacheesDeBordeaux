@@ -28,7 +28,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     // ajout effectif du statucommentairet
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-        $pseudoMemb = ctrlSaisies(($_SESSION['pseudoMemb']));
+        $pseudoMemb = ctrlSaisies(($_POST['pseudoMemb']));
         $infoMemb = $membre-> get_1Memb($pseudoMemb);
         $numMemb = $infoMemb['numMemb'];
         
@@ -53,9 +53,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $numArt = ctrlSaisies(($_POST['numArt']));
             $dtCreaCom = date("Y-m-d h:i:s");
             $numSeqCom = getNextNumCom($numArt);
-
+            $message = "Votre commentaire a bien été pris en compte. Il sera affiché lorsqu'il sera validé par le propriétaire.";
             $monComment->create($numSeqCom, $numArt, $dtCreaCom, $libCom, $numMemb);
-            header("Location: ./../../front/includes/pages/article.php?id=".$numArt);
+            header("Location: ./../../front/includes/pages/article.php?id=".$numArt."&message=".$message);
 
                   
         }   // Fin if ((isset($_POST['libStat'])) ...
