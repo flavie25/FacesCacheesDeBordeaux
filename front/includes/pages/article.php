@@ -111,6 +111,11 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
 
 
         <? 
+        if (isset($_GET['message'])){
+
+            $message = $_GET['message'];
+            echo $message;
+        }
             if(isset($_SESSION['pseudoMemb'])){
 
         ?>

@@ -1,11 +1,4 @@
 <?php
-///////////////////////////////////////////////////////////////
-//
-//  CRUD COMMENT (PDO) - Code Modifié - 23 Janvier 2021
-//
-//  Script  : createComment.php  (ETUD)   -   BLOGART21
-//
-///////////////////////////////////////////////////////////////
 
 // Mode DEV
 require_once __DIR__ . '/../../util/utilErrOn.php';
@@ -28,7 +21,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     // ajout effectif du statucommentairet
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-        $pseudoMemb = ctrlSaisies(($_SESSION['pseudoMemb']));
+        $pseudoMemb = ctrlSaisies(($_POST['pseudoMemb']));
         $infoMemb = $membre-> get_1Memb($pseudoMemb);
         $numMemb = $infoMemb['numMemb'];
         
@@ -55,7 +48,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $numSeqCom = getNextNumCom($numArt);
 
             $monComment->create($numSeqCom, $numArt, $dtCreaCom, $libCom, $numMemb);
-            header("Location: ./../../front/includes/pages/article.php?id=".$numArt);
+            $message = "Votre commentaire a bien été pris en compte. Il sera affiché une fois validé par le prorpiétaire.";
+            header("Location: ./../../front/includes/pages/article.php?id=".$numArt."&message=".$message);
 
                   
         }   // Fin if ((isset($_POST['libStat'])) ...
