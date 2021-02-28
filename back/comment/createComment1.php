@@ -1,11 +1,4 @@
 <?php
-///////////////////////////////////////////////////////////////
-//
-//  CRUD COMMENT (PDO) - Code Modifié - 23 Janvier 2021
-//
-//  Script  : createComment.php  (ETUD)   -   BLOGART21
-//
-///////////////////////////////////////////////////////////////
 
 // Mode DEV
 require_once __DIR__ . '/../../util/utilErrOn.php';
