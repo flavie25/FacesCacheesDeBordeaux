@@ -134,7 +134,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
                                 <label class="commentPseudo" for="libCom">Commentaire :</label>
                             </div>
                             <textarea id="libCom" name="libCom" placeholder="Écrivez un commentaire" class="formulaire" cols="40" rows="3" style="resize: none;"></textarea><br>
-                            <input class="button btnComment" type="submit" value="ENVOYER" name="Submit" />
+                            <input class="button btnComment" type="submit" value="Envoyer" name="Submit" />
                         </form>
                     </div>  
                 </div>

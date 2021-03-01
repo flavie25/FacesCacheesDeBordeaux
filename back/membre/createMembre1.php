@@ -33,6 +33,15 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $responseData = json_decode($verifyResponse);
     
             if ($responseData->success) {
+                $prenomMembre = ctrlSaisies($_POST['prenomMemb']);
+                $nomMembre = ctrlSaisies($_POST['nomMemb']);
+                $pseudoMembre = ctrlSaisies($_POST['pseudoMemb']);
+                $passMembre1 = ctrlSaisies($_POST['passMemb1']);
+                $passMembre2 = ctrlSaisies($_POST['passMemb2']);
+                $emailMembre1 = ctrlSaisies($_POST['eMailMemb1']);
+                $emailMembre2 = ctrlSaisies($_POST['eMailMemb2']);
+                $souvenirMembre = ctrlSaisies($_POST['souvenirMemb']);
+                $accordMembre = ctrlSaisies($_POST['accordMemb']);
 
                 // Opérateur ternaire
                 $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
@@ -106,14 +115,14 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                         $errPass = "Le mot de passe et la confirmation de mot de passe ne sont pas identiques";
                     }
                     if(($prenomMembre !="") AND ($nomMembre!="") AND ($idStat!="") AND ($dtCreaMembre!="") AND ($souvenirMembre!="") AND ($accordMembre!="") AND ($eMailOk == 1) AND ($passwordOk == 1) AND ($pseudoExist == 0)){
-                        
+                        $messageInscri="Veuillez vous connecter pour confirmer votre inscription.";
                         $membre->create($prenomMembre, $nomMembre,$pseudoMembre,$passMembre2,$emailMembre1,$dtCreaMembre, $souvenirMembre,$accordMembre,$idStat);
-                        header("Location: ./../../../front/includes/pages/accueil.php");
+                        header("Location: ./../../front/includes/pages/connexion.php?id=".$messageInscri);
                     }
                     
                     else{
 
-                        header("Location: ./../../../front/includes/pages/accueil.php?id=".$numMembre."&err1=".$errMail1."&err2=".$errMail2."&err3=".$errPass."&err4=".$errPseudo);
+                        header("Location: ./../../front/includes/pages/inscription.php?id=".$numMembre."&err1=".$errMail1."&err2=".$errMail2."&err3=".$errPass."&err4=".$errPseudo);
                         
                     } 
 
@@ -121,7 +130,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 else {
                     $erreur = true;
                     $errSaisies =  "Erreur, la saisie est obligatoire et vous devez obligatoirement accepter la sauvegarde de vos données!";
-                    header("Location: ./../../front/includes/pages/inscription.php?id=".$errSaisies);
+                    header("Location: ./../../front/includes/pages/inscription.php?id=".$errSaisies.$prenomMembre.$nomMembre.$pseudoMembre.$passMembre1.$passMembre2.$emailMembre1.$emailMembre2.$souvenirMembre.$accordMembre);
                 }   // End of else erreur saisies
             
             }

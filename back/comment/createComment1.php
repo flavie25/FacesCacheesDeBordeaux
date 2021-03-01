@@ -22,6 +22,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $pseudoMemb = ctrlSaisies(($_POST['pseudoMemb']));
+        $numArt = ctrlSaisies(($_POST['numArt']));
+        $libCom = ctrlSaisies(($_POST['libCom']));
         $infoMemb = $membre-> get_1Memb($pseudoMemb);
         $numMemb = $infoMemb['numMemb'];
         
