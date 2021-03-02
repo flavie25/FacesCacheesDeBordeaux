@@ -7,7 +7,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 100px 0;
+    margin: 40px 0;
 }
 
 .button {
@@ -15,6 +15,7 @@ body {
     background-color: #433E3F;
     padding: 10px 40px;
     text-align: center;
+    justify-content: center;
     border: none;
     border-radius: 5px;
     font-family: 'Lato';

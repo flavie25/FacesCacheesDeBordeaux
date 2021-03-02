@@ -60,6 +60,21 @@ p {
     margin: 10px 0;
 }
 
+.likeArt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-end;
+    width: 40%;
+    margin-left: 160px;
+    margin-top: 10px;
+}
+
+.likeArticle {
+    margin: 5px;
+    padding-top: 15px;
+}
+
 .commentaireContainer {
     display: flex;
     justify-content: left;

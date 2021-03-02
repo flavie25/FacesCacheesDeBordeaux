@@ -18,13 +18,16 @@ include __DIR__."./../commons/navbar.php";
 require_once __DIR__."/../../../util/utilErrOn.php";
 require_once __DIR__."/../../../util/ctrlSaisies.php";
 require_once __DIR__."/../../../CLASS_CRUD/article.class.php";
+require_once __DIR__."/../../../CLASS_CRUD/likeArt.class.php";
 global $db;
 $article = new ARTICLE;
+$likeArt = new LIKEART;
 
 if(isset($_GET['id']) AND !empty($_GET['id'])){
 
     $numArt = ctrlSaisies($_GET['id']);
     $contenu = $article->get_1ArticleByThemAngl($numArt);
+    $nbLikeArt = $likeArt->get_LikeByArt($numArt);
     $titreArt = $contenu['libTitrArt'];
     $sousTitr1 = $contenu['libSsTitr1Art'];
     $sousTitr2 = $contenu['libSsTitr2Art'];
@@ -52,6 +55,11 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
                 <p><?= $contenu['parag3Art']; ?></p>
                 <h2> Conclusion : </h2>
                 <p><?= $contenu['libConclArt']; ?></p>
+            </div>
+            <div class="likeArt">
+                <label class="likeArticle">J'aime</label>
+                <img src="../../assets/images/Like.png" style="margin-left: 1%;transform: translateY(5px);">
+                <label class="likeArticle"><?= $nbLikeArt?></label>
             </div>
         </div>
         <br>

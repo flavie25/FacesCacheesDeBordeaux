@@ -1,5 +1,6 @@
 <?
 setcookie('page', 'accueil.php', 3600*24, null, null, false, true);
+$page = basename($_SERVER["SCRIPT_FILENAME"]);
 
 ?>
 <!DOCTYPE html>

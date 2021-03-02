@@ -13,6 +13,14 @@
             return($likeart);
         }
 
+		function get_LikeByArt( $numArt){
+            global $db;
+            $query = 'SELECT * FROM likeart INNER JOIN article ON likeart.numArt = article.numArt  WHERE likeart.numMemb = ? ;';
+            $result = $db->prepare($query);
+            $result->execute([$numArt]);
+            return($result->rowCount());
+        }
+
 		function get_AllLikeArt(){
 			global $db;
 			$query = 'SELECT * FROM likeart INNER JOIN article ON likeart.numArt = article.numArt INNER JOIN membre ON likeart.numMemb = membre.numMemb ;';
