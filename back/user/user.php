@@ -71,12 +71,12 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <table class="tableau">
             <thead class="entete">
                 <tr>
-                    <th>&nbsp;pseudoUser&nbsp;</th>
-                    <th>&nbsp;passUser&nbsp;</th>
-                    <th>&nbsp;nomUser&nbsp;</th>
-                    <th>&nbsp;prenomUser&nbsp;</th>
-                    <th>&nbsp;eMailUser&nbsp;</th>
-                    <th>&nbsp;idStat&nbsp;</th>
+                    <th>&nbsp;Pseudo User&nbsp;</th>
+                    <th>&nbsp;Mot de Passe&nbsp;</th>
+                    <th>&nbsp;Nom&nbsp;</th>
+                    <th>&nbsp;Prenom&nbsp;</th>
+                    <th>&nbsp;eMail&nbsp;</th>
+                    <th>&nbsp;Statut&nbsp;</th>
                     <th colspan="2">&nbsp;Action&nbsp;</th>
                 </tr>
             </thead>
@@ -95,7 +95,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 <td>&nbsp; <?php echo $row["nomUser"]; ?> &nbsp;</td>
                 <td>&nbsp; <?php echo $row["prenomUser"]; ?> &nbsp;</td>
                 <td>&nbsp; <?php echo $row["eMailUser"]; ?> &nbsp;</td>
-                <td>&nbsp; <?php echo $row["idStat"]; ?> &nbsp;</td>
+                <td>&nbsp; <?php echo $row["libStat"]; ?> &nbsp;</td>
 
                 <td>&nbsp;<a class="button" href="./updateUser.php?id=<?=$row["pseudoUser"];?>"><i>Modifier</i></a>&nbsp;
                 <br /></td>

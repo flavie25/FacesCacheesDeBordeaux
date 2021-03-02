@@ -54,14 +54,14 @@ $comment = new COMMENT;
         <thead class="entete">
             <tr>
                 <th>&nbsp;NumSeqCom&nbsp;</th>
-                <th>&nbsp;NumArticle&nbsp;</th>
+                <th>&nbsp;Titre Article&nbsp;</th>
                 <th>&nbsp;DtCreCom&nbsp;</th>
                 <th>&nbsp;LibCom&nbsp;</th>
                 <th>&nbsp;AttModOK&nbsp;</th>
                 <th>&nbsp;AffComOK&nbsp;</th>
                 <th>&nbsp;NotifComKOAff&nbsp;</th>
                 <th>&nbsp;delLogiq&nbsp;</th>
-                <th>&nbsp;numMemb&nbsp;</th>
+                <th>&nbsp;Peudo Membre&nbsp;</th>
                 <th colspan="2">&nbsp;Action&nbsp;</th>
             </tr>
         </thead>
@@ -76,14 +76,14 @@ $comment = new COMMENT;
             ?>
                 <tr>
                 <td><h4>&nbsp; <?php echo $row["numSeqCom"]; ?> &nbsp;</h4></td>
-                <td>&nbsp; <?php echo $row["numArt"]; ?> &nbsp;</td>
+                <td>&nbsp; <?php echo $row["libTitrArt"]; ?> &nbsp;</td>
                 <td>&nbsp; <?php echo $row["dtCreCom"]; ?> &nbsp;</td>
                 <td>&nbsp; <?php echo $row["libCom"]; ?> &nbsp;</td>
                 <td>&nbsp; <?php echo $row["attModOK"]; ?> &nbsp;</td>
                 <td>&nbsp; <?php echo $row["affComOK"]; ?> &nbsp;</td>
                 <td>&nbsp; <?php echo $row["notifComKOAff"]; ?> &nbsp;</td>
                 <td>&nbsp; <?php echo $row["delLogiq"]; ?> &nbsp;</td>
-                <td>&nbsp; <?php echo $row["numMemb"]; ?> &nbsp;</td>
+                <td>&nbsp; <?php echo $row["pseudoMemb"]; ?> &nbsp;</td>
                 <?
                     $numSeqCom = $row["numSeqCom"];
                     $numArt = $row["numArt"];

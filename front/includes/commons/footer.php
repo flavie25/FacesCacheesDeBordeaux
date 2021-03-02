@@ -5,13 +5,15 @@
 
             <div class="contain_1">
                 <ul><li> <h2 class="container_footer"> Notre blog</h2> </li>
-                    <li> <br> <a href="#" class="spe_footer">Acceuil</a></li>
+                    <li> <br> <a href="./../pages/accueil.php" class="spe_footer">Accueil</a></li>
                     <li> <br> <a href="#" class="spe_footer">A propos</a></li>
                     <li> <br> <a href="#" class="spe_footer">Contact</a></li>
                 </ul>
             </div>
             
-            <hr class="trait">
+            <div class="barreSepaPart ">
+                <hr>
+            </div>
             
             <div class="contain_1">
                 <ul><li> <h2 class="container_footer"> Découvrir </h2> </li>
@@ -21,7 +23,9 @@
                 </ul>
             </div>
 
-            <hr class="trait">
+            <div class="barreSepaPart ">
+                <hr>
+            </div>
 
             <div class="contain_2">
                 <ul><li> <h2 class="container_footer"> Nos Réseaux </h2> </li>
@@ -31,11 +35,13 @@
                 </ul>
             </div>
 
-            <hr class="trait">
+            <div class="barreSepaPart ">
+                <hr>
+            </div>
 
             <div class="contain_3"> 
-                <button class="btn_footer3" href="#">Se connecter</button>
-                <button class="btn_footer3" href="#">S'inscrire</button>
+                <a class="btn_footer3" href="./../pages/connexion.php">Se connecter</a>
+                <a class="btn_footer3" href="./../pages/inscription.php">S'inscrire</a>
             </div>
             
 

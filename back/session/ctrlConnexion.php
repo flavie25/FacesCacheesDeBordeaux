@@ -58,7 +58,7 @@ function ctrlerSaisieConnect($pseudo, $pass) {
     }  
       // Fin if ($result ...)
     //password_verify($passMemb,$pass)
-    if (($pseudoMemb == $pseudo) AND $passMemb == $pass) { 
+    if (($pseudoMemb == $pseudo) AND ($passMemb == $pass)) { 
         $passOK = true;
     }
     else {

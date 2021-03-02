@@ -7,7 +7,7 @@ require_once __DIR__ . '../../CONNECT/database.php';
 
         function get_AllComment(){
             global $db;
-            $requete = 'SELECT * FROM comment;';
+            $requete = 'SELECT * FROM comment INNER JOIN article ON comment.numArt = article.numArt INNER JOIN membre ON comment.numMemb = membre.numMemb;';
             $result = $db->prepare($requete);
             $result->execute();
             return($result->fetchAll());

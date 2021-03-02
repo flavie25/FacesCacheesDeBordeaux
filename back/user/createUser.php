@@ -77,6 +77,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
             if($passUser1 == $passUser2){
                 $passwordOk = 1;
+                $passUser1 = password_hash($_POST['passUser1'], PASSWORD_DEFAULT);
             }
             else{
                 $passwordOk = 0;
@@ -86,7 +87,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             
             if(($pseudoUser !="") AND ($nomUser!="") AND ($prenomUser!="") AND ($idStat!="")AND ($eMailOk == 1) AND ($passwordOk == 1) AND ($pseudoExist == 0)){
                 
-                $user->create($pseudoUser, $passUser1, $nomUser, $prenomUser, $eMailUser1, $idStat);
+                $user->create($pseudoUser, $passUser2, $nomUser, $prenomUser, $eMailUser1, $idStat);
                 header("Location: ./user.php");
             }
             else{

@@ -62,9 +62,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <table class="tableau">
     <thead class="entete">
         <tr>
-            <th>&nbsp;numThem&nbsp;</th>
-            <th>&nbsp;libThem&nbsp;</th>
-            <th>&nbsp;numLang&nbsp;</th>
+            <th>&nbsp;Numéro Thematique&nbsp;</th>
+            <th>&nbsp;Thématique&nbsp;</th>
+            <th>&nbsp;Langue&nbsp;</th>
             <th colspan="2">&nbsp;Action&nbsp;</th>
         </tr>
     </thead>
@@ -81,7 +81,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 		<td><h4>&nbsp; <?php echo $row["numThem"]; ?> &nbsp;</h4></td>
 
         <td>&nbsp; <?php echo $row["libThem"]; ?> &nbsp;</td>
-        <td>&nbsp; <?php echo $row["numLang"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["lib1Lang"]; ?> &nbsp;</td>
 
 		<td>&nbsp;<a class="button" href="./updateThem.php?id=<?=$row["numThem"];?>"><i>Modifier</i></a>&nbsp;
 		<br /></td>

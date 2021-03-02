@@ -11,7 +11,7 @@
 
 		function get_AllUser(){
 			global $db;
-			$query = 'SELECT * FROM user;';
+			$query = 'SELECT * FROM user INNER JOIN statut ON user.idStat = statut.idStat;';
 			$result = $db->query($query);
 			$allUser = $result->fetchAll();
 			return($allUser);

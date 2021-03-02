@@ -23,6 +23,7 @@ switch ($error) {
 
 <head>
         <meta charset="utf-8" />
+        <link rel="stylesheet" href="../../assets/css/normalize.css" />
         <link rel="stylesheet" href="../../assets/css/nav.css" />
         <link rel="stylesheet" href="../../assets/css/connexion.css" />
         <link rel="stylesheet" href="../../assets/css/footer.css" />
@@ -53,7 +54,7 @@ switch ($error) {
         <input type="submit" class="button" value="JE ME CONNECTE"  name="Submit" /> 
         </form>
 
-        <a href="inscription.php"> Pas de compte ? Inscris-toi ici ! </p>
+        <a class="inscri" href="inscription.php"> Pas de compte ? Inscris-toi ici ! </p>
     </div>
 
     <?

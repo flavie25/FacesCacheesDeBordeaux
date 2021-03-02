@@ -39,8 +39,8 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
             <br>
             <br>
             <div class="articleImage">
-                <img  class="imageArt" src="../../../uploads/<?= $contenu['urlPhotArt'];?>" style="display: block;margin-left: auto;margin-right: auto; transform:translate(-2%)">
-                <div class="articleOverlay">
+                <img class="imageArt" src="../../../uploads/<?= $contenu['urlPhotArt'];?>" >
+                <div class="artOverlay">
                     <h1><?= $titreArt ?></h1>
                 </div>
             </div>

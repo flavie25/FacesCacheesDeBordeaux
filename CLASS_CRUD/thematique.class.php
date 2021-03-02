@@ -29,7 +29,7 @@
 
 		function get_AllThem(){
             global $db;
-            $query = 'SELECT * FROM thematique ;';
+            $query = 'SELECT * FROM thematique INNER JOIN langue ON thematique.numLang = langue.numLang;';
             $result = $db->prepare($query);
             $result->execute();
             return($result->fetchAll());
