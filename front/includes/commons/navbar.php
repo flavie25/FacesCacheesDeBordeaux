@@ -1,5 +1,14 @@
 <? 
 session_start();
+if(isset($_SESSION['pseudoMemb'])){
+    $pseudoMemb = $_SESSION['pseudoMemb'];
+    require_once __DIR__ . './../../../util/utilErrOn.php';
+    require_once __DIR__ . './../../../CONNECT/database.php';
+    $requete1 = "SELECT pseudoUser  FROM user WHERE pseudoUser = ?;";
+    $result1 = $db->prepare($requete1);
+    $result1->execute([$pseudoMemb]);
+    $nbUser = $result1->rowCount();
+}
 
 ?>
 
@@ -28,7 +37,17 @@ session_start();
                             <a href="connexion.php"><li>Mon Compte</li></a>
                         <?php } ?>
                         <a href="#"><li>Nous Contacter</li></a> <br><br>
-                        <a href="accueil.php"><li>Me déconnecter</li></a>
+                        <?php 
+                         if(isset($_SESSION['pseudoMemb'])){ ?>
+                            <a href="./../../../back/session/deconnexion.php"><li>Me déconnecter</li></a>
+                        <?php 
+                        } 
+                    
+                        if(isset($_SESSION['pseudoMemb']) AND ($nbUser != 0)){ ?>
+                            <a href="./../../../index1.php"><li>Gestion CRUD</li></a>
+
+                        <?php } ?>
+
                     </ul>
                 </div>
             </nav>

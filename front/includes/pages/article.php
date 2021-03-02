@@ -56,11 +56,11 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
                 <h2> Conclusion : </h2>
                 <p><?= $contenu['libConclArt']; ?></p>
             </div>
-            <div class="likeArt">
+            <!-- <div class="likeArt">
                 <label class="likeArticle">J'aime</label>
                 <img src="../../assets/images/Like.png" style="margin-left: 1%;transform: translateY(5px);">
-                <label class="likeArticle"><?= $nbLikeArt?></label>
-            </div>
+                <label class="likeArticle"><? //$nbLikeArt?></label>
+            </div> -->
         </div>
         <br>
         <br>

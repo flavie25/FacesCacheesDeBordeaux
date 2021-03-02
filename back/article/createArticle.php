@@ -47,7 +47,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             AND (isset($_POST['parag3Art'])) AND !empty($_POST['parag3Art'])
             AND (isset($_POST['libConclArt'])) AND !empty($_POST['libConclArt'])
             AND ((isset($_POST['idMotCle'])) AND !empty($_POST['idMotCle']))
-            AND ((isset($_FILES['monfichier']['tmp_name'])) AND !empty($_FILES['monfichier']['tmp_name']))
+            //AND ((isset($_FILES['monfichier']['tmp_name'])) AND !empty($_FILES['monfichier']['tmp_name']))
             AND (isset($_POST['idAngl'])) AND !empty($_POST['idAngl'])
             AND (isset($_POST['idThem'])) AND !empty($_POST['idThem'])
             ){
@@ -285,7 +285,7 @@ include __DIR__ ."./../../front/includes/commons/navbar.php";
 <!-- --------------------------------------------------------------- -->
 
         <div class="control-group">
-            <label class="control-label" for="urlPhotArt">Importez l'illustration :&nbsp;</label>
+            <label class="control-label" for="monfichier">Importez l'illustration :&nbsp;</label>
             <input class="button2" type="file" name="monfichier"  id="monfichier" accept=".jpg,.gif,.png,.jpeg" size="70" maxlength="70" value="<? if(isset($_GET['id'])) echo $_POST['urlPhotArt']; else echo $urlPhotArt; ?>" tabindex="110" placeholder="Sur 70 car." title="Recherchez l'image à uploader" required/>
             <p>
             <? // Gestion extension images acceptées

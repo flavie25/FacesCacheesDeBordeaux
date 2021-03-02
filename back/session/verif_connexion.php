@@ -19,6 +19,7 @@ require_once __DIR__ . '/../../CONNECT/database.php';
     // // Recup login et password du form session.php
     $pseudoMemb = isset($_POST['pseudoMemb']) ? $_POST['pseudoMemb'] : '';
     $passMemb = isset($_POST['passMemb']) ? $_POST['passMemb'] : '';
+    ctrlerSaisieConnect($pseudoMemb, $passMemb);
 
 
 

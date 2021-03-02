@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2? family = Bebas + Neue & display = swap');
 .head {
+    /* background-color: transparent; */
     background-color: #8E6E53;
     padding: 20px 0px;
     display: flex;

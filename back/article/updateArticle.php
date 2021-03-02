@@ -35,6 +35,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         // Opérateur ternaire
         $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
+        $url = $_FILES['monfichier']['tmp_name'];
 
         if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
             $reload = $_POST['numArt'];
@@ -64,8 +65,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 require_once __DIR__ . '/ctrlerUploadImage.php';
                 $urlPhotArt = $nomImage;
             }
-            else{
-                
+            else{ 
                 $urlPhotArt =-1;
             }
 
@@ -100,7 +100,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
                 }
             }
 
-            header("Location: ./article.php");
+            header("Location: ./article.php?=id".$url);
                 
         }
         else{
@@ -183,7 +183,7 @@ include __DIR__ ."./../../front/includes/commons/navbar.php";
             $libSsTitr2Art= $query['libSsTitr2Art'];
             $parag3Art = $query['parag3Art'];
             $libConclArt = $query['libConclArt'];
-            $urlPhotArt = $query['urlPhotArt'];
+            $urlPhotArt1 = $query['urlPhotArt'];
             $numAngl = $query['numAngl'];
             $libAngl = $query['libAngl'];
             $numLang = $query['numLang'];
@@ -357,8 +357,8 @@ include __DIR__ ."./../../front/includes/commons/navbar.php";
             <!-- End of Drag and drop sur Mots clés -->
             <!-- --------------------------------------------------------------- -->
             <div class="control-group">
-                <label class="control-label" for="monfichier">Importez l'illustration :</label>
-                <input class="button2" type="file" name="monfichier" id="monfichier"  accept=".jpg,.gif,.png,.jpeg" size="70" maxlength="70" value="<?  echo $urlPhotArt;  ?>" tabindex="110" placeholder="Sur 70 car." title="Recherchez l'image à uploader !" />
+                <label class="control-label" for="monfichier">Importez l'illustration :&nbsp;</label>
+                <input class="button2" type="file" name="monfichier"  id="monfichier" accept=".jpg,.gif,.png,.jpeg" size="70" maxlength="70" value="<? if(isset($_GET['id'])) echo $urlPhotArt1; else echo $urlPhotArt; ?>" tabindex="110" placeholder="Sur 70 car." title="Recherchez l'image à uploader" />
                 <p>
                 <? // Gestion extension images acceptées
                 $msgImagesOK = "&nbsp;&nbsp;>> Extension des images acceptées : .jpg, .gif, .png, .jpeg" . "<br>" .
@@ -366,7 +366,7 @@ include __DIR__ ."./../../front/includes/commons/navbar.php";
                 echo "<i>" . $msgImagesOK . "</i>";
                 ?>
                 </p>
-                <img src="<?= $TargetDir.htmlspecialchars($urlPhotArt);?>" height="200px"/>
+                <img src="<?= $TargetDir.htmlspecialchars($urlPhotArt1);?>" height="200px"/>
             </div>
 
             <div class="control-group">
