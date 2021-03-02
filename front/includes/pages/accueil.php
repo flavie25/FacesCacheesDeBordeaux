@@ -80,7 +80,7 @@ $page = basename($_SERVER["SCRIPT_FILENAME"]);
                     </svg>      <!-- Ce code concerne la forme qui encadre les écritures 2 bas gauche-->
                         
                 </div> 
-                <a class="btn_footer" href="article.php?id=52">VOIR L'ARTICLE</a>
+                <a class="btn_footer" href="article.php?id=55">VOIR L'ARTICLE</a>
             </div>
 
         </div> 
@@ -120,7 +120,7 @@ $page = basename($_SERVER["SCRIPT_FILENAME"]);
                     </svg>   <!-- Ce code concerne la forme qui encadre les écritures 2 bas gauche-->
                     
                 </div> 
-                <a class="btn_footer2" href="article.php?id=51">VOIR L'ARTICLE</a>
+                <a class="btn_footer2" href="article.php?id=56">VOIR L'ARTICLE</a>
 
             </div>
 
@@ -163,7 +163,7 @@ $page = basename($_SERVER["SCRIPT_FILENAME"]);
                         <line x1="2.49997" y1="0.987637" x2="2.77691" y2="56.987" stroke="#FFF3FB" stroke-width="5"/>
                     </svg>      <!-- Ce code concerne la forme qui encadre les écritures 2 bas gauche-->
                 </div>       
-                <a class="btn_footer" href="article.php?id=50">VOIR L'ARTICLE</a>
+                <a class="btn_footer" href="article.php?id=57">VOIR L'ARTICLE</a>
 
             </div>
 
