@@ -91,7 +91,7 @@ $page = basename($_SERVER["SCRIPT_FILENAME"]);
                         <line x1="2.49997" y1="0.987637" x2="2.77691" y2="56.987" stroke="#FFF3FB" stroke-width="5"/>
                     </svg>
                 </div> 
-                <a class="btn_footer" href="article.php?id=55">VOIR L'ARTICLE</a>
+                <a class="btn_footer" href="article.php?id=56">VOIR L'ARTICLE</a>
             </div>
 
         </div> 
@@ -116,7 +116,7 @@ $page = basename($_SERVER["SCRIPT_FILENAME"]);
                         <line x1="2.49997" y1="0.987637" x2="2.77691" y2="56.987" stroke="#FFF3FB" stroke-width="5"/>
                     </svg>
                 </div> 
-                <a class="btn_footer" href="article.php?id=55">VOIR L'ARTICLE</a>
+                <a class="btn_footer" href="article.php?id=57">VOIR L'ARTICLE</a>
             </div>
 
         </div> 
