@@ -161,7 +161,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 </head>
 <body>
 <?php
-include __DIR__ ."./../../front/includes/commons/navbar.php";
+include __DIR__ ."./../commons/navbar.php";
 ?>
 <div class="wrapper">
     <div class="Titre">
@@ -177,31 +177,31 @@ include __DIR__ ."./../../front/includes/commons/navbar.php";
 
         <div class="control-group">
             <label class="control-label" for="prenomMemb"><b>Prénom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="prenomMemb" id="prenomMemb" size="80" maxlength="80" value="<?= $prenomMembre; ?>" autofocus="autofocus" />
+            <input type="text" name="prenomMemb" id="prenomMemb" size="70" maxlength="70" value="<?= $prenomMembre; ?>" autofocus="autofocus" required/>
         </div>
         <div class="control-group">
             <label class="control-label" for="nomMemb"><b>Nom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="nomMemb" id="nomMemb" size="80" maxlength="80" value="<?= $nomMembre; ?>" />
+            <input type="text" name="nomMemb" id="nomMemb" size="70" maxlength="70" value="<?= $nomMembre; ?>" required/>
         </div>
         <div class="control-group">
             <label class="control-label" for="pseudoMemb"><b>Pseudo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="pseudoMemb" id="pseudoMemb" size="80" maxlength="80" value="<?= $pseudoMembre; ?>"  />
+            <input type="text" name="pseudoMemb" id="pseudoMemb" size="70" maxlength="70" value="<?= $pseudoMembre; ?>"  required/>
         </div>
         <div class="control-group">
             <label class="control-label" for="passMemb1"><b>Mot de passe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="password" name="passMemb1" id="passMemb1" size="80" maxlength="80" value="<?= $passMembre1; ?>"  />
+            <input type="password" name="passMemb1" id="passMemb1" size="70" maxlength="70" value="<?= $passMembre1; ?>"  required/>
         </div>
         <div class="control-group">
             <label class="control-label" for="passMemb2"><b>Confirmation mot de passe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="password" name="passMemb2" id="passMemb2" size="80" maxlength="80" value="<?= $passMembre2; ?>"  />
+            <input type="password" name="passMemb2" id="passMemb2" size="70" maxlength="70" value="<?= $passMembre2; ?>"  required/>
         </div>
         <div class="control-group">
             <label class="control-label" for="eMailMemb1"><b>e-Mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="eMailMemb1" id="eMailMemb1" size="80" maxlength="80" value="<?= $emailMembre1; ?>" />
+            <input type="email" name="eMailMemb1" id="eMailMemb1" size="100" maxlength="100" value="<?= $emailMembre1; ?>" required/>
         </div>
         <div class="control-group">
             <label class="control-label" for="eMailMemb2"><b>Confirmation e-Mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="eMailMemb2" id="eMailMemb2" size="80" maxlength="80" value="<?= $emailMembre2; ?>" />
+            <input type="email" name="eMailMemb2" id="eMailMemb2" size="100" maxlength="100" value="<?= $emailMembre2; ?>" required/>
         </div>
 
         <div class="control-group">

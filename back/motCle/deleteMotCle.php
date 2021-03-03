@@ -79,7 +79,7 @@ include __DIR__ . '/initMotCle.php';
 </head>
 <body>
 <?php
-include __DIR__ ."./../../front/includes/commons/navbar.php";
+include __DIR__ ."./../commons/navbar.php";
 ?>
 <div class="wrapper">
 <div class="Titre">
@@ -113,12 +113,12 @@ include __DIR__ ."./../../front/includes/commons/navbar.php";
 
             <div class="control-group">
                 <label class="control-label" for="libMotCle"><b>Mot Clé&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="text" name="libMotCle" id="libMotCle" size="60" maxlength="80" value="<?= $libMotCle; ?>" readonly />
+                <input type="text" name="libMotCle" id="libMotCle" size="60" maxlength="60" value="<?= $libMotCle; ?>" readonly />
             </div>
             
             <div class="control-group">
                 <label for="lib1Lang">Langue :</label>  
-                <input type="text" name="lib1Lang" id="lib1Lang" size="60" maxlength="80" value="<?= $lib1Lang; ?>" readonly />
+                <input type="text" name="lib1Lang" id="lib1Lang" size="60" maxlength="60" value="<?= $lib1Lang; ?>" readonly />
             </div>
             <div class="control-group">
             <div class="controls">

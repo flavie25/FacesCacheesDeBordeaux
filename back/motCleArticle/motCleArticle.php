@@ -31,7 +31,7 @@ $monMotCleArticle = new MOTCLEARTICLE;
 
 </head>
 <body>*<?php
-    include __DIR__ ."./../../front/includes/commons/navbar.php";
+    include __DIR__ ."./../commons/navbar.php";
     ?>
     <div class="wrapper">
         <div class="hautpage">
@@ -46,8 +46,8 @@ $monMotCleArticle = new MOTCLEARTICLE;
     <table class="tableau">
     <thead class="entete">
         <tr>
-            <th>&nbsp;NumArt&nbsp;</th>
-            <th>&nbsp;NumMotCle&nbsp;</th>
+            <th>&nbsp;Titre Article&nbsp;</th>
+            <th>&nbsp;Mots Clés&nbsp;</th>
             <!-- <th>&nbsp;Action&nbsp;</th> -->
         </tr>
     </thead>
@@ -61,8 +61,8 @@ $monMotCleArticle = new MOTCLEARTICLE;
     //foreach($all as $row) {
     ?>
         <tr>
-        <td><h4>&nbsp; <?php echo $row["numArt"]; ?> &nbsp;</h4></td>
-        <td>&nbsp; <?php echo $row["numMotCle"]; ?> &nbsp;</td>
+        <td><h4>&nbsp; <?php echo $row["libTitrArt"]; ?> &nbsp;</h4></td>
+        <td>&nbsp; <?php echo $row["libMotCle"]; ?> &nbsp;</td>
 
         <!-- <td>&nbsp;<a class="button" href="./deleteMotCleArticle.php?id=$row["numMotCle"];"><i>Supprimer</i></a>&nbsp; -->
         </td>

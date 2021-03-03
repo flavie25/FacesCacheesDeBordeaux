@@ -79,7 +79,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 </head>
 <body>
 <?php
-include __DIR__ ."./../../front/includes/commons/navbar.php";
+include __DIR__ ."./../commons/navbar.php";
 ?>
 <div class="wrapper">
     <div class="Titre">
@@ -114,23 +114,23 @@ include __DIR__ ."./../../front/includes/commons/navbar.php";
 
         <div class="control-group">
             <label class="control-label" for="pseudoUser"><b>Pseudo :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="pseudoUser" id="pseudoUser" size="80" maxlength="80" value="<?= $pseudoUser; ?>" readonly />
+            <input type="text" name="pseudoUser" id="pseudoUser" size="60" maxlength="60" value="<?= $pseudoUser; ?>" readonly />
         </div>
         <div class="control-group">
             <label class="control-label" for="passUser"><b>Mot de passe :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="password" name="passUser" id="passUser" size="80" maxlength="80" value="<?= $passUser; ?>" readonly/>
+            <input type="password" name="passUser" id="passUser" size="60" maxlength="60" value="<?= $passUser; ?>" readonly/>
         </div>
         <div class="control-group">
             <label class="control-label" for="nomUser"><b>Nom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="nomUser" id="nomUser" size="80" maxlength="80" value="<?= $nomUser; ?>" readonly/>
+            <input type="text" name="nomUser" id="nomUser" size="60" maxlength="60" value="<?= $nomUser; ?>" readonly/>
         </div>
         <div class="control-group">
             <label class="control-label" for="prenomUser"><b>Prénom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="prenomUser" id="prenomUser" size="80" maxlength="80" value="<?= $prenomUser; ?>" readonly/>
+            <input type="text" name="prenomUser" id="prenomUser" size="60" maxlength="60" value="<?= $prenomUser; ?>" readonly/>
         </div>
         <div class="control-group">
             <label class="control-label" for="eMailUser"><b>eMail :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="eMailUser" id="eMailUser" size="80" maxlength="80" value="<?= $eMailUser; ?>" readonly/>
+            <input type="text" name="eMailUser" id="eMailUser" size="70" maxlength="70" value="<?= $eMailUser; ?>" readonly/>
         </div>
         <div class="control-group">
             <label for="idStat">Statut:</label>  

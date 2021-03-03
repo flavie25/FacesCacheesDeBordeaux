@@ -32,7 +32,7 @@ $comment = new COMMENT;
 </head>
 <body>
 <?php
-    include __DIR__ ."./../../front/includes/commons/navbar.php";
+    include __DIR__ ."./../commons/navbar.php";
     ?>
     <div class="wrapper">
         <div class="hautpage">
@@ -53,14 +53,14 @@ $comment = new COMMENT;
     <table class="tableau">
         <thead class="entete">
             <tr>
-                <th>&nbsp;NumSeqCom&nbsp;</th>
+                <th>&nbsp;Numéro du commentaire&nbsp;</th>
                 <th>&nbsp;Titre Article&nbsp;</th>
-                <th>&nbsp;DtCreCom&nbsp;</th>
-                <th>&nbsp;LibCom&nbsp;</th>
-                <th>&nbsp;AttModOK&nbsp;</th>
-                <th>&nbsp;AffComOK&nbsp;</th>
-                <th>&nbsp;NotifComKOAff&nbsp;</th>
-                <th>&nbsp;delLogiq&nbsp;</th>
+                <th>&nbsp;Date de création&nbsp;</th>
+                <th>&nbsp;Libellé&nbsp;</th>
+                <th>&nbsp;Attente modération&nbsp;</th>
+                <th>&nbsp;Validation&nbsp;</th>
+                <th>&nbsp;Raison de la suppression&nbsp;</th>
+                <th>&nbsp;Suppression logique&nbsp;</th>
                 <th>&nbsp;Peudo Membre&nbsp;</th>
                 <th colspan="2">&nbsp;Action&nbsp;</th>
             </tr>

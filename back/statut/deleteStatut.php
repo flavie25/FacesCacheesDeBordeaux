@@ -83,7 +83,7 @@ include __DIR__ . '/initStatut.php';
 </head>
 <body>
 <?php
-include __DIR__ ."./../../front/includes/commons/navbar.php";
+include __DIR__ ."./../commons/navbar.php";
 ?>
 <div class="wrapper">
 <div class="Titre">

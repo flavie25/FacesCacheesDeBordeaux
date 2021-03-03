@@ -6,7 +6,7 @@
 	class MOTCLEARTICLE{
     function get_AllMotCleArticle(){
 			global $db;
-      $requete = 'SELECT * FROM motclearticle;';
+      $requete = 'SELECT * FROM motclearticle INNER JOIN motcle ON motclearticle.numMotCle = motcle.numMotCle INNER JOIN article ON motclearticle.numArt = article.numArt;';
       $result = $db->prepare($requete);
       $result->execute();
       return($result->fetchAll());

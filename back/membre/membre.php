@@ -39,7 +39,7 @@ $errSaisies ='';
 </head>
 <body>
 <?php
-    include __DIR__ ."./../../front/includes/commons/navbar.php";
+    include __DIR__ ."./../commons/navbar.php";
     ?>
     <div class="wrapper">
         <div class="hautpage">
@@ -50,11 +50,11 @@ $errSaisies ='';
 
             </div>
 
-            <div class="creerBt">
+            <!-- <div class="creerBt">
                 <button class="button" onclick="location.href='./createMembre.php'">
                     Créer un membre
                 </button>
-            </div>
+            </div> -->
         </div>
     <div class="tableArea">
     <table class="tableau">
@@ -69,7 +69,7 @@ $errSaisies ='';
             <th>&nbsp;DtCréaMembre&nbsp;</th>
             <th>&nbsp;SouvenirMembre&nbsp;</th>
             <th>&nbsp;AccordMembre&nbsp;</th>
-            <th>&nbsp;idStat&nbsp;</th>
+            <th>&nbsp;Statut&nbsp;</th>
 
             <th colspan="2">&nbsp;Action&nbsp;</th>
         </tr>
@@ -97,7 +97,7 @@ $errSaisies ='';
         <td>&nbsp; <?php echo $dateOut; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["souvenirMemb"]; ?> &nbsp;</td>
         <td>&nbsp; <?php echo $row["accordMemb"]; ?> &nbsp;</td>
-        <td>&nbsp; <?php echo $row["idStat"]; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["libStat"]; ?> &nbsp;</td>
 
         <td>&nbsp;<a class="button" href="./updateMembre.php?id=<?=$row["numMemb"];?>"><i>Modifier</i></a>&nbsp;
         <br /></td>

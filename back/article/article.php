@@ -43,7 +43,7 @@ require_once __DIR__ . '/../../util/dateChangeFormat.php';
 </head>
 <body>
 <?php
-include __DIR__ ."./../../front/includes/commons/navbar.php";
+include __DIR__ ."./../commons/navbar.php";
 ?>
 <div class="wrapper">
     <div class="hautpage">

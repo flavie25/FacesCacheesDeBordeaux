@@ -29,7 +29,7 @@ require_once __DIR__ . '/util/utilErrOn.php';
 <body>
 
 	<?php
-    include __DIR__ ."./front/includes/commons/navbar.php";
+    include __DIR__ ."./navbar.php";
     ?>
 
 	<div class="container">
@@ -47,10 +47,10 @@ require_once __DIR__ . '/util/utilErrOn.php';
 			<p> Gestion de</p>
 			<a class="button" href="./back/comment/comment.php">Commentaire </a>
 		</div>
-		<div class="crudAlign">
+		<!-- <div class="crudAlign">
 			<p> Gestion de</p>
 			<a class="button" href="./back/commentplus/commentPlus.php">Réponse sur Commentaire </a>
-		</div>
+		</div> -->
 		<div class="crudAlign">
 			<p> Gestion de</p>
 			<a class="button" href="./back/langue/langue.php">Langue </a>
@@ -71,10 +71,10 @@ require_once __DIR__ . '/util/utilErrOn.php';
 			<p> Gestion de</p>
 			<a class="button" href="./back/motcle/motCle.php">Mot-clé </a>
 		</div>
-		<!-- <div class="crudAlign">
+		<div class="crudAlign">
 			<p> Gestion de</p>
 			<a class="button" href="./back/motclearticle/motCleArticle.php">Mot-clé Article </a>
-		</div> -->
+		</div>
 		<div class="crudAlign">
 			<p> Gestion de</p>
 			<a class="button" href="./back/statut/statut.php">Statut</a>

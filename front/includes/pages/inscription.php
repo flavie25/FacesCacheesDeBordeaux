@@ -56,31 +56,31 @@ if (isset($_GET['err4']) AND !empty($_GET['err4'])){
                     <legend>*Champs obligatoires</legend>
                     <div class="control-group">
                         <label class="control-label" for="prenomMemb"><b>Prénom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                        <input class="input" type="text" name="prenomMemb" placeholder="Saisir votre prénom"  id="prenomMemb" size="80" maxlength="80" autofocus="autofocus" />
+                        <input class="input" type="text" name="prenomMemb" placeholder="Saisir votre prénom"  id="prenomMemb" size="70" maxlength="70" autofocus="autofocus" required/>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="nomMemb"><b>Nom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                        <input class="input" type="text" placeholder="Saisir votre nom" name="nomMemb" id="nomMemb" size="80" maxlength="80" />
+                        <input class="input" type="text" placeholder="Saisir votre nom" name="nomMemb" id="nomMemb" size="70" maxlength="70" required/>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="pseudoMemb"><b>Pseudo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                        <input class="input" type="text" name="pseudoMemb" placeholder="Saisir un pseudo" id="pseudoMemb" size="80" maxlength="80" />
+                        <input class="input" type="text" name="pseudoMemb" placeholder="Saisir un pseudo" id="pseudoMemb" size="70" maxlength="70" required/>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="passMemb1"><b>Mot de passe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                        <input class="input" type="password" name="passMemb1" placeholder="Saisir votre mot de passe" id="passMemb1" size="80" maxlength="80" />
+                        <input class="input" type="password" name="passMemb1" placeholder="Saisir votre mot de passe" id="passMemb1" size="70" maxlength="70" required/>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="passMemb2"><b>Confirmation mot de passe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                        <input class="input" type="password" name="passMemb2" placeholder="Confirmer votre mot de passe" id="passMemb2" size="80" maxlength="80"  />
+                        <input class="input" type="password" name="passMemb2" placeholder="Confirmer votre mot de passe" id="passMemb2" size="70" maxlength="70"  required/>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="eMailMemb1"><b>e-Mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                        <input class="input" type="text" name="eMailMemb1" placeholder="Saisir votre adresse mail" id="eMailMemb1" size="80" maxlength="80" />
+                        <input class="input" type="email" name="eMailMemb1" placeholder="Saisir votre adresse mail" id="eMailMemb1" size="100" maxlength="100" required/>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="eMailMemb2"><b>Confirmation e-Mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                        <input class="input" type="text" name="eMailMemb2" placeholder="Confirmer votre adresse mail" id="eMailMemb2" size="80" maxlength="80" />
+                        <input class="input" type="email" name="eMailMemb2" placeholder="Confirmer votre adresse mail" id="eMailMemb2" size="100" maxlength="100" required/>
                     </div>
 
                     <div class="control-group">

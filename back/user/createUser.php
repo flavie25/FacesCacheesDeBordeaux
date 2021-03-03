@@ -120,7 +120,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 </head>
 <body>
 <?php
-include __DIR__ ."./../../front/includes/commons/navbar.php";
+include __DIR__ ."./../commons/navbar.php";
 ?>
 <div class="wrapper">
     <div class="Titre">
@@ -155,35 +155,35 @@ include __DIR__ ."./../../front/includes/commons/navbar.php";
 
         <div class="control-group">
             <label class="control-label" for="pseudoUser"><b>Pseudo :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="pseudoUser" id="pseudoUser" size="80" maxlength="80" value="<?= $pseudoUser; ?>" autofocus="autofocus" />
+            <input type="text" name="pseudoUser" id="pseudoUser" size="60" maxlength="60" value="<?= $pseudoUser; ?>" autofocus="autofocus" required/>
         </div>
         <div class="control-group">
             <label class="control-label" for="passUser1"><b>Mot de passe :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="password" name="passUser1" id="passUser1" size="80" maxlength="80" value="<?= $passUser1; ?>" autofocus="autofocus" />
+            <input type="password" name="passUser1" id="passUser1" size="60" maxlength="60" value="<?= $passUser1; ?>" required/>
         </div>
         <div class="control-group">
             <label class="control-label" for="passUser2"><b>Confirmation mot de passe :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="password" name="passUser2" id="passUser2" size="80" maxlength="80" value="<?= $passUser2; ?>" autofocus="autofocus" />
+            <input type="password" name="passUser2" id="passUser2" size="60" maxlength="60" value="<?= $passUser2; ?>" required/>
         </div>
         <div class="control-group">
             <label class="control-label" for="nomUser"><b>Nom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="nomUser" id="nomUser" size="80" maxlength="80" value="<?= $nomUser; ?>" autofocus="autofocus" />
+            <input type="text" name="nomUser" id="nomUser" size="60" maxlength="60" value="<?= $nomUser; ?>" required/>
         </div>
         <div class="control-group">
             <label class="control-label" for="prenomUser"><b>Prénom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="prenomUser" id="prenomUser" size="80" maxlength="80" value="<?= $prenomUser; ?>" autofocus="autofocus" />
+            <input type="text" name="prenomUser" id="prenomUser" size="60" maxlength="60" value="<?= $prenomUser; ?>" required/>
         </div>
         <div class="control-group">
             <label class="control-label" for="eMailUser1"><b>eMail :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="eMailUser1" id="eMailUser1" size="80" maxlength="80" value="<?= $eMailUser1; ?>" autofocus="autofocus" />
+            <input type="email" name="eMailUser1" id="eMailUser1" size="70" maxlength="70" value="<?= $eMailUser1; ?>" required/>
         </div>
         <div class="control-group">
             <label class="control-label" for="eMailUser2"><b>Confirmation eMail :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="eMailUser2" id="eMailUser2" size="80" maxlength="80" value="<?= $eMailUser2; ?>" autofocus="autofocus" />
+            <input type="email" name="eMailUser2" id="eMailUser2" size="70" maxlength="70" value="<?= $eMailUser2; ?>" required/>
         </div>
         <div class="control-group">
             <label for="idStat">Statut:</label>  
-            <select id="idStat" name="idStat"  onchange="select()">
+            <select id="idStat" name="idStat"  onchange="select()" required>
                 <?php 
                 global $db;
                 $requete = 'SELECT idStat, libStat FROM statut ;';

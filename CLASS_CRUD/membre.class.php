@@ -20,7 +20,7 @@
         }
 		function get_AllMembre(){
 			global $db;
-            $requete = 'SELECT * FROM membre ;';
+            $requete = 'SELECT * FROM membre INNER JOIN statut ON membre.idStat = statut.idStat;';
             $result = $db->prepare($requete);
             $result->execute();
             return($result->fetchAll());

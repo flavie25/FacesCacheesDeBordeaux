@@ -80,7 +80,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 </head>
 <body>
 <?php
-include __DIR__ ."./../../front/includes/commons/navbar.php";
+include __DIR__ ."./../commons/navbar.php";
 ?>
 <div class="wrapper">
     <div class="Titre">
@@ -98,11 +98,11 @@ include __DIR__ ."./../../front/includes/commons/navbar.php";
         
         <div class="control-group">
             <label class="control-label" for="libMotCle"><b>Mot Clé&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text"  id="libMotCle" name="libMotCle" size="80" maxlength="80" value="<?= $libMotCle; ?>" autofocus="autofocus" />
+            <input type="text"  id="libMotCle" name="libMotCle" size="60" maxlength="60" value="<?= $libMotCle; ?>" autofocus="autofocus" required/>
         </div>
         <div class="control-group">
             <label for="numLang">Langue :</label>  
-            <select id="numLang" name="numLang"  onchange="select()"> 
+            <select id="numLang" name="numLang"  onchange="select()" required> 
                 <?php 
                 global $db;
                 $requete = 'SELECT numLang, lib1Lang FROM langue ;';

@@ -2,8 +2,8 @@
 session_start();
 if(isset($_SESSION['pseudoMemb'])){
     $pseudoMemb = $_SESSION['pseudoMemb'];
-    require_once __DIR__ . './../../../util/utilErrOn.php';
-    require_once __DIR__ . './../../../CONNECT/database.php';
+    require_once __DIR__ . './util/utilErrOn.php';
+    require_once __DIR__ . './CONNECT/database.php';
     $requete1 = "SELECT pseudoUser  FROM user WHERE pseudoUser = ?;";
     $result1 = $db->prepare($requete1);
     $result1->execute([$pseudoMemb]);
@@ -26,24 +26,24 @@ if(isset($_SESSION['pseudoMemb'])){
 
                    
                     <ul id="menu">
-                        <a href="accueil.php"><li>Accueil</li></a>
+                        <a href="./front/includes/pages/accueil.php"><li>Accueil</li></a>
                         <?  //include __DIR__ ."/../../../back/session/sessionVerif.php"; ?>
 
                         <?php 
                          if(isset($_SESSION['pseudoMemb'])){ ?>
-                        <a href="profil.php"><li>Mon compte</li></a>
+                        <a href="./front/includes/pages/profil.php"><li>Mon compte</li></a>
 
                         <?php } else {?>
-                            <a href="connexion.php"><li>Mon Compte</li></a>
+                            <a href="./front/includes/pages/connexion.php"><li>Mon Compte</li></a>
                         <?php } ?>
                         <?php 
                          if(isset($_SESSION['pseudoMemb'])){ ?>
-                            <a href="./../../../back/session/deconnexion.php"><li>Me déconnecter</li></a>
+                            <a href="./back/session/deconnexion.php"><li>Me déconnecter</li></a>
                         <?php 
                         } 
                     
                         if(isset($_SESSION['pseudoMemb']) AND ($nbUser != 0)){ ?>
-                            <a href="./../../../index1.php"><li>Gestion CRUD</li></a>
+                            <a href="./index1.php"><li>Gestion CRUD</li></a>
 
                         <?php } ?>
 

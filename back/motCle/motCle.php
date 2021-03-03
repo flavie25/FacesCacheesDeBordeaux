@@ -37,7 +37,7 @@ $errCIR=0;
 </head>
 <body>
 <?php
-    include __DIR__ ."./../../front/includes/commons/navbar.php";
+    include __DIR__ ."./../commons/navbar.php";
     ?>
     <div class="wrapper">
         <div class="hautpage">
@@ -60,7 +60,7 @@ $errCIR=0;
         <tr>
             <th>&nbsp;Id&nbsp;</th>
             <th>&nbsp;Mot clé&nbsp;</th>
-            <th>&nbsp;NumLang&nbsp;</th>
+            <th>&nbsp;Langue&nbsp;</th>
             <th colspan="2">&nbsp;Action&nbsp;</th>
         </tr>
     </thead>
