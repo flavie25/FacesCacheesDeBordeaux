@@ -29,7 +29,7 @@ require_once __DIR__ . './util/utilErrOn.php';
 <body>
 
 	<?php
-    include __DIR__ ."./../navbar.php";
+    include __DIR__ ."./navbar.php";
     ?>
 
 	<div class="container">

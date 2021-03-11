@@ -1,7 +1,7 @@
 <?
 
   // nom de votre serveur (ou 127.0.0.1)
-  $hostBD = "plateforme-mmi.iut.u-bordeaux-montaigne.fr/phpMyAdmin";
+  $hostBD = "plateforme-mmi.iut.u-bordeaux-montaigne.fr";
   // nom BD
   $nomBD = "wp_user07";
   // Serveur
