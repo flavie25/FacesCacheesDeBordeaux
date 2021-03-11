@@ -8,10 +8,10 @@
 /////////////////////////////////////////////////////
 
 // Mode DEV
-require_once __DIR__ . '/../../util/utilErrOn.php';
-require_once __DIR__ . '/../../util/dateChangeFormat.php';
+require_once __DIR__ . './../../util/utilErrOn.php';
+require_once __DIR__ . './../../util/dateChangeFormat.php';
 
-require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
+require_once __DIR__ . './../../CLASS_CRUD/membre.class.php';
 global $db;
 $membre = new MEMBRE;
 
@@ -30,11 +30,11 @@ $errSaisies ='';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="./../../front/assets/css/normalize.css">
 
-    <link rel="stylesheet" href="../../front/assets/css/nav.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/gestionCRUD.css" >
+    <link rel="stylesheet" href="./../../front/assets/css/nav.css">
+    <link rel="stylesheet" href="./../css/footer.css">
+    <link rel="stylesheet" href="./../css/gestionCRUD.css" >
 
 </head>
 <body>
@@ -119,7 +119,7 @@ $errSaisies ='';
         $errSaisies = ($_GET['id']);
         echo $errSaisies;
     }
-    require_once __DIR__ . '/footer.php';
+    require_once __DIR__ . './footer.php';
     ?>
 </body>
 </html>

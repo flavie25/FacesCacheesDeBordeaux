@@ -9,16 +9,16 @@
 
 // Mode DEV
 
-require_once __DIR__ . '/../../util/utilErrOn.php';
-require_once __DIR__ . '/../../util/ctrlSaisies.php';
+require_once __DIR__ . './../../util/utilErrOn.php';
+require_once __DIR__ . './../../util/ctrlSaisies.php';
     
 // Insertion classe
-require_once __DIR__ . '/../../util/delAccents.php';
-require_once __DIR__ . '/../../util/dateChangeFormat.php';
-include __DIR__ . '/../../CLASS_CRUD/membre.class.php';
+require_once __DIR__ . './../../util/delAccents.php';
+require_once __DIR__ . './../../util/dateChangeFormat.php';
+include __DIR__ . './../../CLASS_CRUD/membre.class.php';
 
 // Init variables form
-include __DIR__ . '/initMembre.php';
+include __DIR__ . './initMembre.php';
 global $db;
 $monMembre= new MEMBRE;
 
@@ -26,7 +26,7 @@ $monMembre= new MEMBRE;
     $erreur = false;
     $errSaisies = "";
     //appel du fichier json pour le captcha
-    $config = file_get_contents('../../config.json');
+    $config = file_get_contents('./../../config.json');
     $configData = json_decode($config);
     //fin d'appel du fichier captcha
 
@@ -320,6 +320,6 @@ $monMembre= new MEMBRE;
         </fieldset>
     </form>
     <?
-require_once __DIR__ . '/footerMembre.php';
-require_once __DIR__ . '/../../footer.php';
+require_once __DIR__ . './footerMembre.php';
+require_once __DIR__ . './../../footer.php';
 ?>

@@ -22,7 +22,7 @@
         </div>
     </div>
 
-                <script src="../../assets/js/cookies.js"></script>
+                <script src="./../../assets/js/cookies.js"></script>
 
     <!------------------------------------------------- FIN FENETRE POP UP COOKIES -------------------------------------------->
 

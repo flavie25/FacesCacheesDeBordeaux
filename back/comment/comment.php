@@ -8,9 +8,9 @@
 /////////////////////////////////////////////////////
 
 // Mode DEV
-require_once __DIR__ . '/../../util/utilErrOn.php';
+require_once __DIR__ . './../../util/utilErrOn.php';
 
-require_once __DIR__ . '/../../CLASS_CRUD/comment.class.php';
+require_once __DIR__ . './../../CLASS_CRUD/comment.class.php';
 global $db;
 $comment = new COMMENT;
 ?>
@@ -23,11 +23,11 @@ $comment = new COMMENT;
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="./../../front/assets/css/normalize.css">
 
-    <link rel="stylesheet" href="../../front/assets/css/nav.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/gestionCRUD.css" >
+    <link rel="stylesheet" href="./../../front/assets/css/nav.css">
+    <link rel="stylesheet" href="./../css/footer.css">
+    <link rel="stylesheet" href="./../css/gestionCRUD.css" >
 
 </head>
 <body>
@@ -102,7 +102,7 @@ $comment = new COMMENT;
 </div>
 
     <?
-    require_once __DIR__ . '/footer.php';
+    require_once __DIR__ . './footer.php';
     ?>
 </body>
 </html>

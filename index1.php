@@ -8,7 +8,7 @@
 ///////////////////////////////////////////////////////////////
 
 // Mode DEV
-require_once __DIR__ . '/util/utilErrOn.php';
+require_once __DIR__ . './util/utilErrOn.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,11 +19,11 @@ require_once __DIR__ . '/util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-	<link rel="stylesheet" href="front/assets/css/normalize.css">
+	<link rel="stylesheet" href="./front/assets/css/normalize.css">
 
-	<link rel="stylesheet" href="front/assets/css/nav.css">
-	<link rel="stylesheet" href="back/css/allCrud.css">
-	<link rel="stylesheet" href="back/css/footer.css">
+	<link rel="stylesheet" href="./front/assets/css/nav.css">
+	<link rel="stylesheet" href="./back/css/allCrud.css">
+	<link rel="stylesheet" href="./back/css/footer.css">
 
 </head>
 <body>
@@ -90,7 +90,7 @@ require_once __DIR__ . '/util/utilErrOn.php';
 	</div>
 
 <?php
-require_once __DIR__ . '/footer.php';
+require_once __DIR__ . './footer.php';
 ?>
 </body>
 </html>

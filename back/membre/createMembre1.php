@@ -8,19 +8,19 @@
 ///////////////////////////////////////////////////////////////
 
 // Mode DEV
-require_once __DIR__ . '/../../util/utilErrOn.php';
+require_once __DIR__ . './../../util/utilErrOn.php';
 
 
     // controle des saisies du formulaire
 
 
     // insertion classe MEMBRE
-    require_once __DIR__ . '/../../util/ctrlSaisies.php';
-    require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
+    require_once __DIR__ . './../../util/ctrlSaisies.php';
+    require_once __DIR__ . './../../CLASS_CRUD/membre.class.php';
     global $db;
     $membre = new MEMBRE;
 
-    $config = file_get_contents('../../js/config.json');
+    $config = file_get_contents('./../../js/config.json');
     $configData = json_decode($config);
 
 
@@ -147,6 +147,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     }   // Fin if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     // Init variables form
-    include __DIR__ . '/initMembre.php';
+    include __DIR__ . './initMembre.php';
 ?>
 

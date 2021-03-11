@@ -10,7 +10,7 @@ session_start();
 		// Destruction session et redirection vers page accueil.php
 		unset($_SESSION);
 		session_destroy();
-		header('Location: ../../front/includes/pages/accueil.php?login=""');
+		header('Location: ./../../front/includes/pages/accueil.php?login=""');
 	}
 	else {
 

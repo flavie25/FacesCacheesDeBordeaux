@@ -11,7 +11,7 @@
 /////////////////////////////////////////////////////
 
 // Mode DEV
-require_once __DIR__ . '/../../util/utilErrOn.php';
+require_once __DIR__ . './../../util/utilErrOn.php';
 
     // Si on n'est pas connecté, on est redirigé vers le script de login (session.php)
     // Variable non rensiegnée

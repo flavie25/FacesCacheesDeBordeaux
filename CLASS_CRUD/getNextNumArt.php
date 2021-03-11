@@ -9,7 +9,7 @@
 ///////////////////////////////////////////////////////////////
 
 // Mode DEV
-require_once __DIR__ . '/util/utilErrOn.php';
+require_once __DIR__ . './util/utilErrOn.php';
 
     // Fonction pour recupérer la prochaine PK de la table ARTICLE
     function getNextNumArt() {

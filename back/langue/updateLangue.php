@@ -8,15 +8,15 @@
 ///////////////////////////////////////////////////////////////
 
 // Mode DEV
-require_once __DIR__ . '/../../util/utilErrOn.php';
+require_once __DIR__ . './../../util/utilErrOn.php';
 
 
     // controle des saisies du formulaire
 
 
     // modification classe LANGUE
-    require_once __DIR__ . '/../../util/ctrlSaisies.php';
-    require_once __DIR__ . '/../../CLASS_CRUD/langue.class.php';
+    require_once __DIR__ . './../../util/ctrlSaisies.php';
+    require_once __DIR__ . './../../CLASS_CRUD/langue.class.php';
     global $db;
     $maLangue = new LANGUE;
 
@@ -69,7 +69,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     }   // Fin if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     // Init variables form
-    include __DIR__ . '/initLangue.php';
+    include __DIR__ . './initLangue.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -80,12 +80,12 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="./../../front/assets/css/normalize.css">
 
-    <link rel="stylesheet" href="../../front/assets/css/nav.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/gestionCRUD.css">
-    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="./../../front/assets/css/nav.css">
+    <link rel="stylesheet" href="./../css/footer.css">
+    <link rel="stylesheet" href="./../css/gestionCRUD.css">
+    <link rel="stylesheet" href="./../css/form.css">
 
 </head>
 <body>
@@ -163,9 +163,9 @@ include __DIR__ ."./../commons/navbar.php";
     </form>
 </div>
 <?php
-require_once __DIR__ . '/footerLangue.php';
+require_once __DIR__ . './footerLangue.php';
 
-require_once __DIR__ . '/footer.php';
+require_once __DIR__ . './footer.php';
 ?>
 </body>
 </html>

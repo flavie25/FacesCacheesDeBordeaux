@@ -8,15 +8,15 @@
 ///////////////////////////////////////////////////////////////
 
 // Mode DEV
-require_once __DIR__ . '/../../util/utilErrOn.php';
+require_once __DIR__ . './../../util/utilErrOn.php';
 
 
     // controle des saisies du formulaire
 
 
     // insertion classe LANGUE
-    require_once __DIR__ . '/../../util/ctrlSaisies.php';
-    require_once __DIR__ . '/../../CLASS_CRUD/motCleArticle.class.php';
+    require_once __DIR__ . './../../util/ctrlSaisies.php';
+    require_once __DIR__ . './../../CLASS_CRUD/motCleArticle.class.php';
     global $db;
     $monMotCleArticle = new MOTCLEARTICLE;
 
@@ -63,7 +63,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     }   // Fin if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     // Init variables form
-    include __DIR__ . '/initMotCleArticle.php';
+    include __DIR__ . './initMotCleArticle.php';
 
     // Classe envoyée par le form
     $idLang = (isset($_POST['numLang'])) ? $_POST['numLang'] : null;
@@ -78,8 +78,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
-    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="./../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="./../css/footer.css">
     
 </head>
 <body>
@@ -156,8 +156,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         </fieldset>
     </form>
 <?php
-require_once __DIR__ . '/footerMotCleArticle.php';
-require_once __DIR__ . '/footer.php';
+require_once __DIR__ . './footerMotCleArticle.php';
+require_once __DIR__ . './footer.php';
 ?>
 </body>
 </html>

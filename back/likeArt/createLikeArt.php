@@ -8,14 +8,14 @@
 ///////////////////////////////////////////////////////////////
 
 // Mode DEV
-    require_once __DIR__ . '/../../util/utilErrOn.php';
+    require_once __DIR__ . './../../util/utilErrOn.php';
     
     
     // controle des saisies du formulaire
-    require_once __DIR__ . '/../../util/ctrlSaisies.php';
-    require_once __DIR__ . '/../../CLASS_CRUD/likeArt.class.php';
-    require_once __DIR__ . '/../../CLASS_CRUD/article.class.php';
-    require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
+    require_once __DIR__ . './../../util/ctrlSaisies.php';
+    require_once __DIR__ . './../../CLASS_CRUD/likeArt.class.php';
+    require_once __DIR__ . './../../CLASS_CRUD/article.class.php';
+    require_once __DIR__ . './../../CLASS_CRUD/membre.class.php';
 
     
     global $db;
@@ -58,7 +58,7 @@
             
     }
 
-    include __DIR__ . '/initLikeArt.php';
+    include __DIR__ . './initLikeArt.php';
 ?>
 
 <!DOCTYPE html>
@@ -71,12 +71,12 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="./../../front/assets/css/normalize.css">
 
-    <link rel="stylesheet" href="../../front/assets/css/nav.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/gestionCRUD.css">
-    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="./../../front/assets/css/nav.css">
+    <link rel="stylesheet" href="./../css/footer.css">
+    <link rel="stylesheet" href="./../css/gestionCRUD.css">
+    <link rel="stylesheet" href="./../css/form.css">
 
 </head>
 
@@ -155,9 +155,9 @@ include __DIR__ ."./../commons/navbar.php";
     </form>
 </div>
     <?
-require_once __DIR__ . '/footerLikeArt.php';
+require_once __DIR__ . './footerLikeArt.php';
 
-require_once __DIR__ . '/footer.php';
+require_once __DIR__ . './footer.php';
 ?>
 </body>
 

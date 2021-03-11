@@ -1,7 +1,7 @@
 <?
-	// CRUD USER (ETUD)
+	// CRUD MOTCLE (ETUD)
 
-	require_once __DIR__ . '../../CONNECT/database.php';
+	require_once __DIR__ . './../../CONNECT/database.php';
 
 	class MOTCLE{
 		function get_1MotCleByLangue($numMotCle){

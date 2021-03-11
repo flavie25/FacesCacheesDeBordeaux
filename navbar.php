@@ -71,7 +71,7 @@ if(isset($_SESSION['pseudoMemb'])){
                 <?
                     if(isset($_SESSION['pseudoMemb'])){ 
                 ?>
-                        <a href="profil.php" >
+                        <a href="./profil.php" >
                             <i class="fas fa-user"></i>
                         </a>
 
@@ -79,7 +79,7 @@ if(isset($_SESSION['pseudoMemb'])){
                     } 
                     else {
                 ?>
-                        <a href="connexion.php" >
+                        <a href="./connexion.php" >
                             <i class="fas fa-user"></i>
                         </a>
                 <?php 

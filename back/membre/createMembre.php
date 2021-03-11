@@ -8,19 +8,19 @@
 ///////////////////////////////////////////////////////////////
 
 // Mode DEV
-require_once __DIR__ . '/../../util/utilErrOn.php';
+require_once __DIR__ . './../../util/utilErrOn.php';
 
 
     // controle des saisies du formulaire
 
 
     // insertion classe MEMBRE
-    require_once __DIR__ . '/../../util/ctrlSaisies.php';
-    require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
+    require_once __DIR__ . './../../util/ctrlSaisies.php';
+    require_once __DIR__ . './../../CLASS_CRUD/membre.class.php';
     global $db;
     $membre = new MEMBRE;
 
-    $config = file_get_contents('../../js/config.json');
+    $config = file_get_contents('./../../js/config.json');
     $configData = json_decode($config);
 
 
@@ -138,7 +138,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     }   // Fin if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     // Init variables form
-    include __DIR__ . '/initMembre.php';
+    include __DIR__ . './initMembre.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -149,12 +149,12 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="./../../front/assets/css/normalize.css">
 
-    <link rel="stylesheet" href="../../front/assets/css/nav.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/gestionCRUD.css">
-    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="./../../front/assets/css/nav.css">
+    <link rel="stylesheet" href="./../css/footer.css">
+    <link rel="stylesheet" href="./../css/gestionCRUD.css">
+    <link rel="stylesheet" href="./../css/form.css">
 
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
@@ -268,9 +268,9 @@ if (isset($_GET['err4']) AND !empty($_GET['err4'])){
     echo $errMail2.'</br>';
 } 
 
-require_once __DIR__ . '/footerMembre.php';
+require_once __DIR__ . './footerMembre.php';
 
-require_once __DIR__ . '/footer.php';
+require_once __DIR__ . './footer.php';
 ?>
 </body>
 </html>

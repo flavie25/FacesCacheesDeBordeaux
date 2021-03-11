@@ -8,9 +8,9 @@
 /////////////////////////////////////////////////////
 
 // Mode DEV
-require_once __DIR__ . '/../../util/utilErrOn.php';
+require_once __DIR__ . './../../util/utilErrOn.php';
 
-require_once __DIR__ . '/../../CLASS_CRUD/motCle.class.php';
+require_once __DIR__ . './../../CLASS_CRUD/motCle.class.php';
 global $db;
 $monMotCle = new MOTCLE;
 
@@ -28,11 +28,11 @@ $errCIR=0;
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="./../../front/assets/css/normalize.css">
     
-    <link rel="stylesheet" href="../../front/assets/css/nav.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/gestionCRUD.css" >
+    <link rel="stylesheet" href="./../../front/assets/css/nav.css">
+    <link rel="stylesheet" href="./../css/footer.css">
+    <link rel="stylesheet" href="./../css/gestionCRUD.css" >
 
 </head>
 <body>
@@ -94,7 +94,7 @@ $errCIR=0;
     if ($errCIR == 1){
     echo 'Vous ne pouvez pas supprimer cet utilisateur. Veuillez d\'abord supprimer cet utilisateur dans les autres tables';
     } 
-    require_once __DIR__ . '/footer.php';
+    require_once __DIR__ . './footer.php';
     ?>
 </body>
 </html>

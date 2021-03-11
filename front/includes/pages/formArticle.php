@@ -2,7 +2,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="../../assets/css/formArticle.css" />
+        <link rel="stylesheet" href="./../../assets/css/formArticle.css" />
     </head>
 
     <div class="container">

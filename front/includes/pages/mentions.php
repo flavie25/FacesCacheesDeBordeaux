@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mention Légales</title>
     
-    <link rel="stylesheet" href="../../assets/css/normalize.css">
+    <link rel="stylesheet" href="./../../assets/css/normalize.css">
 
-    <link rel="stylesheet" href="../../assets/css/nav.css">
-    <link rel="stylesheet" href="../../assets/css/cookies.css">
-    <link rel="stylesheet" href="../../assets/css/banner.css"> 
+    <link rel="stylesheet" href="./../../assets/css/nav.css">
+    <link rel="stylesheet" href="./../../assets/css/cookies.css">
+    <link rel="stylesheet" href="./../../assets/css/banner.css"> 
 
-    <link rel="stylesheet" href="../../assets/css/mentions.css" />
+    <link rel="stylesheet" href="./../../assets/css/mentions.css" />
 
-    <link rel="stylesheet" href="../../assets/css/footer.css">
+    <link rel="stylesheet" href="./../../assets/css/footer.css">
 
     <!-- popup mentions légales <link rel="stylesheet" href="../../assets/css/popUp.css"> -->
 

@@ -1,8 +1,8 @@
 <?
 // Mode DEV
-require_once __DIR__ . '/../../util/utilErrOn.php';
+require_once __DIR__ . './../../util/utilErrOn.php';
 
-require_once __DIR__ . '/../../CONNECT/database.php';
+require_once __DIR__ . './../../CONNECT/database.php';
 
 	echo "<select size=\"10\" multiple=\"multiple\"  id=\"listMotCle\" name=\"listMotCle[]\">";
 	$langue2 = $_REQUEST["langue"];

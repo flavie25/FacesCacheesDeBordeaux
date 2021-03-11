@@ -1,7 +1,7 @@
 <?
-	// CRUD USER (ETUD)
+	// CRUD ANGLE (ETUD)
 
-	require_once __DIR__ . '../../CONNECT/database.php';
+	require_once __DIR__ . './../../CONNECT/database.php';
 
 	class ANGLE{
 		

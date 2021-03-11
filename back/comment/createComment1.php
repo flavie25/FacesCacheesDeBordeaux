@@ -1,17 +1,17 @@
 <?php
 
 // Mode DEV
-require_once __DIR__ . '/../../util/utilErrOn.php';
+require_once __DIR__ . './../../util/utilErrOn.php';
 
 
     // controle des saisies du formulaire
 
 
     // insertion classe COMMENT
-    require_once __DIR__ . '/../../util/ctrlSaisies.php';
-    require_once __DIR__ . '/../../CLASS_CRUD/getNextNumCom.php';
-    require_once __DIR__ . '/../../CLASS_CRUD/comment.class.php';
-    require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
+    require_once __DIR__ . './../../util/ctrlSaisies.php';
+    require_once __DIR__ . './../../CLASS_CRUD/getNextNumCom.php';
+    require_once __DIR__ . './../../CLASS_CRUD/comment.class.php';
+    require_once __DIR__ . './../../CLASS_CRUD/membre.class.php';
     global $db;
     $monComment = new COMMENT;
     $membre = new MEMBRE;
@@ -63,5 +63,5 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     }   // Fin if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     // Init variables form
-    include __DIR__ . '/initComment.php';
+    include __DIR__ . './initComment.php';
 ?>

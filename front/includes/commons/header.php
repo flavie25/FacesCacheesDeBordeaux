@@ -19,13 +19,13 @@
         <div >
             <ul>
                 <li>
-                    <a href=""> Accueil </a>
+                    <a href="./#"> Accueil </a>
                 </li>
                 <li>
-                    <a href=""> Mon compte </a>
+                    <a href="./#"> Mon compte </a>
                 </li>
                 <li>
-                    <a href=""> Nous contacter </a>
+                    <a href="./#"> Nous contacter </a>
                 </li>
 
         </div>

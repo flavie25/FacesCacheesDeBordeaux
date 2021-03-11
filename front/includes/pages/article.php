@@ -5,20 +5,20 @@ setcookie('page', 'article.php', 3600*24, null, null, false, true);
     <head>
         <meta charset="utf8">
         <title>Article</title>
-        <link rel="stylesheet" href="../../assets/css/normalize.css">
+        <link rel="stylesheet" href="./../../assets/css/normalize.css">
         <link rel="stylesheet" href="./../../assets/css/article.css">
-        <link rel="stylesheet" href="../../assets/css/nav.css">
-        <link rel="stylesheet" href="../../assets/css/footer.css">
+        <link rel="stylesheet" href="./../../assets/css/nav.css">
+        <link rel="stylesheet" href="./../../assets/css/footer.css">
     </head>
     <body>
 
 <? 
 
 include __DIR__."./../commons/navbar.php";
-require_once __DIR__."/../../../util/utilErrOn.php";
-require_once __DIR__."/../../../util/ctrlSaisies.php";
-require_once __DIR__."/../../../CLASS_CRUD/article.class.php";
-require_once __DIR__."/../../../CLASS_CRUD/likeArt.class.php";
+require_once __DIR__."./../../../util/utilErrOn.php";
+require_once __DIR__."./../../../util/ctrlSaisies.php";
+require_once __DIR__."./../../../CLASS_CRUD/article.class.php";
+require_once __DIR__."./../../../CLASS_CRUD/likeArt.class.php";
 global $db;
 $article = new ARTICLE;
 $likeArt = new LIKEART;
@@ -39,7 +39,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
             <br>
             <br>
             <div class="articleImage">
-                <img class="imageArt" src="../../../uploads/<?= $contenu['urlPhotArt'];?>" >
+                <img class="imageArt" src="./../../../uploads/<?= $contenu['urlPhotArt'];?>" >
                 <div class="artOverlay">
                     <h1><?= $titreArt ?></h1>
                 </div>
@@ -68,8 +68,8 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
         <br>
 
         <?
-        require_once __DIR__."/../../../CLASS_CRUD/comment.class.php";
-        require_once __DIR__."/../../../CLASS_CRUD/likeCom.class.php";
+        require_once __DIR__."./../../../CLASS_CRUD/comment.class.php";
+        require_once __DIR__."./../../../CLASS_CRUD/likeCom.class.php";
         global $db;
         $comment = new COMMENT;
         $likecomment = new LIKECOM;
@@ -84,7 +84,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
         ?>
         <div class="commentaireContainer">
                 <div class="logoCommentaire">
-                    <img src="../../assets/images/Vector_2.svg" height="100" width="100" >
+                    <img src="./../../assets/images/Vector_2.svg" height="100" width="100" >
                 </div>
                 <div class="comment">
                     <div>
@@ -95,7 +95,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
                         <form action="">
                         <textarea id="commentaire" name="commentaire" class="formulaire" cols="40" rows="3" readonly="readonly" style="resize: none; align-item:center;"><?= $commentaire['libCom'];?></textarea><br>
                         <button class="button">Répondre</button>
-                        <img src="../../assets/images/Like.png" style="margin-left: 1%;transform: translateY(5px);">
+                        <img src="./../../assets/images/Like.png" style="margin-left: 1%;transform: translateY(5px);">
                         <label id="nbLikes"><?= $nbLikeComment?></label>
                         </form>
                     </div>
@@ -132,7 +132,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
             ?>
                 <div class="commentaireContainer">
                     <div class="logoCommentaire">
-                        <img src="../../assets/images/Vector_2.svg" height="100" width="100" >
+                        <img src="./../../assets/images/Vector_2.svg" height="100" width="100" >
                     </div>
                     <div>
                         <form method="post" action="./../../../back/comment/createComment1.php" enctype="multipart/form-data">
@@ -152,12 +152,12 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
             ?>
                 <div class="commentaireConnexion">
                     <div class="logoCommentaire">
-                        <img src="../../assets/images/Vector_2.svg" height="100" width="100" >
+                        <img src="./../../assets/images/Vector_2.svg" height="100" width="100" >
                     </div>
                     <div >
                         <div>
                             <label class="pseudoComment">Connectez vous pour commenter :</label>
-                            <a class="button" href="connexion.php">CONNECTEZ VOUS</a>
+                            <a class="button" href="./connexion.php">CONNECTEZ VOUS</a>
                         </div>
                     </div>
                 </div>
@@ -171,8 +171,8 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
         ?>
 
         <div class="changementArt">
-            <a class="button changement" href="article.php?id=<?= $articlePrec; ?>">ARTICLE PRECEDENT</a>
-            <a class="button changement" href="article.php?id=<?= $articleSuiv; ?>">ARTICLE SUIVANT</a>
+            <a class="button changement" href="./article.php?id=<?= $articlePrec; ?>">ARTICLE PRECEDENT</a>
+            <a class="button changement" href="./article.php?id=<?= $articleSuiv; ?>">ARTICLE SUIVANT</a>
         </div>
         <? 
         include __DIR__."./../commons/footer.php";

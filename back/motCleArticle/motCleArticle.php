@@ -8,9 +8,9 @@
 /////////////////////////////////////////////////////
 
 // Mode DEV
-require_once __DIR__ . '/../../util/utilErrOn.php';
+require_once __DIR__ . './../../util/utilErrOn.php';
 
-require_once __DIR__ . '/../../CLASS_CRUD/motCleArticle.class.php';
+require_once __DIR__ . './../../CLASS_CRUD/motCleArticle.class.php';
 global $db;
 $monMotCleArticle = new MOTCLEARTICLE;
 ?>
@@ -23,11 +23,11 @@ $monMotCleArticle = new MOTCLEARTICLE;
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="./../../front/assets/css/normalize.css">
     
-    <link rel="stylesheet" href="../../front/assets/css/nav.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/gestionCRUD.css" >
+    <link rel="stylesheet" href="./../../front/assets/css/nav.css">
+    <link rel="stylesheet" href="./../css/footer.css">
+    <link rel="stylesheet" href="./../css/gestionCRUD.css" >
 
 </head>
 <body>*<?php
@@ -75,7 +75,7 @@ $monMotCleArticle = new MOTCLEARTICLE;
 </div>
 </div>
     <?
-    require_once __DIR__ . '/footer.php';
+    require_once __DIR__ . './footer.php';
     ?>
 </body>
 </html>

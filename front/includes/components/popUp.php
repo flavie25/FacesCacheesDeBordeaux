@@ -2,7 +2,7 @@
     <header>
         <meta charset="utf8">
         <title>popup</title>
-        <link rel="stylesheet" href="../../assets/css/popUp.css">
+        <link rel="stylesheet" href="./../../assets/css/popUp.css">
     </header>
     <body class="imgpop_mention">
         <div id="id-element" class="bulle">

@@ -1,21 +1,21 @@
 <?php
 ///////////////////////////////////////////////////////////////
 //
-//  CRUD STATUT (PDO) - Code Modifié - 23 Janvier 2021
+//  CRUD USER (PDO) - Code Modifié - 23 Janvier 2021
 //
 //  Script  : user.php  (ETUD)   -   BLOGART21
 //
 ///////////////////////////////////////////////////////////////
 
 // Mode DEV
-require_once __DIR__ . '/../../util/utilErrOn.php';
+require_once __DIR__ . './../../util/utilErrOn.php';
 
     // controle des saisies du formulaire
 
     
 
-    // insertion classe STATUT
-    require_once __DIR__ . '/../../CLASS_CRUD/user.class.php';
+    // insertion classe USER
+    require_once __DIR__ . './../../CLASS_CRUD/user.class.php';
     global $db;
     $user = new USER;
 
@@ -36,11 +36,11 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="./../../front/assets/css/normalize.css">
 
-    <link rel="stylesheet" href="../../front/assets/css/nav.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/gestionCRUD.css" >
+    <link rel="stylesheet" href="./../../front/assets/css/nav.css">
+    <link rel="stylesheet" href="./../css/footer.css">
+    <link rel="stylesheet" href="./../css/gestionCRUD.css" >
 
 </head>
 <body>
@@ -110,7 +110,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         </div>
     </div>
 <?php
-require_once __DIR__ . '/footer.php';
+require_once __DIR__ . './footer.php';
 ?>
 </body>
 </html>

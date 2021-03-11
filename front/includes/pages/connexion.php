@@ -23,10 +23,10 @@ switch ($error) {
 
 <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="../../assets/css/normalize.css" />
-        <link rel="stylesheet" href="../../assets/css/nav.css" />
-        <link rel="stylesheet" href="../../assets/css/connexion.css" />
-        <link rel="stylesheet" href="../../assets/css/footer.css" />
+        <link rel="stylesheet" href="./../../assets/css/normalize.css" />
+        <link rel="stylesheet" href="./../../assets/css/nav.css" />
+        <link rel="stylesheet" href="./../../assets/css/connexion.css" />
+        <link rel="stylesheet" href="./../../assets/css/footer.css" />
 </head>
 <body>
     <?
@@ -43,7 +43,7 @@ switch ($error) {
         <h1> Connexion </h1>
         <p class="obligatoire"> *Champs obligatoires </p>
 
-        <form method="post" action="../../../back/session/verif_connexion.php" enctype="multipart/form-data" accept-charset="UTF-8">
+        <form method="post" action="./../../../back/session/verif_connexion.php" enctype="multipart/form-data" accept-charset="UTF-8">
 
         <label for="pseudoMemb">Pseudo*</label> </br>
         <input type="text" name="pseudoMemb" id="pseudoMemb" required placeholder="Renseignez votre pseudo" title="Renseignez votre pseudo" /> </br>

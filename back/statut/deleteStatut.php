@@ -8,21 +8,21 @@
 ///////////////////////////////////////////////////////////////
 
 // Mode DEV
-require_once __DIR__ . '/../../util/utilErrOn.php';
+require_once __DIR__ . './../../util/utilErrOn.php';
 
 
     // controle des saisies du formulaire
 
 
     // insertion classe STATUT
-    require_once __DIR__ . '/../../util/ctrlSaisies.php';
-    require_once __DIR__ . '/../../CLASS_CRUD/statut.class.php';
+    require_once __DIR__ . './../../util/ctrlSaisies.php';
+    require_once __DIR__ . './../../CLASS_CRUD/statut.class.php';
     global $db;
     $monStatut = new STATUT;
 
 
     // Ctrl CIR
-    require_once __DIR__ . '/../../CLASS_CRUD/user.class.php';
+    require_once __DIR__ . './../../CLASS_CRUD/user.class.php';
     global $db;
     $monUser = new USER;
     $errCIR = 0;
@@ -61,7 +61,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     }   // End of if ((isset($_POST['id'])
 }   // End of if ($_SERVER["REQUEST_METHOD"] === "POST")
 // Init variables form
-include __DIR__ . '/initStatut.php';
+include __DIR__ . './initStatut.php';
 ?>
 
 <!DOCTYPE html>
@@ -73,12 +73,12 @@ include __DIR__ . '/initStatut.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
   
-    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="./../../front/assets/css/normalize.css">
 
-    <link rel="stylesheet" href="../../front/assets/css/nav.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/gestionCRUD.css">
-    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="./../../front/assets/css/nav.css">
+    <link rel="stylesheet" href="./../css/footer.css">
+    <link rel="stylesheet" href="./../css/gestionCRUD.css">
+    <link rel="stylesheet" href="./../css/form.css">
 
 </head>
 <body>
@@ -124,9 +124,9 @@ include __DIR__ ."./../commons/navbar.php";
     </form>
 </div>
 <?php
-require_once __DIR__ . '/footerStatut.php';
+require_once __DIR__ . './footerStatut.php';
 
-require_once __DIR__ . '/footer.php';
+require_once __DIR__ . './footer.php';
 ?>
 </body>
 </html>

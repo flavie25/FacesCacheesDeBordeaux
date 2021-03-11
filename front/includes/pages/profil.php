@@ -4,17 +4,17 @@
     <head>
         <meta charset="UTF-8">
         <title>Profil</title>
-        <link rel="stylesheet" href="../../assets/css/normalize.css">
-        <link rel="stylesheet" href="../../assets/css/nav.css">
-        <link rel="stylesheet" href="../../assets/css/footer.css">
-        <link rel="stylesheet" href="../../assets/css/profil.css">
+        <link rel="stylesheet" href="./../../assets/css/normalize.css">
+        <link rel="stylesheet" href="./../../assets/css/nav.css">
+        <link rel="stylesheet" href="./../../assets/css/footer.css">
+        <link rel="stylesheet" href="./../../assets/css/profil.css">
     </head>
     <body>        
         <? 
         include __DIR__."./../commons/navbar.php";
-        require_once __DIR__."/../../../util/utilErrOn.php";
-        require_once __DIR__."/../../../util/ctrlSaisies.php";
-        require_once __DIR__."/../../../CLASS_CRUD/membre.class.php";
+        require_once __DIR__."./../../../util/utilErrOn.php";
+        require_once __DIR__."./../../../util/ctrlSaisies.php";
+        require_once __DIR__."./../../../CLASS_CRUD/membre.class.php";
         global $db;
         $membre = new MEMBRE;
 
@@ -34,13 +34,13 @@
         <div class="profil">
             <div class="infoProfil">
                 <div>
-                    <img id="pp" src="../../assets/images/Vector_2.svg" height="300" width="300" >
+                    <img id="pp" src="./../../assets/images/Vector_2.svg" height="300" width="300" >
                 </div>
                 <div class="labelProfil"><label>Profil : </label><label><?= $infoMembre['pseudoMemb'];?></label></div>
                 <div class="labelProfil"><label>E-mail : </label><label><?= $infoMembre['eMailMemb'];?></label></div>
                 <div class="labelProfil"><label>Mot de passe : </label><label>**********</label></div>
-                <a class="button btnProfil" href="connexion.php">Modifier les informations</a>
-                <a class="button btnProfil" href="../../../back/session/deconnexion.php">Se deconnecter</a>
+                <a class="button btnProfil" href="./connexion.php">Modifier les informations</a>
+                <a class="button btnProfil" href="./../../../back/session/deconnexion.php">Se deconnecter</a>
                 <!-- <button class="button2">Supprimer le compte</button> -->
             </div>
         </div>

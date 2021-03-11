@@ -1,7 +1,7 @@
 <?php
 ///////////////////////////////////////////////////////////////
 //
-//  CRUD STATUT (PDO) - Code Modifié - 23 Janvier 2021
+//  CRUD USER (PDO) - Code Modifié - 23 Janvier 2021
 //
 //  Script  : deleteUser.php  (ETUD)   -   BLOGART21
 //
@@ -14,9 +14,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     // controle des saisies du formulaire
 
 
-    // insertion classe STATUT
-    require_once __DIR__ . '/../../util/ctrlSaisies.php';
-    require_once __DIR__ . '/../../CLASS_CRUD/user.class.php';
+    // insertion classe USER
+    require_once __DIR__ . './../../util/ctrlSaisies.php';
+    require_once __DIR__ . './../../CLASS_CRUD/user.class.php';
     global $db;
     $user = new USER;
 
@@ -58,7 +58,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     }   // Fin if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     // Init variables form
-    include __DIR__ . '/initUser.php';
+    include __DIR__ . './initUser.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -69,12 +69,12 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="./../../front/assets/css/normalize.css">
     
-    <link rel="stylesheet" href="../../front/assets/css/nav.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/gestionCRUD.css">
-    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="./../../front/assets/css/nav.css">
+    <link rel="stylesheet" href="./../css/footer.css">
+    <link rel="stylesheet" href="./../css/gestionCRUD.css">
+    <link rel="stylesheet" href="./../css/form.css">
     
 </head>
 <body>
@@ -150,9 +150,9 @@ include __DIR__ ."./../commons/navbar.php";
 </div>
 <?php
 
-require_once __DIR__ . '/footerUser.php';
+require_once __DIR__ . './footerUser.php';
 
-require_once __DIR__ . '/footer.php';
+require_once __DIR__ . './footer.php';
 ?>
 </body>
 </html>

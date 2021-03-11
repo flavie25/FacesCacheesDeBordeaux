@@ -8,20 +8,20 @@
 ///////////////////////////////////////////////////////////////
 
 // Mode DEV
-require_once __DIR__ . '/../../util/utilErrOn.php';
+require_once __DIR__ . './../../util/utilErrOn.php';
 
 
     // controle des saisies du formulaire
 
 
     // insertion classe ANGLE
-    require_once __DIR__ . '/../../util/ctrlSaisies.php';
-    require_once __DIR__ . '/../../CLASS_CRUD/angle.class.php';
+    require_once __DIR__ . './../../util/ctrlSaisies.php';
+    require_once __DIR__ . './../../CLASS_CRUD/angle.class.php';
     global $db;
     $monAngle = new ANGLE;
 
     // Ctrl CIR
-    require_once __DIR__ . '/../../CLASS_CRUD/article.class.php';
+    require_once __DIR__ . './../../CLASS_CRUD/article.class.php';
     global $db;
     $monArticle = new ARTICLE;
     $errCIR = 0;
@@ -63,7 +63,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 }   // End of if ($_SERVER["REQUEST_METHOD"] === "POST")
 
 // Init variables form
-include __DIR__ . '/initAngle.php';
+include __DIR__ . './initAngle.php';
 ?>
 
 <!DOCTYPE html>
@@ -134,9 +134,9 @@ include __DIR__ ."./../commons/navbar.php";
     </form>
 </div>
 <?php
-require_once __DIR__ . '/footerAngle.php';
+require_once __DIR__ . './footerAngle.php';
 
-require_once __DIR__ . '/footer.php';
+require_once __DIR__ . './footer.php';
 ?>
 </body>
 </html>

@@ -1,8 +1,8 @@
 <?
 // Mode DEV
-require_once __DIR__ . '/../../util/utilErrOn.php';
+require_once __DIR__ . './../../util/utilErrOn.php';
 
-require_once __DIR__ . '/../../CONNECT/database.php';
+require_once __DIR__ . './../../CONNECT/database.php';
 
 	echo "<select name='idThem'>";
 	$langue1 = $_REQUEST["langue"];

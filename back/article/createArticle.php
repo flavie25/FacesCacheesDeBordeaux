@@ -8,15 +8,15 @@
 ///////////////////////////////////////////////////////////////
 
 // Mode DEV
-require_once __DIR__ . '/../../util/utilErrOn.php';
+require_once __DIR__ . './../../util/utilErrOn.php';
 
 
     // controle des saisies du formulaire
 
 
     // insertion classe STATUT
-    require_once __DIR__ . '/../../util/ctrlSaisies.php';
-    require_once __DIR__ . '/../../CLASS_CRUD/article.class.php';
+    require_once __DIR__ . './../../util/ctrlSaisies.php';
+    require_once __DIR__ . './../../CLASS_CRUD/article.class.php';
     
     global $db;
     $monArticle = new ARTICLE;
@@ -68,7 +68,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $dtCreArt = date("Y-m-d h:i:s");
             $motCle = $_POST['idMotCle'];
 
-            require_once __DIR__ . '/ctrlerUploadImage.php';
+            require_once __DIR__ . './ctrlerUploadImage.php';
 
             $urlPhotArt = $nomImage;
 
@@ -101,7 +101,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     
     }   
     // Init variables form
-    include __DIR__ . '/initArticle.php';
+    include __DIR__ . './initArticle.php';
     
 ?>
 <!DOCTYPE html>
@@ -113,12 +113,12 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="./../../front/assets/css/normalize.css">
 
-    <link rel="stylesheet" href="../../front/assets/css/nav.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/gestionCRUD.css">
-    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="./../../front/assets/css/nav.css">
+    <link rel="stylesheet" href="./../css/footer.css">
+    <link rel="stylesheet" href="./../css/gestionCRUD.css">
+    <link rel="stylesheet" href="./../css/form.css">
 
     <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -410,9 +410,9 @@ include __DIR__ ."./../commons/navbar.php";
 		}	// End of function
   </script>
 <?php
-require_once __DIR__ . '/footerArticle.php';
+require_once __DIR__ . './footerArticle.php';
 
-require_once __DIR__ . '/footer.php';
+require_once __DIR__ . './footer.php';
 ?>
 </body>
 </html>

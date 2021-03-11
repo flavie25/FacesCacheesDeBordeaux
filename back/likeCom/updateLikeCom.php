@@ -8,13 +8,13 @@
 ///////////////////////////////////////////////////////////////
 
 // Mode DEV
-    require_once __DIR__ . '/../../util/utilErrOn.php';
+    require_once __DIR__ . './../../util/utilErrOn.php';
     
     
     // controle des saisies du formulaire
-    require_once __DIR__ . '/../../util/ctrlSaisies.php';
-    include __DIR__ . '/../../CLASS_CRUD/likeCom.class.php';
-    include __DIR__ . '/initLikeCom.php';
+    require_once __DIR__ . './../../util/ctrlSaisies.php';
+    include __DIR__ . './../../CLASS_CRUD/likeCom.class.php';
+    include __DIR__ . './initLikeCom.php';
 
     
     global $db;
@@ -71,12 +71,12 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link rel="stylesheet" href="../../front/assets/css/normalize.css">
+    <link rel="stylesheet" href="./../../front/assets/css/normalize.css">
 
-    <link rel="stylesheet" href="../../front/assets/css/nav.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/gestionCRUD.css">
-    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="./../../front/assets/css/nav.css">
+    <link rel="stylesheet" href="./../css/footer.css">
+    <link rel="stylesheet" href="./../css/gestionCRUD.css">
+    <link rel="stylesheet" href="./../css/form.css">
 
 </head>
 
